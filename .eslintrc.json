@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "marsi/typescript"
+  ],
+  "plugins": [
+  ],
+  "rules": {
+  },
+  "settings": {
+  }
+}
