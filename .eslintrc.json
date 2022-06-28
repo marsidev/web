@@ -6,6 +6,8 @@
   "plugins": [
   ],
   "rules": {
+    "sort-imports": ["warn", { "ignoreDeclarationSort": true }],
+    "no-constant-binary-expression": "warn"
   },
   "settings": {
   }

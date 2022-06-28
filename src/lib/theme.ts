@@ -3,9 +3,10 @@ import type { Dict } from '@chakra-ui/utils'
 import { extendTheme } from '@chakra-ui/react'
 import '@fontsource/raleway/variable.css'
 import '@fontsource/nunito/variable.css'
+import '@fontsource/rubik/variable.css'
 
 const fonts = {
-  heading: 'RalewayVariable, -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
+  heading: 'RubikVariable, RalewayVariable, -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
   body: 'NunitoVariable, Roboto, -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"'
 }
 

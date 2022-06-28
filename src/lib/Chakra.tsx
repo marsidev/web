@@ -1,5 +1,5 @@
 import type { GetServerSideProps } from 'next'
-import type { StorageManager, ChakraProviderProps as ProviderProps } from '@chakra-ui/react'
+import type { ChakraProviderProps as ProviderProps, StorageManager } from '@chakra-ui/react'
 import { FC, ReactNode } from 'react'
 import { ChakraProvider as Provider, cookieStorageManagerSSR, localStorageManager } from '@chakra-ui/react'
 import { theme } from '@lib/theme'

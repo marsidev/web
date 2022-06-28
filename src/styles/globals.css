@@ -4,23 +4,116 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  transition: background-color .15s ease-in-out !important;
+  /* transition: background-color .15s ease-in-out !important; */
 }
 
 * {
   box-sizing: border-box;
 }
 
-a:hover .octo-arm { animation: octocat-wave 560ms ease-in-out; }
-
-@keyframes octocat-wave {
-  0%, 100% { transform: rotate(0); }
-  20%, 60% { transform: rotate(-25deg); }
-  40%, 80% { transform: rotate(10deg); }
+:root {
+  --scrollbar-track-bg: #e0e0e0;
+  --scrollbar-thumb-bg: rgba(0, 0, 0, 0.24);
+  --scrollbar-thumb_hover-bg: #718096;
 }
 
-@media (max-width:500px) {
-  a:hover .octo-arm { animation: none; }
-  .octo-arm { animation: octocat-wave 560ms ease-in-out; }
+::-webkit-scrollbar {
+  width: .5em;
 }
 
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-bg);
+  border-radius: 1em;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 1em;
+  background: var(--scrollbar-thumb-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb_hover-bg);
+}
+
+
+
+.menu-line-container.top {
+  transform: translateY(-3px) scaleX(.88235);
+}
+
+.menu-line-container.bottom {
+  transform: translateY(3px) scaleX(.88235);
+}
+
+.menu-input:checked + #menu_label .menu-line-container .menu-line.bottom {
+  transform: rotateZ(45deg);
+}
+
+.menu-input:checked + #menu_label .menu-line-container .menu-line.top {
+  transform: rotateZ(-45deg);
+}
+
+.menu-input:checked + #menu_label .menu-line-container.bottom {
+  transform: none;
+}
+
+.menu-input:checked + #menu_label .menu-line-container.top {
+  transform: none;
+}
+
+.menu-input:checked + #menu_label .menu-line.bottom {
+  transform: none;
+  transition-delay: 0.1s;
+}
+
+.menu-input:checked + #menu_label .menu-line.top {
+  transform: none;
+  transition-delay: 0.1s;
+}
+
+.menu-line-container {
+  transition: transform 0.2s ease-in-out 0.1s;
+}
+
+.menu-input:checked + #menu_label .menu-line-container {
+  transition-delay: 0s;
+}
+
+.menu-line {
+  transition: transform 0.2s ease-in-out;
+}
+
+.menu_btn {
+  all: unset;
+  cursor: pointer;
+  display: block;
+}
+
+.menu_btn * {
+  pointer-events: none;
+}
+
+.menu-label {
+  height: 0.85em;
+  width: 0.85em;
+  display: block;
+  position: relative;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.menu-line-container {
+  position: absolute;
+  left: 0;
+  top: 0.4em;
+}
+
+.menu-line {
+  height: 1px;
+  border-radius: 3px;
+  width: 0.85em;
+}
+
+.menu-input {
+  display: none;
+}

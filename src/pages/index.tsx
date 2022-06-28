@@ -5,7 +5,7 @@ import Layout from '@layouts/main'
 
 const App: FC<NextPage> = () => {
   return (
-    <Layout title='JavaScript Developer'>
+    <Layout>
       <Box as='section'>
         <Heading as='h1' fontSize='6xl'>
           Luis Marsiglia

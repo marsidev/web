@@ -1,6 +1,7 @@
 /* @ref: https://github.com/garmeeh/next-seo */
 
 const title = 'Luis Marsiglia'
+const defaultTitle = `${title} - JavaScript Developer`
 const description = 'Luis Marsiglia is a full-stack JavaScript developer from Venezuela.'
 const url = 'https://marsi.vercel.app'
 const imageUrl = `https://og-image.vercel.app/${encodeURI(title)}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`
@@ -8,8 +9,8 @@ const keywords = 'marsiglia, marsidev, marsi, luis marsiglia, marsigliacr, @mars
 
 const seo = {
   // title,
-  titleTemplate: `${title} – %s`,
-  defaultTitle: title,
+  titleTemplate: `%s – ${title}`,
+  defaultTitle,
   description,
   openGraph: {
     description,
