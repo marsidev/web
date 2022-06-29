@@ -9,24 +9,24 @@ export interface NavItemProps extends LinkProps {
 }
 
 export const NavItem: FC<NavItemProps> = ({ href, children, ...props }) => {
-  const color = useColorModeValue('gray.600', 'gray.400')
-  const onHoverBg = useColorModeValue('blackAlpha.200', 'whiteAlpha.200')
+	const color = useColorModeValue('gray.600', 'gray.400')
+	const onHoverBg = useColorModeValue('blackAlpha.200', 'whiteAlpha.200')
 
-  return (
-    <Link
-      _hover={{ bg: ['transparent', onHoverBg] }}
-      color={color}
-      fontSize={['sm', 'md']}
-      href={href}
-      px={[0, 2]}
-      py={1}
-      rounded='lg'
-      transition='200ms all ease-in'
-      {...props}
-    >
-      {children}
-    </Link>
-  )
+	return (
+		<Link
+			_hover={{ bg: ['transparent', onHoverBg] }}
+			color={color}
+			fontSize={['sm', 'md']}
+			href={href}
+			px={[0, 2]}
+			py={1}
+			rounded='lg'
+			transition='200ms all ease-in'
+			{...props}
+		>
+			{children}
+		</Link>
+	)
 }
 
 export default NavItem

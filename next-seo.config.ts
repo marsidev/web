@@ -8,43 +8,43 @@ const imageUrl = `https://og-image.vercel.app/${encodeURI(title)}.png?theme=ligh
 const keywords = 'marsiglia, marsidev, marsi, luis marsiglia, marsigliacr, @marsigliacr, portfolio, javascript, typescipt, developer, software engineer'
 
 const seo = {
-  // title,
-  titleTemplate: `%s – ${title}`,
-  defaultTitle,
-  description,
-  openGraph: {
-    description,
-    title,
-    locale: 'en_US',
-    type: 'website',
-    url,
-    canonical: url,
-    images: [
-      {
-        url: imageUrl,
-        width: 800,
-        height: 600,
-        alt: title
-      }
-    ]
-  },
-  twitter: {
-    handle: '@marsigliacr',
-    site: '@marsigliacr',
-    cardType: 'summary_large_image'
-  },
-  additionalMetaTags: [
-    {
-      name: 'keywords',
-      content: keywords
-    }
-  ],
-  additionalLinkTags: [
-    {
-      rel: 'icon',
-      href: '/favicon.ico'
-    }
-  ]
+	// title,
+	titleTemplate: `%s – ${title}`,
+	defaultTitle,
+	description,
+	openGraph: {
+		description,
+		title,
+		locale: 'en_US',
+		type: 'website',
+		url,
+		canonical: url,
+		images: [
+			{
+				url: imageUrl,
+				width: 800,
+				height: 600,
+				alt: title
+			}
+		]
+	},
+	twitter: {
+		handle: '@marsigliacr',
+		site: '@marsigliacr',
+		cardType: 'summary_large_image'
+	},
+	additionalMetaTags: [
+		{
+			name: 'keywords',
+			content: keywords
+		}
+	],
+	additionalLinkTags: [
+		{
+			rel: 'icon',
+			href: '/favicon.ico'
+		}
+	]
 }
 
 export { seo as defaultSeo, url as defaultUrl }

@@ -6,13 +6,13 @@ import '@fontsource/nunito/variable.css'
 import '@fontsource/rubik/variable.css'
 
 const fonts = {
-  heading: 'RubikVariable, RalewayVariable, -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
-  body: 'NunitoVariable, Roboto, -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"'
+	heading: 'RubikVariable, RalewayVariable, -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
+	body: 'NunitoVariable, Roboto, -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"'
 }
 
 const config: ThemeConfig = {
-  initialColorMode: 'light',
-  useSystemColorMode: true
+	initialColorMode: 'light',
+	useSystemColorMode: true
 }
 
 export const theme: Dict = extendTheme({ config, fonts })

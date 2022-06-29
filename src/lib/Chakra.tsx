@@ -10,23 +10,23 @@ interface ChakraProviderProps extends ProviderProps {
 }
 
 export const ChakraProvider: FC<ChakraProviderProps> = ({ cookies, children }) => {
-  const colorModeManager: StorageManager =
+	const colorModeManager: StorageManager =
     typeof cookies === 'string'
-      ? cookieStorageManagerSSR(cookies)
-      : localStorageManager
+    	? cookieStorageManagerSSR(cookies)
+    	: localStorageManager
 
-  return (
-    <Provider colorModeManager={colorModeManager} theme={theme}>
-      {children}
-    </Provider>
-  )
+	return (
+		<Provider colorModeManager={colorModeManager} theme={theme}>
+			{children}
+		</Provider>
+	)
 }
 
 export const getServerSideProps: GetServerSideProps = async context => {
-  const { req } = context
-  return {
-    props: {
-      cookies: req.headers.cookie ?? ''
-    }
-  }
+	const { req } = context
+	return {
+		props: {
+			cookies: req.headers.cookie ?? ''
+		}
+	}
 }
