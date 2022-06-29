@@ -1,7 +1,6 @@
 import type { FC } from 'react'
 import type { StackProps } from '@chakra-ui/react'
 import { HStack, Spacer } from '@chakra-ui/react'
-import { Link } from '@components'
 import { NavItem } from '.'
 
 export const DesktopItems: FC<StackProps> = ({ ...props }) => {
@@ -14,11 +13,10 @@ export const DesktopItems: FC<StackProps> = ({ ...props }) => {
       w='100%'
       {...props}
     >
-      <Link href='/'>Luis Marsiglia</Link>
-
       <Spacer />
 
-      <HStack spacing={4}>
+      <HStack spacing={[2, 2, 4]}>
+        <NavItem href='/'>Home</NavItem>
         <NavItem href='/about'>About</NavItem>
         <NavItem href='/projects'>Projects</NavItem>
         <NavItem href='/contact'>Contact</NavItem>

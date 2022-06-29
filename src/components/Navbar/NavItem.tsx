@@ -16,6 +16,7 @@ export const NavItem: FC<NavItemProps> = ({ href, children, ...props }) => {
     <Link
       _hover={{ bg: ['transparent', onHoverBg] }}
       color={color}
+      fontSize={['sm', 'md']}
       href={href}
       px={[0, 2]}
       py={1}

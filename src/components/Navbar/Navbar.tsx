@@ -1,21 +1,25 @@
 import type { NavContainerProps } from '.'
 import type { FC } from 'react'
-import { IconButton, Spacer, useColorMode } from '@chakra-ui/react'
+import {
+  IconButton,
+  Spacer,
+  useBreakpointValue,
+  useColorMode
+} from '@chakra-ui/react'
 import { BsMoonFill as MoonIcon, BsSunFill as SunIcon } from 'react-icons/bs'
 import { useState } from 'react'
-import { DesktopItems, MenuIcon, MobileItems, NavContainer } from '.'
+import { Brand, DesktopItems, MenuToggler, MobileItems, NavContainer } from '.'
 
 export const Navbar: FC<NavContainerProps> = ({ ...props }) => {
   const { toggleColorMode, colorMode } = useColorMode()
   const [isOpen, setIsOpen] = useState(false)
 
+  const buttonSize = useBreakpointValue(['sm', 'md'])
+
   return (
     <>
       <NavContainer {...props}>
-        <MenuIcon
-          display={['flex', 'none']}
-          onClick={() => setIsOpen(!isOpen)}
-        />
+        <Brand />
 
         <DesktopItems />
 
@@ -24,9 +28,18 @@ export const Navbar: FC<NavContainerProps> = ({ ...props }) => {
         <IconButton
           aria-label='Toggle theme'
           icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-          ml={4}
+          ml={[2, 2, 4]}
           rounded='lg'
+          size={buttonSize}
+          variant='ghost'
           onClick={toggleColorMode}
+        />
+
+        <MenuToggler
+          display={['flex', 'none']}
+          isOpen={isOpen}
+          ml={2}
+          onClick={() => setIsOpen(!isOpen)}
         />
       </NavContainer>
 
