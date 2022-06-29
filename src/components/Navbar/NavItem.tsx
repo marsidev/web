@@ -21,6 +21,7 @@ export const NavItem: FC<NavItemProps> = ({ href, children, ...props }) => {
       px={[0, 2]}
       py={1}
       rounded='lg'
+      transition='200ms all ease-in'
       {...props}
     >
       {children}
