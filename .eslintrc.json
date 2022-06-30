@@ -1,12 +1,22 @@
 {
   "extends": [
     "next",
+    "prettier",
     "marsi/typescript"
   ],
   "plugins": [
     "react"
   ],
+	// "parserOptions": {
+  //   "ecmaFeatures": {
+	// 		"modules": true,
+  //     "jsx": true
+  //   },
+  //   "ecmaVersion": 12,
+  //   "sourceType": "module"
+  // },
   "rules": {
+		"react-hooks/exhaustive-deps": "off"
   },
   "settings": {
   }
