@@ -7,11 +7,6 @@
     "react"
   ],
   "rules": {
-    "sort-imports": ["warn", { "ignoreDeclarationSort": true }],
-    "no-constant-binary-expression": "warn",
-    "indent": ["error", "tab"],
-    "no-tabs": "off",
-    "react/jsx-indent": ["error", "tab"]
   },
   "settings": {
   }
