@@ -4,8 +4,8 @@ import { useColorModeValue } from '@chakra-ui/react'
 import { Link } from '@components'
 
 export interface NavItemProps extends LinkProps {
-  href: string
-  children: ReactNode
+	href: string
+	children: ReactNode
 }
 
 export const NavItem: FC<NavItemProps> = ({ href, children, ...props }) => {

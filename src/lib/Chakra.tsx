@@ -5,8 +5,8 @@ import { ChakraProvider as Provider, cookieStorageManagerSSR, localStorageManage
 import { theme } from '@lib/theme'
 
 interface ChakraProviderProps extends ProviderProps {
-  children: ReactNode
-  cookies?: string
+	children: ReactNode
+	cookies?: string
 }
 
 export const ChakraProvider: FC<ChakraProviderProps> = ({ cookies, children }) => {

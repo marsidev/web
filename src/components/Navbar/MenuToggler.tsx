@@ -4,8 +4,8 @@ import { useEffect } from 'react'
 import { Button, useBreakpointValue, useColorModeValue } from '@chakra-ui/react'
 
 interface MenuTogglerProps extends ChakraProps {
-  onClick?: () => void
-  isOpen?: boolean
+	onClick?: () => void
+	isOpen?: boolean
 }
 
 export const MenuToggler: FC<MenuTogglerProps> = ({ onClick, isOpen, ...props }) => {
