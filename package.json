@@ -9,8 +9,7 @@
 		"start": "next start -p $PORT",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
-		"tsc": "tsc",
-		"cleanup": "rimraf .next"
+		"tsc": "tsc"
 	},
 	"dependencies": {
 		"@chakra-ui/react": "^2.2.4",
@@ -20,15 +19,11 @@
 		"@fontsource/raleway": "^4.5.9",
 		"@fontsource/rubik": "^4.5.10",
 		"framer-motion": "^6.5.1",
-		"i18next": "^21.8.14",
 		"next": "^12.2.3",
 		"next-seo": "^5.5.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
-		"react-i18next": "^11.18.1",
-		"react-icons": "^4.4.0",
-		"react-tooltip": "^4.2.21",
-		"zustand": "^3.7.2"
+		"react-icons": "^4.4.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.18.9",
@@ -44,12 +39,11 @@
 		"eslint-config-next": "^12.2.3",
 		"eslint-config-prettier": "8.5.0",
 		"eslint-config-standard": "^17.0.0",
-		"eslint-import-resolver-typescript": "^3.1.1",
+		"eslint-import-resolver-typescript": "^3.3.0",
 		"eslint-plugin-import": "^2.26.0",
 		"eslint-plugin-n": "^15.2.4",
 		"eslint-plugin-promise": "^6.0.0",
 		"eslint-plugin-react": "^7.30.1",
-		"rimraf": "^3.0.2",
 		"typescript": "^4.7.4"
 	},
 	"packageManager": "pnpm@7.3.0",
