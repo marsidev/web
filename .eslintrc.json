@@ -2,22 +2,10 @@
   "extends": [
     "next",
     "prettier",
-    "marsi/typescript"
+    "marsi/react-ts"
   ],
-  "plugins": [
-    "react"
-  ],
-	// "parserOptions": {
-  //   "ecmaFeatures": {
-	// 		"modules": true,
-  //     "jsx": true
-  //   },
-  //   "ecmaVersion": 12,
-  //   "sourceType": "module"
-  // },
   "rules": {
-		"react-hooks/exhaustive-deps": "off"
-  },
-  "settings": {
+		"react-hooks/exhaustive-deps": "off",
+		"@typescript-eslint/no-non-null-assertion": "off"
   }
 }
