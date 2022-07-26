@@ -1,9 +1,7 @@
-import type { FC } from 'react'
-import type { StackProps } from '@chakra-ui/react'
-import { HStack, Spacer } from '@chakra-ui/react'
+import { HStack, Spacer, type StackProps } from '@chakra-ui/react'
 import { NavItem } from '.'
 
-export const DesktopItems: FC<StackProps> = ({ ...props }) => {
+export const DesktopItems: React.FC<StackProps> = ({ ...props }) => {
 	return (
 		<HStack
 			align='center'

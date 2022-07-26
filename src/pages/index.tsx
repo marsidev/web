@@ -1,9 +1,8 @@
-import type { FC } from 'react'
 import type { NextPage } from 'next'
 import { Box, Heading } from '@chakra-ui/react'
-import Layout from '@layouts/main'
+import { Layout } from '~/layouts/main'
 
-const App: FC<NextPage> = () => {
+const App: NextPage = () => {
 	return (
 		<Layout>
 			<Box as='section'>
@@ -16,3 +15,4 @@ const App: FC<NextPage> = () => {
 }
 
 export default App
+export { getServerSideProps } from '~/components/Chakra'

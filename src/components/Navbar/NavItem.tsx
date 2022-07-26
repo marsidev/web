@@ -1,14 +1,12 @@
-import type { FC, ReactNode } from 'react'
-import type { LinkProps } from '@components'
 import { useColorModeValue } from '@chakra-ui/react'
-import { Link } from '@components'
+import { Link, type LinkProps } from '~/components'
 
 export interface NavItemProps extends LinkProps {
 	href: string
-	children: ReactNode
+	children: React.ReactNode
 }
 
-export const NavItem: FC<NavItemProps> = ({ href, children, ...props }) => {
+export const NavItem: React.FC<NavItemProps> = ({ href, children, ...props }) => {
 	const color = useColorModeValue('gray.600', 'gray.400')
 	const onHoverBg = useColorModeValue('blackAlpha.200', 'whiteAlpha.200')
 
@@ -21,7 +19,6 @@ export const NavItem: FC<NavItemProps> = ({ href, children, ...props }) => {
 			px={[0, 2]}
 			py={1}
 			rounded='lg'
-			transition='200ms all ease-in'
 			{...props}
 		>
 			{children}

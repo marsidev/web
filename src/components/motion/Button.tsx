@@ -1,12 +1,10 @@
-import type { ButtonProps } from '@chakra-ui/react'
-import type { HTMLMotionProps } from 'framer-motion'
-import type { Merge } from '@lib/types/merge'
-import { FC } from 'react'
-import { Button } from '@chakra-ui/react'
-import { motion } from 'framer-motion'
+import { Button as ChakraButton, type ButtonProps as ChakraButtonProps } from '@chakra-ui/react'
+import { type HTMLMotionProps, motion } from 'framer-motion'
 
-export type MotionButtonProps = Merge<ButtonProps, HTMLMotionProps<'button'>>
+type Merge<P, T> = Omit<P, keyof T> & T
 
-const MotionButton: FC<MotionButtonProps> = motion(Button)
+export type ButtonProps = Merge<ChakraButtonProps, HTMLMotionProps<'button'>>
 
-export default MotionButton
+export const Button: React.FC<ButtonProps> = motion(ChakraButton)
+
+export default Button

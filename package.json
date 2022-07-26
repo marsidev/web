@@ -12,6 +12,7 @@
 		"tsc": "tsc"
 	},
 	"dependencies": {
+		"@chakra-ui/color-mode": "^2.1.2",
 		"@chakra-ui/react": "^2.2.4",
 		"@emotion/react": "^11.9.3",
 		"@emotion/styled": "^11.9.3",

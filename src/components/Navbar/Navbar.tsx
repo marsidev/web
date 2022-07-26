@@ -1,5 +1,3 @@
-import type { NavContainerProps } from '.'
-import type { FC } from 'react'
 import {
 	IconButton,
 	Spacer,
@@ -8,9 +6,16 @@ import {
 } from '@chakra-ui/react'
 import { BsMoonFill as MoonIcon, BsSunFill as SunIcon } from 'react-icons/bs'
 import { useState } from 'react'
-import { Brand, DesktopItems, MenuToggler, MobileItems, NavContainer } from '.'
+import {
+	Brand,
+	DesktopItems,
+	MenuToggler,
+	MobileItems,
+	NavContainer,
+	type NavContainerProps
+} from '.'
 
-export const Navbar: FC<NavContainerProps> = ({ ...props }) => {
+export const Navbar: React.FC<NavContainerProps> = ({ ...props }) => {
 	const { toggleColorMode, colorMode } = useColorMode()
 	const [isOpen, setIsOpen] = useState(false)
 

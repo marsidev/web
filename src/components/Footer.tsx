@@ -1,11 +1,9 @@
-import type { FlexProps } from '@chakra-ui/react'
-import type { FC } from 'react'
-import { Flex, Text, useColorModeValue } from '@chakra-ui/react'
-import { Link } from '@components'
+import { Flex, type FlexProps, Text, useColorModeValue } from '@chakra-ui/react'
+import { Link } from '~/components'
 
 const GITHUB_URL = 'https://github.com/marsidev'
 
-export const Footer: FC<FlexProps> = ({ ...props }) => {
+export const Footer: React.FC<FlexProps> = ({ ...props }) => {
 	const bg = useColorModeValue('white', 'gray.800')
 	const textColor = useColorModeValue('gray.700', 'gray.200')
 	const linkColor = useColorModeValue('teal.400', 'teal.300')
@@ -36,7 +34,6 @@ export const Footer: FC<FlexProps> = ({ ...props }) => {
 							isExternal
 							color={linkColor}
 							href={GITHUB_URL}
-							textDecoration='underline'
 						>
 							Luis Marsiglia
 						</Link>

@@ -1,10 +1,8 @@
-import type { FC } from 'react'
-import type { FlexProps } from '@chakra-ui/react'
-import { Flex, useColorModeValue } from '@chakra-ui/react'
+import { Flex, type FlexProps, useColorModeValue } from '@chakra-ui/react'
 
 export type NavContainerProps = FlexProps
 
-export const NavContainer: FC<NavContainerProps> = ({ children, ...props }) => {
+export const NavContainer: React.FC<NavContainerProps> = ({ children, ...props }) => {
 	const bg = useColorModeValue('white', 'gray.800')
 
 	return (

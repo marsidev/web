@@ -1,15 +1,14 @@
-import type { FC, ReactNode } from 'react'
 import { Flex } from '@chakra-ui/react'
 import { DefaultSeo } from 'next-seo'
-import { Footer, Navbar } from '@components'
+import { Footer, Navbar } from '~/components'
 import seo from 'next-seo.config'
 
 interface LayoutProps {
-	children: ReactNode
+	children: React.ReactNode
 	title?: string
 }
 
-const Layout: FC<LayoutProps> = ({ children, title }) => {
+export const Layout: React.FC<LayoutProps> = ({ children, title }) => {
 	return (
 		<>
 			<DefaultSeo title={title} {...seo} />

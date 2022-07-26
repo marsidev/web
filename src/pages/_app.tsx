@@ -1,14 +1,20 @@
-import '@styles/globals.css'
-import type { AppProps } from 'next/app'
-import { ScaleFade } from '@chakra-ui/react'
-import { ChakraProvider } from '@lib/Chakra'
+import '~/styles/globals.css'
+import type { AppType } from 'next/dist/shared/lib/utils'
+import { AnimatePresence } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { ChakraProvider } from '~/components/Chakra'
 
-export default function MyApp({ Component, pageProps, router }: AppProps) {
+const MyApp: AppType = ({ Component, pageProps, router }) => {
+	const [mounted, setMounted] = useState(false)
+	useEffect(() => setMounted(true), [])
+
 	return (
 		<ChakraProvider cookies={pageProps.cookies}>
-			<ScaleFade key={router.route} in={true} initialScale={0.85}>
-				<Component {...pageProps} />
-			</ScaleFade>
+			<AnimatePresence exitBeforeEnter>
+				{mounted && <Component {...pageProps} key={router.pathname} />}
+			</AnimatePresence>
 		</ChakraProvider>
 	)
 }
+
+export default MyApp

@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import { Heading, Text, useColorModeValue } from '@chakra-ui/react'
-import Layout from '@layouts/main'
-import { Link } from '@components'
+import { Layout } from '~/layouts/main'
+import { Link } from '~/components'
 
 const Custom404: NextPage = () => {
 	const textColor = useColorModeValue('gray.600', 'gray.400')

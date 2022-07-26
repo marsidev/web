@@ -1,9 +1,12 @@
-import type { FC } from 'react'
-import type { StackProps } from '@chakra-ui/react'
-import { StackDivider, VStack, useColorModeValue } from '@chakra-ui/react'
+import {
+	StackDivider,
+	type StackProps,
+	VStack,
+	useColorModeValue
+} from '@chakra-ui/react'
 import { NavItem } from '.'
 
-export const MobileItems: FC<StackProps> = ({ ...props }) => {
+export const MobileItems: React.FC<StackProps> = ({ ...props }) => {
 	const dividerColor = useColorModeValue('gray.200', 'gray.700')
 	const bg = useColorModeValue('#fff', 'gray.800')
 
