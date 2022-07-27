@@ -6,7 +6,8 @@ export const Me = () => {
 		<Flex
 			as='section'
 			flexDir='column'
-			h='calc(90vh - 16*0.25em)'
+			h='calc(90vh - 16*0.25em)' // minH='90vh' - py={8} defined in Layout
+			id='me'
 			justify='center'
 		>
 			<Stack

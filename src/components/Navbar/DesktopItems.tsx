@@ -14,10 +14,9 @@ export const DesktopItems: React.FC<StackProps> = ({ ...props }) => {
 			<Spacer />
 
 			<HStack spacing={[2, 2, 4]}>
-				<NavItem href='/'>Home</NavItem>
-				<NavItem href='/about'>About</NavItem>
-				<NavItem href='/projects'>Projects</NavItem>
-				<NavItem href='/contact'>Contact</NavItem>
+				<NavItem href='#'>Home</NavItem>
+				<NavItem href='#about'>About</NavItem>
+				<NavItem href='#projects'>Projects</NavItem>
 			</HStack>
 		</HStack>
 	)

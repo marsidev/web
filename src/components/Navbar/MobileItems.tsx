@@ -26,10 +26,9 @@ export const MobileItems: React.FC<StackProps> = ({ ...props }) => {
 			zIndex={2000}
 			{...props}
 		>
-			<NavItem href='/'>Home</NavItem>
-			<NavItem href='/about'>About</NavItem>
-			<NavItem href='/projects'>Projects</NavItem>
-			<NavItem href='/contact'>Contact</NavItem>
+			<NavItem href='#'>Home</NavItem>
+			<NavItem href='#about'>About</NavItem>
+			<NavItem href='#projects'>Projects</NavItem>
 		</VStack>
 	)
 }
