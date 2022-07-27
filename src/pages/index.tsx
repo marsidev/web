@@ -13,9 +13,14 @@ import avatar from '~/assets/avatar-nobg.png'
 import { GithubIcon, Link, LinkedInIcon, TwitterIcon } from '~/components'
 
 const Avatar = () => {
+	const gradient = useColorModeValue(
+		'linear(to bottom right, pink.600, pink.700)',
+		'linear(to bottom right, pink.500, pink.600)'
+	)
+
 	return (
 		<Box
-			bgGradient='linear(to bottom right, pink.400, pink.800)'
+			bgGradient={gradient}
 			borderRadius='full'
 			p={2}
 			w={{ base: 40, md: 56 }}
@@ -47,7 +52,7 @@ const NameAndTitle = () => {
 }
 
 const SocialLinks: React.FC<StackProps> = props => {
-	const onHoverColor = useColorModeValue('pink.600', 'pink.400')
+	const onHoverColor = useColorModeValue('pink.600', 'pink.500')
 
 	return (
 		<Stack
@@ -88,14 +93,12 @@ const App: NextPage = () => {
 		<Layout>
 			<Flex
 				as='section'
-				// border='1px solid orange'
 				flexDir='column'
 				h='calc(90vh - 16*0.25em)'
 				justify='center'
 			>
 				<Stack
 					align='center'
-					// border='1px solid teal'
 					direction={{ base: 'column', md: 'row' }}
 					spacing={4}
 				>
