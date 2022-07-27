@@ -5,7 +5,8 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev -p 8000",
-		"build": "tsc && next build",
+		"build": "tsc && next build && next export",
+		"export": "next export",
 		"start": "next start -p $PORT",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
