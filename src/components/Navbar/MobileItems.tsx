@@ -4,6 +4,7 @@ import {
 	VStack,
 	useColorModeValue
 } from '@chakra-ui/react'
+import { MAX_WIDTH } from '~/constants'
 import { NavItem } from '.'
 
 export const MobileItems: React.FC<StackProps> = ({ ...props }) => {
@@ -18,7 +19,7 @@ export const MobileItems: React.FC<StackProps> = ({ ...props }) => {
 			divider={<StackDivider borderColor={dividerColor} />}
 			h='90vh'
 			justify='left'
-			maxW='2xl'
+			maxW={MAX_WIDTH}
 			pos='absolute'
 			px={8}
 			w='100vw'

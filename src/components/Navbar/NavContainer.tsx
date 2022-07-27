@@ -1,4 +1,5 @@
 import { Flex, type FlexProps, useColorModeValue } from '@chakra-ui/react'
+import { MAX_WIDTH } from '~/constants'
 
 export type NavContainerProps = FlexProps
 
@@ -16,7 +17,7 @@ export const NavContainer: React.FC<NavContainerProps> = ({ children, ...props }
 			width='100%'
 			{...props}
 		>
-			<Flex align='center' h='full' maxW='2xl' w='100%'>
+			<Flex align='center' h='full' maxW={MAX_WIDTH} w='100%'>
 				{children}
 			</Flex>
 		</Flex>

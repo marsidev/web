@@ -1,15 +1,112 @@
 import type { NextPage } from 'next'
-import { Box, Heading } from '@chakra-ui/react'
+import {
+	Box,
+	Flex,
+	Heading,
+	Image,
+	Stack,
+	type StackProps,
+	chakra, useColorModeValue
+} from '@chakra-ui/react'
 import { Layout } from '~/layouts/main'
+import avatar from '~/assets/avatar-nobg.png'
+import { GithubIcon, Link, LinkedInIcon, TwitterIcon } from '~/components'
+
+const Avatar = () => {
+	return (
+		<Box
+			bgGradient='linear(to bottom right, pink.400, pink.800)'
+			borderRadius='full'
+			p={2}
+			w={{ base: 40, md: 56 }}
+		>
+			<Image
+				alt='Luis Marsiglia'
+				borderRadius='full'
+				filter='brightness(0.85)'
+				src={avatar.src}
+			/>
+		</Box>
+	)
+}
+
+const NameAndTitle = () => {
+	return (
+		<Box>
+			<Heading as='h1' fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
+				{'Hi, I\'m '}
+				<chakra.span>{'Luis Marsiglia'}</chakra.span>
+				<chakra.span className='hand'>🤚</chakra.span>
+			</Heading>
+
+			<Heading as='h2' fontSize={{ base: 'xl', md: '2xl', lg: '3xl' }}>
+				{'Front-end developer.'}
+			</Heading>
+		</Box>
+	)
+}
+
+const SocialLinks: React.FC<StackProps> = props => {
+	const onHoverColor = useColorModeValue('pink.600', 'pink.400')
+
+	return (
+		<Stack
+			direction='row'
+			justify={{ base: 'center', md: 'flex-start' }}
+			spacing={4}
+			{...props}
+		>
+			<Link
+				isExternal
+				_hover={{ color: onHoverColor }}
+				href='https://github.com/marsidev'
+			>
+				<GithubIcon className='social-link' />
+			</Link>
+
+			<Link
+				isExternal
+				_hover={{ color: onHoverColor }}
+				href='https://www.linkedin.com/in/marsidev'
+			>
+				<LinkedInIcon className='social-link' />
+			</Link>
+
+			<Link
+				isExternal
+				_hover={{ color: onHoverColor }}
+				href='https://twitter.com/marsigliacr'
+			>
+				<TwitterIcon className='social-link' />
+			</Link>
+		</Stack>
+	)
+}
 
 const App: NextPage = () => {
 	return (
 		<Layout>
-			<Box as='section'>
-				<Heading as='h1' fontSize='6xl'>
-					Luis Marsiglia
-				</Heading>
-			</Box>
+			<Flex
+				as='section'
+				// border='1px solid orange'
+				flexDir='column'
+				h='calc(90vh - 16*0.25em)'
+				justify='center'
+			>
+				<Stack
+					align='center'
+					// border='1px solid teal'
+					direction={{ base: 'column', md: 'row' }}
+					spacing={4}
+				>
+					<Avatar />
+
+					<Stack direction='column'>
+						<NameAndTitle />
+						<SocialLinks pt={2} />
+					</Stack>
+				</Stack>
+			</Flex>
 		</Layout>
 	)
 }

@@ -1,6 +1,7 @@
 import { Flex } from '@chakra-ui/react'
 import { DefaultSeo } from 'next-seo'
-import { Footer, Navbar } from '~/components'
+import { Navbar } from '~/components'
+import { MAX_WIDTH } from '~/constants'
 import seo from 'next-seo.config'
 
 interface LayoutProps {
@@ -18,9 +19,9 @@ export const Layout: React.FC<LayoutProps> = ({ children, title }) => {
 			<Flex
 				as='main'
 				justify='center'
-				minH='80vh'
+				minH='90vh'
 				px={8}
-				py={14}
+				py={8}
 				textAlign='left'
 				w='100%'
 			>
@@ -29,14 +30,14 @@ export const Layout: React.FC<LayoutProps> = ({ children, title }) => {
 					flexDir='column'
 					h='full'
 					justify='center'
-					maxW='2xl'
+					maxW={MAX_WIDTH}
 					w='100%'
 				>
 					{children}
 				</Flex>
 			</Flex>
 
-			<Footer h='10vh' />
+			{/* <Footer h='10vh' /> */}
 		</>
 	)
 }

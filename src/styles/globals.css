@@ -68,3 +68,27 @@ html, body {
   background-color: var(--menu-toggle-fg);
   transition: transform 0.15s ease;
 }
+
+.hand {
+  animation-name: wave;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  transform-origin: 70% 70%;
+  display: inline-block;
+}
+
+@keyframes wave {
+  0% { transform: rotate(15.0deg) }
+  10% { transform: rotate(29.0deg) }
+  20% { transform: rotate(7.0deg) }
+  30% { transform: rotate(29.0deg) }
+  40% { transform: rotate(11.0deg) }
+  50% { transform: rotate(25.0deg) }
+  60% { transform: rotate(15.0deg) }
+  100% { transform: rotate(15.0deg) }
+}
+
+.social-link {
+	width: 40px;
+	height: auto;
+}
