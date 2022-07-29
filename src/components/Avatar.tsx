@@ -1,5 +1,4 @@
 import { Box, Image, useColorModeValue } from '@chakra-ui/react'
-import avatar from '~/assets/avatar-nobg.png'
 
 export const Avatar = () => {
 	const gradient = useColorModeValue(
@@ -19,7 +18,7 @@ export const Avatar = () => {
 				alt='Luis Marsiglia'
 				borderRadius='full'
 				filter='brightness(0.90)'
-				src={avatar.src}
+				src='/images/avatar.png'
 			/>
 		</Box>
 	)
