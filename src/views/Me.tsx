@@ -1,28 +1,23 @@
-import { Flex, Stack } from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 import { Avatar, NameAndTitle, SocialLinks } from '~/components'
 
 export const Me = () => {
 	return (
-		<Flex
+		<Stack
+			align='center'
 			as='section'
-			flexDir='column'
+			direction={{ base: 'column', md: 'row' }}
 			h='calc(90vh - 16*0.25em)' // minH='90vh' - py={8} defined in Layout
 			id='me'
-			justify='center'
+			spacing={[4, 4, 8]}
 		>
-			<Stack
-				align='center'
-				direction={{ base: 'column', md: 'row' }}
-				spacing={[4, 4, 8]}
-			>
-				<Avatar />
+			<Avatar />
 
-				<Stack direction='column'>
-					<NameAndTitle />
-					<SocialLinks pt={2} />
-				</Stack>
+			<Stack direction='column'>
+				<NameAndTitle />
+				<SocialLinks pt={2} />
 			</Stack>
-		</Flex>
+		</Stack>
 	)
 }
 

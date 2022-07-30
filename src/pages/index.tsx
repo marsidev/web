@@ -1,11 +1,12 @@
 import type { NextPage } from 'next'
 import { Layout } from '~/layouts/main'
-import { Me } from '~/views'
+import { Me, Projects } from '~/views'
 
 const App: NextPage = () => {
 	return (
 		<Layout>
 			<Me />
+			<Projects />
 		</Layout>
 	)
 }
