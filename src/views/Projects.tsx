@@ -7,25 +7,25 @@ export const Projects = () => {
 
 	return (
 		<Stack
-			align='center'
+			align='flex-start'
 			as='section'
 			// direction={{ base: 'column', md: 'row' }}
 			direction='column'
 			id='projects'
 			spacing={[4, 4, 8]}
 		>
-			<Flex flexDir='column' textAlign='center'>
-				<Heading as='h2' size='lg'>
+			<Flex flexDir='column' textAlign='left'>
+				<Heading as='h2' size='xl'>
 					Projects
 				</Heading>
 
-				<Heading as='h3' size='md'>
+				<Heading as='h3' fontWeight={400} size='md'>
 					A selection of my favorite works.
 				</Heading>
 			</Flex>
 
-			{sampleProject && <Project project={sampleProject} />}
-			{sampleProject && <Project project={sampleProject} />}
+			{sampleProject && <Project project={sampleProject} type='even' />}
+			{sampleProject && <Project project={sampleProject} type='odd' />}
 		</Stack>
 	)
 }

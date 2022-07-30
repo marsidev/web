@@ -3,12 +3,20 @@ import { ProjectInfo, ProjectPreview } from '~/components'
 
 interface ProjectProps extends StackProps {
 	project: ProjectType
+	type: 'even' | 'odd'
 }
 
-export const Project: React.FC<ProjectProps> = ({ project, ...props }) => {
+export const Project: React.FC<ProjectProps> = ({ project, type, ...props }) => {
 	return (
-		<Stack borderRadius={8} direction='row' px={8} py={4} spacing={4} {...props}>
-			<ProjectInfo project={project} />
+		<Stack
+			borderRadius={8}
+			direction={type === 'even' ? 'row' : 'row-reverse'}
+			px={8}
+			py={4}
+			spacing={8}
+			{...props}
+		>
+			<ProjectInfo project={project} type={type} />
 			<ProjectPreview minW='57%' project={project} />
 		</Stack>
 	)

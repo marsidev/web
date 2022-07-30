@@ -3,19 +3,32 @@ import { ProjectTags, ProjectUrls } from '.'
 
 interface ProjectProps extends FlexProps {
 	project: ProjectType
+	type: 'even' | 'odd'
 }
 
-export const ProjectInfo: React.FC<ProjectProps> = ({ project: p, ...props }) => {
+export const ProjectInfo: React.FC<ProjectProps> = ({ project: p, type, ...props }) => {
 	return (
-		<Flex flexDir='column' gap={4} {...props}>
+		<Flex
+			flexDir='column'
+			gap={4}
+			textAlign={type === 'even' ? 'right' : 'left'}
+			{...props}
+		>
 			<Heading as='h4' fontSize='lg'>
 				{p.name}
 			</Heading>
 
 			<Text fontSize='md'>{p.description}</Text>
 
-			<ProjectTags project={p} />
-			<ProjectUrls project={p} />
+			<ProjectTags
+				justify={type === 'even' ? 'flex-end' : 'flex-start'}
+				project={p}
+			/>
+
+			<ProjectUrls
+				justify={type === 'even' ? 'flex-end' : 'flex-start'}
+				project={p}
+			/>
 		</Flex>
 	)
 }
