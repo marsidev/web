@@ -7,9 +7,9 @@ interface ProjectProps extends StackProps {
 
 export const Project: React.FC<ProjectProps> = ({ project, ...props }) => {
 	return (
-		<Stack direction='row' px={8} py={4} spacing={4} {...props}>
-			<ProjectInfo project={project} w='33.33%' />
-			<ProjectPreview project={project} w='66.67%' />
+		<Stack borderRadius={8} direction='row' px={8} py={4} spacing={4} {...props}>
+			<ProjectInfo project={project} />
+			<ProjectPreview minW='57%' project={project} />
 		</Stack>
 	)
 }

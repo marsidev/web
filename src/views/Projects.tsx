@@ -25,6 +25,7 @@ export const Projects = () => {
 			</Flex>
 
 			{sampleProject && <Project project={sampleProject} />}
+			{sampleProject && <Project project={sampleProject} />}
 		</Stack>
 	)
 }

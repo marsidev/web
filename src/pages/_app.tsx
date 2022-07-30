@@ -1,4 +1,5 @@
 import '~/styles/globals.css'
+import 'atropos/css'
 import type { AppType } from 'next/dist/shared/lib/utils'
 import { AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'

@@ -20,6 +20,7 @@
 		"@fontsource/nunito": "^4.5.9",
 		"@fontsource/raleway": "^4.5.9",
 		"@fontsource/rubik": "^4.5.10",
+		"atropos": "^1.0.2",
 		"framer-motion": "^6.5.1",
 		"next": "^12.2.3",
 		"next-seo": "^5.5.0",
