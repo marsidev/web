@@ -33,7 +33,7 @@ export const TECHNOLOGIES: Technologies = {
 		id: 'zustand',
 		name: 'Zustand',
 		url: 'https://github.com/pmndrs/zustand',
-		icon: ''
+		icon: '/images/logos/zustand.png'
 	},
 	typescript: {
 		id: 'typescript',
