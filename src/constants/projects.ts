@@ -1,12 +1,3 @@
-export const MAX_WIDTH = '5xl'
-
-export const SOCIAL_LINKS = {
-	github: 'https://github.com/marsidev',
-	linkedin: 'https://www.linkedin.com/in/marsidev/',
-	twitter: 'https://twitter.com/marsigliacr',
-	email: 'mailto:marsiglia.business@gmail.com'
-}
-
 export const PROJECTS = [
 	{
 		id: 'overnote',
@@ -15,7 +6,7 @@ export const PROJECTS = [
 			'Overnote is a simple notes app. It allows you to create, edit, customize and delete notes.',
 		url: 'https://overnote.herokuapp.com',
 		repository: 'https://github.com/marsidev/overnote',
-		stack: ['React', 'Node.js', 'Express', 'MongoDB', 'Mongoose', 'Chakra UI']
+		stack: ['react', 'nodejs', 'express', 'mongoDB', 'Mongoose', 'chakra-ui']
 	},
 	{
 		id: 'wordly',
@@ -24,7 +15,7 @@ export const PROJECTS = [
 			'Wordly is a daily word-guess game. Guess the hidden word in 6 tries. A new puzzle is available each day.',
 		url: 'https://wordly-alpha.vercel.app/',
 		repository: 'https://github.com/marsidev/wordly',
-		stack: ['React', 'Next.js', 'Chakra UI', 'Zustand']
+		stack: ['react', 'nextjs', 'chakra-ui', 'zustand']
 	},
 	{
 		id: 'axie-hub',
@@ -33,7 +24,7 @@ export const PROJECTS = [
 			'Axie Infinity\'s fan site where you can find tools related to Axie Infinity such cards explorer.  Originally created as an entry for Origin Education Challenge.',
 		url: 'https://axiehub.vercel.app/',
 		repository: 'https://github.com/marsidev/axiehub',
-		stack: ['React', 'Next.js', 'Chakra UI']
+		stack: ['react', 'nextjs', 'chakra-ui']
 	},
 	{
 		id: 'climatic',
@@ -42,7 +33,7 @@ export const PROJECTS = [
 			'Climatic is an app which shows the current weather data and weather forecast for next 7 days. Created to participate in a 14-days hackathon.',
 		url: 'https://climatic.onrender.com',
 		repository: 'https://github.com/marsidev/climatic',
-		stack: ['React', 'TypeScript', 'Vite', 'Fastify', 'Chakra UI', 'Zustand'],
+		stack: ['react', 'typescript', 'vite', 'fastify', 'chakra-ui', 'zustand'],
 		images: {
 			mobile: '/images/projects/climatic-mobile.png',
 			desktop: '/images/projects/climatic-desktop.png'
@@ -56,14 +47,14 @@ export const PROJECTS = [
 		url: 'https://bubble-marsiglia.vercel.app/',
 		repository: 'https://github.com/marsidev/bubble',
 		stack: [
-			'React',
-			'TypeScript',
-			'Next.js',
-			'Chakra UI',
-			'Zustand',
+			'react',
+			'typescript',
+			'nextjs',
+			'chakra-ui',
+			'zustand',
 			'tPRC',
-			'Supabase',
-			'Twilio Conversations API'
+			'supabase',
+			'twilio'
 		]
 	}
 ]

@@ -10,3 +10,14 @@ interface ProjectType {
 		desktop: string
 	}
 }
+
+interface Technology {
+	id: string
+	name: string
+	url: string
+	icon?: string
+}
+
+interface Technologies {
+	[key: string]: Technology
+}

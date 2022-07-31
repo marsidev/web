@@ -1,4 +1,6 @@
-import { Flex, type FlexProps, Tag } from '@chakra-ui/react'
+import { Flex, type FlexProps, Image, Tag } from '@chakra-ui/react'
+import { TECHNOLOGIES } from '~/constants'
+import { Link } from '~/components'
 
 interface ProjectProps extends FlexProps {
 	project: ProjectType
@@ -14,9 +16,38 @@ export const ProjectTags: React.FC<ProjectProps> = ({ project, ...props }) => {
 			textAlign='left'
 			{...props}
 		>
-			{project.stack.map(stackItem => (
-				<Tag key={stackItem}>{stackItem}</Tag>
-			))}
+			{project.stack.map(stackItem => {
+				const tech = TECHNOLOGIES[stackItem]
+				if (!tech) {
+					return (
+						<Tag
+							key={stackItem}
+							_hover={{ transform: 'scale(1.05)' }}
+							transition='all 0.15s ease-in'
+						>
+							{stackItem}
+						</Tag>
+					)
+				}
+
+				return (
+					<Link key={tech.id} isExternal href={tech.url}>
+						<Tag _hover={{ transform: 'scale(1.05)' }} transition='all 0.15s ease-in'>
+							{tech.icon && (
+								<Image
+									alt={`${tech.name} logo`}
+									h='20px'
+									pr={1}
+									src={tech.icon}
+									w='auto'
+								/>
+							)}
+
+							{tech.name}
+						</Tag>
+					</Link>
+				)
+			})}
 		</Flex>
 	)
 }
