@@ -1,13 +1,17 @@
-interface ProjectType {
+interface Project {
 	id: string
 	name: string
 	description: string
-	url: string
-	repository: string
+	url?: string
+	repository?: string
 	stack: string[]
-	images: {
+	images?: {
 		mobile: string
 		desktop: string
+	}
+	devTime: {
+		start: string
+		end?: string
 	}
 }
 

@@ -3,7 +3,7 @@ import { TECHNOLOGIES } from '~/constants'
 import { Link } from '~/components'
 
 interface ProjectProps extends FlexProps {
-	project: ProjectType
+	project: Project
 }
 
 export const ProjectTags: React.FC<ProjectProps> = ({ project, ...props }) => {

@@ -2,7 +2,7 @@ import { Flex, type FlexProps, Image, useColorModeValue } from '@chakra-ui/react
 import { Hover3D } from '~/components'
 
 interface ProjectProps extends FlexProps {
-	project: ProjectType
+	project: Project
 }
 
 export const ProjectPreview: React.FC<ProjectProps> = ({
@@ -11,6 +11,7 @@ export const ProjectPreview: React.FC<ProjectProps> = ({
 }) => {
 	const bg = useColorModeValue('gray.100', 'gray.700')
 	const borderColor = useColorModeValue('gray.200', 'gray.600')
+
 	return (
 		<Flex
 			bg={bg}
@@ -30,7 +31,7 @@ export const ProjectPreview: React.FC<ProjectProps> = ({
 					maxW='180px'
 					objectFit='contain'
 					pos='absolute'
-					src={p.images.mobile}
+					src={p.images!.mobile}
 					top='10%'
 					width='full'
 					zIndex={2}
@@ -43,7 +44,7 @@ export const ProjectPreview: React.FC<ProjectProps> = ({
 					objectFit='contain'
 					pos='relative'
 					py={8}
-					src={p.images.desktop}
+					src={p.images!.desktop}
 					width='full'
 					zIndex={1}
 				/>

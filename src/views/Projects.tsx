@@ -1,10 +1,9 @@
 import { Flex, Heading, Stack } from '@chakra-ui/react'
 import { Project } from '~/components'
 import { PROJECTS } from '~/constants'
+import { sortProjects } from '~/utils'
 
 export const Projects = () => {
-	const sampleProject = PROJECTS.find(project => project.id === 'climatic') as ProjectType
-
 	return (
 		<Stack
 			align='flex-start'
@@ -24,8 +23,13 @@ export const Projects = () => {
 				</Heading>
 			</Flex>
 
-			{sampleProject && <Project project={sampleProject} type='even' />}
-			{sampleProject && <Project project={sampleProject} type='odd' />}
+			{sortProjects(PROJECTS).map((project, i) => (
+				<Project
+					key={project.id}
+					project={project}
+					type={i % 2 === 0 ? 'even' : 'odd'}
+				/>
+			))}
 		</Stack>
 	)
 }

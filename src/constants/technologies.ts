@@ -154,5 +154,29 @@ export const TECHNOLOGIES: Technologies = {
 		name: 'Vitest',
 		url: 'https://vitest.dev/',
 		icon: '/images/logos/vitest.svg'
+	},
+	mongoose: {
+		id: 'mongoose',
+		name: 'Mongoose',
+		url: 'https://mongoosejs.com',
+		icon: ''
+	},
+	trpc: {
+		id: 'trpc',
+		name: 'tRPC',
+		url: 'https://trpc.io',
+		icon: '/images/logos/trpc.svg'
+	},
+	i18next: {
+		id: 'i18next',
+		name: 'i18next	',
+		url: 'https://www.i18next.com',
+		icon: '/images/logos/i18next.png'
+	},
+	'next-auth': {
+		id: 'next-auth',
+		name: 'NextAuth.js	',
+		url: 'https://next-auth.js.org',
+		icon: '/images/logos/next-auth.png'
 	}
 }

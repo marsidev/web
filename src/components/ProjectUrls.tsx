@@ -2,7 +2,7 @@ import { Flex, type FlexProps, IconButton } from '@chakra-ui/react'
 import { ExternalLinkIcon, GithubOutlineIcon, Link } from '.'
 
 interface ProjectProps extends FlexProps {
-	project: ProjectType
+	project: Project
 }
 
 export const ProjectUrls: React.FC<ProjectProps> = ({ project, ...props }) => {
@@ -15,23 +15,27 @@ export const ProjectUrls: React.FC<ProjectProps> = ({ project, ...props }) => {
 			textAlign='left'
 			{...props}
 		>
-			<Link isExternal href={project.repository}>
-				<IconButton
-					aria-label='GitHub icon'
-					colorScheme='teal'
-					icon={<GithubOutlineIcon />}
-					size='sm'
-				/>
-			</Link>
+			{project.repository && (
+				<Link isExternal href={project.repository}>
+					<IconButton
+						aria-label='GitHub icon'
+						colorScheme='teal'
+						icon={<GithubOutlineIcon />}
+						size='sm'
+					/>
+				</Link>
+			)}
 
-			<Link isExternal href={project.url}>
-				<IconButton
-					aria-label='External link icon'
-					colorScheme='pink'
-					icon={<ExternalLinkIcon />}
-					size='sm'
-				/>
-			</Link>
+			{project.url && (
+				<Link isExternal href={project.url}>
+					<IconButton
+						aria-label='External link icon'
+						colorScheme='pink'
+						icon={<ExternalLinkIcon />}
+						size='sm'
+					/>
+				</Link>
+			)}
 		</Flex>
 	)
 }
