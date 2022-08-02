@@ -5,43 +5,59 @@ import {
 	useBreakpointValue,
 	useColorModeValue
 } from '@chakra-ui/react'
+import { useSuperState } from '@superstate/react'
+import { mobileMenu } from '~/store'
 
 interface MenuTogglerProps extends ChakraProps {
-	onClick?: () => void
-	isOpen?: boolean
+	onToggle?: () => void
 }
 
 export const MenuToggler: React.FC<MenuTogglerProps> = ({
-	onClick,
-	isOpen,
+	onToggle,
 	...props
 }) => {
-	const menuTogglerColor = useColorModeValue(
+	const buttonSize = useBreakpointValue(['sm', 'md'])
+	useSuperState(mobileMenu.state)
+
+	const menuExpanded = mobileMenu.get()
+
+	const menuTogglerForecolor = useColorModeValue(
 		'var(--chakra-colors-gray-700)',
 		'var(--chakra-colors-gray-200)'
 	)
 
-	const buttonSize = useBreakpointValue(['sm', 'md'])
+	const className = `menu-toggle_wrap${
+		menuExpanded ? ' menu-toggle_expanded' : ''
+	}`
 
 	useEffect(() => {
-		document.documentElement.style.setProperty(
-			'--menu-toggle-fg',
-			menuTogglerColor
-		)
-	}, [menuTogglerColor])
+		const { style } = document.documentElement
+		style.setProperty('--menu-toggle-fg', menuTogglerForecolor)
+	}, [menuTogglerForecolor])
+
+	// disable scroll when menu is open
+	useEffect(() => {
+		const originalStyle = window.getComputedStyle(document.body).overflow
+
+		if (menuExpanded) {
+			document.body.style.overflow = 'hidden'
+		}
+
+		return () => {
+			document.body.style.overflow = originalStyle
+		}
+	}, [menuExpanded])
 
 	return (
 		<Button
-			aria-label={isOpen ? 'Close menu' : 'Open menu'}
+			aria-label={menuExpanded ? 'Close menu' : 'Open menu'}
 			rounded='lg'
 			size={buttonSize}
 			variant='ghost'
-			onClick={onClick}
+			onClick={onToggle}
 			{...props}
 		>
-			<div
-				className={`menu-toggle_wrap${isOpen ? ' menu-toggle_expanded' : ''}`}
-			/>
+			<div className={className} />
 		</Button>
 	)
 }

@@ -1,7 +1,9 @@
 import { Flex } from '@chakra-ui/react'
 import { DefaultSeo } from 'next-seo'
+import { useSuperState } from '@superstate/react'
 import { Navbar } from '~/components'
 import { MAX_WIDTH } from '~/constants'
+import { mobileMenu } from '~/store'
 import seo from 'next-seo.config'
 
 interface LayoutProps {
@@ -10,19 +12,23 @@ interface LayoutProps {
 }
 
 export const Layout: React.FC<LayoutProps> = ({ children, title }) => {
+	useSuperState(mobileMenu.state)
+	const menuExpanded = mobileMenu.get()
+
 	return (
 		<>
 			<DefaultSeo title={title} {...seo} />
 
-			<Navbar h='10vh' />
+			<Navbar minH={['8vh', '10vh']} />
 
 			<Flex
 				as='main'
 				justify='center'
-				minH='90vh'
+				minH={['92vh', '90vh']}
 				px={8}
 				py={8}
 				textAlign='left'
+				visibility={menuExpanded ? 'hidden' : 'visible'}
 				w='100%'
 			>
 				<Flex
@@ -37,8 +43,6 @@ export const Layout: React.FC<LayoutProps> = ({ children, title }) => {
 					{children}
 				</Flex>
 			</Flex>
-
-			{/* <Footer h='10vh' /> */}
 		</>
 	)
 }

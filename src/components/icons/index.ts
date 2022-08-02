@@ -12,3 +12,5 @@ export {
 } from 'react-icons/fi'
 
 export { FaLinkedinIn as LinkedInIcon } from 'react-icons/fa'
+
+export { BsMoonFill as MoonIcon, BsSunFill as SunIcon } from 'react-icons/bs'

@@ -20,6 +20,8 @@
 		"@fontsource/nunito": "^4.5.9",
 		"@fontsource/raleway": "^4.5.9",
 		"@fontsource/rubik": "^4.5.10",
+		"@superstate/core": "^0.1.0",
+		"@superstate/react": "^0.1.0",
 		"atropos": "^1.0.2",
 		"framer-motion": "^6.5.1",
 		"next": "^12.2.3",

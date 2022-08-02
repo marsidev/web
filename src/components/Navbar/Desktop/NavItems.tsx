@@ -1,7 +1,7 @@
 import { HStack, Spacer, type StackProps } from '@chakra-ui/react'
-import { NavItem } from '.'
+import { NavItem, ThemeToggler } from '..'
 
-export const DesktopItems: React.FC<StackProps> = ({ ...props }) => {
+export const NavItems: React.FC<StackProps> = ({ ...props }) => {
 	return (
 		<HStack
 			align='center'
@@ -17,9 +17,10 @@ export const DesktopItems: React.FC<StackProps> = ({ ...props }) => {
 				<NavItem href='#'>Home</NavItem>
 				<NavItem href='#about'>About</NavItem>
 				<NavItem href='#projects'>Projects</NavItem>
+				<ThemeToggler />
 			</HStack>
 		</HStack>
 	)
 }
 
-export default DesktopItems
+export default NavItems

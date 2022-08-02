@@ -1,54 +1,28 @@
-import {
-	IconButton,
-	Spacer,
-	useBreakpointValue,
-	useColorMode
-} from '@chakra-ui/react'
-import { BsMoonFill as MoonIcon, BsSunFill as SunIcon } from 'react-icons/bs'
-import { useState } from 'react'
-import {
-	Brand,
-	DesktopItems,
-	MenuToggler,
-	MobileItems,
-	NavContainer,
-	type NavContainerProps
-} from '.'
+import { Spacer } from '@chakra-ui/react'
+import { useCycle } from 'framer-motion'
+import { mobileMenu } from '~/store'
+import { NavItems as MobileItems, NavMenu as MobileNavMenu } from './Mobile'
+import { NavItems as DesktopItems } from './Desktop'
+import { Brand, NavContainer, type NavContainerProps } from '.'
 
 export const Navbar: React.FC<NavContainerProps> = ({ ...props }) => {
-	const { toggleColorMode, colorMode } = useColorMode()
-	const [isOpen, setIsOpen] = useState(false)
+	const [open, toggleMotionMenu] = useCycle(false, true)
 
-	const buttonSize = useBreakpointValue(['sm', 'md'])
+	const onToggle = () => {
+		toggleMotionMenu() // toggle motion menu state
+		mobileMenu.toggle() // toggle react menu state
+	}
 
 	return (
 		<>
 			<NavContainer {...props}>
 				<Brand />
-
-				<DesktopItems />
-
 				<Spacer />
-
-				<IconButton
-					aria-label='Toggle theme'
-					icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-					ml={[2, 2, 4]}
-					rounded='lg'
-					size={buttonSize}
-					variant='ghost'
-					onClick={toggleColorMode}
-				/>
-
-				<MenuToggler
-					display={['flex', 'none']}
-					isOpen={isOpen}
-					ml={2}
-					onClick={() => setIsOpen(!isOpen)}
-				/>
+				<MobileItems onToggle={onToggle} />
+				<DesktopItems />
 			</NavContainer>
 
-			<MobileItems display={isOpen ? ['flex', 'none'] : 'none'} />
+			<MobileNavMenu key='mobile-content' open={open} onToggle={onToggle} />
 		</>
 	)
 }
