@@ -1,5 +1,4 @@
 export {
-	// SiLinkedin as LinkedInIcon,
 	SiTwitter as TwitterIcon,
 	SiGmail as EmailIcon
 } from 'react-icons/si'

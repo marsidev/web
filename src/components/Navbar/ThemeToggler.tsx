@@ -1,5 +1,5 @@
 import { IconButton, useBreakpointValue, useColorMode } from '@chakra-ui/react'
-import { MoonIcon, SunIcon } from '~/components'
+import { MoonIcon, SunIcon } from '~/icons'
 
 export const ThemeToggler = ({ ...props }) => {
 	const { colorMode, toggleColorMode } = useColorMode()

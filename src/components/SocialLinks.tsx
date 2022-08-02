@@ -1,11 +1,6 @@
 import { Stack, type StackProps, useColorModeValue } from '@chakra-ui/react'
-import {
-	EmailIcon,
-	GithubIcon,
-	Link,
-	LinkedInIcon,
-	TwitterIcon
-} from '~/components'
+import { EmailIcon, GithubIcon, LinkedInIcon, TwitterIcon } from '~/icons'
+import { Link } from '~/components'
 import { SOCIAL_LINKS } from '~/constants'
 
 interface SocialIconProps {
