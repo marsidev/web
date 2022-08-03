@@ -14,7 +14,8 @@ export const PROJECTS: Project[] = [
 		devTime: {
 			start: '2022-01-04',
 			end: '2022-02-05'
-		}
+		},
+		private: false
 	},
 	{
 		id: 'wordly',
@@ -31,7 +32,8 @@ export const PROJECTS: Project[] = [
 		devTime: {
 			start: '2022-03-28',
 			end: '2022-05-19'
-		}
+		},
+		private: false
 	},
 	{
 		id: 'axie-hub',
@@ -48,7 +50,8 @@ export const PROJECTS: Project[] = [
 		devTime: {
 			start: '2022-04-16',
 			end: '2022-05-07'
-		}
+		},
+		private: false
 	},
 	{
 		id: 'climatic',
@@ -74,7 +77,8 @@ export const PROJECTS: Project[] = [
 		devTime: {
 			start: '2022-05-22',
 			end: '2022-06-22'
-		}
+		},
+		private: false
 	},
 	{
 		id: 'bubble',
@@ -101,7 +105,8 @@ export const PROJECTS: Project[] = [
 		devTime: {
 			start: '2022-07-12',
 			end: '2022-07-21'
-		}
+		},
+		private: false
 	},
 	{
 		id: 'royaleapp',
@@ -124,6 +129,7 @@ export const PROJECTS: Project[] = [
 		devTime: {
 			start: '2022-02-05',
 			end: ''
-		}
+		},
+		private: true
 	}
 ]

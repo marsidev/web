@@ -13,6 +13,7 @@ interface Project {
 		start: string
 		end?: string
 	}
+	private: boolean
 }
 
 interface Technology {
