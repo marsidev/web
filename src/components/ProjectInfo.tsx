@@ -1,35 +1,39 @@
 import { Flex, type FlexProps, Heading, Text } from '@chakra-ui/react'
 import { ProjectTags, ProjectUrls } from '.'
 
+export type ProjectRenderMode = 'even' | 'odd' | 'small-screen' | undefined
+
 interface ProjectProps extends FlexProps {
 	project: Project
-	type: 'even' | 'odd'
+	renderMode: ProjectRenderMode
 }
 
-export const ProjectInfo: React.FC<ProjectProps> = ({ project: p, type, ...props }) => {
+export const ProjectInfo: React.FC<ProjectProps> = ({
+	project: p,
+	renderMode = 'even',
+	...props
+}) => {
+	const textAlign =
+		renderMode === 'small-screen' || renderMode === 'odd'
+			? 'left'
+			: 'right'
+
+	const justify =
+		renderMode === 'small-screen' || renderMode === 'odd'
+			? 'flex-start'
+			: 'flex-end'
+
 	return (
-		<Flex
-			flexDir='column'
-			gap={4}
-			textAlign={type === 'even' ? 'right' : 'left'}
-			w='100%'
-			{...props}
-		>
+		<Flex flexDir='column' gap={4} textAlign={textAlign} w='100%' {...props}>
 			<Heading as='h4' fontSize='lg'>
 				{p.name}
 			</Heading>
 
 			<Text fontSize='md'>{p.description}</Text>
 
-			<ProjectTags
-				justify={type === 'even' ? 'flex-end' : 'flex-start'}
-				project={p}
-			/>
+			<ProjectTags justify={justify} project={p} />
 
-			<ProjectUrls
-				justify={type === 'even' ? 'flex-end' : 'flex-start'}
-				project={p}
-			/>
+			<ProjectUrls justify={justify} project={p} />
 		</Flex>
 	)
 }

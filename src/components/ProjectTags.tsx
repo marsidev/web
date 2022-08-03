@@ -18,6 +18,7 @@ export const ProjectTags: React.FC<ProjectProps> = ({ project, ...props }) => {
 		>
 			{project.stack.map(stackItem => {
 				const tech = TECHNOLOGIES[stackItem]
+
 				if (!tech) {
 					return (
 						<Tag
@@ -32,11 +33,16 @@ export const ProjectTags: React.FC<ProjectProps> = ({ project, ...props }) => {
 
 				return (
 					<Link key={tech.id} isExternal href={tech.url}>
-						<Tag _hover={{ transform: 'scale(1.05)' }} transition='all 0.15s ease-in'>
+						<Tag
+							_hover={{ transform: 'scale(1.05)' }}
+							size={{ base: 'sm', md: 'md' }}
+							transition='all 0.15s ease-in'
+						>
 							{tech.icon && (
 								<Image
 									alt={`${tech.name} logo`}
-									h='20px'
+									h={{ base: '16px', md: '20px' }}
+									// h='20px'
 									pr={1}
 									src={tech.icon}
 									w='auto'

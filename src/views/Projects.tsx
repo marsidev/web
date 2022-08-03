@@ -8,12 +8,10 @@ export const Projects = () => {
 		<Stack
 			align='flex-start'
 			as='section'
-			// direction={{ base: 'column', md: 'row' }}
 			direction='column'
 			id='projects'
-			spacing={[4, 4, 8]}
 		>
-			<Flex flexDir='column' textAlign='left'>
+			<Flex flexDir='column' pb={8} textAlign='left'>
 				<Heading as='h2' size='xl'>
 					Projects
 				</Heading>
@@ -23,13 +21,15 @@ export const Projects = () => {
 				</Heading>
 			</Flex>
 
-			{sortProjects(PROJECTS).map((project, i) => (
-				<Project
-					key={project.id}
-					project={project}
-					type={i % 2 === 0 ? 'even' : 'odd'}
-				/>
-			))}
+			<Stack direction='column' spacing={{ base: 16, md: 8 }}>
+				{sortProjects(PROJECTS).map((project, i) => (
+					<Project
+						key={project.id}
+						project={project}
+						type={i % 2 === 0 ? 'even' : 'odd'}
+					/>
+				))}
+			</Stack>
 		</Stack>
 	)
 }

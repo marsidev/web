@@ -1,4 +1,4 @@
-import { Badge, Flex, type FlexProps, IconButton } from '@chakra-ui/react'
+import { Badge, Flex, type FlexProps, IconButton, useBreakpointValue } from '@chakra-ui/react'
 import { Link } from '~/components'
 import { ExternalLinkIcon, GithubOutlineIcon } from '~/icons'
 
@@ -7,6 +7,8 @@ interface ProjectProps extends FlexProps {
 }
 
 export const ProjectUrls: React.FC<ProjectProps> = ({ project, ...props }) => {
+	const buttonSize = useBreakpointValue({ base: 'xs', md: 'sm' })
+
 	return (
 		<Flex
 			flexDirection='row'
@@ -22,7 +24,7 @@ export const ProjectUrls: React.FC<ProjectProps> = ({ project, ...props }) => {
 						aria-label='GitHub icon'
 						colorScheme='teal'
 						icon={<GithubOutlineIcon />}
-						size='sm'
+						size={buttonSize}
 					/>
 				</Link>
 			)}
@@ -33,14 +35,12 @@ export const ProjectUrls: React.FC<ProjectProps> = ({ project, ...props }) => {
 						aria-label='External link icon'
 						colorScheme='pink'
 						icon={<ExternalLinkIcon />}
-						size='sm'
+						size={buttonSize}
 					/>
 				</Link>
 			)}
 
-			{project.private && (
-				<Badge colorScheme='orange'>Private project</Badge>
-			)}
+			{project.private && <Badge colorScheme='orange'>Private project</Badge>}
 		</Flex>
 	)
 }
