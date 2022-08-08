@@ -1,3 +1,5 @@
+type Merge<P, T> = Omit<P, keyof T> & T
+
 interface Project {
 	id: string
 	name: string

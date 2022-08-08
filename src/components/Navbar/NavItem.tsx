@@ -1,6 +1,6 @@
-import { Box, useColorModeValue } from '@chakra-ui/react'
-import { motion } from 'framer-motion'
+import { useColorModeValue } from '@chakra-ui/react'
 import { Link, type LinkProps } from '~/components'
+import { MotionBox } from '~/components/motion'
 import { navItemVariants } from './variants'
 
 export interface NavItemProps extends LinkProps {
@@ -8,21 +8,17 @@ export interface NavItemProps extends LinkProps {
 	children: React.ReactNode
 }
 
-const MotionBox = motion(Box)
-
 export const NavItem: React.FC<NavItemProps> = ({ href, children, ...props }) => {
-	const color = useColorModeValue('gray.600', 'gray.400')
 	const onHoverBg = useColorModeValue('blackAlpha.200', 'whiteAlpha.200')
 
 	return (
 		<MotionBox variants={navItemVariants}>
 			<Link
 				_hover={{ bg: ['transparent', onHoverBg] }}
-				color={color}
-				fontSize={['sm', 'md']}
+				fontSize={{ base: 'md', sm: 'md', md: 'lg', lg: 'lg' }}
 				href={href}
-				px={[0, 2]}
-				py={1}
+				px={{ base: 0, sm: 2, md: 4, lg: 4 }}
+				py={2}
 				rounded='lg'
 				{...props}
 			>

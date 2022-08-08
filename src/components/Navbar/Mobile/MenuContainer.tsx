@@ -1,44 +1,40 @@
-import {
-	StackDivider,
-	type StackProps,
-	VStack,
-	useColorModeValue
-} from '@chakra-ui/react'
-import { motion } from 'framer-motion'
+import { StackDivider, useColorModeValue } from '@chakra-ui/react'
+import { MotionStack, MotionStackProps } from '~/components/motion'
+import { useMount } from '~/hooks'
 import { containerVariants, sideVariants } from '../variants'
 
-interface MenuContainerProps extends StackProps {
+interface MenuContainerProps extends MotionStackProps {
 	children: React.ReactNode
 }
-
-const MotionStack = motion(VStack)
 
 export const MenuContainer: React.FC<MenuContainerProps> = ({
 	children,
 	...props
 }) => {
-	const bg = useColorModeValue('#fff', 'gray.800')
 	const dividerColor = useColorModeValue('gray.200', 'gray.700')
+	const themedBg = useColorModeValue('white', 'gray.800')
+	const mounted = useMount()
 
 	return (
 		<MotionStack
 			key='mobile-menu'
 			animate='animate'
 			as='nav'
+			bg={mounted ? themedBg : 'transparent'}
+			direction='column'
 			exit='exit'
 			h='100vh'
 			initial='initial'
 			pos='fixed'
 			variants={containerVariants}
-			// w='100vw'
-			zIndex={999}
+			zIndex='overlay'
 			{...props}
 		>
 			<MotionStack
 				align='left'
 				animate='open'
 				as='ul'
-				bg={bg}
+				direction='column'
 				divider={<StackDivider borderColor={dividerColor} />}
 				initial='closed'
 				justify='left'

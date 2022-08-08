@@ -5,7 +5,6 @@ import { MAX_WIDTH } from '~/constants'
 const GITHUB_URL = 'https://github.com/marsidev'
 
 export const Footer: React.FC<FlexProps> = ({ ...props }) => {
-	const bg = useColorModeValue('white', 'gray.800')
 	const textColor = useColorModeValue('gray.700', 'gray.200')
 	const linkColor = useColorModeValue('pink.600', 'pink.400')
 
@@ -13,7 +12,6 @@ export const Footer: React.FC<FlexProps> = ({ ...props }) => {
 		<Flex
 			align='center'
 			as='footer'
-			bg={bg}
 			h='auto'
 			justify='center'
 			px={8}
