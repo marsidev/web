@@ -1,6 +1,7 @@
-import Link from './Link'
+import { ThemeComponents } from '@chakra-ui/react'
+import { Link } from './Link'
 
-const components = {
+export const components: ThemeComponents = {
 	Link
 }
 
