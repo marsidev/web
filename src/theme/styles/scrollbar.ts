@@ -1,6 +1,6 @@
 import { type GlobalStyleProps, mode } from '@chakra-ui/theme-tools'
 
-export const scrollbarStyles = (props: GlobalStyleProps) => ({
+export const scrollbar = (props: GlobalStyleProps) => ({
 	'::-webkit-scrollbar': {
 		width: '.40rem'
 	},

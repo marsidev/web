@@ -1,6 +1,6 @@
 import { type GlobalStyleProps, mode } from '@chakra-ui/theme-tools'
 
-export const mobileMenuStyles = (props: GlobalStyleProps) => ({
+export const mobileMenu = (props: GlobalStyleProps) => ({
 	'.menu-toggle_wrap': {
 		display: 'flex',
 		flexDirection: 'column',

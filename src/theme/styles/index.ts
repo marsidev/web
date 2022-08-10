@@ -1,6 +1,7 @@
 import type { Styles } from '@chakra-ui/theme-tools'
-import { mobileMenuStyles } from './mobile-menu'
-import { scrollbarStyles } from './scrollbar'
+import { mobileMenu } from './mobile-menu'
+import { scrollbar } from './scrollbar'
+import { underlined } from './underlined'
 
 export const styles: Styles = {
 	global: props => ({
@@ -19,12 +20,14 @@ export const styles: Styles = {
 			MozOsxFontSmoothing: 'grayscale',
 			WebkitFontSmoothing: 'antialiased',
 			textRendering: 'optimizeLegibility',
-			transitionProperty: 'color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-text-decoration-color,-webkit-backdrop-filter !important;',
+			transitionProperty:
+				'color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-text-decoration-color,-webkit-backdrop-filter !important;',
 			transitionDuration: '500ms !important;',
 			transitionTimingFunction: 'ease-out !important;'
 		},
-		...scrollbarStyles(props),
-		...mobileMenuStyles(props)
+		...scrollbar(props),
+		...mobileMenu(props),
+		...underlined(props)
 	})
 }
 

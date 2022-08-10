@@ -1,4 +1,4 @@
-import { useColorModeValue } from '@chakra-ui/react'
+import { useBreakpointValue } from '@chakra-ui/react'
 import { Link, type LinkProps } from '~/components'
 import { MotionBox } from '~/components/motion'
 import { navItemVariants } from './variants'
@@ -9,13 +9,14 @@ export interface NavItemProps extends LinkProps {
 }
 
 export const NavItem: React.FC<NavItemProps> = ({ href, children, ...props }) => {
-	const onHoverBg = useColorModeValue('blackAlpha.300', 'whiteAlpha.200')
+	const className = useBreakpointValue({ base: '', sm: 'underlined' })
 
 	return (
 		<MotionBox variants={navItemVariants}>
 			<Link
-				_hover={{ bg: ['transparent', onHoverBg] }}
+				className={className}
 				fontSize={{ base: 'md', md: 'lg' }}
+				fontWeight={600}
 				href={href}
 				px={{ base: 0, sm: 2, md: 4 }}
 				py={2}
