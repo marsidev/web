@@ -4,9 +4,12 @@ import { scrollbarStyles } from './scrollbar'
 
 export const styles: Styles = {
 	global: props => ({
-		'html, body': {
+		'*': {
+			boxSizing: 'border-box',
+			margin: 0,
 			padding: 0,
-			margin: 0
+			border: 0,
+			outline: 0
 			// borderColor: mode('blackAlpha.200', 'whiteAlpha.200')(props)
 		},
 		html: {
@@ -17,7 +20,7 @@ export const styles: Styles = {
 			WebkitFontSmoothing: 'antialiased',
 			textRendering: 'optimizeLegibility',
 			transition:
-				'background-color 150ms ease-out, color 150ms ease-out, border-color 150ms ease-out !important;'
+				'background-color 250ms ease-out, color 250ms ease-out, border-color 250ms ease-out !important;'
 		},
 		...scrollbarStyles(props),
 		...mobileMenuStyles(props)
