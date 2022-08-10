@@ -9,15 +9,15 @@ export interface NavItemProps extends LinkProps {
 }
 
 export const NavItem: React.FC<NavItemProps> = ({ href, children, ...props }) => {
-	const onHoverBg = useColorModeValue('blackAlpha.200', 'whiteAlpha.200')
+	const onHoverBg = useColorModeValue('blackAlpha.300', 'whiteAlpha.200')
 
 	return (
 		<MotionBox variants={navItemVariants}>
 			<Link
 				_hover={{ bg: ['transparent', onHoverBg] }}
-				fontSize={{ base: 'md', sm: 'md', md: 'lg', lg: 'lg' }}
+				fontSize={{ base: 'md', md: 'lg' }}
 				href={href}
-				px={{ base: 0, sm: 2, md: 4, lg: 4 }}
+				px={{ base: 0, sm: 2, md: 4 }}
 				py={2}
 				rounded='lg'
 				{...props}
