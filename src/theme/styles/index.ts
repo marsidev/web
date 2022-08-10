@@ -19,8 +19,9 @@ export const styles: Styles = {
 			MozOsxFontSmoothing: 'grayscale',
 			WebkitFontSmoothing: 'antialiased',
 			textRendering: 'optimizeLegibility',
-			transition:
-				'background-color 250ms ease-out, color 250ms ease-out, border-color 250ms ease-out !important;'
+			transitionProperty: 'color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-text-decoration-color,-webkit-backdrop-filter !important;',
+			transitionDuration: '500ms !important;',
+			transitionTimingFunction: 'ease-out !important;'
 		},
 		...scrollbarStyles(props),
 		...mobileMenuStyles(props)

@@ -48,7 +48,7 @@ export const NavContainer: React.FC<NavContainerProps> = ({
 			py={[2, 4]}
 			top={0}
 			transform={isHidden ? 'translateY(-100%)' : 'translateY(0)'}
-			transition='background-color 250ms ease-out, box-shadow 250ms ease-out, transform 200ms ease-out !important;'
+			transition='background-color 500ms ease-out, box-shadow 500ms ease-out, transform 200ms ease-out !important;'
 			width='full'
 			zIndex='sticky'
 			{...props}
