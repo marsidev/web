@@ -1,6 +1,9 @@
 import { Flex, type FlexProps, useBreakpointValue, useColorModeValue } from '@chakra-ui/react'
+import { useMemo } from 'react'
+import { useSuperState } from '@superstate/react'
 import { MAX_WIDTH } from '~/constants'
 import { useMount, useScrollY } from '~/hooks'
+import { mobileMenu } from '~/store'
 
 export type NavContainerProps = FlexProps
 
@@ -14,21 +17,26 @@ export const NavContainer: React.FC<NavContainerProps> = ({
 	const themedBgAfterOffset = useColorModeValue('whiteAlpha.500', 'rgba(26, 32, 44, 0.74)')
 	const mounted = useMount()
 	const isHidden = scrollDirection === 'down'
+	useSuperState(mobileMenu.state)
+	const mobileMenuExpanded = mobileMenu.get()
 
-	let bg = 'auto'
-	if (mounted) {
-		if (offsetPassed) {
-			bg = themedBgAfterOffset
-		} else {
-			bg = themedBg
-		}
-	}
+	const bg = useMemo(() => {
+		if (!mounted) return 'auto'
+		if (mobileMenuExpanded) return themedBg
+		if (offsetPassed) return themedBgAfterOffset
+		return themedBg
+	}, [mounted, offsetPassed, mobileMenuExpanded, themedBg, themedBgAfterOffset])
+
+	const backdropFilter = useMemo(() => {
+		if (mounted && offsetPassed) return 'saturate(180%) blur(8px)'
+		return 'none'
+	}, [mounted, offsetPassed])
 
 	return (
 		<Flex
 			align='center'
 			as='header'
-			backdropFilter='saturate(180%) blur(5px)'
+			backdropFilter={backdropFilter}
 			bg={bg}
 			boxShadow={offsetPassed ? 'md' : 'none'}
 			h='auto'
