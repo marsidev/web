@@ -1,4 +1,12 @@
-import { Button, type ButtonProps, Flex, type FlexProps, Image, Tag } from '@chakra-ui/react'
+import {
+	Button,
+	type ButtonProps,
+	Flex,
+	type FlexProps,
+	Image,
+	Tag,
+	useBreakpointValue
+} from '@chakra-ui/react'
 import { useEffect, useRef, useState } from 'react'
 import autoAnimate from '@formkit/auto-animate'
 import { TECHNOLOGIES } from '~/constants'
@@ -14,7 +22,14 @@ interface ShowAllProps extends ButtonProps {
 
 const ShowAll: React.FC<ShowAllProps> = ({ showAll, ...rest }) => {
 	return (
-		<Button colorScheme='cyan' size='xs' {...rest}>
+		<Button
+			colorScheme={showAll ? 'orange' : 'green'}
+			fontSize='sm'
+			fontWeight='black'
+			lineHeight={1.2}
+			size='xs'
+			{...rest}
+		>
 			{showAll ? 'Show less' : 'Show more'}
 		</Button>
 	)
@@ -23,14 +38,15 @@ const ShowAll: React.FC<ShowAllProps> = ({ showAll, ...rest }) => {
 export const ProjectTags: React.FC<ProjectProps> = ({ project, ...props }) => {
 	const [showAll, setShowAll] = useState(false)
 	const parent = useRef(null)
+	const defaultTagsToShow = useBreakpointValue({ base: 3, sm: 5, md: 5, lg: 7 })
 
 	useEffect(() => {
 		parent.current && autoAnimate(parent.current)
 	}, [parent])
 
-	const defaultMaxTagsToShow = 7
-	const maxTagsToShow = showAll ? project.stack.length : defaultMaxTagsToShow
-	const showShowAllBtn = project.stack.length > defaultMaxTagsToShow
+	const maxTagsToShow = showAll ? project.stack.length : defaultTagsToShow
+	const showShowAllBtn =
+		defaultTagsToShow && project.stack.length > defaultTagsToShow
 
 	const toggleShowAll = () => {
 		setShowAll(!showAll)
@@ -40,7 +56,6 @@ export const ProjectTags: React.FC<ProjectProps> = ({ project, ...props }) => {
 		<Flex
 			ref={parent}
 			direction='row'
-			// exit='exit'
 			flexWrap='wrap'
 			gap={2}
 			justify='flex-start'
@@ -50,7 +65,7 @@ export const ProjectTags: React.FC<ProjectProps> = ({ project, ...props }) => {
 			{project.stack.map((stackItem, stackIndex) => {
 				const tech = TECHNOLOGIES[stackItem]
 
-				if (stackIndex >= maxTagsToShow && !showAll) {
+				if (maxTagsToShow && stackIndex >= maxTagsToShow && !showAll) {
 					return null
 				}
 
@@ -67,14 +82,10 @@ export const ProjectTags: React.FC<ProjectProps> = ({ project, ...props }) => {
 				}
 
 				return (
-					<Link
-						key={tech.id}
-						isExternal
-						href={tech.url}
-					>
+					<Link key={tech.id} isExternal href={tech.url}>
 						<Tag
 							_hover={{ transform: 'scale(1.05)' }}
-							size={{ base: 'sm', md: 'md' }}
+							size={{ base: 'md', md: 'md' }}
 							transition='all 0.15s ease-out'
 						>
 							{tech.icon && (
