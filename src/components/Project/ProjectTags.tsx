@@ -7,8 +7,8 @@ import {
 	Tag,
 	useBreakpointValue
 } from '@chakra-ui/react'
-import { useEffect, useRef, useState } from 'react'
-import autoAnimate from '@formkit/auto-animate'
+import { useState } from 'react'
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { TECHNOLOGIES } from '~/constants'
 import { Link } from '~/components'
 
@@ -37,12 +37,8 @@ const ShowAll: React.FC<ShowAllProps> = ({ showAll, ...rest }) => {
 
 export const ProjectTags: React.FC<ProjectProps> = ({ project, ...props }) => {
 	const [showAll, setShowAll] = useState(false)
-	const parent = useRef(null)
+	const [parent] = useAutoAnimate<HTMLDivElement>()
 	const defaultTagsToShow = useBreakpointValue({ base: 3, sm: 5, md: 5, lg: 7 })
-
-	useEffect(() => {
-		parent.current && autoAnimate(parent.current)
-	}, [parent])
 
 	const maxTagsToShow = showAll ? project.stack.length : defaultTagsToShow
 	const showShowAllBtn =
