@@ -30,7 +30,8 @@
 		"next-seo": "5.5.0",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
-		"react-icons": "4.4.0"
+		"react-icons": "4.4.0",
+		"usehooks-ts": "2.6.0"
 	},
 	"devDependencies": {
 		"@babel/core": "7.18.10",
@@ -62,7 +63,8 @@
 		"peerDependencyRules": {
 			"allowedVersions": {
 				"react": "18",
-				"react-dom": "18"
+				"react-dom": "18",
+				"@superstate/core": "0.1.0"
 			},
 			"ignoreMissing": [
 				"@chakra-ui/styled-system"
