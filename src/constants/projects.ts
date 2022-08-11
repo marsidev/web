@@ -84,7 +84,7 @@ export const PROJECTS: Project[] = [
 		id: 'bubble',
 		name: 'Bubble',
 		description:
-			'Live and secure chat, inspired by WhatsApp. Powered by Twilio Conversations API.',
+			'Live and secure chat, inspired by WhatsApp. Powered by Twilio Conversations API. Created to participate in a 20-days hackathon.',
 		url: 'https://bubble-marsiglia.vercel.app/',
 		repository: 'https://github.com/marsidev/bubble',
 		stack: [
