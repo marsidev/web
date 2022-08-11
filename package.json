@@ -68,5 +68,10 @@
 				"@chakra-ui/styled-system"
 			]
 		}
+	},
+	"overrides": {
+		"@formkit/auto-animate": {
+			"react": "$react"
+		}
 	}
 }
