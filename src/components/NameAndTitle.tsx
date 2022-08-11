@@ -16,7 +16,7 @@ export const NameAndTitle = () => {
 				as='h2'
 				fontSize={{ base: 'xl', sm: '2xl', md: '2xl', lg: '3xl' }}
 			>
-				{'Front-end developer.'}
+				{'A frontend developer.'}
 			</Heading>
 		</Stack>
 	)
