@@ -1,10 +1,10 @@
-import type { Styles } from '@chakra-ui/theme-tools'
+import type { GlobalStyleProps } from '@chakra-ui/theme-tools'
 import { mobileMenu } from './mobile-menu'
 import { scrollbar } from './scrollbar'
 import { underlined } from './underlined'
 
-export const styles: Styles = {
-	global: props => ({
+export const styles = {
+	global: (props: GlobalStyleProps) => ({
 		'*': {
 			boxSizing: 'border-box',
 			margin: 0,
