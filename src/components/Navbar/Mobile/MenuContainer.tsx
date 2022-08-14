@@ -1,6 +1,6 @@
 import { StackDivider, useColorModeValue } from '@chakra-ui/react'
+import { useRendered } from '@marsidev/react-hooks'
 import { MotionStack, MotionStackProps } from '~/components/motion'
-import { useMount } from '~/hooks'
 import { containerVariants, sideVariants } from '../variants'
 
 interface MenuContainerProps extends MotionStackProps {
@@ -13,14 +13,14 @@ export const MenuContainer: React.FC<MenuContainerProps> = ({
 }) => {
 	const dividerColor = useColorModeValue('gray.200', 'gray.700')
 	const themedBg = useColorModeValue('white', 'gray.800')
-	const mounted = useMount()
+	const rendered = useRendered()
 
 	return (
 		<MotionStack
 			key='mobile-menu'
 			animate='animate'
 			as='nav'
-			bg={mounted ? themedBg : 'transparent'}
+			bg={rendered ? themedBg : 'transparent'}
 			direction='column'
 			exit='exit'
 			h='100vh'

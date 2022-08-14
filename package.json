@@ -22,6 +22,7 @@
 		"@fontsource/raleway": "4.5.10",
 		"@fontsource/rubik": "4.5.11",
 		"@formkit/auto-animate": "1.0.0-beta.1",
+		"@marsidev/react-hooks": "^1.2.1",
 		"@superstate/core": "0.1.0",
 		"@superstate/react": "0.1.0",
 		"atropos": "1.0.2",

@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
-import { useWindowSize } from '~/hooks'
+import { useWindowSize } from '@marsidev/react-hooks'
 import { mobileMenu } from '~/store'
 import { NavItem } from '..'
 import { MenuContainer } from '.'

@@ -1,6 +1,6 @@
 import { IconButton, type IconButtonProps, useBreakpointValue } from '@chakra-ui/react'
 import { FiArrowUp } from 'react-icons/fi'
-import { useScrollY } from '~/hooks'
+import { useScrollY } from '@marsidev/react-hooks'
 
 export interface ScrollToTopProps extends Omit<IconButtonProps, 'aria-label'> {
 	offset?: number

@@ -7,7 +7,7 @@ import {
 import { useEffect, useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 import { useLocalStorage } from 'usehooks-ts'
-import { useMount } from '~/hooks'
+import { useRendered } from '@marsidev/react-hooks'
 
 interface BannerProps extends FlexProps {
 	message: string
@@ -19,7 +19,7 @@ export const Banner: React.FC<BannerProps> = ({ message, bannerId, bg }) => {
 	// we have two states to prevent hydration mismatch issue
 	const [hidden_ls, setHidden_ls] = useLocalStorage(bannerId, false)
 	const [hidden, setHidden] = useState(false)
-	const mounted = useMount()
+	const rendered = useRendered()
 
 	const gradient = useColorModeValue(
 		'linear(to bottom, teal.500, teal.600)',
@@ -30,7 +30,7 @@ export const Banner: React.FC<BannerProps> = ({ message, bannerId, bg }) => {
 		setHidden(hidden_ls)
 	}, [hidden_ls])
 
-	if (!mounted || hidden) return null
+	if (!rendered || hidden) return <div />
 
 	return (
 		<Flex
