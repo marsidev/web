@@ -17,7 +17,7 @@ interface BannerProps extends FlexProps {
 
 export const Banner: React.FC<BannerProps> = ({ message, bannerId, bg }) => {
 	// we have two states to prevent hydration mismatch issue
-	const [hidden_ls, setHidden_ls] = useLocalStorage(bannerId, false)
+	const [hidden_ls, setHidden_ls] = useLocalStorage(`hide__${bannerId}__banner`, false)
 	const [hidden, setHidden] = useState(false)
 	const rendered = useRendered()
 
