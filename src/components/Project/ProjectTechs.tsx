@@ -37,7 +37,7 @@ const ShowAll: React.FC<ShowAllProps> = ({ showAll, ...rest }) => {
 	)
 }
 
-export const ProjectTags: React.FC<ProjectProps> = ({ project, ...props }) => {
+export const ProjectTechs: React.FC<ProjectProps> = ({ project, ...props }) => {
 	const [showAll, setShowAll] = useState(false)
 	const [parent] = useAutoAnimate<HTMLDivElement>({ duration: 250, easing: 'ease-out' })
 	const defaultTagsToShow = useBreakpointValue({ base: 3, sm: 5, md: 5, lg: 7 })
@@ -118,4 +118,4 @@ export const ProjectTags: React.FC<ProjectProps> = ({ project, ...props }) => {
 	)
 }
 
-export default ProjectTags
+export default ProjectTechs

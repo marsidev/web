@@ -1,5 +1,5 @@
 import { Badge, Box, Flex, type FlexProps, Heading, Text } from '@chakra-ui/react'
-import { ProjectTags, ProjectUrls } from '.'
+import { ProjectTechs, ProjectUrls } from '.'
 
 export type ProjectRenderMode = 'even' | 'odd' | 'small-screen' | undefined
 
@@ -41,7 +41,7 @@ export const ProjectInfo: React.FC<ProjectProps> = ({
 
 			<ProjectUrls justify={justify} project={p} />
 
-			<ProjectTags justify={justify} project={p} />
+			<ProjectTechs justify={justify} project={p} />
 		</Flex>
 	)
 }
