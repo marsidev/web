@@ -15,7 +15,8 @@ interface Project {
 		start: string
 		end?: string
 	}
-	private: boolean
+	private?: boolean
+	challenge?: boolean
 }
 
 interface Technology {

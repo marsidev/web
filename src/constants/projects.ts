@@ -15,7 +15,8 @@ export const PROJECTS: Project[] = [
 			start: '2022-01-04',
 			end: '2022-02-05'
 		},
-		private: false
+		private: false,
+		challenge: false
 	},
 	{
 		id: 'wordly',
@@ -33,7 +34,8 @@ export const PROJECTS: Project[] = [
 			start: '2022-03-28',
 			end: '2022-05-19'
 		},
-		private: false
+		private: false,
+		challenge: false
 	},
 	{
 		id: 'axie-hub',
@@ -51,7 +53,8 @@ export const PROJECTS: Project[] = [
 			start: '2022-04-16',
 			end: '2022-05-07'
 		},
-		private: false
+		private: false,
+		challenge: true
 	},
 	{
 		id: 'climatic',
@@ -68,7 +71,9 @@ export const PROJECTS: Project[] = [
 			'chakra-ui',
 			'zustand',
 			'rapid-api',
-			'i18next'
+			'i18next',
+			'vitest',
+			'playwright'
 		],
 		images: {
 			mobile: '/images/projects/climatic-mobile.png',
@@ -78,7 +83,8 @@ export const PROJECTS: Project[] = [
 			start: '2022-05-22',
 			end: '2022-06-22'
 		},
-		private: false
+		private: false,
+		challenge: true
 	},
 	{
 		id: 'bubble',
@@ -96,6 +102,7 @@ export const PROJECTS: Project[] = [
 			'zustand',
 			'trpc',
 			'supabase',
+			'prisma',
 			'next-auth'
 		],
 		images: {
@@ -106,7 +113,8 @@ export const PROJECTS: Project[] = [
 			start: '2022-07-12',
 			end: '2022-07-21'
 		},
-		private: false
+		private: false,
+		challenge: true
 	},
 	{
 		id: 'royaleapp',
@@ -118,6 +126,7 @@ export const PROJECTS: Project[] = [
 			'nextjs',
 			'chakra-ui',
 			'mongodb',
+			'mongoose',
 			'zustand',
 			'next-auth',
 			'Clash Royale API'
@@ -130,6 +139,7 @@ export const PROJECTS: Project[] = [
 			start: '2022-02-05',
 			end: ''
 		},
-		private: true
+		private: true,
+		challenge: false
 	}
 ]
