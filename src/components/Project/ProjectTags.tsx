@@ -1,0 +1,21 @@
+import { Badge, Stack, type StackProps } from '@chakra-ui/react'
+
+interface ProjectProps extends StackProps {
+	project: Project
+}
+
+export const ProjectTags: React.FC<ProjectProps> = ({ project: p, ...props }) => {
+	const thereIsTags = !!p.private || !!p.challenge
+
+	if (!thereIsTags) return null
+
+	return (
+		<Stack direction='row' flexWrap='wrap' rowGap={2} {...props}>
+			{p.private && <Badge colorScheme='orange'>Private</Badge>}
+
+			{p.challenge && <Badge colorScheme='twitter'>Challenge</Badge>}
+		</Stack>
+	)
+}
+
+export default ProjectTags

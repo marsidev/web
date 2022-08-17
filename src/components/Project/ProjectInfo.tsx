@@ -1,5 +1,5 @@
-import { Badge, Box, Flex, type FlexProps, Heading, Text } from '@chakra-ui/react'
-import { ProjectTechs, ProjectUrls } from '.'
+import { Flex, type FlexProps, Heading, Text } from '@chakra-ui/react'
+import { ProjectTags, ProjectTechs, ProjectUrls } from '.'
 
 export type ProjectRenderMode = 'even' | 'odd' | 'small-screen' | undefined
 
@@ -24,22 +24,18 @@ export const ProjectInfo: React.FC<ProjectProps> = ({
 			: 'flex-end'
 
 	return (
-		<Flex flexDir='column' gap={4} textAlign={textAlign} w='100%' {...props}>
+		<Flex flexDir='column' gap={2} textAlign={textAlign} w='100%' {...props}>
 			<Heading as='h4' fontSize='lg'>
 				{p.name}
 			</Heading>
 
-			{p.private && (
-				<Box mt={-2}>
-					<Badge colorScheme='orange'>Private project</Badge>
-				</Box>
-			)}
+			<ProjectTags justify={justify} project={p} />
 
-			<Text fontSize='md' mt={-2}>
+			<Text fontSize='md' pb={2}>
 				{p.description}
 			</Text>
 
-			<ProjectUrls justify={justify} project={p} />
+			<ProjectUrls justify={justify} pb={2} project={p} />
 
 			<ProjectTechs justify={justify} project={p} />
 		</Flex>
