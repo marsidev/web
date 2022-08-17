@@ -2,7 +2,7 @@
 
 const title = 'Luis Marsiglia'
 const defaultTitle = `${title} - Frontend Developer`
-const description = 'Luis Marsiglia is a Frontend Developer and Data Analyst from Venezuela.'
+const description = 'Luis Marsiglia is a Frontend Developer and Data Analyst.'
 const url = 'https://marsidev.xyz'
 const ogImageUrl = '/images/og.png'
 const keywords = 'marsiglia, marsidev, marsi, luis marsiglia, marsigliacr, @marsigliacr, portfolio, javascript, typescipt, developer, software engineer, frontend, frontt-end, backend, back-end, fullstack, full-stack'
