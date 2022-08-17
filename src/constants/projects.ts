@@ -73,7 +73,8 @@ export const PROJECTS: Project[] = [
 			'rapid-api',
 			'i18next',
 			'vitest',
-			'playwright'
+			'playwright',
+			'rtl'
 		],
 		images: {
 			mobile: '/images/projects/climatic-mobile.png',
@@ -129,7 +130,7 @@ export const PROJECTS: Project[] = [
 			'mongoose',
 			'zustand',
 			'next-auth',
-			'Clash Royale API'
+			'clash-royale-api'
 		],
 		images: {
 			mobile: '/images/projects/royaleapp-mobile.png',

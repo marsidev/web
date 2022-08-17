@@ -169,14 +169,38 @@ export const TECHNOLOGIES: Technologies = {
 	},
 	i18next: {
 		id: 'i18next',
-		name: 'i18next	',
+		name: 'i18next',
 		url: 'https://www.i18next.com',
 		icon: '/images/logos/i18next.png'
 	},
 	'next-auth': {
 		id: 'next-auth',
-		name: 'NextAuth.js	',
+		name: 'NextAuth.js',
 		url: 'https://next-auth.js.org',
 		icon: '/images/logos/next-auth.png'
+	},
+	'clash-royale-api': {
+		id: 'clash-royale-api',
+		name: 'Clash Royale API',
+		url: 'https://developer.clashroyale.com',
+		icon: '/images/logos/cr.png'
+	},
+	playwright: {
+		id: 'playwright',
+		name: 'Playwright',
+		url: 'https://playwright.dev',
+		icon: '/images/logos/playwright.svg'
+	},
+	prisma: {
+		id: 'prisma',
+		name: 'Prisma',
+		url: 'https://www.prisma.io',
+		icon: '/images/logos/prisma.svg'
+	},
+	rtl: {
+		id: 'rtl',
+		name: 'React Testing Library',
+		url: 'https://testing-library.com/',
+		icon: '/images/logos/rtl.png'
 	}
 }
