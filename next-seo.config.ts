@@ -1,14 +1,13 @@
 /* @ref: https://github.com/garmeeh/next-seo */
 
 const title = 'Luis Marsiglia'
-const defaultTitle = `${title} - JavaScript Developer`
-const description = 'Luis Marsiglia is a full-stack JavaScript developer from Venezuela.'
-const url = 'https://marsi.vercel.app'
-const imageUrl = `https://og-image.vercel.app/${encodeURI(title)}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`
-const keywords = 'marsiglia, marsidev, marsi, luis marsiglia, marsigliacr, @marsigliacr, portfolio, javascript, typescipt, developer, software engineer'
+const defaultTitle = `${title} - Frontend Developer`
+const description = 'Luis Marsiglia is a Frontend Developer and Data Analyst from Venezuela.'
+const url = 'https://marsidev.xyz'
+const ogImageUrl = '/images/og.png'
+const keywords = 'marsiglia, marsidev, marsi, luis marsiglia, marsigliacr, @marsigliacr, portfolio, javascript, typescipt, developer, software engineer, frontend, frontt-end, backend, back-end, fullstack, full-stack'
 
 const seo = {
-	// title,
 	titleTemplate: `%s – ${title}`,
 	defaultTitle,
 	description,
@@ -21,7 +20,7 @@ const seo = {
 		canonical: url,
 		images: [
 			{
-				url: imageUrl,
+				url: ogImageUrl,
 				width: 800,
 				height: 600,
 				alt: title
