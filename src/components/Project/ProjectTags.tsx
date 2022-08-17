@@ -5,6 +5,7 @@ import {
 	type FlexProps,
 	Image,
 	Tag,
+	chakra,
 	useBreakpointValue
 } from '@chakra-ui/react'
 import { useState } from 'react'
@@ -70,7 +71,9 @@ export const ProjectTags: React.FC<ProjectProps> = ({ project, ...props }) => {
 						<Tag
 							key={stackItem}
 							_hover={{ transform: 'scale(1.05)' }}
+							borderRadius='md'
 							transition='all 0.15s ease-out'
+							verticalAlign='middle'
 						>
 							{stackItem}
 						</Tag>
@@ -78,22 +81,26 @@ export const ProjectTags: React.FC<ProjectProps> = ({ project, ...props }) => {
 				}
 
 				return (
-					<Link key={tech.id} isExternal href={tech.url}>
+					<Link key={tech.id} isExternal borderRadius='md' href={tech.url}>
 						<Tag
 							_hover={{ transform: 'scale(1.05)' }}
-							size={{ base: 'md', md: 'md' }}
+							py={1}
+							size='md'
 							transition='all 0.15s ease-out'
+							verticalAlign='middle'
 						>
 							{tech.icon && (
-								<Image
-									alt={`${tech.name} logo`}
-									h={{ base: '16px', md: '20px' }}
-									pr={1}
-									src={tech.icon}
-									w='auto'
-								/>
+								<chakra.span>
+									<Image
+										alt={`${tech.name} logo`}
+										h={{ base: '16px', md: '18px' }}
+										pr={1}
+										src={tech.icon}
+										w='auto'
+									/>
+								</chakra.span>
 							)}
-							{tech.name}
+							<chakra.span>{tech.name}</chakra.span>
 						</Tag>
 					</Link>
 				)

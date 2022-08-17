@@ -19,9 +19,10 @@ export const ProjectUrls: React.FC<ProjectProps> = ({ project, ...props }) => {
 			{...props}
 		>
 			{project.repository && (
-				<Link isExternal href={project.repository}>
+				<Link isExternal borderRadius='md' href={project.repository}>
 					<IconButton
 						aria-label='GitHub icon'
+						as='div'
 						colorScheme='teal'
 						icon={<GithubOutlineIcon />}
 						size={buttonSize}
@@ -30,9 +31,10 @@ export const ProjectUrls: React.FC<ProjectProps> = ({ project, ...props }) => {
 			)}
 
 			{project.url && (
-				<Link isExternal href={project.url}>
+				<Link isExternal borderRadius='md' href={project.url}>
 					<IconButton
 						aria-label='External link icon'
+						as='div'
 						colorScheme='pink'
 						icon={<ExternalLinkIcon />}
 						size={buttonSize}

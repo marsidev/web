@@ -11,7 +11,7 @@ interface SocialIconProps {
 const SocialIcon: React.FC<SocialIconProps> = ({ href, icon }) => {
 	const onHoverColor = useColorModeValue('pink.600', 'pink.500')
 	return (
-		<Link isExternal _hover={{ color: onHoverColor }} href={href}>
+		<Link isExternal _hover={{ color: onHoverColor }} borderRadius='md' href={href}>
 			{icon}
 		</Link>
 	)
