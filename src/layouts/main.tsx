@@ -1,4 +1,4 @@
-import { Flex, useColorModeValue } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/react'
 import { DefaultSeo } from 'next-seo'
 import { useSuperState } from '@superstate/react'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
@@ -20,23 +20,14 @@ export const Layout: React.FC<LayoutProps> = ({ children, title }) => {
 		easing: 'ease-in-out'
 	})
 
-	const bannersBg = useColorModeValue(
-		'linear(to bottom, teal.500, teal.600)',
-		'linear(to bottom, teal.400, teal.500)'
-	)
-
 	return (
 		<>
 			<DefaultSeo title={title} {...seo} />
 
 			<Navbar minH={['8vh', '10vh']} />
 
-			<Flex ref={bannersParent} bgGradient={bannersBg} flexDir='column'>
-				<Banner
-					bannerId='in-development'
-					bg={bannersBg}
-					message='This site is a work in progress.'
-				/>
+			<Flex ref={bannersParent} flexDir='column'>
+				<Banner bannerId='in-development' message='This site is a work in progress.' />
 			</Flex>
 
 			<Flex

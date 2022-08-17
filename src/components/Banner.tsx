@@ -1,30 +1,19 @@
-import {
-	Flex,
-	type FlexProps,
-	IconButton,
-	useColorModeValue
-} from '@chakra-ui/react'
+import { Flex, type FlexProps, IconButton } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
-import { AiOutlineClose } from 'react-icons/ai'
 import { useLocalStorage } from 'usehooks-ts'
 import { useRendered } from '@marsidev/react-hooks'
+import { CloseIcon } from '~/icons'
 
 interface BannerProps extends FlexProps {
 	message: string
 	bannerId: string
-	bg?: string
 }
 
-export const Banner: React.FC<BannerProps> = ({ message, bannerId, bg }) => {
+export const Banner: React.FC<BannerProps> = ({ message, bannerId }) => {
 	// we have two states to prevent hydration mismatch issue
 	const [hidden_ls, setHidden_ls] = useLocalStorage(`hide__${bannerId}__banner`, false)
 	const [hidden, setHidden] = useState(false)
 	const rendered = useRendered()
-
-	const gradient = useColorModeValue(
-		'linear(to bottom, teal.500, teal.600)',
-		'linear(to bottom, teal.400, teal.500)'
-	)
 
 	useEffect(() => {
 		setHidden(hidden_ls)
@@ -35,7 +24,7 @@ export const Banner: React.FC<BannerProps> = ({ message, bannerId, bg }) => {
 	return (
 		<Flex
 			align='center'
-			bgGradient={bg || gradient}
+			bgGradient='linear(to bottom, pink.500, pink.600)'
 			color='white'
 			fontWeight={[600, 800]}
 			h={12}
@@ -48,8 +37,13 @@ export const Banner: React.FC<BannerProps> = ({ message, bannerId, bg }) => {
 
 			<Flex pos='absolute' pr={2} right={0}>
 				<IconButton
+					_active={{ bg: 'blackAlpha.400' }}
+					_hover={{
+						bg: 'blackAlpha.400'
+					}}
 					aria-label='Close banner'
-					icon={<AiOutlineClose />}
+					icon={<CloseIcon />}
+					transition='all 0.2s ease-out'
 					variant='ghost'
 					onClick={() => setHidden_ls(true)}
 				/>

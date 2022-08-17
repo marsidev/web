@@ -13,3 +13,5 @@ export {
 export { FaLinkedinIn as LinkedInIcon } from 'react-icons/fa'
 
 export { BsMoonFill as MoonIcon, BsSunFill as SunIcon } from 'react-icons/bs'
+
+export { AiOutlineClose as CloseIcon } from 'react-icons/ai'
