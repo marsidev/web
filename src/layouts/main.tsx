@@ -1,8 +1,7 @@
 import { Flex } from '@chakra-ui/react'
 import { DefaultSeo } from 'next-seo'
 import { useSuperState } from '@superstate/react'
-import { useAutoAnimate } from '@formkit/auto-animate/react'
-import { Banner, Navbar } from '~/components'
+import { Banners, Navbar } from '~/components'
 import { MAX_WIDTH } from '~/constants'
 import { mobileMenu } from '~/store'
 import seo from 'next-seo.config'
@@ -15,10 +14,6 @@ interface LayoutProps {
 export const Layout: React.FC<LayoutProps> = ({ children, title }) => {
 	useSuperState(mobileMenu.state)
 	const menuExpanded = mobileMenu.get()
-	const [bannersParent] = useAutoAnimate<HTMLDivElement>({
-		duration: 300,
-		easing: 'ease-in-out'
-	})
 
 	return (
 		<>
@@ -26,9 +21,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, title }) => {
 
 			<Navbar minH={['8vh', '10vh']} />
 
-			<Flex ref={bannersParent} flexDir='column'>
-				<Banner bannerId='in-development' message='This site is a work in progress.' />
-			</Flex>
+			<Banners />
 
 			<Flex
 				as='main'
