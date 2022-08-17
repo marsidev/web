@@ -1,4 +1,4 @@
-import { Flex, type FlexProps, Heading, Text } from '@chakra-ui/react'
+import { Badge, Box, Flex, type FlexProps, Heading, Text } from '@chakra-ui/react'
 import { ProjectTags, ProjectUrls } from '.'
 
 export type ProjectRenderMode = 'even' | 'odd' | 'small-screen' | undefined
@@ -28,6 +28,12 @@ export const ProjectInfo: React.FC<ProjectProps> = ({
 			<Heading as='h4' fontSize='lg'>
 				{p.name}
 			</Heading>
+
+			{p.private && (
+				<Box mt={-2}>
+					<Badge colorScheme='orange'>Private project</Badge>
+				</Box>
+			)}
 
 			<Text fontSize='md' mt={-2}>
 				{p.description}

@@ -1,9 +1,4 @@
-import {
-	Badge,
-	Button,
-	Flex,
-	type FlexProps
-} from '@chakra-ui/react'
+import { Button, Flex, type FlexProps } from '@chakra-ui/react'
 import { Link } from '~/components'
 import { ExternalLinkIcon, GithubOutlineIcon } from '~/icons'
 
@@ -64,8 +59,6 @@ export const ProjectUrls: React.FC<ProjectProps> = ({ project, ...props }) => {
 					</Button>
 				</Link>
 			)}
-
-			{project.private && <Badge colorScheme='orange'>Private project</Badge>}
 		</Flex>
 	)
 }
