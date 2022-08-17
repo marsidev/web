@@ -29,11 +29,13 @@ export const ProjectInfo: React.FC<ProjectProps> = ({
 				{p.name}
 			</Heading>
 
-			<Text fontSize='md'>{p.description}</Text>
-
-			<ProjectTags justify={justify} project={p} />
+			<Text fontSize='md' mt={-2}>
+				{p.description}
+			</Text>
 
 			<ProjectUrls justify={justify} project={p} />
+
+			<ProjectTags justify={justify} project={p} />
 		</Flex>
 	)
 }

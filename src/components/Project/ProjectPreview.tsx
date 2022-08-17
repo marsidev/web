@@ -20,6 +20,7 @@ export const ProjectPreview: React.FC<ProjectProps> = ({
 			borderRadius={16}
 			justify='center'
 			pos='relative'
+			px={2}
 			{...props}
 		>
 			<Hover3D>

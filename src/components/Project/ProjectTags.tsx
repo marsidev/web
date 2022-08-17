@@ -3,6 +3,7 @@ import {
 	type ButtonProps,
 	Flex,
 	type FlexProps,
+	Heading,
 	Image,
 	Tag,
 	chakra,
@@ -50,63 +51,69 @@ export const ProjectTags: React.FC<ProjectProps> = ({ project, ...props }) => {
 	}
 
 	return (
-		<Flex
-			ref={parent}
-			direction='row'
-			flexWrap='wrap'
-			gap={2}
-			justify='flex-start'
-			textAlign='left'
-			{...props}
-		>
-			{project.stack.map((stackItem, stackIndex) => {
-				const tech = TECHNOLOGIES[stackItem]
+		<Flex flexDir='column' gap={2}>
+			<Heading as='h5' fontSize='md' fontWeight='medium'>Technologies</Heading>
 
-				if (maxTagsToShow && stackIndex >= maxTagsToShow && !showAll) {
-					return null
-				}
+			<Flex
+				ref={parent}
+				direction='row'
+				flexWrap='wrap'
+				gap={2}
+				justify='flex-start'
+				textAlign='left'
+				{...props}
+			>
+				{project.stack.map((stackItem, stackIndex) => {
+					const tech = TECHNOLOGIES[stackItem]
 
-				if (!tech) {
+					if (maxTagsToShow && stackIndex >= maxTagsToShow && !showAll) {
+						return null
+					}
+
+					if (!tech) {
+						return (
+							<Tag
+								key={stackItem}
+								_hover={{ transform: 'scale(1.05)' }}
+								borderRadius='md'
+								transition='all 0.15s ease-out'
+								verticalAlign='middle'
+							>
+								{stackItem}
+							</Tag>
+						)
+					}
+
 					return (
-						<Tag
-							key={stackItem}
-							_hover={{ transform: 'scale(1.05)' }}
-							borderRadius='md'
-							transition='all 0.15s ease-out'
-							verticalAlign='middle'
-						>
-							{stackItem}
-						</Tag>
+						<Link key={tech.id} isExternal borderRadius='md' href={tech.url}>
+							<Tag
+								_hover={{ transform: 'scale(1.05)' }}
+								py={1}
+								size='md'
+								transition='all 0.15s ease-out'
+								verticalAlign='middle'
+							>
+								{tech.icon && (
+									<chakra.span>
+										<Image
+											alt={`${tech.name} logo`}
+											h={{ base: '16px', md: '18px' }}
+											pr={1}
+											src={tech.icon}
+											w='auto'
+										/>
+									</chakra.span>
+								)}
+								<chakra.span>{tech.name}</chakra.span>
+							</Tag>
+						</Link>
 					)
-				}
+				})}
 
-				return (
-					<Link key={tech.id} isExternal borderRadius='md' href={tech.url}>
-						<Tag
-							_hover={{ transform: 'scale(1.05)' }}
-							py={1}
-							size='md'
-							transition='all 0.15s ease-out'
-							verticalAlign='middle'
-						>
-							{tech.icon && (
-								<chakra.span>
-									<Image
-										alt={`${tech.name} logo`}
-										h={{ base: '16px', md: '18px' }}
-										pr={1}
-										src={tech.icon}
-										w='auto'
-									/>
-								</chakra.span>
-							)}
-							<chakra.span>{tech.name}</chakra.span>
-						</Tag>
-					</Link>
-				)
-			})}
-
-			{showShowAllBtn && <ShowAll showAll={showAll} onClick={toggleShowAll} />}
+				{showShowAllBtn && (
+					<ShowAll showAll={showAll} onClick={toggleShowAll} />
+				)}
+			</Flex>
 		</Flex>
 	)
 }
