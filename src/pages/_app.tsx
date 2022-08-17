@@ -13,12 +13,12 @@ process.env.NODE_ENV === 'production' && splitbee.init()
 const MyApp: AppType = ({ Component, pageProps, router }) => {
 	usePanelbear('IO32G8weAys')
 	return (
-		<ChakraProvider theme={theme}>
-			<AnimatePresence exitBeforeEnter>
+		<AnimatePresence mode='wait'>
+			<ChakraProvider theme={theme}>
 				<Component {...pageProps} key={router.pathname} />
 				<ScrollToTop />
-			</AnimatePresence>
-		</ChakraProvider>
+			</ChakraProvider>
+		</AnimatePresence>
 	)
 }
 
