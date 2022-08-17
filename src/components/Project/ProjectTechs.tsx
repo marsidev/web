@@ -13,6 +13,7 @@ import { useState } from 'react'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { TECHNOLOGIES } from '~/constants'
 import { Link } from '~/components'
+import { capitalize } from '~/utils'
 
 interface ProjectProps extends FlexProps {
 	project: Project
@@ -79,7 +80,7 @@ export const ProjectTechs: React.FC<ProjectProps> = ({ project, ...props }) => {
 								transition='all 0.15s ease-out'
 								verticalAlign='middle'
 							>
-								{stackItem}
+								{capitalize(stackItem)}
 							</Tag>
 						)
 					}
