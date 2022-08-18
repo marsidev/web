@@ -17,6 +17,7 @@ interface Project {
 	}
 	private?: boolean
 	challenge?: boolean
+	notFinished?: boolean
 }
 
 interface Technology {

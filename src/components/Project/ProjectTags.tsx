@@ -5,7 +5,7 @@ interface ProjectProps extends StackProps {
 }
 
 export const ProjectTags: React.FC<ProjectProps> = ({ project: p, ...props }) => {
-	const thereIsTags = !!p.private || !!p.challenge
+	const thereIsTags = !!p.private || !!p.challenge || !!p.notFinished
 
 	if (!thereIsTags) return null
 
@@ -14,6 +14,8 @@ export const ProjectTags: React.FC<ProjectProps> = ({ project: p, ...props }) =>
 			{p.private && <Badge colorScheme='orange'>Private</Badge>}
 
 			{p.challenge && <Badge colorScheme='twitter'>Challenge</Badge>}
+
+			{p.notFinished && <Badge colorScheme='pink'>Not finished</Badge>}
 		</Stack>
 	)
 }

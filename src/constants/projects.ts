@@ -35,7 +35,8 @@ export const PROJECTS: Project[] = [
 			end: '2022-05-19'
 		},
 		private: false,
-		challenge: false
+		challenge: false,
+		notFinished: true
 	},
 	{
 		id: 'axie-hub',
