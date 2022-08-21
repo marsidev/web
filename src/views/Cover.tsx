@@ -1,7 +1,7 @@
 import { Stack } from '@chakra-ui/react'
 import { Avatar, NameAndTitle, SocialLinks } from '~/components'
 
-export const Me = () => {
+export const Cover = () => {
 	return (
 		<Stack
 			align='center'
@@ -21,4 +21,4 @@ export const Me = () => {
 	)
 }
 
-export default Me
+export default Cover

@@ -1,2 +1,2 @@
-export * from './Me'
+export * from './Cover'
 export * from './Projects'
