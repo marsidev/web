@@ -7,7 +7,7 @@ export const NameAndTitle = () => {
 				as='h1'
 				fontSize={{ base: '2xl', sm: '3xl', md: '4xl', lg: '5xl' }}
 			>
-				{"Hi, I'm "}
+				{'Hi, I\'m '}
 				<chakra.span>{'Luis Marsiglia'}</chakra.span>
 				<chakra.span className='hand'>👋</chakra.span>
 			</Heading>
