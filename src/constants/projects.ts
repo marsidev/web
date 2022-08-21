@@ -3,7 +3,7 @@ export const PROJECTS: Project[] = [
 		id: 'overnote',
 		name: 'Overnote',
 		description:
-			'Overnote is a simple notes app. It allows you to create, edit, customize and delete notes. Inspired by Google Keep.',
+			'Overnote is a notes app. It allows you to create, edit, customize and delete notes. Inspired by Google Keep.',
 		url: 'https://overnote.herokuapp.com',
 		repository: 'https://github.com/marsidev/overnote',
 		stack: ['react', 'chakra-ui', 'express', 'mongodb', 'jwt'],
@@ -42,7 +42,7 @@ export const PROJECTS: Project[] = [
 		id: 'axie-hub',
 		name: 'AxieHub',
 		description:
-			'Axie Infinity cards explorer for Classic and Origin game modes. Originally created as an entry for Origin Education Challenge.',
+			'Axie Infinity cards explorer for Classic and Origin game modes. Created as an entry for a 20-day challenge.',
 		url: 'https://axiehub.vercel.app/',
 		repository: 'https://github.com/marsidev/axiehub',
 		stack: ['react', 'nextjs', 'chakra-ui'],
@@ -61,7 +61,7 @@ export const PROJECTS: Project[] = [
 		id: 'climatic',
 		name: 'Climatic',
 		description:
-			'Climatic is an app which shows the current weather data and weather forecast for next 7 days. Created to participate in a 14-days hackathon.',
+			'Climatic is an app that shows the current weather data and weather forecast for the next 7 days. Created to participate in a 14-day hackathon.',
 		url: 'https://climatic.onrender.com',
 		repository: 'https://github.com/marsidev/climatic',
 		stack: [
@@ -92,7 +92,7 @@ export const PROJECTS: Project[] = [
 		id: 'bubble',
 		name: 'Bubble',
 		description:
-			'Live and secure chat, inspired by WhatsApp. Powered by Twilio Conversations API. Created to participate in a 20-days hackathon.',
+			'Live and secure chat, inspired by WhatsApp. Powered by Twilio Conversations API. Created to participate in a 20-day hackathon.',
 		url: 'https://bubble-marsiglia.vercel.app/',
 		repository: 'https://github.com/marsidev/bubble',
 		stack: [
@@ -122,7 +122,7 @@ export const PROJECTS: Project[] = [
 		id: 'royaleapp',
 		name: 'Royale App',
 		description:
-			'RoyaleApp is a Clash Royale\'s fan site where you can find tools such player battlelogs, player duels, player decks, duels combo builder, tournaments ranking, top ladder ranking, decks matchups, and more. Focused on competitive battles.',
+			'RoyaleApp is a Clash Royale fan site where you can find tools such as player battle logs, player duels, player decks, duels combo builder, tournaments ranking, top ladder ranking, decks matchups, and more. Focused on competitive battles.',
 		stack: [
 			'react',
 			'nextjs',
