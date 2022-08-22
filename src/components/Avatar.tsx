@@ -19,7 +19,7 @@ export const Avatar = () => {
 				borderRadius='full'
 				filter='brightness(0.90)'
 				loading='lazy'
-				src='/images/avatar.png'
+				src='/images/avatar.webp'
 			/>
 		</Box>
 	)

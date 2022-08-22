@@ -8,8 +8,8 @@ export const PROJECTS: Project[] = [
 		repository: 'https://github.com/marsidev/overnote',
 		stack: ['react', 'chakra-ui', 'express', 'mongodb', 'jwt'],
 		images: {
-			mobile: '/images/projects/overnote-mobile.png',
-			desktop: '/images/projects/overnote-desktop.png'
+			mobile: '/images/projects/overnote-mobile.webp',
+			desktop: '/images/projects/overnote-desktop.webp'
 		},
 		devTime: {
 			start: '2022-01-04',
@@ -27,8 +27,8 @@ export const PROJECTS: Project[] = [
 		repository: 'https://github.com/marsidev/wordly',
 		stack: ['react', 'nextjs', 'chakra-ui', 'zustand'],
 		images: {
-			mobile: '/images/projects/wordly-mobile.png',
-			desktop: '/images/projects/wordly-desktop.png'
+			mobile: '/images/projects/wordly-mobile.webp',
+			desktop: '/images/projects/wordly-desktop.webp'
 		},
 		devTime: {
 			start: '2022-03-28',
@@ -47,8 +47,8 @@ export const PROJECTS: Project[] = [
 		repository: 'https://github.com/marsidev/axiehub',
 		stack: ['react', 'nextjs', 'chakra-ui'],
 		images: {
-			mobile: '/images/projects/axiehub-mobile.png',
-			desktop: '/images/projects/axiehub-desktop.png'
+			mobile: '/images/projects/axiehub-mobile.webp',
+			desktop: '/images/projects/axiehub-desktop.webp'
 		},
 		devTime: {
 			start: '2022-04-16',
@@ -78,8 +78,8 @@ export const PROJECTS: Project[] = [
 			'rtl'
 		],
 		images: {
-			mobile: '/images/projects/climatic-mobile.png',
-			desktop: '/images/projects/climatic-desktop.png'
+			mobile: '/images/projects/climatic-mobile.webp',
+			desktop: '/images/projects/climatic-desktop.webp'
 		},
 		devTime: {
 			start: '2022-05-22',
@@ -108,8 +108,8 @@ export const PROJECTS: Project[] = [
 			'next-auth'
 		],
 		images: {
-			mobile: '/images/projects/bubble-mobile.png',
-			desktop: '/images/projects/bubble-desktop.png'
+			mobile: '/images/projects/bubble-mobile.webp',
+			desktop: '/images/projects/bubble-desktop.webp'
 		},
 		devTime: {
 			start: '2022-07-12',
@@ -134,8 +134,8 @@ export const PROJECTS: Project[] = [
 			'clash-royale-api'
 		],
 		images: {
-			mobile: '/images/projects/royaleapp-mobile.png',
-			desktop: '/images/projects/royaleapp-desktop.png'
+			mobile: '/images/projects/royaleapp-mobile.webp',
+			desktop: '/images/projects/royaleapp-desktop.webp'
 		},
 		devTime: {
 			start: '2022-02-05',

@@ -33,7 +33,7 @@ export const TECHNOLOGIES: Technologies = {
 		id: 'zustand',
 		name: 'Zustand',
 		url: 'https://github.com/pmndrs/zustand',
-		icon: '/images/logos/zustand.png'
+		icon: '/images/logos/zustand.webp'
 	},
 	typescript: {
 		id: 'typescript',
@@ -177,7 +177,7 @@ export const TECHNOLOGIES: Technologies = {
 		id: 'next-auth',
 		name: 'NextAuth.js',
 		url: 'https://next-auth.js.org',
-		icon: '/images/logos/next-auth.png'
+		icon: '/images/logos/next-auth.webp'
 	},
 	'clash-royale-api': {
 		id: 'clash-royale-api',
