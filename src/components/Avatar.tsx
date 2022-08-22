@@ -1,4 +1,5 @@
-import { Box, Image, useColorModeValue } from '@chakra-ui/react'
+import { Flex, useColorModeValue } from '@chakra-ui/react'
+import { Image } from '~/components'
 
 export const Avatar = () => {
 	const gradient = useColorModeValue(
@@ -7,20 +8,25 @@ export const Avatar = () => {
 	)
 
 	return (
-		<Box
+		<Flex
+			align='center'
 			bgGradient={gradient}
 			borderRadius='full'
 			boxShadow='2xl'
 			p={2}
+			pos='relative'
 			w={{ base: 40, md: 56 }}
 		>
 			<Image
 				alt='Luis Marsiglia'
+				bg='green.300'
 				borderRadius='full'
+				dimensions={[240, 240]}
 				filter='brightness(0.90)'
 				loading='lazy'
+				objectFit='fill'
 				src='/images/avatar.webp'
 			/>
-		</Box>
+		</Flex>
 	)
 }
