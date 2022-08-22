@@ -1,6 +1,7 @@
 {
-	"name": "marsi",
-	"description": "Personal portfolio website.",
+	"name": "@marsidev/web",
+	"description": "Personal portfolio website of Luis Marsiglia.",
+	"author": "Luis Marsiglia <marsiglia.business@gmail.com>",
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
@@ -48,7 +49,6 @@
 		"@types/react-dom": "18.0.6",
 		"@typescript-eslint/eslint-plugin": "5.33.1",
 		"@typescript-eslint/parser": "5.33.1",
-		"cz-conventional-changelog": "3.3.0",
 		"eslint": "8.22.0",
 		"eslint-config-marsi": "1.1.1",
 		"eslint-config-next": "12.2.5",
@@ -81,5 +81,10 @@
 		"@formkit/auto-animate": {
 			"react": "$react"
 		}
-	}
+	},
+	"keywords": [
+		"portfolio",
+		"website",
+		"react"
+	]
 }
