@@ -99,6 +99,7 @@ export const ProjectTechs: React.FC<ProjectProps> = ({ project, ...props }) => {
 										<Image
 											alt={`${tech.name} logo`}
 											h={{ base: '16px', md: '18px' }}
+											loading='lazy'
 											pr={1}
 											src={tech.icon}
 											w='auto'

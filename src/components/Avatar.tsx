@@ -18,6 +18,7 @@ export const Avatar = () => {
 				alt='Luis Marsiglia'
 				borderRadius='full'
 				filter='brightness(0.90)'
+				loading='lazy'
 				src='/images/avatar.png'
 			/>
 		</Box>

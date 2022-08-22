@@ -29,6 +29,7 @@ export const ProjectPreview: React.FC<ProjectProps> = ({
 					data-atropos-offset='8'
 					height='auto'
 					left='5%'
+					loading='lazy'
 					maxW={{ base: '6em', sm: '8em', md: '8em', lg: '9em' }}
 					objectFit='contain'
 					pos='absolute'
@@ -41,6 +42,7 @@ export const ProjectPreview: React.FC<ProjectProps> = ({
 				<Image
 					alt={`${p.name} desktop preview`}
 					height='auto'
+					loading='lazy'
 					maxW='lg'
 					objectFit='contain'
 					pos='relative'
