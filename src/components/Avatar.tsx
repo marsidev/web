@@ -19,10 +19,8 @@ export const Avatar = () => {
 		>
 			<Image
 				alt='Luis Marsiglia'
-				bg='green.300'
 				borderRadius='full'
 				dimensions={[240, 240]}
-				filter='brightness(0.90)'
 				loading='lazy'
 				objectFit='fill'
 				src='/images/avatar.webp'
