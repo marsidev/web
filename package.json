@@ -73,7 +73,8 @@
 				"@superstate/core": "0.1.0"
 			},
 			"ignoreMissing": [
-				"webpack"
+				"webpack",
+				"@mdx-js/react"
 			]
 		}
 	},
