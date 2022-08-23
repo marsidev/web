@@ -1,5 +1,11 @@
-import { Flex, type FlexProps, Image, useColorModeValue } from '@chakra-ui/react'
-import { Hover3D } from '~/components'
+import {
+	Flex,
+	type FlexProps,
+	Image,
+	useBreakpointValue,
+	useColorModeValue
+} from '@chakra-ui/react'
+import { Atropos } from 'atropos/react'
 
 interface ProjectProps extends FlexProps {
 	project: Project
@@ -11,47 +17,44 @@ export const ProjectPreview: React.FC<ProjectProps> = ({
 }) => {
 	const bg = useColorModeValue('gray.100', 'gray.700')
 	const borderColor = useColorModeValue('gray.200', 'gray.600')
+	const previewPadding = useBreakpointValue({ base: '1em', sm: '1.6em', md: '2em' })
 
 	return (
 		<Flex
 			bg={bg}
 			border='1px solid'
 			borderColor={borderColor}
-			borderRadius={16}
+			borderRadius={{ base: 8, md: 16 }}
 			justify='center'
 			pos='relative'
-			px={2}
 			{...props}
 		>
-			<Hover3D>
+			<Atropos
+				className='project-preview'
+				rotateTouch='scroll-y'
+				rotateXMax={24}
+				rotateYMax={24}
+				shadow={false}
+			>
 				<Image
-					alt={`${p.name} mobile preview`}
-					data-atropos-offset='8'
-					height='auto'
-					left='5%'
+					alt={`${p.name} desktop preview`}
+					className='project-preview-desktop'
+					data-atropos-offset='-4'
 					loading='lazy'
-					maxW={{ base: '6em', sm: '8em', md: '8em', lg: '9em' }}
-					objectFit='contain'
-					pos='absolute'
-					src={p.images!.mobile}
-					top='10%'
-					width='full'
-					zIndex={2}
+					src={p.images!.desktop}
+					style={{
+						padding: previewPadding
+					}}
 				/>
 
 				<Image
-					alt={`${p.name} desktop preview`}
-					height='auto'
+					alt={`${p.name} mobile preview`}
+					className='project-preview-mobile'
+					data-atropos-offset='8'
 					loading='lazy'
-					maxW='lg'
-					objectFit='contain'
-					pos='relative'
-					py={8}
-					src={p.images!.desktop}
-					width='full'
-					zIndex={1}
+					src={p.images!.mobile}
 				/>
-			</Hover3D>
+			</Atropos>
 		</Flex>
 	)
 }
