@@ -1,5 +1,10 @@
-import { Flex, useColorModeValue } from '@chakra-ui/react'
+import { Flex, useBreakpointValue, useColorModeValue } from '@chakra-ui/react'
+import { useMemo } from 'react'
 import { Image } from '~/components'
+
+const unitToPx = (units: number) => {
+	return units * 4
+}
 
 export const Avatar = () => {
 	const gradient = useColorModeValue(
@@ -7,20 +12,32 @@ export const Avatar = () => {
 		'linear(to bottom right, red.400, pink.500)'
 	)
 
+	const containerWidth = useBreakpointValue(
+		{ base: 48, md: 56 },
+		{ fallback: 'md' }
+	)
+
+	const containerPadding = 2
+	const avatarSize = useMemo(() => {
+		return unitToPx(containerWidth!) - 2 * unitToPx(containerPadding)
+	}, [containerWidth])
+
 	return (
 		<Flex
 			align='center'
 			bgGradient={gradient}
 			borderRadius='full'
 			boxShadow='2xl'
-			p={2}
+			p={containerPadding}
 			pos='relative'
-			w={{ base: 40, md: 56 }}
+			w={containerWidth}
 		>
 			<Image
 				alt='Luis Marsiglia'
 				borderRadius='full'
-				dimensions={[240, 240]}
+				className='avatar'
+				dimensions={[avatarSize, avatarSize]}
+				layout='fixed'
 				loading='eager'
 				objectFit='fill'
 				priority={true}
