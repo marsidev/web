@@ -24,7 +24,7 @@ const App: NextPage<AppProps> = ({ aboutSource }) => {
 }
 
 export const getStaticProps = async () => {
-	const source = loadFile('src/content/about-me.md')
+	const source = loadFile('src/content/about-me.mdx')
 	const mdxSource = await serialize(source)
 
 	return {
