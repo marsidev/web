@@ -21,8 +21,9 @@ export const Avatar = () => {
 				alt='Luis Marsiglia'
 				borderRadius='full'
 				dimensions={[240, 240]}
-				loading='lazy'
+				loading='eager'
 				objectFit='fill'
+				priority={true}
 				src='/images/avatar.webp'
 			/>
 		</Flex>
