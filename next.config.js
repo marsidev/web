@@ -12,7 +12,12 @@ const nextConfig = {
 	compiler: {
 		removeConsole: process.env.NODE_ENV === 'production'
 	},
-	pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx']
+	pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+	i18n: {
+		locales: ['en', 'es'],
+		defaultLocale: 'en',
+		localeDetection: false
+	}
 }
 
 module.exports = withMDX(nextConfig)
