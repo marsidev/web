@@ -5,13 +5,26 @@ import { AnimatePresence } from 'framer-motion'
 import { ChakraProvider } from '@chakra-ui/react'
 import splitbee from '@splitbee/web'
 import { usePanelbear } from '@panelbear/panelbear-nextjs'
+import { useEffect } from 'react'
 import { theme } from '~/theme'
 import { ScrollToTop } from '~/components'
 
-process.env.NODE_ENV === 'production' && splitbee.init()
-
 const MyApp: AppType = ({ Component, pageProps, router }) => {
-	usePanelbear('IO32G8weAys')
+	usePanelbear(process.env.PANELBEAR_ID || '', {
+		scriptSrc: '/bear.js',
+		analyticsHost: '_bear',
+		enabled: process.env.NODE_ENV === 'production'
+	})
+
+	useEffect(() => {
+		if (process.env.NODE_ENV === 'production') {
+			splitbee.init({
+				scriptUrl: '/bee.js',
+				apiUrl: '/_hive'
+			})
+		}
+	}, [])
+
 	return (
 		<AnimatePresence mode='wait'>
 			<ChakraProvider theme={theme}>
