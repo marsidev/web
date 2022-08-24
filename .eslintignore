@@ -2,3 +2,4 @@
 /.next/
 /out/
 /build
+**/*.mdx

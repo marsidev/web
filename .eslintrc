@@ -1,11 +1,7 @@
 {
-  "extends": [
-    "next",
-    "prettier",
-    "marsi/react-ts"
-  ],
-  "rules": {
+	"extends": ["next", "prettier", "marsi/react-ts"],
+	"rules": {
 		"react-hooks/exhaustive-deps": "off",
 		"@typescript-eslint/no-non-null-assertion": "off"
-  }
+	}
 }
