@@ -6,6 +6,13 @@ const withMDX = require('@next/mdx')({
 	}
 })
 
+const withPWA = require('next-pwa')({
+	disable: process.env.NODE_ENV !== 'production',
+	dest: 'public',
+	runtimeCaching,
+	buildExcludes: [/middleware-manifest.json$/]
+})
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: true,
@@ -20,4 +27,4 @@ const nextConfig = {
 	}
 }
 
-module.exports = withMDX(nextConfig)
+module.exports = withPWA(withMDX(nextConfig))
