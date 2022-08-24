@@ -75,7 +75,7 @@ const seo = {
 		},
 		{
 			rel: 'manifest',
-			href: '/site.webmanifest'
+			href: '/manifest.json'
 		}
 	]
 }
