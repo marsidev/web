@@ -40,11 +40,12 @@ const rewrites = async () => [
 
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' 'unsafe-eval' https://cdn.panelbear.com/analytics.js https://cdn.splitbee.io/sb.js;
+  script-src 'self' marsidev.xyz https://marsidev.xyz 'unsafe-eval' https://cdn.panelbear.com/analytics.js https://cdn.splitbee.io/sb.js;
 	child-src marsidev.xyz https://marsidev.xyz;
   connect-src marsidev.xyz https://marsidev.xyz api.panelbear.com hive.splitbee.io;
-  style-src 'self' 'unsafe-inline';
-  font-src 'self';
+  style-src 'self' 'unsafe-inline' marsidev.xyz https://marsidev.xyz;
+  font-src 'self' marsidev.xyz https://marsidev.xyz;
+	img-src 'self' marsidev.xyz https://marsidev.xyz;
 `
 
 const securityHeaders = [
@@ -61,7 +62,7 @@ const securityHeaders = [
 		value: 'nosniff'
 	},
 	{
-		key: 'Content-Security-Policy',
+		key: 'Content-Security-Policy-Report-Only',
 		value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim()
 	}
 ]
