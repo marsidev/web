@@ -2,6 +2,8 @@ import mdx from '@next/mdx'
 import pwa from 'next-pwa'
 import runtimeCaching from 'next-pwa/cache.js'
 
+const IS_PROD = process.env.NODE_ENV === 'production'
+
 const withMDX = mdx({
 	extension: /\.mdx?$/,
 	options: {
@@ -11,7 +13,7 @@ const withMDX = mdx({
 })
 
 const withPWA = pwa({
-	disable: process.env.NODE_ENV !== 'production',
+	disable: !IS_PROD,
 	dest: 'public',
 	runtimeCaching,
 	buildExcludes: [/middleware-manifest.json$/]
@@ -38,7 +40,7 @@ const rewrites = async () => [
 
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'nonce-*' 'strict-dynamic' https://cdn.panelbear.com/analytics.js https://cdn.splitbee.io/sb.js;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' 'unsafe-eval' https://cdn.panelbear.com/analytics.js https://cdn.splitbee.io/sb.js;
 	child-src marsidev.xyz https://marsidev.xyz;
   connect-src marsidev.xyz https://marsidev.xyz api.panelbear.com hive.splitbee.io;
   style-src 'self' 'unsafe-inline';
@@ -65,9 +67,7 @@ const securityHeaders = [
 ]
 
 const headers = async () => {
-	if (process.env.NODE_ENV !== 'production') {
-		return []
-	}
+	if (!IS_PROD) return []
 
 	return [
 		{
@@ -81,12 +81,12 @@ const headers = async () => {
 const nextConfig = {
 	reactStrictMode: true,
 	compiler: {
-		removeConsole: process.env.NODE_ENV === 'production'
+		removeConsole: IS_PROD
 	},
 	pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
 	rewrites,
 	headers,
-	publicRuntimeConfig: {
+	env: {
 		PANELBEAR_ID: process.env.PANELBEAR_ID
 	}
 }
