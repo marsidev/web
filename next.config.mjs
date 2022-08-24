@@ -50,10 +50,6 @@ const ContentSecurityPolicy = `
 
 const securityHeaders = [
 	{
-		key: 'X-XSS-PROTECTION',
-		value: '1; mode=block'
-	},
-	{
 		key: 'X-Frame-Options',
 		value: 'SAMEORIGIN'
 	},
