@@ -50,28 +50,28 @@ const seo = {
 		{
 			rel: 'icon',
 			type: 'image/x-icon',
-			href: '/favicon.ico'
+			href: '/favicon.ico?v=2'
 		},
 		{
 			rel: 'shortcut icon',
 			type: 'image/x-icon',
-			href: '/favicon.ico'
+			href: '/favicon.ico?v=2'
 		},
 		{
 			rel: 'icon',
 			type: 'image/png',
-			href: '/favicon-16x16.png',
+			href: '/favicon-16x16.png?v=2',
 			sizes: '16x16'
 		},
 		{
 			rel: 'icon',
 			type: 'image/png',
-			href: '/favicon-32x32.png',
+			href: '/favicon-32x32.png?v=2',
 			sizes: '32x32'
 		},
 		{
 			rel: 'apple-touch-icon',
-			href: '/apple-touch-icon.png'
+			href: '/apple-touch-icon.png?v=2'
 		},
 		{
 			rel: 'manifest',
