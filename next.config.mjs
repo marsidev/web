@@ -1,4 +1,8 @@
-const withMDX = require('@next/mdx')({
+import mdx from '@next/mdx'
+import pwa from 'next-pwa'
+import runtimeCaching from 'next-pwa/cache.js'
+
+const withMDX = mdx({
 	extension: /\.mdx?$/,
 	options: {
 		remarkPlugins: [],
@@ -6,7 +10,7 @@ const withMDX = require('@next/mdx')({
 	}
 })
 
-const withPWA = require('next-pwa')({
+const withPWA = pwa({
 	disable: process.env.NODE_ENV !== 'production',
 	dest: 'public',
 	runtimeCaching,
@@ -27,4 +31,4 @@ const nextConfig = {
 	}
 }
 
-module.exports = withPWA(withMDX(nextConfig))
+export default withPWA(withMDX(nextConfig))

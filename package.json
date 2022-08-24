@@ -88,5 +88,6 @@
 		"portfolio",
 		"website",
 		"react"
-	]
+	],
+	"type": "module"
 }
