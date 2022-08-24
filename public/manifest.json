@@ -1,6 +1,5 @@
 {
 	"name": "Luis Marsiglia Portfolio",
-	"app_name": "Luis Marsiglia Portfolio",
 	"short_name": "Marsidev",
 	"description": "Personal website of Luis Marsiglia, a Full Stack Developer and Data Analyst.",
 	"icons": [
@@ -13,6 +12,12 @@
 		{
 			"src": "/favicon-32x32.png",
 			"sizes": "32x32",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "/maskable_icon_x144.png",
+			"sizes": "144x144",
 			"type": "image/png",
 			"purpose": "any"
 		},
