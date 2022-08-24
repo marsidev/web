@@ -9,7 +9,7 @@ class Document extends NextDocument {
 
 	render() {
 		return (
-			<Html>
+			<Html lang='en'>
 				<Head />
 				<body>
 					<ColorModeScript initialColorMode={config.initialColorMode} />

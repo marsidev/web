@@ -23,12 +23,7 @@ const nextConfig = {
 	compiler: {
 		removeConsole: process.env.NODE_ENV === 'production'
 	},
-	pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-	i18n: {
-		locales: ['en', 'es'],
-		defaultLocale: 'en',
-		localeDetection: false
-	}
+	pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx']
 }
 
 export default withPWA(withMDX(nextConfig))
