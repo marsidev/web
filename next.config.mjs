@@ -40,7 +40,7 @@ const rewrites = async () => [
 
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' marsidev.xyz https://marsidev.xyz 'unsafe-eval' https://cdn.panelbear.com/analytics.js https://cdn.splitbee.io/sb.js;
+  script-src 'self' marsidev.xyz https://marsidev.xyz https://cdn.panelbear.com/analytics.js https://cdn.splitbee.io/sb.js;
 	child-src marsidev.xyz https://marsidev.xyz;
   connect-src marsidev.xyz https://marsidev.xyz api.panelbear.com hive.splitbee.io;
   style-src 'self' 'unsafe-inline' marsidev.xyz https://marsidev.xyz;
