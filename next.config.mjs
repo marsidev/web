@@ -40,12 +40,11 @@ const rewrites = async () => [
 
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-inline' marsidev.xyz https://marsidev.xyz https://www.marsidev.xyz;
-	child-src marsidev.xyz https://marsidev.xyz https://www.marsidev.xyz;
-  connect-src marsidev.xyz https://marsidev.xyz https://www.marsidev.xyz;
-  style-src 'self' 'unsafe-inline' marsidev.xyz https://marsidev.xyz https://www.marsidev.xyz;
-  font-src 'self' marsidev.xyz https://marsidev.xyz https://www.marsidev.xyz;
-	img-src 'self' marsidev.xyz https://marsidev.xyz https://www.marsidev.xyz;
+  script-src 'self' 'unsafe-inline' 'unsafe-eval';
+	connect-src marsidev.xyz https://marsidev.xyz https://www.marsidev.xyz https://www.marsidev.xyz/ https://vitals.vercel-insights.com;
+  style-src 'self';
+  font-src 'self';
+	img-src 'self';
 `
 
 const securityHeaders = [
