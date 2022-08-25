@@ -41,7 +41,7 @@ const rewrites = async () => [
 const ContentSecurityPolicy = `
   default-src 'self';
   script-src 'self' 'unsafe-inline' 'unsafe-eval';
-	connect-src marsidev.xyz https://marsidev.xyz https://www.marsidev.xyz https://www.marsidev.xyz/ https://vitals.vercel-insights.com;
+	connect-src 'self' https://vitals.vercel-insights.com;
   style-src 'self';
   font-src 'self';
 	img-src 'self';
