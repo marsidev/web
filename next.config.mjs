@@ -42,7 +42,7 @@ const ContentSecurityPolicy = `
   default-src 'self';
   script-src 'self' 'unsafe-inline' 'unsafe-eval';
 	connect-src 'self' https://vitals.vercel-insights.com;
-  style-src 'self';
+  style-src 'self' 'unsafe-inline';
   font-src 'self';
 	img-src 'self';
 `
