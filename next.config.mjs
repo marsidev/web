@@ -81,8 +81,8 @@ const nextConfig = {
 		removeConsole: IS_PROD
 	},
 	pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-	// rewrites,
-	// headers,
+	rewrites,
+	headers,
 	env: {
 		PANELBEAR_ID: process.env.PANELBEAR_ID
 	}
