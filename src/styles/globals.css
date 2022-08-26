@@ -60,9 +60,8 @@
 .project-preview img.project-preview-mobile {
 	position: absolute;
   left: 8%;
-  top: 0;
+  top: 8%;
   width: 25%;
 	/* aspect-ratio: 473∶958; */
-  height: 100%;
 	z-index: 999 !important;
 }
