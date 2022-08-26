@@ -46,10 +46,12 @@ export const Avatar = () => {
 			>
 				<CloudinaryImage
 					alt='Luis Marsiglia'
+					brightness={5}
+					deliveryQuality={100}
 					height={avatarSize}
 					loading='eager'
 					placeholderPlugin={true}
-					publicId='marsidev/images/avatar.webp'
+					publicId='marsidev/images/avatar.png'
 					radius='full'
 					width={avatarSize}
 					onLoad={() => setLoaded(true)}
