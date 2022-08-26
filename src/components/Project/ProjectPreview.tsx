@@ -1,11 +1,12 @@
 import {
 	Flex,
 	type FlexProps,
-	Image,
 	useBreakpointValue,
 	useColorModeValue
 } from '@chakra-ui/react'
 import { Atropos } from 'atropos/react'
+import { Project } from '~/types'
+import { CloudinaryImage } from '~/components'
 
 interface ProjectProps extends FlexProps {
 	project: Project
@@ -36,23 +37,25 @@ export const ProjectPreview: React.FC<ProjectProps> = ({
 				rotateYMax={24}
 				shadow={false}
 			>
-				<Image
+				<CloudinaryImage
 					alt={`${p.name} desktop preview`}
 					className='project-preview-desktop'
 					data-atropos-offset='-4'
-					loading='lazy'
-					src={p.images!.desktop}
+					lazyLoadPlugin={true}
+					placeholderPlugin={true}
+					publicId={`marsidev${p.images!.desktop}`}
 					style={{
 						padding: previewPadding
 					}}
 				/>
 
-				<Image
+				<CloudinaryImage
 					alt={`${p.name} mobile preview`}
 					className='project-preview-mobile'
 					data-atropos-offset='8'
-					loading='lazy'
-					src={p.images!.mobile}
+					lazyLoadPlugin={true}
+					placeholderPlugin={true}
+					publicId={`marsidev${p.images!.mobile}`}
 				/>
 			</Atropos>
 		</Flex>

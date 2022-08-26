@@ -1,6 +1,7 @@
 import { Button, Flex, type FlexProps } from '@chakra-ui/react'
 import { Link } from '~/components'
 import { ExternalLinkIcon, GithubOutlineIcon } from '~/icons'
+import { Project } from '~/types'
 
 interface ProjectProps extends FlexProps {
 	project: Project

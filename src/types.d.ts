@@ -1,6 +1,6 @@
 type Merge<P, T> = Omit<P, keyof T> & T
 
-interface Project {
+export interface Project {
 	id: string
 	name: string
 	description: string
@@ -30,3 +30,9 @@ interface Technology {
 interface Technologies {
 	[key: string]: Technology
 }
+
+type Enumerate<N extends number, Acc extends number[] = []> = Acc['length'] extends N
+	? Acc[number]
+	: Enumerate<N, [...Acc, Acc['length']]>
+
+export type Range<F extends number, T extends number> = Exclude<Enumerate<T>, Enumerate<F>>

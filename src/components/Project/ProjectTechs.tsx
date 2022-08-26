@@ -14,6 +14,7 @@ import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { TECHNOLOGIES } from '~/constants'
 import { Link } from '~/components'
 import { capitalize } from '~/utils'
+import { Project } from '~/types'
 
 interface ProjectProps extends FlexProps {
 	project: Project

@@ -1,6 +1,11 @@
-import { Flex, useBreakpointValue, useColorModeValue } from '@chakra-ui/react'
-import { useMemo } from 'react'
-import { Image } from '~/components'
+import {
+	Box,
+	Skeleton,
+	useBreakpointValue,
+	useColorModeValue
+} from '@chakra-ui/react'
+import { useMemo, useState } from 'react'
+import { CloudinaryImage } from '~/components'
 
 const unitToPx = (units: number) => {
 	return units * 4
@@ -12,6 +17,7 @@ export const Avatar = () => {
 		'linear(to bottom right, red.400, pink.500)'
 	)
 
+	const [loaded, setLoaded] = useState<boolean>(false)
 	const containerWidth = useBreakpointValue(
 		{ base: 48, md: 56 },
 		{ fallback: 'md' }
@@ -20,29 +26,35 @@ export const Avatar = () => {
 	const containerPadding = 2
 	const avatarSize = useMemo(() => {
 		return unitToPx(containerWidth!) - 2 * unitToPx(containerPadding)
-	}, [containerWidth])
+	}, [containerWidth, containerPadding])
 
 	return (
-		<Flex
-			align='center'
-			bgGradient={gradient}
+		<Box
+			bgGradient={loaded ? gradient : undefined}
 			borderRadius='full'
 			boxShadow='2xl'
 			p={containerPadding}
 			pos='relative'
 			w={containerWidth}
 		>
-			<Image
-				alt='Luis Marsiglia'
+			<Skeleton
 				borderRadius='full'
-				className='avatar'
-				dimensions={[avatarSize, avatarSize]}
-				layout='fixed'
-				loading='eager'
-				objectFit='fill'
-				priority={true}
-				src='/images/avatar.webp'
-			/>
-		</Flex>
+				fadeDuration={1}
+				height={avatarSize}
+				isLoaded={loaded}
+				width={avatarSize}
+			>
+				<CloudinaryImage
+					alt='Luis Marsiglia'
+					height={avatarSize}
+					loading='eager'
+					placeholderPlugin={true}
+					publicId='marsidev/images/avatar.webp'
+					radius='full'
+					width={avatarSize}
+					onLoad={() => setLoaded(true)}
+				/>
+			</Skeleton>
+		</Box>
 	)
 }
