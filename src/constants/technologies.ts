@@ -1,3 +1,5 @@
+import type { Technologies } from '~/types'
+
 export const TECHNOLOGIES: Technologies = {
 	react: {
 		id: 'react',

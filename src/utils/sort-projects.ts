@@ -1,3 +1,5 @@
+import type { Project } from '~/types'
+
 export const sortProjects = (p: Project[]) => {
 	return p.sort((a, b) => {
 		const d1 = new Date(a.devTime.start).getTime()

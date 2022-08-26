@@ -2,6 +2,7 @@ import type { BoxProps, FlexProps, StackProps } from '@chakra-ui/react'
 import type { HTMLMotionProps } from 'framer-motion'
 import { Box, Flex, Stack } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
+import type { Merge } from '~/types'
 
 export type MotionBoxProps = Merge<BoxProps, HTMLMotionProps<'div'>>
 export const MotionBox: React.FC<MotionBoxProps> = motion(Box)
