@@ -41,10 +41,10 @@ const rewrites = async () => [
 const ContentSecurityPolicy = `
   default-src 'self';
   script-src 'self' 'unsafe-inline' 'unsafe-eval';
-	connect-src 'self' https://vitals.vercel-insights.com;
+	connect-src 'self' https://vitals.vercel-insights.com https://res.cloudinary.com;
   style-src 'self' 'unsafe-inline';
   font-src 'self';
-	img-src 'self';
+	img-src 'self' https://res.cloudinary.com;
 `
 
 const securityHeaders = [
