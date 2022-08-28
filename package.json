@@ -14,9 +14,9 @@
 		"tsc": "tsc"
 	},
 	"dependencies": {
-		"@chakra-ui/color-mode": "2.1.6",
-		"@chakra-ui/react": "2.2.8",
-		"@chakra-ui/theme-tools": "2.0.9",
+		"@chakra-ui/color-mode": "2.1.7",
+		"@chakra-ui/react": "2.2.9",
+		"@chakra-ui/theme-tools": "2.0.10",
 		"@cloudinary/html": "^1.4.2",
 		"@cloudinary/react": "^1.4.2",
 		"@cloudinary/url-gen": "^1.8.6",
@@ -46,8 +46,8 @@
 	},
 	"devDependencies": {
 		"@babel/core": "7.18.10",
-		"@chakra-ui/styled-system": "2.2.7",
-		"@chakra-ui/utils": "2.0.8",
+		"@chakra-ui/styled-system": "2.2.8",
+		"@chakra-ui/utils": "2.0.9",
 		"@types/node": "18.7.6",
 		"@types/react": "18.0.17",
 		"@types/react-dom": "18.0.6",
