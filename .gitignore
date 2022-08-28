@@ -35,3 +35,6 @@ yarn-error.log*
 todo.md
 pnpm-lock.yaml
 *.tsbuildinfo
+
+public/sw.js
+public/workbox-*.js
