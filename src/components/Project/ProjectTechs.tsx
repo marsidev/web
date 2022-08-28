@@ -11,9 +11,9 @@ import {
 } from '@chakra-ui/react'
 import { useState } from 'react'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
-import { TECHNOLOGIES } from '~/constants'
-import { Link } from '~/components'
-import { capitalize } from '~/utils'
+import { TECHNOLOGIES } from '~/constants/technologies'
+import { Link } from '~/components/Link'
+import { capitalize } from '~/utils/capitalize'
 import { Project } from '~/types'
 
 interface ProjectProps extends FlexProps {

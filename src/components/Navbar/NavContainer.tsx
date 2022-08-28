@@ -2,7 +2,7 @@ import { Flex, type FlexProps, useBreakpointValue, useColorModeValue } from '@ch
 import { useMemo } from 'react'
 import { useSuperState } from '@superstate/react'
 import { useRendered, useScrollY } from '@marsidev/react-hooks'
-import { MAX_WIDTH } from '~/constants'
+import { MAX_WIDTH } from '~/constants/ui'
 import { mobileMenu } from '~/store'
 
 export type NavContainerProps = FlexProps

@@ -5,7 +5,7 @@ import {
 	useColorModeValue
 } from '@chakra-ui/react'
 import { useMemo, useState } from 'react'
-import { CloudinaryImage } from '~/components'
+import { CloudinaryImage } from '~/components/CloudinaryImage'
 
 const unitToPx = (units: number) => {
 	return units * 4

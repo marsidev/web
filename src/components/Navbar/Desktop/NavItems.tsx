@@ -1,5 +1,6 @@
 import { HStack, Spacer, type StackProps } from '@chakra-ui/react'
-import { NavItem, ThemeToggler } from '..'
+import { NavItem } from '../NavItem'
+import { ThemeToggler } from '../ThemeToggler'
 
 export const NavItems: React.FC<StackProps> = ({ ...props }) => {
 	return (

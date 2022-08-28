@@ -1,5 +1,6 @@
 import { HStack, Spacer } from '@chakra-ui/react'
-import { MenuToggler, ThemeToggler } from '..'
+import { MenuToggler } from '../MenuToggler'
+import { ThemeToggler } from '../ThemeToggler'
 
 interface NavItemsProps {
 	onToggle: () => void

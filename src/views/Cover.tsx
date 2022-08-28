@@ -1,5 +1,7 @@
 import { Stack } from '@chakra-ui/react'
-import { Avatar, NameAndTitle, SocialLinks } from '~/components'
+import { Avatar } from '~/components/Avatar'
+import { NameAndTitle } from '~/components/NameAndTitle'
+import { SocialLinks } from '~/components/SocialLinks'
 
 export const Cover = () => {
 	return (

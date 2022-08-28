@@ -1,6 +1,6 @@
 import { Flex, type FlexProps, Text, useColorModeValue } from '@chakra-ui/react'
-import { Link } from '~/components'
-import { MAX_WIDTH } from '~/constants'
+import { Link } from '~/components/Link'
+import { MAX_WIDTH } from '~/constants/ui'
 
 const GITHUB_URL = 'https://github.com/marsidev'
 

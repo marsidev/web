@@ -1,6 +1,6 @@
 import { Flex, type FlexProps } from '@chakra-ui/react'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
-import { Banner } from '~/components'
+import { Banner } from '~/components/Banner'
 
 export const Banners: React.FC<FlexProps> = () => {
 	const [bannersParent] = useAutoAnimate<HTMLDivElement>({

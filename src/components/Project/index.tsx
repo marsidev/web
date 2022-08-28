@@ -1,6 +1,7 @@
 import { Stack, type StackProps, useBreakpointValue } from '@chakra-ui/react'
-import { ProjectInfo, ProjectPreview, ProjectRenderMode } from '~/components'
 import { Project as ProyectType } from '~/types'
+import { ProjectInfo, ProjectRenderMode } from './ProjectInfo'
+import { ProjectPreview } from './ProjectPreview'
 
 interface ProjectProps extends StackProps {
 	project: ProyectType

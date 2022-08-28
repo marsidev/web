@@ -1,5 +1,5 @@
 import { useBreakpointValue } from '@chakra-ui/react'
-import { Link, type LinkProps } from '~/components'
+import { Link, type LinkProps } from '~/components/Link'
 import { MotionBox } from '~/components/motion'
 import { navItemVariants } from './variants'
 

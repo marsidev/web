@@ -1,5 +1,5 @@
 import { Flex } from '@chakra-ui/react'
-import { Link } from '~/components'
+import { Link } from '~/components/Link'
 
 export const Brand = () => {
 	return (

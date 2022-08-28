@@ -1,7 +1,7 @@
 import { Stack, type StackProps, VisuallyHidden, useColorModeValue } from '@chakra-ui/react'
 import { EmailIcon, GithubIcon, LinkedInIcon, TwitterIcon } from '~/icons'
-import { Link } from '~/components'
-import { SOCIAL_LINKS } from '~/constants'
+import { Link } from '~/components/Link'
+import { SOCIAL_LINKS } from '~/constants/social-links'
 
 interface SocialIconProps {
 	href: string

@@ -8,7 +8,7 @@ import {
 import { Atropos } from 'atropos/react'
 import { useState } from 'react'
 import { Project } from '~/types'
-import { CloudinaryImage } from '~/components'
+import { CloudinaryImage } from '~/components/CloudinaryImage'
 
 interface ProjectProps extends FlexProps {
 	project: Project

@@ -1,8 +1,9 @@
 import { Flex } from '@chakra-ui/react'
 import { DefaultSeo } from 'next-seo'
 import { useSuperState } from '@superstate/react'
-import { Banners, Navbar } from '~/components'
-import { MAX_WIDTH } from '~/constants'
+import { Banners } from '~/components/Banners'
+import { Navbar } from '~/components/Navbar'
+import { MAX_WIDTH } from '~/constants/ui'
 import { mobileMenu } from '~/store'
 import seo from 'next-seo.config'
 

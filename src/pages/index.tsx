@@ -3,12 +3,14 @@ import { serialize } from 'next-mdx-remote/serialize'
 import { lazy } from 'react'
 import { Layout } from '~/layouts/main'
 import { loadFile } from '~/utils/fs'
-import { About, Cover } from '~/views'
-import { LazyComponent } from '~/components'
+import { Cover } from '~/views/Cover'
+import { LazyComponent } from '~/components/LazyComponent'
+import { Lazy, LazyPromise } from '~/types'
 
 type AppProps = InferGetServerSidePropsType<typeof getStaticProps>
 
-const Projects = lazy(() => import('~/views/Projects'))
+const About: Lazy = lazy((): LazyPromise => import('~/views/About'))
+const Projects: Lazy = lazy((): LazyPromise => import('~/views/Projects'))
 
 const App: NextPage<AppProps> = ({ aboutSource }) => {
 	return (

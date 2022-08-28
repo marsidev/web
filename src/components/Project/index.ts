@@ -1,6 +1,0 @@
-export * from './Project'
-export * from './ProjectInfo'
-export * from './ProjectPreview'
-export * from './ProjectTechs'
-export * from './ProjectUrls'
-export * from './ProjectTags'

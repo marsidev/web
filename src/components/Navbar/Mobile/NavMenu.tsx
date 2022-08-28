@@ -2,8 +2,8 @@ import { useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { useWindowSize } from '@marsidev/react-hooks'
 import { mobileMenu } from '~/store'
-import { NavItem } from '..'
-import { MenuContainer } from '.'
+import { NavItem } from '../NavItem'
+import { MenuContainer } from './MenuContainer'
 
 interface NavMenuProps {
 	open: boolean

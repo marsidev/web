@@ -1,6 +1,8 @@
 import { Flex, type FlexProps, Heading, Text } from '@chakra-ui/react'
 import { Project } from '~/types'
-import { ProjectTags, ProjectTechs, ProjectUrls } from '.'
+import { ProjectTags } from './ProjectTags'
+import { ProjectTechs } from './ProjectTechs'
+import { ProjectUrls } from './ProjectUrls'
 
 export type ProjectRenderMode = 'even' | 'odd' | 'small-screen' | undefined
 

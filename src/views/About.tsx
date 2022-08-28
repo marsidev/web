@@ -1,6 +1,6 @@
 import { Flex, Heading, Stack } from '@chakra-ui/react'
 import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
-import { Link } from '~/components'
+import { Link } from '~/components/Link'
 
 interface AboutProps {
 	source: MDXRemoteSerializeResult<Record<string, unknown>>

@@ -7,7 +7,7 @@ import splitbee from '@splitbee/web'
 import { usePanelbear } from '@panelbear/panelbear-nextjs'
 import { useEffect } from 'react'
 import { theme } from '~/theme'
-import { ScrollToTop } from '~/components'
+import { ScrollToTop } from '~/components/ScrollToTop'
 
 const MyApp: AppType = ({ Component, pageProps, router }) => {
 	usePanelbear(process.env.PANELBEAR_ID || '', {

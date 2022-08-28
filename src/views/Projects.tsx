@@ -1,7 +1,7 @@
 import { Flex, Heading, Stack } from '@chakra-ui/react'
-import { Project } from '~/components'
-import { PROJECTS } from '~/constants'
-import { sortProjects } from '~/utils'
+import { Project } from '~/components/Project'
+import { PROJECTS } from '~/constants/projects'
+import { sortProjects } from '~/utils/sort-projects'
 
 export const Projects = () => {
 	return (

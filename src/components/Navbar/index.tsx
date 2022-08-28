@@ -1,9 +1,11 @@
 import { Spacer } from '@chakra-ui/react'
 import { useCycle } from 'framer-motion'
 import { mobileMenu } from '~/store'
-import { NavItems as MobileItems, NavMenu as MobileNavMenu } from './Mobile'
-import { NavItems as DesktopItems } from './Desktop'
-import { Brand, NavContainer, type NavContainerProps } from '.'
+import { NavItems as MobileItems } from './Mobile/NavItems'
+import { NavMenu as MobileNavMenu } from './Mobile/NavMenu'
+import { NavItems as DesktopItems } from './Desktop/NavItems'
+import { Brand } from './Brand'
+import { NavContainer, type NavContainerProps } from './NavContainer'
 
 export const Navbar: React.FC<NavContainerProps> = ({ ...props }) => {
 	const [open, toggleMotionMenu] = useCycle(false, true)
