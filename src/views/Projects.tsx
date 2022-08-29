@@ -10,7 +10,6 @@ export const Projects = () => {
 			as='section'
 			direction='column'
 			id='projects'
-			mb={24}
 		>
 			<Flex flexDir='column' pb={8} textAlign='left'>
 				<Heading as='h2' size='xl'>

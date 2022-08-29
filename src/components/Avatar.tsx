@@ -48,12 +48,12 @@ export const Avatar = () => {
 					alt='Luis Marsiglia'
 					brightness={5}
 					deliveryQuality={100}
-					height={avatarSize}
+					height={500}
 					loading='eager'
 					placeholderPlugin={true}
 					publicId='marsidev/images/avatar.png'
 					radius='full'
-					width={avatarSize}
+					width={500}
 					onLoad={() => setLoaded(true)}
 				/>
 			</Skeleton>

@@ -13,7 +13,6 @@ export const About: React.FC<AboutProps> = ({ source }) => {
 			as='section'
 			direction='column'
 			id='about'
-			mb={32}
 			textAlign='left'
 			w='100%'
 		>

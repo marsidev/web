@@ -36,7 +36,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, title }) => {
 				<Flex
 					align='center'
 					flexDir='column'
-					gap={8}
+					gap={24}
 					h='full'
 					justify='center'
 					maxW={MAX_WIDTH}

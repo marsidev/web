@@ -1,8 +1,8 @@
 import { Flex, type FlexProps, useBreakpointValue, useColorModeValue } from '@chakra-ui/react'
-import { type FC, useMemo } from 'react'
+import { type FC, useEffect, useMemo, useRef } from 'react'
 import { useRendered, useScrollY } from '@marsidev/react-hooks'
 import { useAtom } from 'jotai'
-import { mobileMenuAtom } from '~/store'
+import { mobileMenuAtom, navbarHeightAtom } from '~/store'
 import { MAX_WIDTH } from '~/constants/ui'
 
 export type NavContainerProps = FlexProps
@@ -15,6 +15,12 @@ export const NavContainer: FC<NavContainerProps> = ({ children, ...props }) => {
 	const rendered = useRendered()
 	const isHidden = scrollDirection === 'down'
 	const [menuExpanded] = useAtom(mobileMenuAtom)
+	const [_, setNavbarHeight] = useAtom(navbarHeightAtom)
+	const ref = useRef<HTMLDivElement>(null)
+
+	useEffect(() => {
+		ref.current && setNavbarHeight(ref.current.clientHeight)
+	}, [ref.current?.clientHeight])
 
 	const bg = useMemo(() => {
 		if (!rendered) return 'auto'
@@ -30,6 +36,7 @@ export const NavContainer: FC<NavContainerProps> = ({ children, ...props }) => {
 
 	return (
 		<Flex
+			ref={ref}
 			align='center'
 			as='header'
 			backdropFilter={backdropFilter}

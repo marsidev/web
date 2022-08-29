@@ -1,15 +1,27 @@
-import { Stack, type StackProps, VisuallyHidden, useColorModeValue } from '@chakra-ui/react'
-import { EmailIcon, GithubIcon, LinkedInIcon, TwitterIcon } from '~/icons'
+import {
+	Icon,
+	Stack,
+	type StackProps,
+	VisuallyHidden,
+	useColorModeValue
+} from '@chakra-ui/react'
+import {
+	EmailIcon,
+	GithubIcon,
+	type IconType,
+	LinkedInIcon,
+	TwitterIcon
+} from '~/icons'
 import { Link } from '~/components/Link'
 import { SOCIAL_LINKS } from '~/constants/social-links'
 
 interface SocialIconProps {
 	href: string
-	icon: React.ReactNode
+	CustomIcon: IconType
 	alt: string
 }
 
-const SocialIcon: React.FC<SocialIconProps> = ({ href, icon, alt }) => {
+const SocialIcon: React.FC<SocialIconProps> = ({ href, CustomIcon, alt }) => {
 	const onHoverColor = useColorModeValue('pink.600', 'pink.500')
 	return (
 		<Link
@@ -19,7 +31,7 @@ const SocialIcon: React.FC<SocialIconProps> = ({ href, icon, alt }) => {
 			href={href}
 		>
 			<VisuallyHidden>{alt}</VisuallyHidden>
-			{icon}
+			<Icon as={CustomIcon} className='social-link' h={8} w={8} />
 		</Link>
 	)
 }
@@ -33,27 +45,27 @@ export const SocialLinks: React.FC<StackProps> = props => {
 			{...props}
 		>
 			<SocialIcon
+				CustomIcon={GithubIcon}
 				alt='GitHub profile link'
 				href={SOCIAL_LINKS.github}
-				icon={<GithubIcon className='social-link' />}
 			/>
 
 			<SocialIcon
+				CustomIcon={LinkedInIcon}
 				alt='LinkedIn profile link'
 				href={SOCIAL_LINKS.linkedin}
-				icon={<LinkedInIcon className='social-link' />}
 			/>
 
 			<SocialIcon
+				CustomIcon={TwitterIcon}
 				alt='Twitter profile link'
 				href={SOCIAL_LINKS.twitter}
-				icon={<TwitterIcon className='social-link' />}
 			/>
 
 			<SocialIcon
+				CustomIcon={EmailIcon}
 				alt='Compose email link'
 				href={SOCIAL_LINKS.email}
-				icon={<EmailIcon className='social-link' />}
 			/>
 		</Stack>
 	)
