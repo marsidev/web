@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { useWindowSize } from '@marsidev/react-hooks'
-import { mobileMenu } from '~/store'
+import { useAtom } from 'jotai'
+import { closeMenu } from '~/store'
 import { NavItem } from '../NavItem'
 import { MenuContainer } from './MenuContainer'
 
@@ -12,12 +13,13 @@ interface NavMenuProps {
 
 export const NavMenu: React.FC<NavMenuProps> = ({ open, onToggle }) => {
 	const windowSize = useWindowSize()
+	const [_, closeMobileMenu] = useAtom(closeMenu)
 
 	const onCloseMenu = () => {
 		if (open) {
 			onToggle() // <- this toggle both react menu state and motion menu state
 		} else {
-			mobileMenu.close() // <- this toggle react menu state
+			closeMobileMenu() // <- this toggle react menu state
 		}
 	}
 

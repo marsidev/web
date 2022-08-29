@@ -1,24 +1,20 @@
 import { Flex, type FlexProps, useBreakpointValue, useColorModeValue } from '@chakra-ui/react'
-import { useMemo } from 'react'
-import { useSuperState } from '@superstate/react'
+import { type FC, useMemo } from 'react'
 import { useRendered, useScrollY } from '@marsidev/react-hooks'
+import { useAtom } from 'jotai'
+import { menuOpen } from '~/store'
 import { MAX_WIDTH } from '~/constants/ui'
-import { mobileMenu } from '~/store'
 
 export type NavContainerProps = FlexProps
 
-export const NavContainer: React.FC<NavContainerProps> = ({
-	children,
-	...props
-}) => {
+export const NavContainer: FC<NavContainerProps> = ({ children, ...props }) => {
 	const offset = useBreakpointValue({ base: 68, md: 96 }) // <- navbar height - measured manually
 	const { offsetPassed, scrollDirection } = useScrollY(offset)
 	const themedBg = useColorModeValue('white', 'gray.800')
 	const themedBgAfterOffset = useColorModeValue('whiteAlpha.500', 'rgba(26, 32, 44, 0.74)')
 	const rendered = useRendered()
 	const isHidden = scrollDirection === 'down'
-	useSuperState(mobileMenu.state)
-	const mobileMenuExpanded = mobileMenu.get()
+	const [mobileMenuExpanded] = useAtom(menuOpen)
 
 	const bg = useMemo(() => {
 		if (!rendered) return 'auto'

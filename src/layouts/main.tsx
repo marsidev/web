@@ -1,10 +1,10 @@
 import { Flex } from '@chakra-ui/react'
 import { DefaultSeo } from 'next-seo'
-import { useSuperState } from '@superstate/react'
+import { useAtom } from 'jotai'
 import { Banners } from '~/components/Banners'
 import { Navbar } from '~/components/Navbar'
 import { MAX_WIDTH } from '~/constants/ui'
-import { mobileMenu } from '~/store'
+import { menuOpen } from '~/store'
 import seo from 'next-seo.config'
 
 interface LayoutProps {
@@ -13,8 +13,7 @@ interface LayoutProps {
 }
 
 export const Layout: React.FC<LayoutProps> = ({ children, title }) => {
-	useSuperState(mobileMenu.state)
-	const menuExpanded = mobileMenu.get()
+	const [menuExpanded] = useAtom(menuOpen)
 
 	return (
 		<>

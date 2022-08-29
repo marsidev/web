@@ -1,17 +1,5 @@
-import { superstate } from '@superstate/core'
+import { atom } from 'jotai'
 
-export const mobileMenu = {
-	state: superstate<boolean>(false),
-
-	close() {
-		mobileMenu.state.set(false)
-	},
-
-	toggle() {
-		mobileMenu.state.set(prev => !prev)
-	},
-
-	get() {
-		return mobileMenu.state.now()
-	}
-}
+export const menuOpen = atom<boolean>(false)
+export const closeMenu = atom(null, (_get, set) => set(menuOpen, false))
+export const toggleMenu = atom(null, (_get, set) => set(menuOpen, !menuOpen))
