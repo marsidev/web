@@ -4,12 +4,12 @@ import { lazy } from 'react'
 import { Layout } from '~/layouts/main'
 import { loadFile } from '~/utils/fs'
 import { Cover } from '~/views/Cover'
+import { About } from '~/views/About'
 import { LazyComponent } from '~/components/LazyComponent'
 import { Lazy, LazyPromise } from '~/types'
 
 type AppProps = InferGetServerSidePropsType<typeof getStaticProps>
 
-const About: Lazy = lazy((): LazyPromise => import('~/views/About'))
 const Projects: Lazy = lazy((): LazyPromise => import('~/views/Projects'))
 
 const App: NextPage<AppProps> = ({ aboutSource }) => {
