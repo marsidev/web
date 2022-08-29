@@ -1,5 +1,8 @@
 import { atom } from 'jotai'
+export const mobileMenuAtom = atom(false)
 
-export const menuOpen = atom<boolean>(false)
-export const closeMenu = atom(null, (_get, set) => set(menuOpen, false))
-export const toggleMenu = atom(null, (_get, set) => set(menuOpen, !menuOpen))
+// export const closeMenuAtom = atom(null, (_get, set) => set(mobileMenuAtom, false))
+
+// export const toggleMenuAtom = atom(null, (_get, set) =>
+// 	set(mobileMenuAtom, !mobileMenuAtom)
+// )

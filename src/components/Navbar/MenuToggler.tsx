@@ -1,14 +1,14 @@
 import { type FC, useEffect } from 'react'
 import { Button, type ChakraProps, useBreakpointValue } from '@chakra-ui/react'
 import { useAtom } from 'jotai'
-import { menuOpen } from '~/store'
+import { mobileMenuAtom } from '~/store'
 
 interface MenuTogglerProps extends ChakraProps {
 	onToggle?: () => void
 }
 
 export const MenuToggler: FC<MenuTogglerProps> = ({ onToggle, ...props }) => {
-	const [menuExpanded] = useAtom(menuOpen)
+	const [menuExpanded] = useAtom(mobileMenuAtom)
 	const buttonSize = useBreakpointValue(['sm', 'md'])
 
 	const className = `menu-toggle_wrap${menuExpanded ? ' menu-toggle_expanded' : ''}`

@@ -4,7 +4,7 @@ import { useAtom } from 'jotai'
 import { Banners } from '~/components/Banners'
 import { Navbar } from '~/components/Navbar'
 import { MAX_WIDTH } from '~/constants/ui'
-import { menuOpen } from '~/store'
+import { mobileMenuAtom } from '~/store'
 import seo from 'next-seo.config'
 
 interface LayoutProps {
@@ -13,7 +13,7 @@ interface LayoutProps {
 }
 
 export const Layout: React.FC<LayoutProps> = ({ children, title }) => {
-	const [menuExpanded] = useAtom(menuOpen)
+	const [menuExpanded] = useAtom(mobileMenuAtom)
 
 	return (
 		<>

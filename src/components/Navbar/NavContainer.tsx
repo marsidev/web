@@ -2,7 +2,7 @@ import { Flex, type FlexProps, useBreakpointValue, useColorModeValue } from '@ch
 import { type FC, useMemo } from 'react'
 import { useRendered, useScrollY } from '@marsidev/react-hooks'
 import { useAtom } from 'jotai'
-import { menuOpen } from '~/store'
+import { mobileMenuAtom } from '~/store'
 import { MAX_WIDTH } from '~/constants/ui'
 
 export type NavContainerProps = FlexProps
@@ -14,20 +14,14 @@ export const NavContainer: FC<NavContainerProps> = ({ children, ...props }) => {
 	const themedBgAfterOffset = useColorModeValue('whiteAlpha.500', 'rgba(26, 32, 44, 0.74)')
 	const rendered = useRendered()
 	const isHidden = scrollDirection === 'down'
-	const [mobileMenuExpanded] = useAtom(menuOpen)
+	const [menuExpanded] = useAtom(mobileMenuAtom)
 
 	const bg = useMemo(() => {
 		if (!rendered) return 'auto'
-		if (mobileMenuExpanded) return themedBg
+		if (menuExpanded) return themedBg
 		if (offsetPassed) return themedBgAfterOffset
 		return themedBg
-	}, [
-		rendered,
-		offsetPassed,
-		mobileMenuExpanded,
-		themedBg,
-		themedBgAfterOffset
-	])
+	}, [rendered, offsetPassed, menuExpanded, themedBg, themedBgAfterOffset])
 
 	const backdropFilter = useMemo(() => {
 		if (rendered && offsetPassed) return 'saturate(180%) blur(8px)'
