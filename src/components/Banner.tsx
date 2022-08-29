@@ -1,25 +1,18 @@
 import { Flex, type FlexProps, IconButton } from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
-import { useLocalStorage } from 'usehooks-ts'
 import { useRendered } from '@marsidev/react-hooks'
+import { type SetStateAction, type WritableAtom, useAtom } from 'jotai'
 import { CloseIcon } from '~/icons'
 
 interface BannerProps extends FlexProps {
 	message: string
-	bannerId: string
+	atom: WritableAtom<boolean, SetStateAction<boolean>, void>
 }
 
-export const Banner: React.FC<BannerProps> = ({ message, bannerId }) => {
-	// we have two states to prevent hydration mismatch issue
-	const [hidden_ls, setHidden_ls] = useLocalStorage(`hide__${bannerId}__banner`, false)
-	const [hidden, setHidden] = useState(false)
+export const Banner: React.FC<BannerProps> = ({ message, atom }) => {
+	const [showBanner, setShowBaner] = useAtom(atom)
 	const rendered = useRendered()
 
-	useEffect(() => {
-		setHidden(hidden_ls)
-	}, [hidden_ls])
-
-	if (!rendered || hidden) return <div />
+	if (!rendered || !showBanner) return <div />
 
 	return (
 		<Flex
@@ -45,7 +38,7 @@ export const Banner: React.FC<BannerProps> = ({ message, bannerId }) => {
 					icon={<CloseIcon />}
 					transition='all 0.2s ease-out'
 					variant='ghost'
-					onClick={() => setHidden_ls(true)}
+					onClick={() => setShowBaner(false)}
 				/>
 			</Flex>
 		</Flex>
