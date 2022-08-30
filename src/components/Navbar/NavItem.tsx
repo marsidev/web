@@ -1,5 +1,6 @@
-import { useBreakpointValue } from '@chakra-ui/react'
-import { Link, type LinkProps } from '~/components/Link'
+import { Link, type LinkProps, useBreakpointValue } from '@chakra-ui/react'
+// https://github.com/vercel/next.js/issues/37362
+// import { Link, type LinkProps } from '~/components/Link'
 import { MotionBox } from '~/components/motion'
 import { navItemVariants } from './variants'
 
