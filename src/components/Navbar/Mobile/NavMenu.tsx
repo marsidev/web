@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { type FC, useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { useWindowSize } from '@marsidev/react-hooks'
 import { useAtom } from 'jotai'
@@ -11,7 +11,7 @@ interface NavMenuProps {
 	onToggle: () => void
 }
 
-export const NavMenu: React.FC<NavMenuProps> = ({ open, onToggle }) => {
+export const NavMenu: FC<NavMenuProps> = ({ open, onToggle }) => {
 	const windowSize = useWindowSize()
 	const [_, setMenuExpanded] = useAtom(mobileMenuAtom)
 
@@ -33,9 +33,17 @@ export const NavMenu: React.FC<NavMenuProps> = ({ open, onToggle }) => {
 		<AnimatePresence>
 			{open && (
 				<MenuContainer>
-					<NavItem href='#'>Home</NavItem>
-					<NavItem href='#about'>About</NavItem>
-					<NavItem href='#projects'>Projects</NavItem>
+					<NavItem href='#' onClick={onCloseMenu}>
+						Home
+					</NavItem>
+
+					<NavItem href='#about' onClick={onCloseMenu}>
+						About
+					</NavItem>
+
+					<NavItem href='#projects' onClick={onCloseMenu}>
+						Projects
+					</NavItem>
 				</MenuContainer>
 			)}
 		</AnimatePresence>

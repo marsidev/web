@@ -24,7 +24,7 @@ export const Banner: React.FC<BannerProps> = ({ message, atom }) => {
 			justify='center'
 			w='full'
 		>
-			<Flex justify='center' maxW='6xl' px={16} w='full'>
+			<Flex justify='center' maxW='6xl' px={8} w='full'>
 				{message}
 			</Flex>
 

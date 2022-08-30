@@ -23,6 +23,25 @@ interface ImageDim {
 const desktopAspectRatio = 861 / 1499
 const mobileAspectRatio = 958 / 473
 
+const getDimensions = (containerWidth: number, padding: number) => {
+	const desktopWidth = Math.floor(containerWidth - padding)
+	const desktopHeight = Math.floor(desktopWidth * desktopAspectRatio)
+
+	const mobileWidth = Math.floor(containerWidth * 0.25)
+	const mobileHeight = Math.floor(mobileWidth * mobileAspectRatio)
+
+	return {
+		desktopWidth,
+		desktopHeight,
+		mobileWidth,
+		mobileHeight
+	}
+}
+
+const getContainerHeight = (width: number) => {
+	return Math.floor(width * desktopAspectRatio + remToPx(2))
+}
+
 export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 	const bg = useColorModeValue('gray.100', 'gray.700')
 	const borderColor = useColorModeValue('gray.200', 'gray.600')
@@ -32,19 +51,17 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 	const containerRef = useRef<HTMLDivElement>(null)
 	const [mobileDims, setMobileDims] = useState<ImageDim | null>(null)
 	const [desktopDims, setDesktopDims] = useState<ImageDim | null>(null)
+	const [containerWidth, setContainerWidth] = useState<number | null>(null)
 
 	const loaded = desktopLoaded && mobileLoaded
 
 	useEffect(() => {
 		if (containerRef.current) {
 			const containerWidth = containerRef.current.clientWidth
-
 			const desktopPadding = 2 * remToPx(parseInt(previewPadding as string))
-			const desktopWidth = Math.floor(containerWidth - desktopPadding)
-			const desktopHeight = Math.floor(desktopWidth * desktopAspectRatio)
+			const { desktopHeight, desktopWidth, mobileHeight, mobileWidth } = getDimensions(containerWidth, desktopPadding)
 
-			const mobileWidth = Math.floor(containerWidth * 0.25)
-			const mobileHeight = Math.floor(mobileWidth * mobileAspectRatio)
+			setContainerWidth(containerWidth)
 
 			setDesktopDims({
 				width: desktopWidth,
@@ -67,6 +84,7 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 			borderColor={borderColor}
 			borderRadius={{ base: 8, md: 16 }}
 			justify='center'
+			minHeight={containerWidth ? getContainerHeight(containerWidth) : undefined}
 			pos='relative'
 			{...props}
 		>
