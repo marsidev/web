@@ -84,7 +84,9 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 			borderColor={borderColor}
 			borderRadius={{ base: 8, md: 16 }}
 			justify='center'
-			minHeight={containerWidth ? getContainerHeight(containerWidth) : undefined}
+			minHeight={
+				containerWidth ? getContainerHeight(containerWidth) : undefined
+			}
 			pos='relative'
 			{...props}
 		>
@@ -107,6 +109,7 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 						deliveryQuality={100}
 						height={desktopDims?.height}
 						lazyLoadPlugin={true}
+						loading='lazy'
 						placeholderPlugin={true}
 						publicId={`marsidev${p.images!.desktop}`}
 						style={{
@@ -123,6 +126,7 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 						deliveryQuality={100}
 						height={mobileDims?.height}
 						lazyLoadPlugin={true}
+						loading='lazy'
 						placeholderPlugin={true}
 						publicId={`marsidev${p.images!.mobile}`}
 						width={mobileDims?.width}
