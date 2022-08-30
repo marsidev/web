@@ -27,7 +27,7 @@ export const ProjectInfo: React.FC<ProjectProps> = ({
 			: 'flex-end'
 
 	return (
-		<Flex flexDir='column' gap={2} textAlign={textAlign} w='100%' {...props}>
+		<Flex flexDir='column' gap={2} textAlign={textAlign} {...props}>
 			<Heading as='h4' fontSize='lg'>
 				{p.name}
 			</Heading>

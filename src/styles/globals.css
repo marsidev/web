@@ -53,8 +53,6 @@
   width: 100%;
   height: 100%;
 	position: relative;
-	/* padding: 2em; */
-	/* aspect-ratio: 1499∶861; */
 }
 
 .project-preview img.project-preview-mobile {
@@ -62,6 +60,5 @@
   left: 8%;
   top: 8%;
   width: 25%;
-	/* aspect-ratio: 473∶958; */
 	z-index: 999 !important;
 }

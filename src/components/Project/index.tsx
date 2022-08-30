@@ -34,8 +34,15 @@ export const Project: React.FC<ProjectProps> = ({ project, type, ...props }) => 
 			w='100%'
 			{...props}
 		>
-			<ProjectInfo project={project} renderMode={renderMode} />
-			{project.images && <ProjectPreview minW='57%' project={project} />}
+			<ProjectInfo
+				project={project}
+				renderMode={renderMode}
+				w={{ base: 'full', md: '45%' }}
+			/>
+
+			{project.images && (
+				<ProjectPreview project={project} w={{ base: 'full', md: '55%' }} />
+			)}
 		</Stack>
 	)
 }

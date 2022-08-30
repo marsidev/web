@@ -1,11 +1,10 @@
 import type { InferGetServerSidePropsType, NextPage } from 'next'
 import { serialize } from 'next-mdx-remote/serialize'
-import { lazy } from 'react'
+import { Suspense, lazy } from 'react'
 import { Layout } from '~/layouts/main'
 import { loadFile } from '~/utils/fs'
 import { Cover } from '~/views/Cover'
 import { About } from '~/views/About'
-import { LazyComponent } from '~/components/LazyComponent'
 import { Lazy, LazyPromise } from '~/types'
 
 type AppProps = InferGetServerSidePropsType<typeof getStaticProps>
@@ -18,9 +17,9 @@ const App: NextPage<AppProps> = ({ aboutSource }) => {
 			<Cover />
 			<About source={aboutSource} />
 
-			<LazyComponent>
+			<Suspense fallback='loading...'>
 				<Projects />
-			</LazyComponent>
+			</Suspense>
 		</Layout>
 	)
 }

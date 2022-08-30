@@ -5,16 +5,16 @@ import { Avatar } from '~/components/Avatar'
 import { NameAndTitle } from '~/components/NameAndTitle'
 import { SocialLinks } from '~/components/SocialLinks'
 import { navbarHeightAtom } from '~/store'
+import { chakraUnitToPx } from '~/utils/units'
 
 const layoutTopPadding = 8 // em - chakra units
-const emToPx = (units: number) => units * 4
 
 export const Cover = () => {
 	const [navbarHeight] = useAtom(navbarHeightAtom)
 
 	const getCoverHeight = useCallback(() => {
 		// pageHeight - navbarHeight - topPadding
-		return `calc(100vh - ${navbarHeight}px - ${emToPx(layoutTopPadding)}px)`
+		return `calc(100vh - ${navbarHeight}px - ${chakraUnitToPx(layoutTopPadding)}px)`
 	}, [navbarHeight, layoutTopPadding])
 
 	return (
@@ -25,7 +25,7 @@ export const Cover = () => {
 			height={getCoverHeight()}
 			id='me'
 			justify='center'
-			spacing={[4, 4, 8]}
+			spacing={8}
 		>
 			<Avatar />
 
