@@ -104,6 +104,7 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 						alt={`${p.name} desktop preview`}
 						className='project-preview-desktop'
 						data-atropos-offset='-4'
+						deliveryQuality={100}
 						height={desktopDims?.height}
 						lazyLoadPlugin={true}
 						placeholderPlugin={true}
@@ -119,6 +120,7 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 						alt={`${p.name} mobile preview`}
 						className='project-preview-mobile'
 						data-atropos-offset='8'
+						deliveryQuality={100}
 						height={mobileDims?.height}
 						lazyLoadPlugin={true}
 						placeholderPlugin={true}
