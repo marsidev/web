@@ -45,13 +45,16 @@ const getContainerHeight = (width: number) => {
 export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 	const bg = useColorModeValue('gray.100', 'gray.700')
 	const borderColor = useColorModeValue('gray.200', 'gray.600')
-	const previewPadding = useBreakpointValue({ base: '1rem', sm: '1.6rem', md: '2rem' }, { fallback: 'base' })
 	const [desktopLoaded, setDesktopLoaded] = useState(false)
 	const [mobileLoaded, setMobileLoaded] = useState(false)
 	const containerRef = useRef<HTMLDivElement>(null)
 	const [mobileDims, setMobileDims] = useState<ImageDim | null>(null)
 	const [desktopDims, setDesktopDims] = useState<ImageDim | null>(null)
 	const [containerWidth, setContainerWidth] = useState<number | null>(null)
+	const previewPadding = useBreakpointValue(
+		{ base: '1rem', sm: '1.6rem', md: '2rem' },
+		{ fallback: 'base' }
+	)
 
 	const loaded = desktopLoaded && mobileLoaded
 
@@ -106,8 +109,8 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 						alt={`${p.name} desktop preview`}
 						className='project-preview-desktop'
 						data-atropos-offset='-4'
-						deliveryQuality={100}
-						height={desktopDims?.height}
+						deliveryQuality={90}
+						height={desktopDims?.height || 222}
 						lazyLoadPlugin={true}
 						loading='lazy'
 						placeholderPlugin={true}
@@ -115,7 +118,7 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 						style={{
 							padding: previewPadding
 						}}
-						width={desktopDims?.width}
+						width={desktopDims?.width || 388}
 						onLoad={() => setDesktopLoaded(true)}
 					/>
 
@@ -123,13 +126,13 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 						alt={`${p.name} mobile preview`}
 						className='project-preview-mobile'
 						data-atropos-offset='8'
-						deliveryQuality={100}
-						height={mobileDims?.height}
+						deliveryQuality={90}
+						height={mobileDims?.height || 212}
 						lazyLoadPlugin={true}
 						loading='lazy'
 						placeholderPlugin={true}
 						publicId={`marsidev${p.images!.mobile}`}
-						width={mobileDims?.width}
+						width={mobileDims?.width || 105}
 						onLoad={() => setMobileLoaded(true)}
 					/>
 				</Atropos>

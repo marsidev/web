@@ -1,7 +1,14 @@
-import { Stack, type StackProps, useBreakpointValue } from '@chakra-ui/react'
+import {
+	Show,
+	Stack,
+	type StackProps,
+	useBreakpointValue
+} from '@chakra-ui/react'
 import { Project as ProyectType } from '~/types'
 import { ProjectInfo, ProjectRenderMode } from './ProjectInfo'
 import { ProjectPreview } from './ProjectPreview'
+import { ProjectTechs } from './ProjectTechs'
+import { ProjectUrls } from './ProjectUrls'
 
 interface ProjectProps extends StackProps {
 	project: ProyectType
@@ -15,35 +22,58 @@ export const Project: React.FC<ProjectProps> = ({ project, type, ...props }) => 
 			md: type
 		},
 		{
-			fallback: type
+			fallback: 'base'
 		}
 	)
 
 	const desktopDirection = type === 'even' ? 'row' : 'row-reverse'
 
-	return (
-		<Stack
-			borderRadius={8}
-			direction={{
-				base: 'column',
-				md: desktopDirection
-			}}
-			px={0}
-			py={4}
-			spacing={{ base: 8, md: 8 }}
-			w='100%'
-			{...props}
-		>
-			<ProjectInfo
-				project={project}
-				renderMode={renderMode}
-				w={{ base: 'full', md: '45%' }}
-			/>
+	const textAlign =
+		renderMode === 'small-screen' || renderMode === 'odd'
+			? 'left'
+			: 'right'
 
-			{project.images && (
-				<ProjectPreview project={project} w={{ base: 'full', md: '55%' }} />
-			)}
-		</Stack>
+	const justify =
+		renderMode === 'small-screen' || renderMode === 'odd'
+			? 'flex-start'
+			: 'flex-end'
+
+	return (
+		<>
+			<Show breakpoint='(max-width: 767px)'>
+				<Stack
+					direction='column'
+					spacing={4}
+					textAlign={textAlign}
+					w='100%'
+					{...props}
+				>
+					<ProjectInfo justify={justify} project={project} w='full' />
+					<ProjectPreview project={project} w={{ base: 'full', md: '55%' }} />
+					<ProjectTechs justify={justify} project={project} />
+					<ProjectUrls justify={justify} project={project} />
+				</Stack>
+			</Show>
+
+			<Show breakpoint='(min-width: 768px)'>
+				<Stack
+					direction={desktopDirection}
+					pb={8}
+					spacing={8}
+					textAlign={textAlign}
+					w='100%'
+					{...props}
+				>
+					<Stack direction='column' spacing={4} w='45%'>
+						<ProjectInfo justify={justify} project={project} />
+						<ProjectTechs justify={justify} project={project} />
+						<ProjectUrls justify={justify} project={project} />
+					</Stack>
+
+					<ProjectPreview project={project} w='55%' />
+				</Stack>
+			</Show>
+		</>
 	)
 }
 

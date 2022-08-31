@@ -47,7 +47,7 @@ export const ProjectUrls: React.FC<ProjectProps> = ({ project, ...props }) => {
 					minW={['full', 0]}
 				>
 					<Button
-						aria-label='External link icon'
+						aria-label='Project link icon'
 						as='div'
 						colorScheme='pink'
 						iconSpacing={2}
