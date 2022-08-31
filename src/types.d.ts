@@ -41,3 +41,8 @@ export type Range<F extends number, T extends number> = Exclude<Enumerate<T>, En
 export type Lazy = React.LazyExoticComponent<React.ComponentType<any>>
 export type LazyPromise = Promise<{ default: React.ComponentType<any> }>
 /* eslint-enable @typescript-eslint/no-explicit-any */
+
+export interface ImageDim {
+	width: number
+	height: number
+}

@@ -10,36 +10,10 @@ import { type FC, useEffect, useRef, useState } from 'react'
 import { Project } from '~/types'
 import { CloudinaryImage } from '~/components/CloudinaryImage'
 import { remToPx } from '~/utils/units'
+import { defaultDesktopDims, defaultMobileDims, getContainerHeight, getDimensions } from '~/utils/project-preview'
 
 interface ProjectProps extends FlexProps {
 	project: Project
-}
-
-interface ImageDim {
-	width: number
-	height: number
-}
-
-const desktopAspectRatio = 861 / 1499
-const mobileAspectRatio = 958 / 473
-
-const getDimensions = (containerWidth: number, padding: number) => {
-	const desktopWidth = Math.floor(containerWidth - padding)
-	const desktopHeight = Math.floor(desktopWidth * desktopAspectRatio)
-
-	const mobileWidth = Math.floor(containerWidth * 0.25)
-	const mobileHeight = Math.floor(mobileWidth * mobileAspectRatio)
-
-	return {
-		desktopWidth,
-		desktopHeight,
-		mobileWidth,
-		mobileHeight
-	}
-}
-
-const getContainerHeight = (width: number) => {
-	return Math.floor(width * desktopAspectRatio + remToPx(2))
 }
 
 export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
@@ -48,8 +22,8 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 	const [desktopLoaded, setDesktopLoaded] = useState(false)
 	const [mobileLoaded, setMobileLoaded] = useState(false)
 	const containerRef = useRef<HTMLDivElement>(null)
-	const [mobileDims, setMobileDims] = useState<ImageDim | null>(null)
-	const [desktopDims, setDesktopDims] = useState<ImageDim | null>(null)
+	const [mobileDims, setMobileDims] = useState(defaultMobileDims)
+	const [desktopDims, setDesktopDims] = useState(defaultDesktopDims)
 	const [containerWidth, setContainerWidth] = useState<number | null>(null)
 	const previewPadding = useBreakpointValue(
 		{ base: '1rem', sm: '1.6rem', md: '2rem' },
@@ -58,10 +32,14 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 
 	const loaded = desktopLoaded && mobileLoaded
 
+	const containerMinHeight = containerWidth
+		? getContainerHeight(containerWidth)
+		: undefined
+
 	useEffect(() => {
 		if (containerRef.current) {
 			const containerWidth = containerRef.current.clientWidth
-			const desktopPadding = 2 * remToPx(parseInt(previewPadding as string))
+			const desktopPadding = 2 * remToPx(parseInt(previewPadding!))
 			const { desktopHeight, desktopWidth, mobileHeight, mobileWidth } = getDimensions(containerWidth, desktopPadding)
 
 			setContainerWidth(containerWidth)
@@ -87,18 +65,16 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 			borderColor={borderColor}
 			borderRadius={{ base: 8, md: 16 }}
 			justify='center'
-			minHeight={
-				containerWidth ? getContainerHeight(containerWidth) : undefined
-			}
+			minHeight={containerMinHeight}
 			pos='relative'
 			{...props}
 		>
 			<Skeleton
 				borderRadius={{ base: 8, md: 16 }}
 				fadeDuration={1}
-				height={desktopDims?.height || 222}
+				height={desktopDims?.height}
 				isLoaded={loaded}
-				width={desktopDims?.width || 388}
+				width={desktopDims?.width}
 			>
 				<Atropos
 					className='project-preview'
@@ -111,8 +87,8 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 						alt={`${p.name} desktop preview`}
 						className='project-preview-desktop'
 						data-atropos-offset='-4'
-						deliveryQuality={95}
-						height={desktopDims?.height || 222}
+						deliveryQuality={100}
+						height={desktopDims?.height}
 						lazyLoadPlugin={true}
 						loading='lazy'
 						placeholderPlugin={true}
@@ -120,7 +96,7 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 						style={{
 							padding: previewPadding
 						}}
-						width={desktopDims?.width || 388}
+						width={desktopDims?.width}
 						onLoad={() => setDesktopLoaded(true)}
 					/>
 
@@ -128,13 +104,13 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 						alt={`${p.name} mobile preview`}
 						className='project-preview-mobile'
 						data-atropos-offset='8'
-						deliveryQuality={95}
-						height={mobileDims?.height || 212}
+						deliveryQuality={100}
+						height={mobileDims.height}
 						lazyLoadPlugin={true}
 						loading='lazy'
 						placeholderPlugin={true}
 						publicId={`marsidev${p.images!.mobile}`}
-						width={mobileDims?.width || 105}
+						width={mobileDims.width}
 						onLoad={() => setMobileLoaded(true)}
 					/>
 				</Atropos>
