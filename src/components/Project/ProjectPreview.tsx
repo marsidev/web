@@ -96,7 +96,9 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 			<Skeleton
 				borderRadius={{ base: 8, md: 16 }}
 				fadeDuration={1}
+				height={desktopDims?.height || 222}
 				isLoaded={loaded}
+				width={desktopDims?.width || 388}
 			>
 				<Atropos
 					className='project-preview'
@@ -109,7 +111,7 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 						alt={`${p.name} desktop preview`}
 						className='project-preview-desktop'
 						data-atropos-offset='-4'
-						deliveryQuality={90}
+						deliveryQuality={95}
 						height={desktopDims?.height || 222}
 						lazyLoadPlugin={true}
 						loading='lazy'
@@ -126,7 +128,7 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 						alt={`${p.name} mobile preview`}
 						className='project-preview-mobile'
 						data-atropos-offset='8'
-						deliveryQuality={90}
+						deliveryQuality={95}
 						height={mobileDims?.height || 212}
 						lazyLoadPlugin={true}
 						loading='lazy'
