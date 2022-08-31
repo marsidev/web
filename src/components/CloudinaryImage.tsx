@@ -1,5 +1,5 @@
 import type { Plugins } from '@cloudinary/html'
-import { memo, useCallback } from 'react'
+import { memo, useMemo } from 'react'
 import {
 	AdvancedImage,
 	accessibility,
@@ -75,7 +75,7 @@ const Image: React.FC<CloudinaryImageProps> = props => {
 
 	const fullRadius = radius === 'full'
 
-	const getImage = useCallback(() => {
+	const cldImage = useMemo(() => {
 		const image = cloudinaryClient.image(publicId)
 
 		if (width && height) {
@@ -111,22 +111,26 @@ const Image: React.FC<CloudinaryImageProps> = props => {
 		return image
 	}, [width, height, radius, deliveryFormat, deliveryQuality, brightness, publicId])
 
-	const getPlugins = useCallback(() => {
+	const plugins = useMemo(() => {
 		const plugins: Plugins = []
 
-		lazyLoadPlugin && plugins.push(lazyload({ rootMargin: '10px 20px 10px 30px', threshold: 0.1 }))
+		lazyLoadPlugin &&
+			plugins.push(
+				lazyload({ rootMargin: '10px 20px 10px 30px', threshold: 0.1 })
+			)
 		placeholderPlugin && plugins.push(placeholder({ mode: 'blur' }))
 		accessibilityPlugin && plugins.push(accessibility())
-		responsivePlugin && plugins.push(responsive({ steps: [600, 800, 1000, 1400] }))
+		responsivePlugin &&
+			plugins.push(responsive({ steps: [600, 800, 1000, 1400] }))
 
 		return plugins
 	}, [lazyLoadPlugin, placeholderPlugin, accessibilityPlugin])
 
 	return (
 		<AdvancedImage
-			cldImg={getImage()}
+			cldImg={cldImage}
 			height={height}
-			plugins={customPlugins || getPlugins()}
+			plugins={customPlugins || plugins}
 			style={{
 				borderRadius: fullRadius ? 9999 : undefined
 			}}
