@@ -1,16 +1,16 @@
 import type { InferGetServerSidePropsType, NextPage } from 'next'
 import { serialize } from 'next-mdx-remote/serialize'
-// import { Suspense, lazy } from 'react'
+import { Suspense, lazy } from 'react'
 import { Layout } from '~/layouts/main'
 import { loadFile } from '~/utils/fs'
 import { Cover } from '~/views/Cover'
 import { About } from '~/views/About'
-import { Projects } from '~/views/Projects'
-// import { Lazy, LazyPromise } from '~/types'
+// import { Projects } from '~/views/Projects'
+import { Lazy, LazyPromise } from '~/types'
 
 type AppProps = InferGetServerSidePropsType<typeof getStaticProps>
 
-// const Projects: Lazy = lazy((): LazyPromise => import('~/views/Projects'))
+const Projects: Lazy = lazy((): LazyPromise => import('~/views/Projects'))
 
 const App: NextPage<AppProps> = ({ aboutSource }) => {
 	return (
@@ -18,10 +18,10 @@ const App: NextPage<AppProps> = ({ aboutSource }) => {
 			<Cover />
 			<About source={aboutSource} />
 
-			<Projects />
-			{/* <Suspense fallback='loading...'>
+			{/* <Projects /> */}
+			<Suspense fallback='loading...'>
 				<Projects />
-			</Suspense> */}
+			</Suspense>
 		</Layout>
 	)
 }

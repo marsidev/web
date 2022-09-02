@@ -4,17 +4,17 @@ import {
 	Flex,
 	type FlexProps,
 	Heading,
-	Image,
 	Tag,
 	chakra,
 	useBreakpointValue
 } from '@chakra-ui/react'
-import { useState } from 'react'
+import { type FC, useState } from 'react'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { TECHNOLOGIES } from '~/constants/technologies'
 import { Link } from '~/components/Link'
 import { capitalize } from '~/utils/capitalize'
 import { Project } from '~/types'
+import { CloudinaryImage } from '~/components/CloudinaryImage'
 
 interface ProjectProps extends FlexProps {
 	project: Project
@@ -24,7 +24,7 @@ interface ShowAllProps extends ButtonProps {
 	showAll: boolean
 }
 
-const ShowAll: React.FC<ShowAllProps> = ({ showAll, ...rest }) => {
+const ShowAll: FC<ShowAllProps> = ({ showAll, ...rest }) => {
 	return (
 		<Button
 			colorScheme={showAll ? 'orange' : 'green'}
@@ -39,18 +39,14 @@ const ShowAll: React.FC<ShowAllProps> = ({ showAll, ...rest }) => {
 	)
 }
 
-export const ProjectTechs: React.FC<ProjectProps> = ({ project, ...props }) => {
+export const ProjectTechs: FC<ProjectProps> = ({ project, ...props }) => {
 	const [showAll, setShowAll] = useState(false)
 	const [parent] = useAutoAnimate<HTMLDivElement>({ duration: 250, easing: 'ease-out' })
 	const defaultTagsToShow = useBreakpointValue({ base: 3, sm: 5, md: 5, lg: 7 })
+	const logoHeight = useBreakpointValue({ base: '16px', md: '18px' })
 
 	const maxTagsToShow = showAll ? project.stack.length : defaultTagsToShow
-	const showShowAllBtn =
-		defaultTagsToShow && project.stack.length > defaultTagsToShow
-
-	const toggleShowAll = () => {
-		setShowAll(!showAll)
-	}
+	const showShowAllBtn = defaultTagsToShow && project.stack.length > defaultTagsToShow
 
 	return (
 		<Flex flexDir='column' gap={2}>
@@ -97,24 +93,26 @@ export const ProjectTechs: React.FC<ProjectProps> = ({ project, ...props }) => {
 							>
 								{tech.icon && (
 									<chakra.span>
-										<Image
+										<CloudinaryImage
 											alt={`${tech.name} logo`}
-											h={{ base: '16px', md: '18px' }}
+											deliveryHeight={logoHeight ? parseInt(logoHeight) : undefined}
+											deliveryQuality={100}
+											height={logoHeight}
+											lazyLoadPlugin={true}
 											loading='lazy'
-											pr={1}
-											src={tech.icon}
-											w='auto'
+											publicId={`marsidev${tech.icon}`}
+											width='auto'
 										/>
 									</chakra.span>
 								)}
-								<chakra.span>{tech.name}</chakra.span>
+								<chakra.span ml={2}>{tech.name}</chakra.span>
 							</Tag>
 						</Link>
 					)
 				})}
 
 				{showShowAllBtn && (
-					<ShowAll showAll={showAll} onClick={toggleShowAll} />
+					<ShowAll showAll={showAll} onClick={() => setShowAll(!showAll)} />
 				)}
 			</Flex>
 		</Flex>
