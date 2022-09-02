@@ -17,8 +17,8 @@ type NativeImgProps = React.ComponentPropsWithoutRef<'img'>
 
 interface CommonImageProps {
 	publicId: string
-	width?: number
-	height?: number
+	deliveryWidth?: number
+	deliveryHeight?: number
 	/**
 	 * @description Rounds the corners of the image by specifying the pixels number or 'full' for a full rounded image.
 	 */
@@ -58,8 +58,8 @@ type CloudinaryImageProps =
 
 const Image: React.FC<CloudinaryImageProps> = props => {
 	const {
-		width,
-		height,
+		deliveryWidth,
+		deliveryHeight,
 		lazyLoadPlugin,
 		placeholderPlugin,
 		responsivePlugin,
@@ -78,12 +78,12 @@ const Image: React.FC<CloudinaryImageProps> = props => {
 	const cldImage = useMemo(() => {
 		const image = cloudinaryClient.image(publicId)
 
-		if (width && height) {
-			image.resize(fill().width(width).height(height))
-		} else if (!width && height) {
-			image.resize(fill().height(height))
-		} else if (width && !height) {
-			image.resize(fill().width(width))
+		if (deliveryWidth && deliveryHeight) {
+			image.resize(fill().width(deliveryWidth).height(deliveryHeight))
+		} else if (!deliveryWidth && deliveryHeight) {
+			image.resize(fill().height(deliveryHeight))
+		} else if (deliveryWidth && !deliveryHeight) {
+			image.resize(fill().width(deliveryWidth))
 		}
 
 		if (fullRadius) {
@@ -109,19 +109,26 @@ const Image: React.FC<CloudinaryImageProps> = props => {
 		}
 
 		return image
-	}, [width, height, radius, deliveryFormat, deliveryQuality, brightness, publicId])
+	}, [
+		deliveryWidth,
+		deliveryHeight,
+		radius,
+		deliveryFormat,
+		deliveryQuality,
+		brightness,
+		publicId
+	])
 
 	const plugins = useMemo(() => {
 		const plugins: Plugins = []
 
-		lazyLoadPlugin &&
-			plugins.push(
-				lazyload({ rootMargin: '10px 20px 10px 30px', threshold: 0.1 })
-			)
+		lazyLoadPlugin && plugins.push(lazyload({ rootMargin: '10px 20px 10px 30px', threshold: 0.1 }))
+
 		placeholderPlugin && plugins.push(placeholder({ mode: 'blur' }))
+
 		accessibilityPlugin && plugins.push(accessibility())
-		responsivePlugin &&
-			plugins.push(responsive({ steps: [600, 800, 1000, 1400] }))
+
+		responsivePlugin && plugins.push(responsive({ steps: [600, 800, 1000, 1400] }))
 
 		return plugins
 	}, [lazyLoadPlugin, placeholderPlugin, accessibilityPlugin])
@@ -129,12 +136,10 @@ const Image: React.FC<CloudinaryImageProps> = props => {
 	return (
 		<AdvancedImage
 			cldImg={cldImage}
-			height={height}
 			plugins={customPlugins || plugins}
 			style={{
 				borderRadius: fullRadius ? 9999 : undefined
 			}}
-			width={width}
 			{...rest}
 		/>
 	)

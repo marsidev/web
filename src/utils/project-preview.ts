@@ -1,20 +1,32 @@
-import type { ImageDim } from '~/types'
+import type { ImageSize, ResponsiveSize } from '~/types'
 import { remToPx } from '~/utils/units'
 
-const desktopAspectRatio = 861 / 1499
-const mobileAspectRatio = 958 / 473
-
-export const defaultMobileDims: ImageDim = {
-	width: 105,
-	height: Math.floor(105)
+export const deliverySize: ResponsiveSize = {
+	mobile: {
+		width: 473,
+		height: 958
+	},
+	desktop: {
+		width: 1499,
+		height: 861
+	}
 }
 
-export const defaultDesktopDims: ImageDim = {
-	width: 388,
-	height: Math.floor(388)
+const desktopAspectRatio = deliverySize.desktop.height / deliverySize.desktop.width
+
+const mobileAspectRatio = deliverySize.mobile.height / deliverySize.mobile.width
+
+export const defaultMobileSize: ImageSize = {
+	width: 120,
+	height: Math.floor(120)
 }
 
-export const getDimensions = (containerWidth: number, padding: number) => {
+export const defaultDesktopSize: ImageSize = {
+	width: 480,
+	height: Math.floor(480)
+}
+
+export const getDimensions = (containerWidth: number, padding: number): ResponsiveSize => {
 	const desktopWidth = Math.floor(containerWidth - padding)
 	const desktopHeight = Math.floor(desktopWidth * desktopAspectRatio)
 
@@ -22,10 +34,14 @@ export const getDimensions = (containerWidth: number, padding: number) => {
 	const mobileHeight = Math.floor(mobileWidth * mobileAspectRatio)
 
 	return {
-		desktopWidth,
-		desktopHeight,
-		mobileWidth,
-		mobileHeight
+		desktop: {
+			width: desktopWidth,
+			height: desktopHeight
+		},
+		mobile: {
+			width: mobileWidth,
+			height: mobileHeight
+		}
 	}
 }
 

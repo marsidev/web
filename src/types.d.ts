@@ -7,7 +7,7 @@ export interface Project {
 	url?: string
 	repository?: string
 	stack: string[]
-	images?: {
+	images: {
 		mobile: string
 		desktop: string
 	}
@@ -42,7 +42,12 @@ export type Lazy = React.LazyExoticComponent<React.ComponentType<any>>
 export type LazyPromise = Promise<{ default: React.ComponentType<any> }>
 /* eslint-enable @typescript-eslint/no-explicit-any */
 
-export interface ImageDim {
+export interface ImageSize {
 	width: number
 	height: number
+}
+
+export interface ResponsiveSize {
+	mobile: ImageSize
+	desktop: ImageSize
 }

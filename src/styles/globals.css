@@ -26,6 +26,7 @@
 
 .project-preview {
   width: 100%;
+  height: 100%;
 	display: flex;
 	justify-content: center;
 	flex-direction: row;
@@ -34,6 +35,7 @@
 
 .project-preview .atropos-inner {
   z-index: 1;
+	border-radius: 16px !important;
 }
 
 .project-preview img {
@@ -49,16 +51,16 @@
   transform: translate3d(0, 0, -1px);
 }
 
-.project-preview img.project-preview-desktop {
+.project-preview .project-preview-desktop {
   width: 100%;
   height: 100%;
 	position: relative;
 }
 
-.project-preview img.project-preview-mobile {
+.project-preview .project-preview-mobile {
 	position: absolute;
   left: 8%;
   top: 8%;
-  width: 25%;
+  /* width: 25%; */
 	z-index: 999 !important;
 }
