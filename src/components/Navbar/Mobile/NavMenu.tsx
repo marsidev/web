@@ -4,6 +4,7 @@ import { useWindowSize } from '@marsidev/react-hooks'
 import { useAtom } from 'jotai'
 import { mobileMenuAtom } from '~/store'
 import { NavItem } from '../NavItem'
+import { navItems } from '../items'
 import { MenuContainer } from './MenuContainer'
 
 interface NavMenuProps {
@@ -33,17 +34,11 @@ export const NavMenu: FC<NavMenuProps> = ({ open, onToggle }) => {
 		<AnimatePresence>
 			{open && (
 				<MenuContainer>
-					<NavItem href='#' onClick={onCloseMenu}>
-						Home
-					</NavItem>
-
-					<NavItem href='#about' onClick={onCloseMenu}>
-						About
-					</NavItem>
-
-					<NavItem href='#projects' onClick={onCloseMenu}>
-						Projects
-					</NavItem>
+					{navItems.map(item => (
+						<NavItem key={item.href} href={item.href} onClick={onCloseMenu}>
+							{item.name}
+						</NavItem>
+					))}
 				</MenuContainer>
 			)}
 		</AnimatePresence>
