@@ -6,7 +6,7 @@ export const PROJECTS: Project[] = [
 		name: 'Overnote',
 		description:
 			'Overnote is a notes app. It allows you to create, edit, customize and delete notes. Inspired by Google Keep.',
-		url: 'https://overnote.herokuapp.com',
+		url: 'https://overnote.onrender.com',
 		repository: 'https://github.com/marsidev/overnote',
 		stack: ['react', 'chakra-ui', 'express', 'mongodb', 'jwt'],
 		images: {
