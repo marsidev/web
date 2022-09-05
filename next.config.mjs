@@ -1,5 +1,6 @@
 import mdx from '@next/mdx'
 import pwa from 'next-pwa'
+import analyzer from '@next/bundle-analyzer'
 import { withSentryConfig } from '@sentry/nextjs'
 import runtimeCaching from 'next-pwa/cache.js'
 
@@ -18,6 +19,10 @@ const withPWA = pwa({
 	dest: 'public',
 	runtimeCaching,
 	buildExcludes: [/middleware-manifest.json$/]
+})
+
+const withAnalyzer = analyzer({
+	enabled: process.env.ANALYZE === 'true'
 })
 
 const rewrites = async () => [
@@ -39,10 +44,10 @@ const rewrites = async () => [
 	}
 ]
 
-const ContentSecurityPolicy = `
+const CSP = `
   default-src 'self';
   script-src 'self' 'unsafe-inline' 'unsafe-eval';
-	connect-src 'self' https://vitals.vercel-insights.com https://res.cloudinary.com;
+	connect-src 'self' https://vitals.vercel-insights.com https://res.cloudinary.com https://o1099137.ingest.sentry.io;
   style-src 'self' 'unsafe-inline';
   font-src 'self';
 	img-src 'self' https://res.cloudinary.com data:;
@@ -59,7 +64,7 @@ const securityHeaders = [
 	},
 	{
 		key: 'Content-Security-Policy-Report-Only',
-		value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim()
+		value: CSP.replace(/\s{2,}/g, ' ').trim()
 	}
 ]
 
@@ -72,11 +77,6 @@ const headers = async () => {
 			headers: securityHeaders
 		}
 	]
-}
-
-/** @type {Partial<import("@sentry/nextjs").SentryWebpackPluginOptions>} */
-const sentryWebpackPluginOptions = {
-	silent: true
 }
 
 /** @type {import('next').NextConfig} */
@@ -96,9 +96,9 @@ const nextConfig = {
 	}
 }
 
-const config = withSentryConfig(
-	withPWA(withMDX(nextConfig)),
-	sentryWebpackPluginOptions
-)
+const config = withMDX(withPWA(withAnalyzer(nextConfig)))
 
-export default config
+/** @type {Partial<import("@sentry/nextjs").SentryWebpackPluginOptions>} */
+const sentryOptions = { silent: true }
+
+export default withSentryConfig(config, sentryOptions)
