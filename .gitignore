@@ -38,3 +38,6 @@ pnpm-lock.yaml
 
 public/sw.js
 public/workbox-*.js
+
+# Sentry
+.sentryclirc

@@ -1,5 +1,6 @@
 import mdx from '@next/mdx'
 import pwa from 'next-pwa'
+import { withSentryConfig } from '@sentry/nextjs'
 import runtimeCaching from 'next-pwa/cache.js'
 
 const IS_PROD = process.env.NODE_ENV === 'production'
@@ -73,6 +74,11 @@ const headers = async () => {
 	]
 }
 
+/** @type {Partial<import("@sentry/nextjs").SentryWebpackPluginOptions>} */
+const sentryWebpackPluginOptions = {
+	silent: true
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: true,
@@ -84,7 +90,15 @@ const nextConfig = {
 	headers,
 	env: {
 		PANELBEAR_ID: process.env.PANELBEAR_ID
+	},
+	sentry: {
+		hideSourceMaps: true
 	}
 }
 
-export default withPWA(withMDX(nextConfig))
+const config = withSentryConfig(
+	withPWA(withMDX(nextConfig)),
+	sentryWebpackPluginOptions
+)
+
+export default config
