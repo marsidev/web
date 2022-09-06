@@ -18,7 +18,7 @@ export const underlined = (props: GlobalStyleProps) => ({
 		bottom: 0,
 		left: 0,
 		// backgroundColor: '#0087ca',
-		backgroundColor: mode('teal.400', 'teal.300')(props),
+		backgroundColor: mode('pink.400', 'pink.300')(props),
 		transformOrigin: 'bottom right',
 		transition: 'transform 0.25s ease-out'
 	},

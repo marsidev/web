@@ -29,7 +29,7 @@ export const ScrollToTop: React.FC<ScrollToTopProps> = ({
 		<IconButton
 			aria-label='Scroll to top'
 			bottom={bottom || respBottom}
-			colorScheme='teal'
+			colorScheme='pink'
 			icon={<ArrowUpIcon />}
 			isRound={true}
 			opacity={offsetPassed ? '1' : '0'}
