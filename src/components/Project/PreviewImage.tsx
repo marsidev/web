@@ -1,5 +1,5 @@
 import { Flex, type FlexProps, Skeleton } from '@chakra-ui/react'
-import { type FC, useState } from 'react'
+import { type FC, useCallback, useState } from 'react'
 import { CloudinaryImage } from '~/components/CloudinaryImage'
 import { ImageSize, Project } from '~/types'
 import { deliverySize } from '~/utils/project-preview'
@@ -31,6 +31,8 @@ export const PreviewImage: FC<PreviewImageProps> = ({
 	const alt = `${project.name} ${mode} preview`
 	const publicId = `marsidev${project.images[mode]}`
 
+	const onLoad = useCallback(() => setImageLoaded(true), [])
+
 	return (
 		<Flex
 			align='center'
@@ -58,7 +60,7 @@ export const PreviewImage: FC<PreviewImageProps> = ({
 					placeholderPlugin={true}
 					publicId={publicId}
 					width={imageSize.width}
-					onLoad={() => setImageLoaded(true)}
+					onLoad={onLoad}
 				/>
 			</Skeleton>
 		</Flex>

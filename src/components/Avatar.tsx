@@ -4,7 +4,7 @@ import {
 	useBreakpointValue,
 	useColorModeValue
 } from '@chakra-ui/react'
-import { useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { CloudinaryImage } from '~/components/CloudinaryImage'
 
 const unitToPx = (units: number) => {
@@ -27,6 +27,8 @@ export const Avatar = () => {
 	const avatarSize = useMemo(() => {
 		return unitToPx(containerWidth!) - 2 * unitToPx(containerPadding)
 	}, [containerWidth, containerPadding])
+
+	const onLoad = useCallback(() => setLoaded(true), [])
 
 	return (
 		<Box
@@ -54,7 +56,7 @@ export const Avatar = () => {
 					publicId='marsidev/images/avatar.png'
 					radius='full'
 					width={500}
-					onLoad={() => setLoaded(true)}
+					onLoad={onLoad}
 				/>
 			</Skeleton>
 		</Box>
