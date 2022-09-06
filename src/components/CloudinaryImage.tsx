@@ -7,32 +7,12 @@ import {
 	placeholder,
 	responsive
 } from '@cloudinary/react'
-import { fill } from '@cloudinary/url-gen/actions/resize'
-import { byRadius, max } from '@cloudinary/url-gen/actions/roundCorners'
-import { brightness as adjustBrightness } from '@cloudinary/url-gen/actions/adjust'
-import { cloudinaryClient } from '~/utils/cloudinary'
-import { Range } from '~/types'
+import {
+	UseCloudinaryImageProps,
+	useCloudinaryImage
+} from '~/hooks/use-cloudinary-image'
 
 type NativeImgProps = React.ComponentPropsWithoutRef<'img'>
-
-interface CommonImageProps {
-	publicId: string
-	deliveryWidth?: number
-	deliveryHeight?: number
-	/**
-	 * @description Rounds the corners of the image by specifying the pixels number or 'full' for a full rounded image.
-	 */
-	radius?: number | 'full'
-	deliveryFormat?: 'auto' | 'webp' | 'png' | 'jpg' | 'bmp' | 'avif'
-	deliveryQuality?:
-	| 'auto'
-	| 'auto:good'
-	| 'auto:best'
-	| 'auto:eco'
-	| 'auto:low'
-	| Range<1, 101>
-	brightness?: number
-}
 
 type ConditionalImageProps =
 	| {
@@ -53,7 +33,7 @@ type ConditionalImageProps =
 type CloudinaryImageProps =
 	NativeImgProps &
 	Pick<Required<NativeImgProps>, 'alt'> &
-	CommonImageProps &
+	UseCloudinaryImageProps &
 	ConditionalImageProps
 
 const Image: React.FC<CloudinaryImageProps> = props => {
@@ -73,43 +53,7 @@ const Image: React.FC<CloudinaryImageProps> = props => {
 		...rest
 	} = props
 
-	const fullRadius = radius === 'full'
-
-	const cldImage = useMemo(() => {
-		const image = cloudinaryClient.image(publicId)
-
-		if (deliveryWidth && deliveryHeight) {
-			image.resize(fill().width(deliveryWidth).height(deliveryHeight))
-		} else if (!deliveryWidth && deliveryHeight) {
-			image.resize(fill().height(deliveryHeight))
-		} else if (deliveryWidth && !deliveryHeight) {
-			image.resize(fill().width(deliveryWidth))
-		}
-
-		if (fullRadius) {
-			image.roundCorners(max())
-		} else if (radius) {
-			image.roundCorners(byRadius(radius))
-		}
-
-		if (deliveryFormat) {
-			image.format(deliveryFormat)
-		} else {
-			image.format('auto')
-		}
-
-		if (deliveryQuality) {
-			image.quality(deliveryQuality)
-		} else {
-			image.quality('auto')
-		}
-
-		if (brightness) {
-			image.adjust(adjustBrightness(brightness))
-		}
-
-		return image
-	}, [
+	const cldImage = useCloudinaryImage({
 		deliveryWidth,
 		deliveryHeight,
 		radius,
@@ -117,7 +61,9 @@ const Image: React.FC<CloudinaryImageProps> = props => {
 		deliveryQuality,
 		brightness,
 		publicId
-	])
+	})
+
+	const fullRadius = radius === 'full'
 
 	const plugins = useMemo(() => {
 		const plugins: Plugins = []
