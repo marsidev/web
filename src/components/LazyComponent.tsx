@@ -1,5 +1,5 @@
 import { FC, PropsWithChildren, useRef } from 'react'
-import { useInViewport } from '~/hooks/useInViewport'
+import { useInViewport } from '~/hooks/use-in-viewport'
 
 export const LazyComponent: FC<PropsWithChildren> = ({ children }) => {
 	const childRefContainer = useRef<HTMLDivElement>(null)
