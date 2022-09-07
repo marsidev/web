@@ -1,4 +1,4 @@
-import { Stack } from '@chakra-ui/react'
+import { Stack, forwardRef } from '@chakra-ui/react'
 import { useAtom } from 'jotai'
 import { useCallback } from 'react'
 import { Avatar } from '~/components/Avatar'
@@ -9,7 +9,7 @@ import { chakraUnitToPx } from '~/utils/units'
 
 const layoutTopPadding = 8 // em - chakra units
 
-export const Cover = () => {
+export const Cover = forwardRef((props, ref) => {
 	const [navbarHeight] = useAtom(navbarHeightAtom)
 
 	const getCoverHeight = useCallback(() => {
@@ -19,22 +19,32 @@ export const Cover = () => {
 
 	return (
 		<Stack
+			ref={ref}
 			align='center'
 			as='section'
-			direction={{ base: 'column', md: 'row' }}
+			direction='column'
 			height={getCoverHeight()}
-			id='me'
-			justify='center'
-			spacing={8}
+			id='cover'
+			justify={{ base: 'flex-start', sm: 'center' }}
+			pt={{ base: 32, sm: 0 }}
+			w='full'
+			{...props}
 		>
-			<Avatar />
+			<Stack
+				align='center'
+				direction={{ base: 'column', md: 'row' }}
+				justify='center'
+				spacing={[4, 8]}
+			>
+				<Avatar />
 
-			<Stack direction='column'>
-				<NameAndTitle />
-				<SocialLinks pt={2} />
+				<Stack direction='column'>
+					<NameAndTitle />
+					<SocialLinks pt={2} />
+				</Stack>
 			</Stack>
 		</Stack>
 	)
-}
+})
 
 export default Cover

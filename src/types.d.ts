@@ -51,3 +51,5 @@ export interface ResponsiveSize {
 	mobile: ImageSize
 	desktop: ImageSize
 }
+
+export type Section = 'home' | 'about' | 'projects'

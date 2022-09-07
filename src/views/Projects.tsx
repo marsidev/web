@@ -1,15 +1,17 @@
-import { Flex, Heading, Stack } from '@chakra-ui/react'
+import { Flex, Heading, Stack, forwardRef } from '@chakra-ui/react'
 import { Project } from '~/components/Project'
 import { PROJECTS } from '~/constants/projects'
 import { sortProjects } from '~/utils/sort-projects'
 
-export const Projects = () => {
+export const Projects = forwardRef((props, ref) => {
 	return (
 		<Stack
+			ref={ref}
 			align='flex-start'
 			as='section'
 			direction='column'
 			id='projects'
+			{...props}
 		>
 			<Flex flexDir='column' pb={8} textAlign='left'>
 				<Heading as='h2' size='xl'>
@@ -32,6 +34,6 @@ export const Projects = () => {
 			</Stack>
 		</Stack>
 	)
-}
+})
 
 export default Projects

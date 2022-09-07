@@ -1,4 +1,7 @@
-:root { }
+:root {
+	 --navlink-transform-origin: 'bottom right';
+	 --navlink-transform-origin-after: 'bottom left';
+ }
 
 .hand {
   animation-name: wave;

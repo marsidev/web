@@ -1,27 +1,46 @@
 import type { InferGetServerSidePropsType, NextPage } from 'next'
 import { serialize } from 'next-mdx-remote/serialize'
-import { Suspense, lazy } from 'react'
+import { useEffect } from 'react'
+import { useAtom } from 'jotai'
+import { useInView } from 'react-intersection-observer'
 import { Layout } from '~/layouts/main'
 import { loadFile } from '~/utils/fs'
 import { Cover } from '~/views/Cover'
 import { About } from '~/views/About'
-// import { Projects } from '~/views/Projects'
-import { Lazy, LazyPromise } from '~/types'
+import { Projects } from '~/views/Projects'
+import { currentSectionAtom } from '~/store'
 
 type AppProps = InferGetServerSidePropsType<typeof getStaticProps>
 
-const Projects: Lazy = lazy((): LazyPromise => import('~/views/Projects'))
-
 const App: NextPage<AppProps> = ({ aboutSource }) => {
+	const { ref: coverRef, inView: coverVisible } = useInView({
+		threshold: 0,
+		rootMargin: '-300px'
+	})
+
+	const { ref: aboutRef, inView: aboutVisible } = useInView({
+		threshold: 0,
+		rootMargin: '-300px'
+	})
+
+	const { ref: projectsRef, inView: projectsVisible } = useInView({
+		threshold: 0,
+		rootMargin: '-300px'
+	})
+
+	const [_, setCurrentSection] = useAtom(currentSectionAtom)
+
+	useEffect(() => {
+		if (projectsVisible) setCurrentSection('projects')
+		else if (aboutVisible) setCurrentSection('about')
+		else if (coverVisible) setCurrentSection('home')
+	}, [aboutVisible, projectsVisible])
+
 	return (
 		<Layout>
-			<Cover />
-			<About source={aboutSource} />
-
-			{/* <Projects /> */}
-			<Suspense fallback='loading...'>
-				<Projects />
-			</Suspense>
+			<Cover ref={coverRef} />
+			<About ref={aboutRef} source={aboutSource} />
+			<Projects ref={projectsRef} />
 		</Layout>
 	)
 }

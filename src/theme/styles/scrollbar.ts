@@ -2,7 +2,7 @@ import { type GlobalStyleProps, mode } from '@chakra-ui/theme-tools'
 
 export const scrollbar = (props: GlobalStyleProps) => ({
 	'::-webkit-scrollbar': {
-		width: '.40rem'
+		width: '.60rem'
 	},
 	'::-webkit-scrollbar-track': {
 		background: mode('gray.200', 'gray.400')(props),

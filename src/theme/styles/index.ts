@@ -1,7 +1,7 @@
 import type { GlobalStyleProps } from '@chakra-ui/theme-tools'
 import { mobileMenu } from './mobile-menu'
 import { scrollbar } from './scrollbar'
-import { underlined } from './underlined'
+import { navlinks } from './navlinks'
 
 export const styles = {
 	global: (props: GlobalStyleProps) => ({
@@ -27,7 +27,7 @@ export const styles = {
 		},
 		...scrollbar(props),
 		...mobileMenu(props),
-		...underlined(props)
+		...navlinks(props)
 	})
 }
 

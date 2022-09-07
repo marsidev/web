@@ -6,10 +6,13 @@ import { ChakraProvider } from '@chakra-ui/react'
 import splitbee from '@splitbee/web'
 import { usePanelbear } from '@panelbear/panelbear-nextjs'
 import { useEffect } from 'react'
+import { useScrollY } from '@marsidev/react-hooks'
 import { theme } from '~/theme'
 import { ScrollToTop } from '~/components/ScrollToTop'
 
 const MyApp: AppType = ({ Component, pageProps, router }) => {
+	const { scrollDirection } = useScrollY()
+
 	usePanelbear(process.env.PANELBEAR_ID || '', {
 		scriptSrc: '/bear.js',
 		analyticsHost: '_bear',
@@ -24,6 +27,18 @@ const MyApp: AppType = ({ Component, pageProps, router }) => {
 			})
 		}
 	}, [])
+
+	useEffect(() => {
+		document.documentElement.style.setProperty(
+			'--navlink-transform-origin',
+			scrollDirection === 'down' ? 'bottom right' : 'bottom left'
+		)
+
+		document.documentElement.style.setProperty(
+			'--navlink-transform-origin-after',
+			scrollDirection === 'down' ? 'bottom left' : 'bottom right'
+		)
+	}, [scrollDirection])
 
 	return (
 		<AnimatePresence mode='wait'>
