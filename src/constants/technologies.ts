@@ -113,7 +113,7 @@ export const TECHNOLOGIES: Technologies = {
 		id: 'mongodb',
 		name: 'MongoDB',
 		url: 'https://www.mongodb.com/',
-		icon: '/images/logos/mongodb.svg'
+		icon: '/images/logos/mongodb.webp'
 	},
 	nextjs: {
 		id: 'nextjs',
