@@ -14,7 +14,7 @@ export const About = forwardRef(({ source, ...rest }: AboutProps, ref) => {
 			ref={ref}
 			id='about'
 			minH='100vh'
-			pt={32}
+			pt={{ base: 24, sm: 32 }}
 			{...rest}
 		>
 			<Stack align='flex-start' direction='column'>

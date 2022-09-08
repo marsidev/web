@@ -10,10 +10,10 @@ export const NavContainer: FC<NavContainerProps> = ({ children, ...props }) => {
 		ref,
 		backdropFilter,
 		backgroundColor,
-		offsetPassed,
-		scrollDirection
+		offsetPassed
+		// scrollDirection
 	} = useNavbarControl()
-	const isHidden = scrollDirection === 'down'
+	// const isHidden = scrollDirection === 'down'
 
 	return (
 		<Flex
@@ -31,7 +31,7 @@ export const NavContainer: FC<NavContainerProps> = ({ children, ...props }) => {
 			px={8}
 			py={[2, 4]}
 			top={0}
-			transform={isHidden ? 'translateY(-100%)' : 'translateY(0)'}
+			// transform={isHidden ? 'translateY(-100%)' : 'translateY(0)'}
 			transition='background-color 500ms ease-out, box-shadow 500ms ease-out, transform 200ms ease-out, min-height 350ms ease-out;'
 			width='full'
 			zIndex='sticky'
