@@ -1,14 +1,14 @@
+import type { ButtonProps, FlexProps } from '@chakra-ui/react'
 import {
 	Button,
-	type ButtonProps,
 	Flex,
-	type FlexProps,
 	Heading,
+	Skeleton,
 	Tag,
 	chakra,
 	useBreakpointValue
 } from '@chakra-ui/react'
-import { type FC, useState } from 'react'
+import { type FC, useCallback, useState } from 'react'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { TECHNOLOGIES } from '~/constants/technologies'
 import { Link } from '~/components/Link'
@@ -41,12 +41,15 @@ const ShowAll: FC<ShowAllProps> = ({ showAll, ...rest }) => {
 
 export const ProjectTechs: FC<ProjectProps> = ({ project, ...props }) => {
 	const [showAll, setShowAll] = useState(false)
+	const [iconLoaded, setIconLoaded] = useState(false)
 	const [parent] = useAutoAnimate<HTMLDivElement>({ duration: 250, easing: 'ease-out' })
 	const defaultTagsToShow = useBreakpointValue({ base: 3, sm: 5, md: 5, lg: 7 })
 	const logoSize = useBreakpointValue({ base: 16, md: 18 })
 
 	const maxTagsToShow = showAll ? project.stack.length : defaultTagsToShow
 	const showShowAllBtn = defaultTagsToShow && project.stack.length > defaultTagsToShow
+
+	const onLoadIcon = useCallback(() => setIconLoaded(true), [])
 
 	return (
 		<Flex flexDir='column' gap={2}>
@@ -92,19 +95,26 @@ export const ProjectTechs: FC<ProjectProps> = ({ project, ...props }) => {
 								verticalAlign='middle'
 							>
 								{tech.icon && (
-									<chakra.span>
+									<Skeleton
+										as='span'
+										fadeDuration={1}
+										height={`${logoSize as number}px`}
+										isLoaded={iconLoaded}
+										width={`${logoSize as number}px`}
+									>
 										<CloudinaryImage
 											alt={`${tech.name} logo`}
 											deliveryHeight={logoSize}
 											deliveryQuality={100}
 											deliveryWidth={logoSize}
-											height={`${logoSize}px`}
+											height={`${logoSize as number}px`}
 											lazyLoadPlugin={true}
 											loading='lazy'
 											publicId={`marsidev${tech.icon}`}
-											width={`${logoSize}px`}
+											width={`${logoSize as number}px`}
+											onLoad={onLoadIcon}
 										/>
-									</chakra.span>
+									</Skeleton>
 								)}
 								<chakra.span ml={2}>{tech.name}</chakra.span>
 							</Tag>
