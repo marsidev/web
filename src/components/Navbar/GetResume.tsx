@@ -55,7 +55,7 @@ export const GetResume: FC<GetResumeProps> = ({ ...props }) => {
 					isExternal
 					as={Link}
 					download={'Luis Eduardo Marsiglia\'s Resume'}
-					href='/files/resume.pdf'
+					href='/resume.pdf'
 				>
 					<DownloadIcon />
 					<chakra.span ml={2}>Download PDF</chakra.span>
