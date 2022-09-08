@@ -1,6 +1,6 @@
 import type { CloudinaryImage } from '@cloudinary/url-gen'
 import { useMemo } from 'react'
-import { fill } from '@cloudinary/url-gen/actions/resize'
+import { pad } from '@cloudinary/url-gen/actions/resize'
 import { byRadius, max } from '@cloudinary/url-gen/actions/roundCorners'
 import { brightness as adjustBrightness } from '@cloudinary/url-gen/actions/adjust'
 import type { Range } from '~/types'
@@ -44,11 +44,11 @@ export const useCloudinaryImage: UseClodinaryImage = props => {
 		const image = cloudinaryClient.image(publicId)
 
 		if (deliveryWidth && deliveryHeight) {
-			image.resize(fill().width(deliveryWidth).height(deliveryHeight))
+			image.resize(pad().width(deliveryWidth).height(deliveryHeight))
 		} else if (!deliveryWidth && deliveryHeight) {
-			image.resize(fill().height(deliveryHeight))
+			image.resize(pad().height(deliveryHeight))
 		} else if (deliveryWidth && !deliveryHeight) {
-			image.resize(fill().width(deliveryWidth))
+			image.resize(pad().width(deliveryWidth))
 		}
 
 		if (fullRadius) {

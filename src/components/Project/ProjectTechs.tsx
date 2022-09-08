@@ -43,7 +43,7 @@ export const ProjectTechs: FC<ProjectProps> = ({ project, ...props }) => {
 	const [showAll, setShowAll] = useState(false)
 	const [parent] = useAutoAnimate<HTMLDivElement>({ duration: 250, easing: 'ease-out' })
 	const defaultTagsToShow = useBreakpointValue({ base: 3, sm: 5, md: 5, lg: 7 })
-	const logoHeight = useBreakpointValue({ base: '16px', md: '18px' })
+	const logoSize = useBreakpointValue({ base: 16, md: 18 })
 
 	const maxTagsToShow = showAll ? project.stack.length : defaultTagsToShow
 	const showShowAllBtn = defaultTagsToShow && project.stack.length > defaultTagsToShow
@@ -95,13 +95,14 @@ export const ProjectTechs: FC<ProjectProps> = ({ project, ...props }) => {
 									<chakra.span>
 										<CloudinaryImage
 											alt={`${tech.name} logo`}
-											deliveryHeight={logoHeight ? parseInt(logoHeight) : undefined}
+											deliveryHeight={logoSize}
 											deliveryQuality={100}
-											height={logoHeight}
+											deliveryWidth={logoSize}
+											height={`${logoSize}px`}
 											lazyLoadPlugin={true}
 											loading='lazy'
 											publicId={`marsidev${tech.icon}`}
-											width='auto'
+											width={`${logoSize}px`}
 										/>
 									</chakra.span>
 								)}
