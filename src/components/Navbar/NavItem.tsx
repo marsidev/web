@@ -6,7 +6,7 @@ import type { LinkProps } from '@chakra-ui/react'
 import { Link, useBreakpointValue } from '@chakra-ui/react'
 import { useAtom } from 'jotai'
 import { MotionBox } from '~/components/motion'
-import { currentSectionAtom } from '~/store'
+import { activeSectionAtom } from '~/store'
 import type { Section } from '~/types'
 import { navItemVariants } from './variants'
 
@@ -19,13 +19,13 @@ export interface NavItemProps extends LinkProps {
 export const NavItem: FC<NavItemProps> = ({ href, children, sectionId, ...props }) => {
 	const baseClass = useBreakpointValue({ base: '', sm: 'navlink' })
 
-	const [currentSection] = useAtom(currentSectionAtom)
-	const isCurrentSection = currentSection === sectionId
+	const [activeSection] = useAtom(activeSectionAtom)
+	const isActiveSection = activeSection === sectionId
 
 	return (
 		<MotionBox variants={navItemVariants}>
 			<Link
-				className={isCurrentSection ? `${baseClass} active` : baseClass}
+				className={isActiveSection ? `${baseClass} active` : baseClass}
 				fontSize={{ base: 'md', md: 'lg' }}
 				fontWeight={600}
 				href={href}

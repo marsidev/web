@@ -3,42 +3,12 @@ import 'atropos/css'
 import type { AppType } from 'next/dist/shared/lib/utils'
 import { AnimatePresence } from 'framer-motion'
 import { ChakraProvider } from '@chakra-ui/react'
-import splitbee from '@splitbee/web'
-import { usePanelbear } from '@panelbear/panelbear-nextjs'
-import { useEffect } from 'react'
-import { useScrollY } from '@marsidev/react-hooks'
 import { theme } from '~/theme'
 import { ScrollToTop } from '~/components/ScrollToTop'
+import { useAnalytics } from '~/hooks/use-analytics'
 
 const MyApp: AppType = ({ Component, pageProps, router }) => {
-	const { scrollDirection } = useScrollY()
-
-	usePanelbear(process.env.PANELBEAR_ID || '', {
-		scriptSrc: '/bear.js',
-		analyticsHost: '_bear',
-		enabled: process.env.NODE_ENV === 'production'
-	})
-
-	useEffect(() => {
-		if (process.env.NODE_ENV === 'production') {
-			splitbee.init({
-				scriptUrl: '/bee.js',
-				apiUrl: '/_hive'
-			})
-		}
-	}, [])
-
-	useEffect(() => {
-		document.documentElement.style.setProperty(
-			'--navlink-transform-origin',
-			scrollDirection === 'down' ? 'bottom right' : 'bottom left'
-		)
-
-		document.documentElement.style.setProperty(
-			'--navlink-transform-origin-after',
-			scrollDirection === 'down' ? 'bottom left' : 'bottom right'
-		)
-	}, [scrollDirection])
+	useAnalytics()
 
 	return (
 		<AnimatePresence mode='wait'>

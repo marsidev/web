@@ -1,6 +1,6 @@
 :root {
 	 --navlink-transform-origin: 'bottom right';
-	 --navlink-transform-origin-after: 'bottom left';
+	 --active-navlink-transform-origin: 'bottom left';
  }
 
 .hand {
@@ -66,4 +66,35 @@
   top: 8%;
   /* width: 25%; */
 	z-index: 999 !important;
+}
+
+.navlink {
+	display: flex;
+	position: relative;
+	white-space: nowrap;
+}
+
+.navlink:after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	-webkit-transform: scaleX(0);
+	-moz-transform: scaleX(0);
+	-ms-transform: scaleX(0);
+	transform: scaleX(0);
+	height: 2px;
+	bottom: 0px;
+	left: 0px;
+	background-color: var(--chakra-colors-pink-400);
+	transform-origin: var(--navlink-transform-origin);
+	-webkit-transition: -webkit-transform 0.25s ease-out;
+	transition: transform 0.25s ease-out;
+}
+
+.navlink.active:after {
+	-webkit-transform: scaleX(1);
+	-moz-transform: scaleX(1);
+	-ms-transform: scaleX(1);
+	transform: scaleX(1);
+	transform-origin: var(--active-navlink-transform-origin);
 }

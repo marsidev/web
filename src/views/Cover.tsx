@@ -1,4 +1,4 @@
-import { Stack, forwardRef } from '@chakra-ui/react'
+import { Flex, Stack, forwardRef } from '@chakra-ui/react'
 import { useAtom } from 'jotai'
 import { useCallback } from 'react'
 import { Avatar } from '~/components/Avatar'
@@ -18,7 +18,7 @@ export const Cover = forwardRef((props, ref) => {
 	}, [navbarHeight, layoutTopPadding])
 
 	return (
-		<Stack
+		<Flex
 			ref={ref}
 			align='center'
 			as='section'
@@ -43,7 +43,7 @@ export const Cover = forwardRef((props, ref) => {
 					<SocialLinks pt={2} />
 				</Stack>
 			</Stack>
-		</Stack>
+		</Flex>
 	)
 })
 

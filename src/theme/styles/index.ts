@@ -1,7 +1,6 @@
 import type { GlobalStyleProps } from '@chakra-ui/theme-tools'
 import { mobileMenu } from './mobile-menu'
 import { scrollbar } from './scrollbar'
-import { navlinks } from './navlinks'
 
 export const styles = {
 	global: (props: GlobalStyleProps) => ({
@@ -11,7 +10,6 @@ export const styles = {
 			padding: 0,
 			border: 0,
 			outline: 0
-			// borderColor: mode('blackAlpha.200', 'whiteAlpha.200')(props)
 		},
 		html: {
 			scrollBehavior: 'smooth'
@@ -26,8 +24,7 @@ export const styles = {
 			transitionTimingFunction: 'ease-out !important;'
 		},
 		...scrollbar(props),
-		...mobileMenu(props),
-		...navlinks(props)
+		...mobileMenu(props)
 	})
 }
 

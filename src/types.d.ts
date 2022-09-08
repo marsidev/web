@@ -52,4 +52,4 @@ export interface ResponsiveSize {
 	desktop: ImageSize
 }
 
-export type Section = 'home' | 'about' | 'projects'
+export type Section = 'none' | 'home' | 'about' | 'projects'
