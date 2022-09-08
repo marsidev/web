@@ -104,9 +104,9 @@ export const ProjectTechs: FC<ProjectProps> = ({ project, ...props }) => {
 									>
 										<CloudinaryImage
 											alt={`${tech.name} logo`}
-											deliveryHeight={logoSize}
+											deliveryHeight={128}
 											deliveryQuality={100}
-											deliveryWidth={logoSize}
+											deliveryWidth={128}
 											height={`${logoSize as number}px`}
 											lazyLoadPlugin={true}
 											loading='lazy'
