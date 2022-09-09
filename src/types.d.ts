@@ -37,11 +37,6 @@ type Enumerate<N extends number, Acc extends number[] = []> = Acc['length'] exte
 
 export type Range<F extends number, T extends number> = Exclude<Enumerate<T>, Enumerate<F>>
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-export type Lazy = React.LazyExoticComponent<React.ComponentType<any>>
-export type LazyPromise = Promise<{ default: React.ComponentType<any> }>
-/* eslint-enable @typescript-eslint/no-explicit-any */
-
 export interface ImageSize {
 	width: number
 	height: number
