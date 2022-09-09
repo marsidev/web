@@ -28,7 +28,7 @@ const btnStyles: ButtonProps = {
 	transition: 'all 300ms ease-in-out'
 }
 
-const GradientButton: FC<ButtonProps> = ({ ...props }) => {
+const ResumeButton: FC<ButtonProps> = ({ ...props }) => {
 	return (
 		<MenuButton
 			as={Button}
@@ -44,22 +44,21 @@ const GradientButton: FC<ButtonProps> = ({ ...props }) => {
 export const GetResume: FC<GetResumeProps> = ({ ...props }) => {
 	return (
 		<Menu {...props}>
-			<GradientButton />
+			<ResumeButton />
 			<MenuList>
-				<MenuItem isExternal as={Link} href='https://bit.ly/marsicv'>
-					<NotionIcon />
-					<chakra.span ml={2}>Read on Notion</chakra.span>
-				</MenuItem>
+				<Link isExternal href='https://bit.ly/marsicv'>
+					<MenuItem>
+						<NotionIcon />
+						<chakra.span ml={2}>Read in Notion</chakra.span>
+					</MenuItem>
+				</Link>
 
-				<MenuItem
-					isExternal
-					as={Link}
-					download={'Luis Eduardo Marsiglia\'s Resume'}
-					href='/resume.pdf'
-				>
-					<DownloadIcon />
-					<chakra.span ml={2}>Download PDF</chakra.span>
-				</MenuItem>
+				<Link download isExternal href='/resume.pdf'>
+					<MenuItem>
+						<DownloadIcon />
+						<chakra.span ml={2}>Download PDF</chakra.span>
+					</MenuItem>
+				</Link>
 			</MenuList>
 		</Menu>
 	)
