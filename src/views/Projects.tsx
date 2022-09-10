@@ -7,7 +7,6 @@ export const Projects = forwardRef((props, ref) => {
 	return (
 		<chakra.section
 			ref={ref}
-			id='projects'
 			minH='100vh'
 			pt={{ base: 24, sm: 32 }}
 			{...props}

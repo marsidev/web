@@ -28,7 +28,6 @@ export const Cover = forwardRef((props, ref) => {
 			as='section'
 			direction='column'
 			height={getCoverHeight()}
-			id='cover'
 			justify='center'
 			pt={0}
 			w='full'
