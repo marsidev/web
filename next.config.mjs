@@ -44,41 +44,6 @@ const rewrites = async () => [
 	}
 ]
 
-const CSP = `
-  default-src 'self';
-  script-src 'self' 'unsafe-inline' 'unsafe-eval';
-	connect-src 'self' https://vitals.vercel-insights.com https://res.cloudinary.com https://o1099137.ingest.sentry.io;
-  style-src 'self' 'unsafe-inline';
-  font-src 'self';
-	img-src 'self' https://res.cloudinary.com data:;
-`
-
-const securityHeaders = [
-	{
-		key: 'X-XSS-PROTECTION',
-		value: '1; mode=block'
-	},
-	{
-		key: 'X-Frame-Options',
-		value: 'SAMEORIGIN'
-	},
-	{
-		key: 'Content-Security-Policy-Report-Only',
-		value: CSP.replace(/\s{2,}/g, ' ').trim()
-	}
-]
-
-const headers = async () => {
-	if (!IS_PROD) return []
-
-	return [
-		{
-			source: '/:path*',
-			headers: securityHeaders
-		}
-	]
-}
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: true,
@@ -87,10 +52,6 @@ const nextConfig = {
 	},
 	pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
 	rewrites,
-	headers,
-	env: {
-		PANELBEAR_ID: process.env.PANELBEAR_ID
-	},
 	sentry: {
 		hideSourceMaps: true
 	}
