@@ -35,7 +35,6 @@
 		"@sentry/nextjs": "7.12.1",
 		"@splitbee/web": "0.3.0",
 		"atropos": "1.0.2",
-		"caniuse-lite": "1.0.30001393",
 		"framer-motion": "7.2.0",
 		"jotai": "1.8.3",
 		"next": "12.3.0",
