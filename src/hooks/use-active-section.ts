@@ -25,10 +25,18 @@ export const useActiveSection = () => {
 		fallbackInView: false
 	})
 
+	const { ref: contactRef, inView: contactVisible } = useInView({
+		threshold: 0,
+		rootMargin: '-100px',
+		fallbackInView: false
+	})
+
 	useEffect(() => {
 		let active: Section = activeSection
 
-		if (projectsVisible) {
+		if (contactVisible) {
+			active = 'contact'
+		} else if (projectsVisible) {
 			active = 'projects'
 		} else if (aboutVisible) {
 			active = 'about'
@@ -39,12 +47,13 @@ export const useActiveSection = () => {
 		if (active !== activeSection) {
 			setActiveSection(active)
 		}
-	}, [aboutVisible, projectsVisible])
+	}, [aboutVisible, projectsVisible, contactVisible])
 
 	return {
 		coverRef,
 		aboutRef,
-		projectsRef
+		projectsRef,
+		contactRef
 	}
 }
 

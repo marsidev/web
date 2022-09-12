@@ -98,3 +98,9 @@
 	transform: scaleX(1);
 	transform-origin: var(--active-navlink-transform-origin);
 }
+
+.Toastify__toast {
+  border-radius: 16px !important;
+	font-weight: 600;
+	font-family: NunitoVariable, Roboto, sans-serif !important;
+}
