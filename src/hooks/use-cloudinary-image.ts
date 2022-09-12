@@ -3,7 +3,7 @@ import { useMemo } from 'react'
 import { pad } from '@cloudinary/url-gen/actions/resize'
 import { byRadius, max } from '@cloudinary/url-gen/actions/roundCorners'
 import { brightness as adjustBrightness } from '@cloudinary/url-gen/actions/adjust'
-import type { Range } from '~/types'
+import type { Range } from '~/types/utils'
 import { cloudinaryClient } from '~/utils/cloudinary'
 
 export interface UseCloudinaryImageProps {
