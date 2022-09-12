@@ -6,11 +6,8 @@ import {
 	Flex,
 	FormControl,
 	FormErrorMessage,
-	FormLabel,
 	Heading,
-	Input,
 	Text,
-	Textarea,
 	chakra,
 	forwardRef,
 	useColorModeValue
@@ -21,6 +18,8 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import Reaptcha from 'reaptcha'
 import { contactSchema } from '~/schema'
+import { ContactInput } from '~/components/ContactInput'
+import type { MessageResponse } from '~/types/api'
 
 type FormData = z.infer<typeof contactSchema>
 
@@ -30,6 +29,21 @@ const formSx: SystemStyleObject = {
 	gap: 2,
 	marginBottom: 4,
 	alignItems: 'flex-start'
+}
+
+const sendMessage = async (formData: FormData, captchaToken: string) => {
+	const submissionData = contactSchema.parse(formData)
+
+	const payload = JSON.stringify({
+		...submissionData,
+		'g-recaptcha-response': captchaToken
+	})
+
+	const fetchOptions: RequestInit = { method: 'POST', body: payload }
+	const res = await fetch('api/send', fetchOptions)
+
+	const data: MessageResponse = await res.json()
+	return data.success
 }
 
 export const Contact = forwardRef((props, ref) => {
@@ -48,63 +62,54 @@ export const Contact = forwardRef((props, ref) => {
 		resolver: zodResolver(contactSchema)
 	})
 
-	const onError = async (_errors: FieldErrors) => {
-		const captchaToken = await captchaRef.current?.getResponse()
+	const withErrors = !!errors.name || !!errors.email || !!errors.message || !!captchaError
 
-		if (!captchaToken) {
-			setCaptchaError('You need to solve the captcha first')
-		}
+	const validateCaptcha = async () => {
+		const captchaToken = await captchaRef.current?.getResponse()
+		return captchaToken ?? setCaptchaError('You need to solve the captcha first')
+	}
+
+	const onSuccessMessage = () => {
+		toast.success('🚀 Message sent. I\'ll answer you as soon as possible. Thank you!', {
+			autoClose: 5000,
+			theme: toastTheme
+		})
+
+		formRef.current?.reset()
+	}
+
+	const onFailedMessage = () => {
+		toast.error('Something went wrong. 😢', {
+			theme: toastTheme
+		})
+	}
+
+	const onError = async (_errors: FieldErrors) => {
+		validateCaptcha()
 	}
 
 	const onSubmit = async (data: FormData) => {
 		if (!captchaRef.current) return
 
-		const captchaToken = await captchaRef.current?.getResponse()
-		if (!captchaToken) {
-			return setCaptchaError('You need to solve the captcha first')
-		}
+		const captchaToken = validateCaptcha()
+		if (typeof captchaToken !== 'string') return
 
-		const submissionData = contactSchema.parse(data)
-
-		if (errors.name || errors.email || errors.message || captchaError) {
-			toast.error('Fix the errors first. ✏️', { theme: toastTheme })
+		if (withErrors) {
+			return toast.error('Fix the errors first. ✏️', { theme: toastTheme })
 		}
 
 		try {
 			setIsLoading(true)
-
-			const payload = {
-				...submissionData,
-				'g-recaptcha-response': captchaToken
-			}
-
-			const res = await fetch('api/send', {
-				method: 'POST',
-				body: JSON.stringify(payload)
-			})
-
-			const data = await res.json()
-
-			if (data.success) {
-				toast.success('🚀 Message sent! I\'ll answer you as soon as possible.', {
-					autoClose: 5000,
-					theme: toastTheme
-				})
-				formRef.current?.reset()
-			} else {
-				toast.error('Something went wrong. 😢', { theme: toastTheme })
-			}
+			const success = await sendMessage(data, captchaToken)
+			success ? onSuccessMessage() : onFailedMessage()
 		} catch (error) {
-			toast.error('Something went wrong. 😢', { theme: toastTheme })
+			onFailedMessage()
 			console.error(error)
 		} finally {
 			setIsLoading(false)
 			captchaRef.current?.reset()
 		}
 	}
-
-	const withErrors =
-		!!errors.name || !!errors.email || !!errors.message || !!captchaError
 
 	return (
 		<chakra.section ref={ref} pt={{ base: 24, sm: 32 }} w='full' {...props}>
@@ -123,55 +128,32 @@ export const Contact = forwardRef((props, ref) => {
 				sx={formSx}
 				onSubmit={handleSubmit(onSubmit, onError)}
 			>
-				<FormControl isInvalid={Boolean(errors.name)}>
-					<FormLabel htmlFor='name'>Name</FormLabel>
-					<Input
-						focusBorderColor='teal.300'
-						id='name'
-						placeholder='John Doe'
-						size='lg'
-						type='text'
-						variant='filled'
-						{...register('name')}
-					/>
+				<ContactInput
+					error={errors.name}
+					id='name'
+					label='Name'
+					mode='input'
+					placeholder='John Doe'
+					{...register('name')}
+				/>
 
-					<FormErrorMessage>
-						{errors.name && <Text>{errors.name.message}</Text>}
-					</FormErrorMessage>
-				</FormControl>
+				<ContactInput
+					error={errors.email}
+					id='email'
+					label='Email address'
+					mode='input'
+					placeholder='example@domain.com'
+					{...register('email')}
+				/>
 
-				<FormControl isInvalid={!!errors.email}>
-					<FormLabel htmlFor='email'>Email address</FormLabel>
-					<Input
-						focusBorderColor='teal.300'
-						id='email'
-						placeholder='example@domain.com'
-						size='lg'
-						type='email'
-						variant='filled'
-						{...register('email')}
-					/>
-
-					<FormErrorMessage>
-						{errors.email && <Text>{errors.email.message}</Text>}
-					</FormErrorMessage>
-				</FormControl>
-
-				<FormControl isInvalid={!!errors.message} mb={4}>
-					<FormLabel htmlFor='message'>Message</FormLabel>
-					<Textarea
-						focusBorderColor='teal.300'
-						id='message'
-						placeholder='Hey, I want to hire you!'
-						size='lg'
-						variant='filled'
-						{...register('message')}
-					/>
-
-					<FormErrorMessage>
-						{errors.message && <Text>{errors.message.message}</Text>}
-					</FormErrorMessage>
-				</FormControl>
+				<ContactInput
+					error={errors.message}
+					id='message'
+					label='Message'
+					mode='text-area'
+					placeholder='Hey, I want to hire you!'
+					{...register('message')}
+				/>
 
 				<FormControl isInvalid={!!captchaError}>
 					<Reaptcha

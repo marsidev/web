@@ -1,17 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { contactSchema, recaptchaSchema } from '~/schema'
+import type { MessageResponse } from '~/types/api'
 
 const schema = contactSchema.merge(recaptchaSchema)
 
 const FORM_ID = process.env.FORMSPARK_FORM_ID
 const FORM_URL = `https://submit-form.com/${FORM_ID}`
 
-interface Data {
-	success: boolean
-	error?: string
-}
-
-const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse<MessageResponse>) => {
 	if (req.method !== 'POST') {
 		return res.status(400).json({ error: 'Bad request', success: false })
 	}
