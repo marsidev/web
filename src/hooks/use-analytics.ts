@@ -3,7 +3,7 @@ import splitbee from '@splitbee/web'
 import { useEffect } from 'react'
 
 export const useAnalytics = () => {
-	usePanelbear(process.env.PANELBEAR_ID || '', {
+	usePanelbear(process.env.NEXT_PUBLIC_PANELBEAR_ID || '', {
 		scriptSrc: '/bear.js',
 		analyticsHost: '_bear',
 		enabled: process.env.NODE_ENV === 'production'
