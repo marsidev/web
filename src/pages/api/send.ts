@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { contactSchema, recaptchaSchema } from '~/schema'
+import { contactSchema, recaptchaSchema } from '~/schemas'
 import type { MessageResponse } from '~/types/api'
 
 const schema = contactSchema.merge(recaptchaSchema)

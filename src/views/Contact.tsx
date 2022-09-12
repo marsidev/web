@@ -17,7 +17,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import Reaptcha from 'reaptcha'
-import { contactSchema } from '~/schema'
+import { contactSchema } from '~/schemas'
 import { ContactInput } from '~/components/ContactInput'
 import type { MessageResponse } from '~/types/api'
 
