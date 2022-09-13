@@ -1,7 +1,8 @@
 import type { FC } from 'react'
 import type {
 	InputProps as ChakraInputProps,
-	TextareaProps as ChakraTextAreaProps
+	TextareaProps as ChakraTextAreaProps,
+	SystemStyleObject
 } from '@chakra-ui/react'
 import type { FieldError, RegisterOptions } from 'react-hook-form'
 import {
@@ -13,7 +14,7 @@ import {
 	Textarea,
 	forwardRef
 } from '@chakra-ui/react'
-import { WithRequired } from '~/types/utils'
+import type { WithRequired } from '~/types/utils'
 
 type Required = 'id' | 'name'
 type InputMode = 'input' | 'text-area'
@@ -23,6 +24,7 @@ interface BaseProps {
 	label?: string
 	options?: RegisterOptions
 	error?: FieldError
+	formSx?: SystemStyleObject
 }
 
 type InputBaseProps = BaseProps & WithRequired<ChakraInputProps, Required>
@@ -32,26 +34,31 @@ type InputProps = InputBaseProps & { mode: 'input' }
 type TextareaProps = TextareaBaseProps & { mode: 'text-area' }
 
 type ContactInputProps = InputProps | TextareaProps
+type ComponentType = typeof Input | typeof Textarea
 
-const DynamicInput = (props: ContactInputProps) => {
-	const { mode } = props
-	const isTextArea = mode === 'text-area'
+const DynamicInput = forwardRef<ContactInputProps, ComponentType>((props, ref) => {
+	const isTextArea = props.mode === 'text-area'
 
 	if (isTextArea) {
-		return <Textarea {...props} />
+		return <Textarea ref={ref} {...props} />
 	}
 
-	return <Input {...props} />
-}
+	return <Input ref={ref} {...props} />
+})
 
 export const ContactInput: FC<ContactInputProps> = forwardRef((props, ref) => {
-	const { id, label, error, name, options, ...rest } = props
+	const { id, label, error, name, options, formSx, ...rest } = props
 
 	return (
-		<FormControl isInvalid={Boolean(error)} {...ref}>
-			{label && <FormLabel fontWeight='semibold' htmlFor={id}>{label}</FormLabel>}
+		<FormControl isInvalid={Boolean(error)} sx={formSx}>
+			{label && (
+				<FormLabel fontWeight='semibold' htmlFor={id}>
+					{label}
+				</FormLabel>
+			)}
 
 			<DynamicInput
+				ref={ref}
 				errorBorderColor='pink.300'
 				focusBorderColor='teal.300'
 				id={id}

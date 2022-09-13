@@ -4,8 +4,6 @@ import { useRef, useState } from 'react'
 import {
 	Button,
 	Flex,
-	FormControl,
-	FormErrorMessage,
 	Heading,
 	Text,
 	chakra,
@@ -13,15 +11,13 @@ import {
 	useColorModeValue
 } from '@chakra-ui/react'
 import { toast } from 'react-toastify'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
 import Reaptcha from 'reaptcha'
 import { contactSchema } from '~/schemas'
-import { ContactInput } from '~/components/ContactInput'
+import { useContactForm } from '~/hooks/use-contact-form'
 import type { MessageResponse } from '~/types/api'
-
-type FormData = z.infer<typeof contactSchema>
+import { ContactCaptcha } from '~/components/ContactCaptcha'
+import { ContactInput } from '~/components/ContactInput'
+import type { ContactFormData } from '~/types/zod'
 
 const formSx: SystemStyleObject = {
 	display: 'flex',
@@ -31,7 +27,7 @@ const formSx: SystemStyleObject = {
 	alignItems: 'flex-start'
 }
 
-const sendMessage = async (formData: FormData, captchaToken: string) => {
+const sendMessage = async (formData: ContactFormData, captchaToken: string) => {
 	const submissionData = contactSchema.parse(formData)
 
 	const payload = JSON.stringify({
@@ -48,25 +44,26 @@ const sendMessage = async (formData: FormData, captchaToken: string) => {
 
 export const Contact = forwardRef((props, ref) => {
 	const [isLoading, setIsLoading] = useState(false)
+	const [captchaExpired, setCaptchaExpired] = useState(false)
+	const [captchaShown, setCaptchaShown] = useState(false)
 	const [captchaError, setCaptchaError] = useState<string | null>(null)
 	const captchaRef = useRef<Reaptcha>(null)
 	const formRef = useRef<HTMLFormElement>(null)
 	const toastTheme = useColorModeValue('dark', 'light')
 
-	const {
-		register,
-		handleSubmit,
-		formState: { errors, isSubmitting }
-	} = useForm<FormData>({
-		mode: 'onSubmit',
-		resolver: zodResolver(contactSchema)
-	})
+	const { errors, handleSubmit, isSubmitting, register } = useContactForm()
 
-	const withErrors = !!errors.name || !!errors.email || !!errors.message || !!captchaError
+	const withErrors =
+		!!errors.name || !!errors.email || !!errors.message || !!captchaError
 
 	const validateCaptcha = async () => {
 		const captchaToken = await captchaRef.current?.getResponse()
-		return captchaToken ?? setCaptchaError('You need to solve the captcha first')
+		if (!captchaToken) {
+			setCaptchaError('You need to solve the captcha first')
+			return null
+		}
+
+		return captchaToken
 	}
 
 	const onSuccessMessage = () => {
@@ -85,14 +82,12 @@ export const Contact = forwardRef((props, ref) => {
 	}
 
 	const onError = async (_errors: FieldErrors) => {
-		validateCaptcha()
+		await validateCaptcha()
 	}
 
-	const onSubmit = async (data: FormData) => {
-		if (!captchaRef.current) return
-
-		const captchaToken = validateCaptcha()
-		if (typeof captchaToken !== 'string') return
+	const onSubmit = async (data: ContactFormData) => {
+		const captchaToken = await validateCaptcha()
+		if (!captchaToken) return
 
 		if (withErrors) {
 			return toast.error('Fix the errors first. ✏️', { theme: toastTheme })
@@ -109,6 +104,28 @@ export const Contact = forwardRef((props, ref) => {
 			setIsLoading(false)
 			captchaRef.current?.reset()
 		}
+	}
+
+	const onExpireCaptcha = () => {
+		setCaptchaExpired(true)
+	}
+
+	const onLoadCaptcha = () => {
+		setCaptchaShown(false)
+		setCaptchaExpired(false)
+	}
+
+	const onRenderCaptcha = () => {
+		setCaptchaShown(true)
+		setCaptchaExpired(false)
+	}
+
+	const onVerifyCaptcha = () => {
+		setCaptchaError(null)
+	}
+
+	const onErrorCaptcha = () => {
+		setCaptchaError('Error verifying captcha')
 	}
 
 	return (
@@ -139,6 +156,7 @@ export const Contact = forwardRef((props, ref) => {
 
 				<ContactInput
 					error={errors.email}
+					formSx={{ mt: 4 }}
 					id='email'
 					label='Email address'
 					mode='input'
@@ -148,6 +166,7 @@ export const Contact = forwardRef((props, ref) => {
 
 				<ContactInput
 					error={errors.message}
+					formSx={{ mt: 4 }}
 					id='message'
 					label='Message'
 					mode='text-area'
@@ -155,26 +174,26 @@ export const Contact = forwardRef((props, ref) => {
 					{...register('message')}
 				/>
 
-				<FormControl isInvalid={!!captchaError}>
-					<Reaptcha
-						ref={captchaRef}
-						sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''}
-						onVerify={() => setCaptchaError(null)}
-					/>
-
-					<FormErrorMessage>
-						{captchaError && <Text>{captchaError}</Text>}
-					</FormErrorMessage>
-				</FormControl>
+				<ContactCaptcha
+					captchaRef={captchaRef}
+					error={captchaError}
+					formSx={{ mt: 4 }}
+					onError={onErrorCaptcha}
+					onExpire={onExpireCaptcha}
+					onLoad={onLoadCaptcha}
+					onRender={onRenderCaptcha}
+					onVerify={onVerifyCaptcha}
+				/>
 
 				<Button
 					colorScheme='teal'
-					isDisabled={withErrors}
+					isDisabled={withErrors || !captchaShown || captchaExpired}
 					isLoading={isSubmitting || isLoading}
 					loadingText='Sending...'
 					size='lg'
 					textAlign='left'
 					type='submit'
+					w={{ base: '100%', sm: '300px' }}
 				>
 					Send message
 				</Button>
