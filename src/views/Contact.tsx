@@ -156,7 +156,7 @@ export const Contact = forwardRef((props, ref) => {
 				<ContactCaptcha
 					captchaRef={captchaRef}
 					error={captchaError}
-					formSx={{ mt: 4 }}
+					formSx={{ mt: 4, mb: 2 }}
 					onError={onErrorCaptcha}
 					onExpire={onExpireCaptcha}
 					onLoad={onLoadCaptcha}

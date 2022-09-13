@@ -30,15 +30,14 @@ export const ContactCaptcha: FC<ContactCaptchaProps> = ({
 		<FormControl isInvalid={Boolean(error)} sx={formSx}>
 			<Reaptcha
 				ref={captchaRef}
+				className={captchaSize === 'normal' ? 'captcha' : 'captcha-compact'}
 				sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''}
 				size={captchaSize}
 				theme={colorMode}
 				{...rest}
 			/>
 
-			<FormErrorMessage>
-				{error && <Text>{error}</Text>}
-			</FormErrorMessage>
+			<FormErrorMessage>{error && <Text>{error}</Text>}</FormErrorMessage>
 		</FormControl>
 	)
 }

@@ -104,3 +104,19 @@
 	font-weight: 600;
 	font-family: NunitoVariable, Roboto, sans-serif !important;
 }
+
+.captcha {
+	overflow: hidden;
+	width: 298px;
+	height: 74px;
+}
+
+.captcha-compact {
+	overflow: hidden;
+	width: 154px;
+	height: 136px;
+}
+
+iframe {
+  margin: -1px 0px 0px -2px;
+}
