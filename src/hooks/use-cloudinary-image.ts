@@ -25,9 +25,9 @@ export interface UseCloudinaryImageProps {
 	brightness?: number
 }
 
-type UseClodinaryImage = (props: UseCloudinaryImageProps) => CloudinaryImage
+type UseCloudinaryImage = (props: UseCloudinaryImageProps) => CloudinaryImage
 
-export const useCloudinaryImage: UseClodinaryImage = props => {
+export const useCloudinaryImage: UseCloudinaryImage = props => {
 	const {
 		deliveryWidth,
 		deliveryHeight,

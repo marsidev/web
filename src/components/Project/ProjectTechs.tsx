@@ -13,7 +13,7 @@ import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { TECHNOLOGIES } from '~/constants/technologies'
 import { Link } from '~/components/Link'
 import { capitalize } from '~/utils/capitalize'
-import { Project } from '~/types'
+import type { Project } from '~/types'
 import { CloudinaryImage } from '~/components/CloudinaryImage'
 
 interface ProjectProps extends FlexProps {

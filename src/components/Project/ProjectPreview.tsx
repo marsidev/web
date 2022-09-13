@@ -6,7 +6,7 @@ import {
 } from '@chakra-ui/react'
 import { Atropos } from 'atropos/react'
 import { type FC, useEffect, useRef, useState } from 'react'
-import { Project } from '~/types'
+import type { Project } from '~/types'
 import { remToPx } from '~/utils/units'
 import { defaultDesktopSize, defaultMobileSize, getContainerHeight, getDimensions } from '~/utils/project-preview'
 import { PreviewImage } from './PreviewImage'

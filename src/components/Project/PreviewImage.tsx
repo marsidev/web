@@ -1,7 +1,7 @@
 import { Flex, type FlexProps, Skeleton } from '@chakra-ui/react'
 import { type FC, useCallback, useState } from 'react'
 import { CloudinaryImage } from '~/components/CloudinaryImage'
-import { ImageSize, Project } from '~/types'
+import type { ImageSize, Project } from '~/types'
 import { deliverySize } from '~/utils/project-preview'
 
 interface PreviewImageProps extends FlexProps {

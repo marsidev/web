@@ -12,12 +12,11 @@ import {
 } from '@chakra-ui/react'
 import { toast } from 'react-toastify'
 import Reaptcha from 'reaptcha'
-import { contactSchema } from '~/schemas'
 import { useContactForm } from '~/hooks/use-contact-form'
-import type { MessageResponse } from '~/types/api'
 import { ContactCaptcha } from '~/components/ContactCaptcha'
 import { ContactInput } from '~/components/ContactInput'
 import type { ContactFormData } from '~/types/zod'
+import { sendMessage } from '~/services/send-message'
 
 const formSx: SystemStyleObject = {
 	display: 'flex',
@@ -25,21 +24,6 @@ const formSx: SystemStyleObject = {
 	gap: 2,
 	marginBottom: 4,
 	alignItems: 'flex-start'
-}
-
-const sendMessage = async (formData: ContactFormData, captchaToken: string) => {
-	const submissionData = contactSchema.parse(formData)
-
-	const payload = JSON.stringify({
-		...submissionData,
-		'g-recaptcha-response': captchaToken
-	})
-
-	const fetchOptions: RequestInit = { method: 'POST', body: payload }
-	const res = await fetch('api/send', fetchOptions)
-
-	const data: MessageResponse = await res.json()
-	return data.success
 }
 
 export const Contact = forwardRef((props, ref) => {
@@ -53,8 +37,7 @@ export const Contact = forwardRef((props, ref) => {
 
 	const { errors, handleSubmit, isSubmitting, register } = useContactForm()
 
-	const withErrors =
-		!!errors.name || !!errors.email || !!errors.message || !!captchaError
+	const withErrors = !!errors.name || !!errors.email || !!errors.message || !!captchaError
 
 	const validateCaptcha = async () => {
 		const captchaToken = await captchaRef.current?.getResponse()
@@ -140,11 +123,7 @@ export const Contact = forwardRef((props, ref) => {
 				</Text>
 			</Flex>
 
-			<chakra.form
-				ref={formRef}
-				sx={formSx}
-				onSubmit={handleSubmit(onSubmit, onError)}
-			>
+			<chakra.form ref={formRef} sx={formSx} onSubmit={handleSubmit(onSubmit, onError)}>
 				<ContactInput
 					error={errors.name}
 					id='name'

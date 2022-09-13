@@ -4,14 +4,14 @@ import {
 	type StackProps,
 	useBreakpointValue
 } from '@chakra-ui/react'
-import { Project as ProyectType } from '~/types'
+import type { Project as ProjectType } from '~/types'
 import { ProjectInfo, ProjectRenderMode } from './ProjectInfo'
 import { ProjectPreview } from './ProjectPreview'
 import { ProjectTechs } from './ProjectTechs'
 import { ProjectUrls } from './ProjectUrls'
 
 interface ProjectProps extends StackProps {
-	project: ProyectType
+	project: ProjectType
 	type: 'even' | 'odd'
 }
 

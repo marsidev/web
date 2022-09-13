@@ -2,7 +2,7 @@ import { useInView } from 'react-intersection-observer'
 import { useAtom } from 'jotai'
 import { useEffect } from 'react'
 import { activeSectionAtom } from '~/store'
-import { Section } from '~/types'
+import type { Section } from '~/types'
 
 export const useActiveSection = () => {
 	const [activeSection, setActiveSection] = useAtom(activeSectionAtom)

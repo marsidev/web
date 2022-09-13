@@ -1,5 +1,5 @@
 import { Badge, Stack, type StackProps } from '@chakra-ui/react'
-import { Project } from '~/types'
+import type { Project } from '~/types'
 
 interface ProjectProps extends StackProps {
 	project: Project

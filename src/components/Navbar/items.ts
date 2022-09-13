@@ -1,4 +1,4 @@
-import { Section } from '~/types'
+import type { Section } from '~/types'
 
 interface NavItem {
 	id: Section
