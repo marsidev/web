@@ -17,8 +17,8 @@
 		"analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
 	},
 	"dependencies": {
-		"@chakra-ui/react": "2.3.2",
-		"@chakra-ui/theme-tools": "2.0.11",
+		"@chakra-ui/react": "2.3.5",
+		"@chakra-ui/theme-tools": "2.0.12",
 		"@cloudinary/react": "1.4.2",
 		"@cloudinary/url-gen": "1.8.6",
 		"@emotion/react": "11.10.4",
@@ -54,8 +54,8 @@
 	},
 	"devDependencies": {
 		"@babel/core": "7.18.13",
-		"@chakra-ui/styled-system": "2.3.1",
-		"@chakra-ui/utils": "2.0.9",
+		"@chakra-ui/styled-system": "2.3.4",
+		"@chakra-ui/utils": "2.0.11",
 		"@cloudinary/html": "1.4.2",
 		"@next/bundle-analyzer": "12.3.0",
 		"@types/node": "18.7.16",
