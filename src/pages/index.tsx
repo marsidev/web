@@ -10,13 +10,18 @@ import { useActiveSection } from '~/hooks/use-active-section'
 
 type AppProps = InferGetServerSidePropsType<typeof getStaticProps>
 
-const App: NextPage<AppProps> = ({ aboutSource }) => {
+const App: NextPage<AppProps> = ({ aboutLong, aboutShort }) => {
 	const { aboutRef, coverRef, projectsRef, contactRef } = useActiveSection()
 
 	return (
 		<Layout>
 			<Cover ref={coverRef} id='cover' />
-			<About ref={aboutRef} id='about' source={aboutSource} />
+			<About
+				ref={aboutRef}
+				id='about'
+				longSource={aboutLong}
+				shortSource={aboutShort}
+			/>
 			<Projects ref={projectsRef} id='projects' />
 			<Contact ref={contactRef} id='contact' pb={32} />
 		</Layout>
@@ -24,12 +29,16 @@ const App: NextPage<AppProps> = ({ aboutSource }) => {
 }
 
 export const getStaticProps = async () => {
-	const source = loadFile('src/content/about-me.mdx')
-	const mdxSource = await serialize(source)
+	const aboutShort = loadFile('src/content/about-me-short.mdx')
+	const aboutLong = loadFile('src/content/about-me-long.mdx')
+
+	const aboutShortMdx = await serialize(aboutShort)
+	const aboutLongMdx = await serialize(aboutLong)
 
 	return {
 		props: {
-			aboutSource: mdxSource
+			aboutShort: aboutShortMdx,
+			aboutLong: aboutLongMdx
 		}
 	}
 }
