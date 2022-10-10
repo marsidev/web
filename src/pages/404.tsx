@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
-import { Heading, Text, useColorModeValue } from '@chakra-ui/react'
+import { Heading, Text } from '@chakra-ui/layout'
+import { useColorModeValue } from '@chakra-ui/system'
 import { Layout } from '~/layouts/main'
 import { Link } from '~/components/Link'
 

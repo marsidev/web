@@ -1,4 +1,4 @@
-import { Flex, type FlexProps, Heading, Text } from '@chakra-ui/react'
+import { Flex, type FlexProps, Heading, Text } from '@chakra-ui/layout'
 import type { Project } from '~/types'
 import { ProjectTags } from './ProjectTags'
 
@@ -22,9 +22,7 @@ export const ProjectInfo: React.FC<ProjectProps> = ({
 
 			<ProjectTags justify={justify} project={p} />
 
-			<Text fontSize='md'>
-				{p.description}
-			</Text>
+			<Text fontSize='md'>{p.description}</Text>
 		</Flex>
 	)
 }

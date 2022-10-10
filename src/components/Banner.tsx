@@ -1,4 +1,5 @@
-import { Flex, type FlexProps, IconButton } from '@chakra-ui/react'
+import { Flex, type FlexProps } from '@chakra-ui/layout'
+import { IconButton } from '@chakra-ui/button'
 import { useRendered } from '@marsidev/react-hooks'
 import { type SetStateAction, type WritableAtom, useAtom } from 'jotai'
 import { CloseIcon } from '~/icons'

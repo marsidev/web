@@ -1,15 +1,9 @@
-import type { SystemStyleObject } from '@chakra-ui/react'
+import type { SystemStyleObject } from '@chakra-ui/system'
 import type { FieldErrors } from 'react-hook-form'
 import { useRef, useState } from 'react'
-import {
-	Button,
-	Flex,
-	Heading,
-	Text,
-	chakra,
-	forwardRef,
-	useColorModeValue
-} from '@chakra-ui/react'
+import { Button } from '@chakra-ui/button'
+import { Flex, Heading, Text } from '@chakra-ui/layout'
+import { chakra, forwardRef, useColorModeValue } from '@chakra-ui/system'
 import { toast } from 'react-toastify'
 import Reaptcha from 'reaptcha'
 import { useContactForm } from '~/hooks/use-contact-form'
@@ -37,7 +31,8 @@ export const Contact = forwardRef((props, ref) => {
 
 	const { errors, handleSubmit, isSubmitting, register } = useContactForm()
 
-	const withErrors = !!errors.name || !!errors.email || !!errors.message || !!captchaError
+	const withErrors =
+		!!errors.name || !!errors.email || !!errors.message || !!captchaError
 
 	const validateCaptcha = async () => {
 		const captchaToken = await captchaRef.current?.getResponse()
@@ -50,10 +45,13 @@ export const Contact = forwardRef((props, ref) => {
 	}
 
 	const onSuccessMessage = () => {
-		toast.success('🚀 Message sent. I\'ll answer you as soon as possible. Thank you!', {
-			autoClose: 5000,
-			theme: toastTheme
-		})
+		toast.success(
+			"🚀 Message sent. I'll answer you as soon as possible. Thank you!",
+			{
+				autoClose: 5000,
+				theme: toastTheme
+			}
+		)
 
 		formRef.current?.reset()
 	}
@@ -123,7 +121,11 @@ export const Contact = forwardRef((props, ref) => {
 				</Text>
 			</Flex>
 
-			<chakra.form ref={formRef} sx={formSx} onSubmit={handleSubmit(onSubmit, onError)}>
+			<chakra.form
+				ref={formRef}
+				sx={formSx}
+				onSubmit={handleSubmit(onSubmit, onError)}
+			>
 				<ContactInput
 					error={errors.name}
 					id='name'

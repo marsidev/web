@@ -1,4 +1,4 @@
-import { Flex } from '@chakra-ui/react'
+import { Flex } from '@chakra-ui/layout'
 import { DefaultSeo } from 'next-seo'
 import { useAtom } from 'jotai'
 import { Banners } from '~/components/Banners'

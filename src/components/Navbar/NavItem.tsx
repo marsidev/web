@@ -2,8 +2,8 @@
 // import { Link, type LinkProps } from '~/components/Link'
 
 import type { FC, ReactNode } from 'react'
-import type { LinkProps } from '@chakra-ui/react'
-import { Link, useBreakpointValue } from '@chakra-ui/react'
+import { Link, type LinkProps } from '@chakra-ui/layout'
+import { useBreakpointValue } from '@chakra-ui/media-query'
 import { useAtom } from 'jotai'
 import { MotionBox } from '~/components/motion'
 import { activeSectionAtom } from '~/store'
@@ -16,7 +16,12 @@ export interface NavItemProps extends LinkProps {
 	children: ReactNode
 }
 
-export const NavItem: FC<NavItemProps> = ({ href, children, sectionId, ...props }) => {
+export const NavItem: FC<NavItemProps> = ({
+	href,
+	children,
+	sectionId,
+	...props
+}) => {
 	const baseClass = useBreakpointValue({ base: '', sm: 'navlink' })
 
 	const [activeSection] = useAtom(activeSectionAtom)

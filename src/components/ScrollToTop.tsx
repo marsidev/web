@@ -1,4 +1,5 @@
-import { IconButton, type IconButtonProps, useBreakpointValue } from '@chakra-ui/react'
+import { IconButton, type IconButtonProps } from '@chakra-ui/button'
+import { useBreakpointValue } from '@chakra-ui/media-query'
 import { useScrollY } from '@marsidev/react-hooks'
 import { ArrowUpIcon } from '~/icons'
 

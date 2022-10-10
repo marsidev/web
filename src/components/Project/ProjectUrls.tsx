@@ -1,4 +1,5 @@
-import { Button, Flex, type FlexProps } from '@chakra-ui/react'
+import { Flex, type FlexProps } from '@chakra-ui/layout'
+import { Button } from '@chakra-ui/button'
 import { Link } from '~/components/Link'
 import { ExternalLinkIcon, GithubOutlineIcon } from '~/icons'
 import type { Project } from '~/types'

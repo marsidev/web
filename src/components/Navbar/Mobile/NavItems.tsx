@@ -1,4 +1,4 @@
-import { HStack, Spacer } from '@chakra-ui/react'
+import { HStack, Spacer } from '@chakra-ui/layout'
 import { MenuToggler } from '../MenuToggler'
 import { ThemeToggler } from '../ThemeToggler'
 

@@ -1,10 +1,7 @@
-import {
-	Icon,
-	Stack,
-	type StackProps,
-	VisuallyHidden,
-	useColorModeValue
-} from '@chakra-ui/react'
+import { VisuallyHidden } from '@chakra-ui/visually-hidden'
+import { Stack, type StackProps } from '@chakra-ui/layout'
+import { Icon } from '@chakra-ui/icon'
+import { useColorModeValue } from '@chakra-ui/system'
 import {
 	EmailIcon,
 	GithubIcon,

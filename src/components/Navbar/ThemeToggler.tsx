@@ -1,4 +1,6 @@
-import { IconButton, useBreakpointValue, useColorMode } from '@chakra-ui/react'
+import { IconButton } from '@chakra-ui/button'
+import { useBreakpointValue } from '@chakra-ui/media-query'
+import { useColorMode } from '@chakra-ui/system'
 import { MoonIcon, SunIcon } from '~/icons'
 
 export const ThemeToggler = ({ ...props }) => {

@@ -1,14 +1,9 @@
-import type { StackProps } from '@chakra-ui/react'
 import type { FC } from 'react'
 import type { MDXRemoteProps, MDXRemoteSerializeResult } from 'next-mdx-remote'
-import {
-	Button,
-	Heading,
-	Stack,
-	chakra,
-	forwardRef,
-	useBoolean
-} from '@chakra-ui/react'
+import { Heading, Stack, type StackProps } from '@chakra-ui/layout'
+import { Button } from '@chakra-ui/button'
+import { useBoolean } from '@chakra-ui/hooks'
+import { chakra, forwardRef } from '@chakra-ui/system'
 import { MDXRemote } from 'next-mdx-remote'
 import { Link } from '~/components/Link'
 import { MotionStack, MotionStackProps } from '~/components/motion'

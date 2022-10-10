@@ -1,4 +1,5 @@
-import type { ComponentStyleConfig, LinkProps } from '@chakra-ui/react'
+import type { LinkProps } from '@chakra-ui/layout'
+import type { ComponentStyleConfig } from '@chakra-ui/theme'
 
 const baseStyle: LinkProps = {
 	_hover: {
