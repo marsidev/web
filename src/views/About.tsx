@@ -6,6 +6,7 @@ import { useBoolean } from '@chakra-ui/hooks'
 import { chakra, forwardRef } from '@chakra-ui/system'
 import { MDXRemote } from 'next-mdx-remote'
 import { Link } from '~/components/Link'
+import { Age } from '~/components/Age'
 import { MotionStack, MotionStackProps } from '~/components/motion'
 
 interface AboutProps extends StackProps {
@@ -61,10 +62,12 @@ export const About = forwardRef<AboutProps, 'section'>(
 						About me
 					</Heading>
 
-					{showShortVersion && <Content source={shortSource} />}
+					{showShortVersion && (
+						<Content components={{ Age }} source={shortSource} />
+					)}
 
 					{!showShortVersion && (
-						<Content components={{ Link }} source={longSource} />
+						<Content components={{ Link, Age }} source={longSource} />
 					)}
 
 					<Button
