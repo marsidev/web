@@ -1,4 +1,5 @@
-import { Flex, type FlexProps, Skeleton } from '@chakra-ui/react'
+import { Flex, type FlexProps } from '@chakra-ui/layout'
+import { Skeleton } from '@chakra-ui/skeleton'
 import { type FC, useCallback, useState } from 'react'
 import { CloudinaryImage } from '~/components/CloudinaryImage'
 import type { ImageSize, Project } from '~/types'

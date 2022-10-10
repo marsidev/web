@@ -1,14 +1,16 @@
-import {
-	Flex,
-	type FlexProps,
-	useBreakpointValue,
-	useColorModeValue
-} from '@chakra-ui/react'
+import { useBreakpointValue } from '@chakra-ui/media-query'
+import { useColorModeValue } from '@chakra-ui/system'
+import { Flex, type FlexProps } from '@chakra-ui/layout'
 import { Atropos } from 'atropos/react'
 import { type FC, useEffect, useRef, useState } from 'react'
 import type { Project } from '~/types'
 import { remToPx } from '~/utils/units'
-import { defaultDesktopSize, defaultMobileSize, getContainerHeight, getDimensions } from '~/utils/project-preview'
+import {
+	defaultDesktopSize,
+	defaultMobileSize,
+	getContainerHeight,
+	getDimensions
+} from '~/utils/project-preview'
 import { PreviewImage } from './PreviewImage'
 
 interface ProjectProps extends FlexProps {
@@ -35,21 +37,24 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 		? containerMinHeight * 0.8
 		: undefined
 
-	useEffect(function setSizes() {
-		if (containerRef.current) {
-			const containerWidth = containerRef.current.clientWidth
-			const desktopPadding = 2 * remToPx(parseInt(previewPadding!))
+	useEffect(
+		function setSizes() {
+			if (containerRef.current) {
+				const containerWidth = containerRef.current.clientWidth
+				const desktopPadding = 2 * remToPx(parseInt(previewPadding!))
 
-			const {
-				desktop: desktopSize,
-				mobile: mobileSize
-			} = getDimensions(containerWidth, desktopPadding)
+				const { desktop: desktopSize, mobile: mobileSize } = getDimensions(
+					containerWidth,
+					desktopPadding
+				)
 
-			setContainerWidth(containerWidth)
-			setDesktopSize(desktopSize)
-			setMobileSize(mobileSize)
-		}
-	}, [containerRef.current?.clientWidth, previewPadding])
+				setContainerWidth(containerWidth)
+				setDesktopSize(desktopSize)
+				setMobileSize(mobileSize)
+			}
+		},
+		[containerRef.current?.clientWidth, previewPadding]
+	)
 
 	return (
 		<Flex

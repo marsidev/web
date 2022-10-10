@@ -1,4 +1,4 @@
-import { Flex, HStack, Spacer, type StackProps } from '@chakra-ui/react'
+import { Flex, HStack, Spacer, type StackProps } from '@chakra-ui/layout'
 import { NavItem } from '../NavItem'
 import { ThemeToggler } from '../ThemeToggler'
 import { GetResume } from '../GetResume'

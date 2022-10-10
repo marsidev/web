@@ -1,13 +1,9 @@
-import type { ButtonProps, FlexProps } from '@chakra-ui/react'
-import {
-	Button,
-	Flex,
-	Heading,
-	Skeleton,
-	Tag,
-	chakra,
-	useBreakpointValue
-} from '@chakra-ui/react'
+import { Button, type ButtonProps } from '@chakra-ui/button'
+import { Flex, type FlexProps, Heading } from '@chakra-ui/layout'
+import { Skeleton } from '@chakra-ui/skeleton'
+import { chakra } from '@chakra-ui/system'
+import { useBreakpointValue } from '@chakra-ui/media-query'
+import { Tag } from '@chakra-ui/tag'
 import { type FC, useCallback, useState } from 'react'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { TECHNOLOGIES } from '~/constants/technologies'
@@ -42,18 +38,24 @@ const ShowAll: FC<ShowAllProps> = ({ showAll, ...rest }) => {
 export const ProjectTechs: FC<ProjectProps> = ({ project, ...props }) => {
 	const [showAll, setShowAll] = useState(false)
 	const [iconLoaded, setIconLoaded] = useState(false)
-	const [parent] = useAutoAnimate<HTMLDivElement>({ duration: 250, easing: 'ease-out' })
+	const [parent] = useAutoAnimate<HTMLDivElement>({
+		duration: 250,
+		easing: 'ease-out'
+	})
 	const defaultTagsToShow = useBreakpointValue({ base: 3, sm: 5, md: 5, lg: 7 })
 	const logoSize = useBreakpointValue({ base: 16, md: 18 })
 
 	const maxTagsToShow = showAll ? project.stack.length : defaultTagsToShow
-	const showShowAllBtn = defaultTagsToShow && project.stack.length > defaultTagsToShow
+	const showShowAllBtn =
+		defaultTagsToShow && project.stack.length > defaultTagsToShow
 
 	const onLoadIcon = useCallback(() => setIconLoaded(true), [])
 
 	return (
 		<Flex flexDir='column' gap={2}>
-			<Heading as='h5' fontSize='md' fontWeight='medium'>Technologies</Heading>
+			<Heading as='h5' fontSize='md' fontWeight='medium'>
+				Technologies
+			</Heading>
 
 			<Flex
 				ref={parent}

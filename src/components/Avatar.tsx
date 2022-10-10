@@ -1,9 +1,7 @@
-import {
-	Box,
-	Skeleton,
-	useBreakpointValue,
-	useColorModeValue
-} from '@chakra-ui/react'
+import { useColorModeValue } from '@chakra-ui/system'
+import { Box } from '@chakra-ui/layout'
+import { useBreakpointValue } from '@chakra-ui/media-query'
+import { Skeleton } from '@chakra-ui/skeleton'
 import { useCallback, useMemo, useState } from 'react'
 import { CloudinaryImage } from '~/components/CloudinaryImage'
 

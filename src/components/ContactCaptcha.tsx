@@ -1,8 +1,11 @@
-import type { SystemStyleObject } from '@chakra-ui/react'
+import type { SystemStyleObject } from '@chakra-ui/system'
 import type { FC, RefObject } from 'react'
 import type { Props as ReaptchaProps } from 'reaptcha'
 import { useRendered } from '@marsidev/react-hooks'
-import { FormControl, FormErrorMessage, Text, useColorMode, useMediaQuery } from '@chakra-ui/react'
+import { FormControl, FormErrorMessage } from '@chakra-ui/form-control'
+import { Text } from '@chakra-ui/layout'
+import { useMediaQuery } from '@chakra-ui/media-query'
+import { useColorMode } from '@chakra-ui/system'
 import Reaptcha from 'reaptcha'
 
 interface ContactCaptchaProps extends Partial<ReaptchaProps> {

@@ -1,9 +1,5 @@
-import {
-	Show,
-	Stack,
-	type StackProps,
-	useBreakpointValue
-} from '@chakra-ui/react'
+import { Stack, type StackProps } from '@chakra-ui/layout'
+import { Show, useBreakpointValue } from '@chakra-ui/media-query'
 import type { Project as ProjectType } from '~/types'
 import { ProjectInfo, ProjectRenderMode } from './ProjectInfo'
 import { ProjectPreview } from './ProjectPreview'
@@ -15,7 +11,11 @@ interface ProjectProps extends StackProps {
 	type: 'even' | 'odd'
 }
 
-export const Project: React.FC<ProjectProps> = ({ project, type, ...props }) => {
+export const Project: React.FC<ProjectProps> = ({
+	project,
+	type,
+	...props
+}) => {
 	const renderMode: ProjectRenderMode = useBreakpointValue(
 		{
 			base: 'small-screen',
@@ -29,9 +29,7 @@ export const Project: React.FC<ProjectProps> = ({ project, type, ...props }) => 
 	const desktopDirection = type === 'even' ? 'row' : 'row-reverse'
 
 	const textAlign =
-		renderMode === 'small-screen' || renderMode === 'odd'
-			? 'left'
-			: 'right'
+		renderMode === 'small-screen' || renderMode === 'odd' ? 'left' : 'right'
 
 	const justify =
 		renderMode === 'small-screen' || renderMode === 'odd'

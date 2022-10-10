@@ -1,4 +1,5 @@
-import { Heading, Stack, chakra } from '@chakra-ui/react'
+import { Heading, Stack } from '@chakra-ui/layout'
+import { chakra } from '@chakra-ui/system'
 
 export const NameAndTitle = () => {
 	return (
@@ -7,7 +8,7 @@ export const NameAndTitle = () => {
 				as='h1'
 				fontSize={{ base: '2xl', sm: '3xl', md: '4xl', lg: '5xl' }}
 			>
-				{'Hi, I\'m '}
+				{"Hi, I'm "}
 				<chakra.span>{'Luis Marsiglia'}</chakra.span>
 				<chakra.span className='hand'>👋</chakra.span>
 			</Heading>

@@ -1,4 +1,4 @@
-import { Flex, type FlexProps } from '@chakra-ui/react'
+import { Flex, type FlexProps } from '@chakra-ui/layout'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { atomWithStorage } from 'jotai/utils'
 import { Banner } from '~/components/Banner'
@@ -20,11 +20,7 @@ export const Banners: React.FC<FlexProps> = () => {
 	return (
 		<Flex ref={bannersParent} flexDir='column'>
 			{banners.map(banner => (
-				<Banner
-					key={banner.key}
-					atom={banner.atom}
-					message={banner.message}
-				/>
+				<Banner key={banner.key} atom={banner.atom} message={banner.message} />
 			))}
 		</Flex>
 	)

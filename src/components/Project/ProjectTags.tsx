@@ -1,11 +1,14 @@
-import { Badge, Stack, type StackProps } from '@chakra-ui/react'
+import { Badge, Stack, type StackProps } from '@chakra-ui/layout'
 import type { Project } from '~/types'
 
 interface ProjectProps extends StackProps {
 	project: Project
 }
 
-export const ProjectTags: React.FC<ProjectProps> = ({ project: p, ...props }) => {
+export const ProjectTags: React.FC<ProjectProps> = ({
+	project: p,
+	...props
+}) => {
 	const thereIsTags = !!p.private || !!p.challenge || !!p.notFinished
 
 	if (!thereIsTags) return null

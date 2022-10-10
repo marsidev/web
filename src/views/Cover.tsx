@@ -1,4 +1,5 @@
-import { Flex, Stack, forwardRef } from '@chakra-ui/react'
+import { Flex, Stack } from '@chakra-ui/layout'
+import { forwardRef } from '@chakra-ui/system'
 import { useAtom } from 'jotai'
 import { useCallback } from 'react'
 import { use100vh } from 'react-div-100vh'

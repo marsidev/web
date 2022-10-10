@@ -1,4 +1,5 @@
-import { StackDivider, useColorModeValue } from '@chakra-ui/react'
+import { StackDivider } from '@chakra-ui/layout'
+import { useColorModeValue } from '@chakra-ui/system'
 import { useRendered } from '@marsidev/react-hooks'
 import { MotionStack, MotionStackProps } from '~/components/motion'
 import { containerVariants, sideVariants } from '../variants'

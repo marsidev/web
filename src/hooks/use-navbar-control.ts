@@ -1,4 +1,5 @@
-import { useBreakpointValue, useColorModeValue } from '@chakra-ui/react'
+import { useColorModeValue } from '@chakra-ui/system'
+import { useBreakpointValue } from '@chakra-ui/media-query'
 import { useRendered, useScrollY } from '@marsidev/react-hooks'
 import { useAtom } from 'jotai'
 import { useEffect, useMemo, useRef } from 'react'
@@ -9,7 +10,10 @@ export const useNavbarControl = () => {
 	const offset = useBreakpointValue({ base: 68, md: 96 }) // <- 68 and 96 are navbar height - measured manually
 	const { offsetPassed, scrollDirection } = useScrollY(offset)
 	const themedBg = useColorModeValue('white', 'gray.800')
-	const themedBgAfterOffset = useColorModeValue('whiteAlpha.500', 'rgba(26, 32, 44, 0.74)')
+	const themedBgAfterOffset = useColorModeValue(
+		'whiteAlpha.500',
+		'rgba(26, 32, 44, 0.74)'
+	)
 	const rendered = useRendered()
 	const [menuExpanded] = useAtom(mobileMenuAtom)
 	const [_, setNavbarHeight] = useAtom(navbarHeightAtom)

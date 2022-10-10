@@ -1,4 +1,4 @@
-import { Spacer } from '@chakra-ui/react'
+import { Spacer } from '@chakra-ui/layout'
 import { useCycle } from 'framer-motion'
 import { useAtom } from 'jotai'
 import { mobileMenuAtom } from '~/store'

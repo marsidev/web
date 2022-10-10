@@ -1,13 +1,13 @@
 import type { FC } from 'react'
-import type { ButtonProps, MenuProps } from '@chakra-ui/react'
+import { Button, type ButtonProps } from '@chakra-ui/button'
 import {
-	Button,
 	Menu,
 	MenuButton,
 	MenuItem,
 	MenuList,
-	chakra
-} from '@chakra-ui/react'
+	type MenuProps
+} from '@chakra-ui/menu'
+import { chakra } from '@chakra-ui/system'
 import { ChevronDownIcon, DownloadIcon, NotionIcon } from '~/icons'
 import { Link } from '../Link'
 
@@ -53,7 +53,11 @@ export const GetResume: FC<GetResumeProps> = ({ ...props }) => {
 					</MenuItem>
 				</Link>
 
-				<Link isExternal download='Luis Eduardo Marsiglia Resume' href='/resume.pdf'>
+				<Link
+					isExternal
+					download='Luis Eduardo Marsiglia Resume'
+					href='/resume.pdf'
+				>
 					<MenuItem>
 						<DownloadIcon />
 						<chakra.span ml={2}>Download PDF</chakra.span>

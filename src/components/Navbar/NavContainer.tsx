@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import { Flex, type FlexProps } from '@chakra-ui/react'
+import { Flex, type FlexProps } from '@chakra-ui/layout'
 import { MAX_WIDTH } from '~/constants/ui'
 import { useNavbarControl } from '~/hooks/use-navbar-control'
 
