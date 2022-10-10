@@ -139,11 +139,11 @@ export const TECHNOLOGIES: Technologies = {
 		url: 'https://supabase.com/',
 		icon: '/images/logos/supabase.svg'
 	},
-	tailwind: {
-		id: 'tailwind',
+	tailwindcss: {
+		id: 'tailwindcss',
 		name: 'Tailwind CSS',
 		url: 'https://tailwindcss.com/',
-		icon: '/images/logos/tailwind.svg'
+		icon: '/images/logos/tailwindcss.svg'
 	},
 	vercel: {
 		id: 'vercel',
@@ -204,5 +204,11 @@ export const TECHNOLOGIES: Technologies = {
 		name: 'React Testing Library',
 		url: 'https://testing-library.com/',
 		icon: '/images/logos/rtl.png'
+	},
+	solidjs: {
+		id: 'solidjs',
+		name: 'Solid.js',
+		url: 'https://www.solidjs.com/',
+		icon: '/images/logos/solidjs.svg'
 	}
 }

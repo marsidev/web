@@ -8,6 +8,8 @@
 			"error",
 			"single",
 			{ "avoidEscape": true, "allowTemplateLiterals": false }
-		]
+		],
+		"@typescript-eslint/indent": "off",
+		"indent": ["error", "tab"]
 	}
 }

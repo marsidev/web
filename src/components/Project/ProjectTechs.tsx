@@ -98,27 +98,33 @@ export const ProjectTechs: FC<ProjectProps> = ({ project, ...props }) => {
 							>
 								{tech.icon && (
 									<Skeleton
+										alignItems='center'
 										as='span'
+										display='flex'
 										fadeDuration={1}
 										height={`${logoSize as number}px`}
 										isLoaded={iconLoaded}
 										width={`${logoSize as number}px`}
 									>
 										<CloudinaryImage
+											useNextImageInDevelopment
 											alt={`${tech.name} logo`}
 											deliveryHeight={128}
 											deliveryQuality={100}
 											deliveryWidth={128}
-											height={`${logoSize as number}px`}
+											height={`${logoSize as number}`}
 											lazyLoadPlugin={true}
 											loading='lazy'
-											publicId={`marsidev${tech.icon}`}
-											width={`${logoSize as number}px`}
+											src={tech.icon}
+											subPath='marsidev'
+											width={`${logoSize as number}`}
 											onLoad={onLoadIcon}
 										/>
 									</Skeleton>
 								)}
-								<chakra.span ml={2}>{tech.name}</chakra.span>
+								<chakra.span lineHeight={1} ml={2}>
+									{tech.name}
+								</chakra.span>
 							</Tag>
 						</Link>
 					)

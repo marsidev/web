@@ -6,8 +6,10 @@ import { brightness as adjustBrightness } from '@cloudinary/url-gen/actions/adju
 import type { Range } from '~/types/utils'
 import { cloudinaryClient } from '~/utils/cloudinary'
 
-export interface UseCloudinaryImageProps {
-	publicId: string
+export interface UseCloudinaryImageResult {
+	subPath?: string
+	src: string
+	// publicId becomes `subPath + src`
 	deliveryWidth?: number
 	deliveryHeight?: number
 	/**
@@ -16,22 +18,23 @@ export interface UseCloudinaryImageProps {
 	radius?: number | 'full'
 	deliveryFormat?: 'auto' | 'webp' | 'png' | 'jpg' | 'bmp' | 'avif'
 	deliveryQuality?:
-	| 'auto'
-	| 'auto:good'
-	| 'auto:best'
-	| 'auto:eco'
-	| 'auto:low'
-	| Range<1, 101>
+		| 'auto'
+		| 'auto:good'
+		| 'auto:best'
+		| 'auto:eco'
+		| 'auto:low'
+		| Range<1, 101>
 	brightness?: number
 }
 
-type UseCloudinaryImage = (props: UseCloudinaryImageProps) => CloudinaryImage
+type UseCloudinaryImage = (props: UseCloudinaryImageResult) => CloudinaryImage
 
 export const useCloudinaryImage: UseCloudinaryImage = props => {
 	const {
 		deliveryWidth,
 		deliveryHeight,
-		publicId,
+		subPath,
+		src,
 		radius,
 		deliveryFormat,
 		deliveryQuality,
@@ -41,6 +44,7 @@ export const useCloudinaryImage: UseCloudinaryImage = props => {
 	const fullRadius = radius === 'full'
 
 	const cldImage = useMemo(() => {
+		const publicId = subPath ? `${subPath}${src}` : src
 		const image = cloudinaryClient.image(publicId)
 
 		if (deliveryWidth && deliveryHeight) {
@@ -81,7 +85,8 @@ export const useCloudinaryImage: UseCloudinaryImage = props => {
 		deliveryFormat,
 		deliveryQuality,
 		brightness,
-		publicId
+		subPath,
+		src
 	])
 
 	return cldImage

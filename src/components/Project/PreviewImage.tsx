@@ -30,7 +30,6 @@ export const PreviewImage: FC<PreviewImageProps> = ({
 
 	const className = `project-preview-${mode}`
 	const alt = `${project.name} ${mode} preview`
-	const publicId = `marsidev${project.images[mode]}`
 
 	const onLoad = useCallback(() => setImageLoaded(true), [])
 
@@ -51,6 +50,7 @@ export const PreviewImage: FC<PreviewImageProps> = ({
 				width='full'
 			>
 				<CloudinaryImage
+					useNextImageInDevelopment
 					alt={alt}
 					deliveryHeight={deliveryHeight}
 					deliveryQuality={90}
@@ -59,7 +59,8 @@ export const PreviewImage: FC<PreviewImageProps> = ({
 					lazyLoadPlugin={true}
 					loading='lazy'
 					placeholderPlugin={true}
-					publicId={publicId}
+					src={project.images[mode]}
+					subPath='marsidev'
 					width={imageSize.width}
 					onLoad={onLoad}
 				/>

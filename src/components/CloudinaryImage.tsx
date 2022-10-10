@@ -1,57 +1,73 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { Plugins } from '@cloudinary/html'
-import { memo, useMemo } from 'react'
+import { type FC, memo, useMemo } from 'react'
 import {
 	AdvancedImage,
 	accessibility,
+	placeholder as cldPlaceholder,
 	lazyload,
-	placeholder,
 	responsive
 } from '@cloudinary/react'
+import NextImage, { ImageProps as NextImageProps } from 'next/future/image'
 import {
-	UseCloudinaryImageProps,
+	UseCloudinaryImageResult,
 	useCloudinaryImage
 } from '~/hooks/use-cloudinary-image'
 
-type NativeImgProps = React.ComponentPropsWithoutRef<'img'>
+type NativeImageProps = React.ComponentPropsWithoutRef<'img'>
 
-type ConditionalImageProps =
-	| {
-		lazyLoadPlugin?: boolean
-		placeholderPlugin?: boolean
-		responsivePlugin?: boolean
-		accessibilityPlugin?: boolean
-		customPlugins?: never
-	  }
-	| {
-		lazyLoadPlugin?: never
-		placeholderPlugin?: never
-		responsivePlugin?: never
-		accessibilityPlugin?: never
-		customPlugins?: Plugins
-	}
+interface WithoutCustomPlugins {
+	lazyLoadPlugin?: boolean
+	placeholderPlugin?: boolean
+	responsivePlugin?: boolean
+	accessibilityPlugin?: boolean
+	customPlugins?: never
+}
 
-type CloudinaryImageProps =
-	NativeImgProps &
-	Pick<Required<NativeImgProps>, 'alt'> &
-	UseCloudinaryImageProps &
-	ConditionalImageProps
+interface WithCustomPlugins {
+	lazyLoadPlugin?: never
+	placeholderPlugin?: never
+	responsivePlugin?: never
+	accessibilityPlugin?: never
+	customPlugins?: Plugins
+}
 
-const Image: React.FC<CloudinaryImageProps> = props => {
+interface WithNextImageProps extends NextImageProps {
+	useNextImageInDevelopment?: boolean
+}
+
+type CloudinaryImageProps = NativeImageProps &
+	Pick<Required<NativeImageProps>, 'alt' | 'width' | 'height'> &
+	UseCloudinaryImageResult &
+	(WithoutCustomPlugins | WithCustomPlugins) &
+	WithNextImageProps
+
+const Image: FC<CloudinaryImageProps> = props => {
 	const {
 		deliveryWidth,
 		deliveryHeight,
 		lazyLoadPlugin,
 		placeholderPlugin,
 		responsivePlugin,
-		publicId,
+		src,
+		subPath,
 		accessibilityPlugin,
 		customPlugins,
 		radius,
 		deliveryFormat,
 		deliveryQuality,
 		brightness,
+		alt,
+		placeholder,
+		useNextImageInDevelopment,
+		onLoad,
+		priority,
+		style,
 		...rest
 	} = props
+
+	const shouldRenderNextImage =
+		process.env.NODE_ENV === 'development' && Boolean(useNextImageInDevelopment)
 
 	const cldImage = useCloudinaryImage({
 		deliveryWidth,
@@ -60,36 +76,63 @@ const Image: React.FC<CloudinaryImageProps> = props => {
 		deliveryFormat,
 		deliveryQuality,
 		brightness,
-		publicId
+		src,
+		subPath
 	})
 
 	const fullRadius = radius === 'full'
 
 	const plugins = useMemo(() => {
+		if (shouldRenderNextImage) return []
+
 		const plugins: Plugins = []
 
-		lazyLoadPlugin && plugins.push(lazyload({ rootMargin: '10px 20px 10px 30px', threshold: 0.1 }))
+		lazyLoadPlugin &&
+			plugins.push(
+				lazyload({ rootMargin: '10px 20px 10px 30px', threshold: 0.1 })
+			)
 
-		placeholderPlugin && plugins.push(placeholder({ mode: 'blur' }))
+		placeholderPlugin && plugins.push(cldPlaceholder({ mode: 'blur' }))
 
 		accessibilityPlugin && plugins.push(accessibility())
 
-		responsivePlugin && plugins.push(responsive({ steps: [600, 800, 1000, 1400] }))
+		responsivePlugin &&
+			plugins.push(responsive({ steps: [600, 800, 1000, 1400] }))
 
 		return plugins
 	}, [lazyLoadPlugin, placeholderPlugin, accessibilityPlugin])
 
+	if (shouldRenderNextImage) {
+		return (
+			<NextImage
+				unoptimized
+				alt={alt}
+				priority={priority}
+				src={src}
+				// @ts-ignore
+				onLoadingComplete={onLoad}
+				{...rest}
+				style={{
+					...style,
+					borderRadius: fullRadius ? 9999 : undefined
+				}}
+			/>
+		)
+	}
+
 	return (
 		<AdvancedImage
+			alt={alt}
 			cldImg={cldImage}
+			placeholder={placeholder}
 			plugins={customPlugins || plugins}
 			style={{
 				borderRadius: fullRadius ? 9999 : undefined
 			}}
+			onLoad={onLoad}
 			{...rest}
 		/>
 	)
 }
 
 export const CloudinaryImage = memo(Image)
-export default CloudinaryImage
