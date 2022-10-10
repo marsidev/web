@@ -2,6 +2,12 @@
 	"extends": ["next", "prettier", "marsi/react-ts"],
 	"rules": {
 		"react-hooks/exhaustive-deps": "off",
-		"@typescript-eslint/no-non-null-assertion": "off"
+		"@typescript-eslint/no-non-null-assertion": "off",
+		"quotes": "off",
+		"@typescript-eslint/quotes": [
+			"error",
+			"single",
+			{ "avoidEscape": true, "allowTemplateLiterals": false }
+		]
 	}
 }

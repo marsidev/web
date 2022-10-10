@@ -1,5 +1,5 @@
 import { Flex, type FlexProps, Text } from '@chakra-ui/layout'
-import { useColorMode, useColorModeValue } from '@chakra-ui/system'
+import { useColorModeValue } from '@chakra-ui/system'
 import { Link } from '~/components/Link'
 import { MAX_WIDTH } from '~/constants/ui'
 
