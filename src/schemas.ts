@@ -6,6 +6,6 @@ export const contactSchema = z.object({
 	message: z.string().min(10, { message: 'Please write a message with at least 10 characters' })
 })
 
-export const recaptchaSchema = z.object({
-	'g-recaptcha-response': z.string()
+export const challengeSchema = z.object({
+	token: z.string()
 })

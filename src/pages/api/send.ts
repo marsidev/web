@@ -1,8 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { contactSchema, recaptchaSchema } from '~/schemas'
+import { contactSchema } from '~/schemas'
 import type { MessageResponse } from '~/types/api'
-
-const schema = contactSchema.merge(recaptchaSchema)
 
 const FORM_ID = process.env.FORMSPARK_FORM_ID
 const FORM_URL = `https://submit-form.com/${FORM_ID}`
@@ -24,7 +22,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<MessageResponse
 		return res.status(400).json({ error: 'Wrong data provided', success: false })
 	}
 
-	const parsed = schema.safeParse(JSON.parse(req.body))
+	const parsed = contactSchema.safeParse(JSON.parse(req.body))
 
 	if (!parsed.success) {
 		return res.status(400).json({ error: 'An error occurred while parsing the data', success: false })
