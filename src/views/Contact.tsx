@@ -55,9 +55,7 @@ export const Contact = forwardRef((props, ref) => {
 	}
 
 	const onFailedMessage = () => {
-		toast.error('Something went wrong. 😢', {
-			theme: toastTheme
-		})
+		toast.error('Something went wrong. 😢', { theme: toastTheme })
 	}
 
 	const onError = async (_errors: FieldErrors) => {
@@ -70,9 +68,7 @@ export const Contact = forwardRef((props, ref) => {
 		if (errors) {
 			message += ` Errors: ${errors}`
 		}
-		toast.error(message, {
-			theme: toastTheme
-		})
+		toast.error(message, { theme: toastTheme })
 	}
 
 	const onSubmit = async (data: ContactFormData) => {
@@ -141,7 +137,6 @@ export const Contact = forwardRef((props, ref) => {
 					label='Name'
 					mode='input'
 					placeholder='John Doe'
-					// value='John Doe'
 					{...register('name')}
 				/>
 
@@ -152,7 +147,6 @@ export const Contact = forwardRef((props, ref) => {
 					label='Email address'
 					mode='input'
 					placeholder='example@domain.com'
-					// value='example@domain.com'
 					{...register('email')}
 				/>
 
@@ -163,7 +157,6 @@ export const Contact = forwardRef((props, ref) => {
 					label='Message'
 					mode='text-area'
 					placeholder='Hey, I want to hire you!'
-					value='Hey, I want to hire you!'
 					{...register('message')}
 				/>
 
