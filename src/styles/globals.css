@@ -1,25 +1,41 @@
 :root {
-	 --navlink-transform-origin: 'bottom right';
-	 --active-navlink-transform-origin: 'bottom left';
- }
+	--navlink-transform-origin: 'bottom right';
+	--active-navlink-transform-origin: 'bottom left';
+}
 
 .hand {
-  animation-name: wave;
-  animation-duration: 2.5s;
-  animation-iteration-count: infinite;
-  transform-origin: 70% 70%;
-  display: inline-block;
+	animation-name: wave;
+	animation-duration: 2.5s;
+	animation-iteration-count: infinite;
+	transform-origin: 70% 70%;
+	display: inline-block;
 }
 
 @keyframes wave {
-  0% { transform: rotate( 0.0deg) }
-  10% { transform: rotate(14.0deg) }
-  20% { transform: rotate(-8.0deg) }
-  30% { transform: rotate(14.0deg) }
-  40% { transform: rotate(-4.0deg) }
-  50% { transform: rotate(10.0deg) }
-  60% { transform: rotate( 0.0deg) }
-  100% { transform: rotate( 0.0deg) }
+	0% {
+		transform: rotate(0deg);
+	}
+	10% {
+		transform: rotate(14deg);
+	}
+	20% {
+		transform: rotate(-8deg);
+	}
+	30% {
+		transform: rotate(14deg);
+	}
+	40% {
+		transform: rotate(-4deg);
+	}
+	50% {
+		transform: rotate(10deg);
+	}
+	60% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
 }
 
 .social-link {
@@ -28,8 +44,8 @@
 }
 
 .project-preview {
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 	display: flex;
 	justify-content: center;
 	flex-direction: row;
@@ -37,34 +53,34 @@
 }
 
 .project-preview .atropos-inner {
-  z-index: 1;
+	z-index: 1;
 	border-radius: 16px !important;
 }
 
 .project-preview img {
-  object-fit: contain;
-  display: block;
-  z-index: 1;
-  transform-style: preserve-3d;
-  pointer-events: none;
+	object-fit: contain;
+	display: block;
+	z-index: 1;
+	transform-style: preserve-3d;
+	pointer-events: none;
 }
 
 .project-preview .atropos-shadow {
-  opacity: 0.5;
-  transform: translate3d(0, 0, -1px);
+	opacity: 0.5;
+	transform: translate3d(0, 0, -1px);
 }
 
 .project-preview .project-preview-desktop {
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 	position: relative;
 }
 
 .project-preview .project-preview-mobile {
 	position: absolute;
-  left: 8%;
-  top: 8%;
-  /* width: 25%; */
+	left: 8%;
+	top: 8%;
+	/* width: 25%; */
 	z-index: 999 !important;
 }
 
@@ -75,7 +91,7 @@
 }
 
 .navlink:after {
-	content: "";
+	content: '';
 	position: absolute;
 	width: 100%;
 	-webkit-transform: scaleX(0);
@@ -100,23 +116,11 @@
 }
 
 .Toastify__toast {
-  border-radius: 16px !important;
+	border-radius: 16px !important;
 	font-weight: 600;
 	font-family: NunitoVariable, Roboto, sans-serif !important;
 }
 
-.captcha {
-	overflow: hidden;
-	width: 298px;
-	height: 74px;
-}
-
-.captcha-compact {
-	overflow: hidden;
-	width: 154px;
-	height: 136px;
-}
-
 iframe {
-  margin: -1px 0px 0px -2px;
+	margin: -1px 0px 0px -2px;
 }

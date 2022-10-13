@@ -95,7 +95,7 @@ export const Contact = forwardRef((props, ref) => {
 			}
 
 			// send message
-			const success = await sendMessage(data, token)
+			const success = await sendMessage(data)
 			success ? onSuccessMessage() : onFailedMessage()
 		} catch (error) {
 			console.error(error)
