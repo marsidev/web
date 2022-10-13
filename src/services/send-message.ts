@@ -2,12 +2,11 @@ import { contactSchema } from '~/schemas'
 import type { MessageResponse } from '~/types/api'
 import type { ContactFormData } from '~/types/zod'
 
-export const sendMessage = async (formData: ContactFormData, captchaToken: string) => {
+export const sendMessage = async (formData: ContactFormData) => {
 	const submissionData = contactSchema.parse(formData)
 
 	const payload = JSON.stringify({
-		...submissionData,
-		'g-recaptcha-response': captchaToken
+		...submissionData
 	})
 
 	const fetchOptions: RequestInit = { method: 'POST', body: payload }
