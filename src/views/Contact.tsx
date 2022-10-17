@@ -1,5 +1,7 @@
 import type { SystemStyleObject } from '@chakra-ui/system'
 import type { FieldErrors } from 'react-hook-form'
+import type { TurnstileInstance } from '@marsidev/react-turnstile'
+import { useRendered } from '@marsidev/react-hooks'
 import { useRef, useState } from 'react'
 import { Button } from '@chakra-ui/button'
 import { Flex, Heading, Text } from '@chakra-ui/layout'
@@ -12,7 +14,6 @@ import { ContactInput } from '~/components/ContactInput'
 import type { ContactFormData } from '~/types/zod'
 import { sendMessage } from '~/services/send-message'
 import { verifyToken } from '~/services/verify-token'
-import { type TurnstileRef } from '~/lib/react-turnstile/types'
 
 const formSx: SystemStyleObject = {
 	display: 'flex',
@@ -26,8 +27,9 @@ export const Contact = forwardRef((props, ref) => {
 	const [isLoading, setIsLoading] = useState(false)
 	const [challengeExpired, setChallengeExpired] = useState(false)
 	const [challengeSolved, setChallengeSolved] = useState(false)
+	const mounted = useRendered()
 	const [challengeError, setChallengeError] = useState<string | null>(null)
-	const turnstileRef = useRef<TurnstileRef>(null)
+	const turnstileRef = useRef<TurnstileInstance>(null)
 	const formRef = useRef<HTMLFormElement>(null)
 	const toastTheme = useColorModeValue('dark', 'light')
 	const { errors, handleSubmit, isSubmitting, register } = useContactForm()
@@ -105,13 +107,9 @@ export const Contact = forwardRef((props, ref) => {
 		setChallengeExpired(true)
 	}
 
-	const onChallengeLoad = (token: string) => {
-		if (!token) {
-			setChallengeSolved(false)
-		} else {
-			setChallengeSolved(true)
-			setChallengeExpired(false)
-		}
+	const onChallengeSuccess = (_token: string) => {
+		setChallengeSolved(true)
+		setChallengeExpired(false)
 	}
 
 	const onChallengeError = () => {
@@ -160,14 +158,16 @@ export const Contact = forwardRef((props, ref) => {
 					{...register('message')}
 				/>
 
-				<TurnstileChallenge
-					error={challengeError}
-					formSx={{ mt: 4, mb: 2 }}
-					turnstileRef={turnstileRef}
-					onError={onChallengeError}
-					onExpire={onChallengeExpire}
-					onLoad={onChallengeLoad}
-				/>
+				{mounted && (
+					<TurnstileChallenge
+						error={challengeError}
+						formSx={{ mt: 4, mb: 2 }}
+						turnstileRef={turnstileRef}
+						onError={onChallengeError}
+						onExpire={onChallengeExpire}
+						onSuccess={onChallengeSuccess}
+					/>
+				)}
 
 				<Button
 					colorScheme='teal'

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { TurnstileValidationResponse } from '~/lib/react-turnstile/types'
+import type { TurnstileValidationResponse } from '~/types/turnstile'
 import { challengeSchema } from '~/schemas'
 import { SECRET_KEY } from '~/constants/turnstile'
 

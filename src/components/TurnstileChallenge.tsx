@@ -1,14 +1,14 @@
 import type { SystemStyleObject } from '@chakra-ui/system'
 import type { FC, RefObject } from 'react'
+import type { TurnstileInstance, TurnstileProps } from '@marsidev/react-turnstile'
 import { FormControl, FormErrorMessage } from '@chakra-ui/form-control'
 import { Text } from '@chakra-ui/layout'
 import { useColorMode } from '@chakra-ui/system'
-import type { TurnstileProps, TurnstileRef } from '~/lib/react-turnstile/types'
-import { Turnstile } from '~/lib/react-turnstile/react-turnstile'
+import { Turnstile } from '@marsidev/react-turnstile'
 import { SITE_KEY } from '~/constants/turnstile'
 
 interface TurnstileChallengeProps extends Partial<TurnstileProps> {
-	turnstileRef: RefObject<TurnstileRef>
+	turnstileRef: RefObject<TurnstileInstance>
 	error?: string | null
 	formSx?: SystemStyleObject
 }
