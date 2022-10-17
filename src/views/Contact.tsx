@@ -1,5 +1,4 @@
 import type { SystemStyleObject } from '@chakra-ui/system'
-import type { FieldErrors } from 'react-hook-form'
 import type { TurnstileInstance } from '@marsidev/react-turnstile'
 import { useRendered } from '@marsidev/react-hooks'
 import { useRef, useState } from 'react'
@@ -23,29 +22,21 @@ const formSx: SystemStyleObject = {
 	alignItems: 'flex-start'
 }
 
+export type WidgetStatus = 'solved' | 'error' | 'expired' | null
+
 export const Contact = forwardRef((props, ref) => {
 	const [isLoading, setIsLoading] = useState(false)
-	const [challengeExpired, setChallengeExpired] = useState(false)
-	const [challengeSolved, setChallengeSolved] = useState(false)
 	const mounted = useRendered()
-	const [challengeError, setChallengeError] = useState<string | null>(null)
 	const turnstileRef = useRef<TurnstileInstance>(null)
 	const formRef = useRef<HTMLFormElement>(null)
 	const toastTheme = useColorModeValue('dark', 'light')
 	const { errors, handleSubmit, isSubmitting, register } = useContactForm()
+	const [status, setStatus] = useState<WidgetStatus>(null)
+	const [token, setToken] = useState<string>()
 
-	const withErrors = !!errors.name || !!errors.email || !!errors.message || !!challengeError
+	const withErrors = !!errors.name || !!errors.email || !!errors.message
 
-	const checkIfChallengeIsSolved = () => {
-		const token = turnstileRef.current?.getResponse()
-		if (!token) {
-			setChallengeError('You need to solve the challenge first')
-			return
-		}
-
-		setChallengeError(null)
-		return token
-	}
+	const challengeSolved = status === 'solved'
 
 	const onSuccessMessage = () => {
 		toast.success("🚀 Message sent. I'll answer you as soon as possible. Thank you!", {
@@ -60,9 +51,8 @@ export const Contact = forwardRef((props, ref) => {
 		toast.error('Something went wrong. 😢', { theme: toastTheme })
 	}
 
-	const onError = async (_errors: FieldErrors) => {
-		checkIfChallengeIsSolved()
-	}
+	// const onError = async (_errors: FieldErrors) => {
+	// }
 
 	const onInvalidToken = (data: VerifyTokenApiResponse) => {
 		let message = 'Unable to verify the challenge. Please try again.'
@@ -74,8 +64,9 @@ export const Contact = forwardRef((props, ref) => {
 	}
 
 	const onSubmit = async (data: ContactFormData) => {
-		const token = checkIfChallengeIsSolved()
-		if (!token) return
+		if (!challengeSolved || !token) {
+			return toast.error('You need to solve the challenge first', { theme: toastTheme })
+		}
 
 		if (withErrors) {
 			return toast.error('Fix the errors first. ✏️', { theme: toastTheme })
@@ -104,16 +95,16 @@ export const Contact = forwardRef((props, ref) => {
 	}
 
 	const onChallengeExpire = () => {
-		setChallengeExpired(true)
+		setStatus('expired')
 	}
 
 	const onChallengeSuccess = (_token: string) => {
-		setChallengeSolved(true)
-		setChallengeExpired(false)
+		setToken(_token)
+		setStatus('solved')
 	}
 
 	const onChallengeError = () => {
-		setChallengeError('Error verifying challenge')
+		setStatus('error')
 	}
 
 	return (
@@ -128,7 +119,7 @@ export const Contact = forwardRef((props, ref) => {
 				</Text>
 			</Flex>
 
-			<chakra.form ref={formRef} sx={formSx} onSubmit={handleSubmit(onSubmit, onError)}>
+			<chakra.form ref={formRef} sx={formSx} onSubmit={handleSubmit(onSubmit)}>
 				<ContactInput
 					error={errors.name}
 					id='name'
@@ -160,7 +151,7 @@ export const Contact = forwardRef((props, ref) => {
 
 				{mounted && (
 					<TurnstileChallenge
-						error={challengeError}
+						// error={challengeError}
 						formSx={{ mt: 4, mb: 2 }}
 						turnstileRef={turnstileRef}
 						onError={onChallengeError}
@@ -171,7 +162,7 @@ export const Contact = forwardRef((props, ref) => {
 
 				<Button
 					colorScheme='teal'
-					isDisabled={withErrors || !challengeSolved || challengeExpired}
+					isDisabled={withErrors}
 					isLoading={isSubmitting || isLoading}
 					loadingText='Sending...'
 					size='lg'
