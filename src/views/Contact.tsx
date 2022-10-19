@@ -1,6 +1,5 @@
 import type { SystemStyleObject } from '@chakra-ui/system'
 import type { TurnstileInstance } from '@marsidev/react-turnstile'
-import { useRendered } from '@marsidev/react-hooks'
 import { useRef, useState } from 'react'
 import { Button } from '@chakra-ui/button'
 import { Flex, Heading, Text } from '@chakra-ui/layout'
@@ -26,23 +25,25 @@ export type WidgetStatus = 'solved' | 'error' | 'expired' | null
 
 export const Contact = forwardRef((props, ref) => {
 	const [isLoading, setIsLoading] = useState(false)
-	const mounted = useRendered()
 	const turnstileRef = useRef<TurnstileInstance>(null)
 	const formRef = useRef<HTMLFormElement>(null)
 	const toastTheme = useColorModeValue('dark', 'light')
 	const { errors, handleSubmit, isSubmitting, register } = useContactForm()
 	const [status, setStatus] = useState<WidgetStatus>(null)
 	const [token, setToken] = useState<string>()
+	const [messagesSent, setMessagesSent] = useState(0)
 
 	const withErrors = !!errors.name || !!errors.email || !!errors.message
 
 	const challengeSolved = status === 'solved'
+	const showChallenge = messagesSent > 0
 
 	const onSuccessMessage = () => {
 		toast.success("🚀 Message sent. I'll answer you as soon as possible. Thank you!", {
 			autoClose: 5000,
 			theme: toastTheme
 		})
+		setMessagesSent(prev => prev + 1)
 
 		formRef.current?.reset()
 	}
@@ -50,9 +51,6 @@ export const Contact = forwardRef((props, ref) => {
 	const onFailedMessage = () => {
 		toast.error('Something went wrong. 😢', { theme: toastTheme })
 	}
-
-	// const onError = async (_errors: FieldErrors) => {
-	// }
 
 	const onInvalidToken = (data: VerifyTokenApiResponse) => {
 		let message = 'Unable to verify the challenge. Please try again.'
@@ -64,7 +62,7 @@ export const Contact = forwardRef((props, ref) => {
 	}
 
 	const onSubmit = async (data: ContactFormData) => {
-		if (!challengeSolved || !token) {
+		if (showChallenge && (!challengeSolved || !token)) {
 			return toast.error('You need to solve the challenge first', { theme: toastTheme })
 		}
 
@@ -73,14 +71,16 @@ export const Contact = forwardRef((props, ref) => {
 		}
 
 		try {
-			// verify challenge token
 			setIsLoading(true)
-			const verifyData = await verifyToken(token)
+			if (showChallenge) {
+				// verify challenge token
+				const verifyData = await verifyToken(token!)
 
-			if (!verifyData.success) {
-				onInvalidToken(verifyData)
-				setIsLoading(false)
-				return
+				if (!verifyData.success) {
+					onInvalidToken(verifyData)
+					setIsLoading(false)
+					return
+				}
 			}
 
 			// send message
@@ -149,7 +149,7 @@ export const Contact = forwardRef((props, ref) => {
 					{...register('message')}
 				/>
 
-				{mounted && (
+				{showChallenge && (
 					<TurnstileChallenge
 						// error={challengeError}
 						formSx={{ mt: 4, mb: 2 }}
@@ -165,6 +165,7 @@ export const Contact = forwardRef((props, ref) => {
 					isDisabled={withErrors}
 					isLoading={isSubmitting || isLoading}
 					loadingText='Sending...'
+					mt={showChallenge ? 0 : 4}
 					size='lg'
 					textAlign='left'
 					type='submit'
