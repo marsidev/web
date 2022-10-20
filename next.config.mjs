@@ -54,6 +54,15 @@ const nextConfig = {
 	rewrites,
 	sentry: {
 		hideSourceMaps: true
+	},
+	async redirects() {
+		return [
+			{
+				source: '/:path',
+				destination: '/',
+				permanent: true
+			}
+		]
 	}
 }
 
