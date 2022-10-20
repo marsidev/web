@@ -5,7 +5,6 @@ import { useBreakpointValue } from '@chakra-ui/media-query'
 import type { Project } from '~/types'
 import { CloudinaryImage } from '~/components/CloudinaryImage'
 import { Link } from '~/components/Link'
-import { remToPx } from '~/utils/units'
 
 interface PackagePreviewProps {
 	project: Project
@@ -18,7 +17,6 @@ export const PackagePreview: React.FC<PackagePreviewProps> = props => {
 	const borderRadius = useBreakpointValue({ base: '8px', md: '16px' }, { fallback: 'base' })
 	const cardHeight = useBreakpointValue({ base: 140, md: 240 }, { fallback: 'base' })
 	const nameHeight = useBreakpointValue({ base: 40, md: 60 }, { fallback: 'base' })
-	const namePadding = useBreakpointValue({ base: 2, md: 4 }, { fallback: 'base' })
 
 	return (
 		<Skeleton
