@@ -15,7 +15,7 @@ interface ProjectProps extends FlexProps {
 export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 	const bg = useColorModeValue('gray.100', 'gray.700')
 	const borderColor = useColorModeValue('gray.200', 'gray.600')
-	const onHoverBorderColor = useColorModeValue('gray.300', 'gray.700')
+	const onHoverBorderColor = useColorModeValue('gray.300', 'gray.500')
 	const containerRef = useRef<HTMLDivElement>(null)
 	const [mobileSize, setMobileSize] = useState(defaultMobileSize)
 	const [desktopSize, setDesktopSize] = useState(defaultDesktopSize)
