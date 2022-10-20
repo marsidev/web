@@ -119,8 +119,6 @@ export const ProjectTechs: FC<ProjectProps> = ({ project, ...props }) => {
 											deliveryQuality={100}
 											deliveryWidth={128}
 											height={`${logoSize as number}`}
-											lazyLoadPlugin={true}
-											loading='lazy'
 											src={tech.icon}
 											subPath='marsidev'
 											width={`${logoSize as number}`}

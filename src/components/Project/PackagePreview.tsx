@@ -38,8 +38,6 @@ export const PackagePreview: React.FC<PackagePreviewProps> = props => {
 								deliveryQuality={75}
 								deliveryWidth={1200}
 								height={imageHeight}
-								lazyLoadPlugin={true}
-								loading='lazy'
 								placeholderPlugin={true}
 								src='/images/bg/npm.png'
 								style={{
