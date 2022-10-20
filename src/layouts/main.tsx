@@ -3,6 +3,7 @@ import { DefaultSeo } from 'next-seo'
 import { useAtom } from 'jotai'
 import { Banners } from '~/components/Banners'
 import { Navbar } from '~/components/Navbar'
+import { Footer } from '~/components/Footer'
 import { MAX_WIDTH } from '~/constants/ui'
 import { mobileMenuAtom } from '~/store'
 import seo from 'next-seo.config'
@@ -26,24 +27,19 @@ export const Layout: React.FC<LayoutProps> = ({ children, title }) => {
 			<Flex
 				as='main'
 				justify='center'
-				minH={['92vh', '90vh']}
+				minH={['84vh', '80vh']}
 				px={8}
 				py={8}
 				textAlign='left'
 				visibility={menuExpanded ? 'hidden' : 'visible'}
 				w='100%'
 			>
-				<Flex
-					align='center'
-					flexDir='column'
-					h='full'
-					justify='center'
-					maxW={MAX_WIDTH}
-					w='100%'
-				>
+				<Flex align='center' flexDir='column' h='full' justify='center' maxW={MAX_WIDTH} w='100%'>
 					{children}
 				</Flex>
 			</Flex>
+
+			<Footer minH={['8vh', '10vh']} />
 		</>
 	)
 }
