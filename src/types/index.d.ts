@@ -5,7 +5,7 @@ export interface Project {
 	url?: string
 	repository?: string
 	stack: string[]
-	images: {
+	images?: {
 		mobile: string
 		desktop: string
 	}
@@ -13,10 +13,11 @@ export interface Project {
 		start: string
 		end?: string
 	}
-	private?: boolean
-	challenge?: boolean
-	notFinished?: boolean
+	tags: ProjectTag[]
+	packageName?: string
 }
+
+export type ProjectTag = 'web' | 'api' | 'cli' | 'package' | 'bot' | 'challenge' | 'private' | 'unfinished'
 
 export interface Technology {
 	id: string

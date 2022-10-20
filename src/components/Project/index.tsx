@@ -11,11 +11,7 @@ interface ProjectProps extends StackProps {
 	type: 'even' | 'odd'
 }
 
-export const Project: React.FC<ProjectProps> = ({
-	project,
-	type,
-	...props
-}) => {
+export const Project: React.FC<ProjectProps> = ({ project, type, ...props }) => {
 	const renderMode: ProjectRenderMode = useBreakpointValue(
 		{
 			base: 'small-screen',
@@ -28,24 +24,14 @@ export const Project: React.FC<ProjectProps> = ({
 
 	const desktopDirection = type === 'even' ? 'row' : 'row-reverse'
 
-	const textAlign =
-		renderMode === 'small-screen' || renderMode === 'odd' ? 'left' : 'right'
+	const textAlign = renderMode === 'small-screen' || renderMode === 'odd' ? 'left' : 'right'
 
-	const justify =
-		renderMode === 'small-screen' || renderMode === 'odd'
-			? 'flex-start'
-			: 'flex-end'
+	const justify = renderMode === 'small-screen' || renderMode === 'odd' ? 'flex-start' : 'flex-end'
 
 	return (
 		<>
 			<Show breakpoint='(max-width: 767px)'>
-				<Stack
-					direction='column'
-					spacing={4}
-					textAlign={textAlign}
-					w='100%'
-					{...props}
-				>
+				<Stack as='article' direction='column' spacing={4} textAlign={textAlign} w='100%' {...props}>
 					<ProjectInfo justify={justify} project={project} w='full' />
 					<ProjectPreview project={project} w={{ base: 'full', md: '55%' }} />
 					<ProjectTechs justify={justify} project={project} />
@@ -54,14 +40,7 @@ export const Project: React.FC<ProjectProps> = ({
 			</Show>
 
 			<Show breakpoint='(min-width: 768px)'>
-				<Stack
-					direction={desktopDirection}
-					pb={8}
-					spacing={8}
-					textAlign={textAlign}
-					w='100%'
-					{...props}
-				>
+				<Stack as='article' direction={desktopDirection} pb={8} spacing={8} textAlign={textAlign} w='100%' {...props}>
 					<Stack direction='column' spacing={4} w='45%'>
 						<ProjectInfo justify={justify} project={project} />
 						<ProjectTechs justify={justify} project={project} />

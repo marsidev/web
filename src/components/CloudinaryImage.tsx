@@ -1,18 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { Plugins } from '@cloudinary/html'
 import { type FC, memo, useMemo } from 'react'
-import {
-	AdvancedImage,
-	accessibility,
-	placeholder as cldPlaceholder,
-	lazyload,
-	responsive
-} from '@cloudinary/react'
+import { AdvancedImage, accessibility, placeholder as cldPlaceholder, lazyload, responsive } from '@cloudinary/react'
 import NextImage, { ImageProps as NextImageProps } from 'next/future/image'
-import {
-	UseCloudinaryImageResult,
-	useCloudinaryImage
-} from '~/hooks/use-cloudinary-image'
+import { UseCloudinaryImageResult, useCloudinaryImage } from '~/hooks/use-cloudinary-image'
 
 type NativeImageProps = React.ComponentPropsWithoutRef<'img'>
 
@@ -66,8 +57,7 @@ const Image: FC<CloudinaryImageProps> = props => {
 		...rest
 	} = props
 
-	const shouldRenderNextImage =
-		process.env.NODE_ENV === 'development' && Boolean(useNextImageInDevelopment)
+	const shouldRenderNextImage = process.env.NODE_ENV === 'development' && Boolean(useNextImageInDevelopment)
 
 	const cldImage = useCloudinaryImage({
 		deliveryWidth,
@@ -87,17 +77,13 @@ const Image: FC<CloudinaryImageProps> = props => {
 
 		const plugins: Plugins = []
 
-		lazyLoadPlugin &&
-			plugins.push(
-				lazyload({ rootMargin: '10px 20px 10px 30px', threshold: 0.1 })
-			)
+		lazyLoadPlugin && plugins.push(lazyload({ rootMargin: '10px 20px 10px 30px', threshold: 0.1 }))
 
 		placeholderPlugin && plugins.push(cldPlaceholder({ mode: 'blur' }))
 
 		accessibilityPlugin && plugins.push(accessibility())
 
-		responsivePlugin &&
-			plugins.push(responsive({ steps: [600, 800, 1000, 1400] }))
+		responsivePlugin && plugins.push(responsive({ steps: [600, 800, 1000, 1400] }))
 
 		return plugins
 	}, [lazyLoadPlugin, placeholderPlugin, accessibilityPlugin])
@@ -114,7 +100,7 @@ const Image: FC<CloudinaryImageProps> = props => {
 				{...rest}
 				style={{
 					...style,
-					borderRadius: fullRadius ? 9999 : undefined
+					borderRadius: fullRadius ? 9999 : style?.borderRadius
 				}}
 			/>
 		)

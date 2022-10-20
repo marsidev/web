@@ -7,3 +7,6 @@ type Enumerate<N extends number, Acc extends number[] = []> = Acc['length'] exte
 	: Enumerate<N, [...Acc, Acc['length']]>
 
 export type Range<F extends number, T extends number> = Exclude<Enumerate<T>, Enumerate<F>>
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type PartialRecord<K extends keyof any, T> = Partial<Record<K, T>>

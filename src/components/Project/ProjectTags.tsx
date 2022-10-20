@@ -1,25 +1,29 @@
-import { Badge, Stack, type StackProps } from '@chakra-ui/layout'
-import type { Project } from '~/types'
+import { Badge, BadgeProps, Stack, type StackProps } from '@chakra-ui/layout'
+import type { Project, ProjectTag } from '~/types'
+import type { PartialRecord } from '~/types/utils'
 
 interface ProjectProps extends StackProps {
 	project: Project
 }
 
-export const ProjectTags: React.FC<ProjectProps> = ({
-	project: p,
-	...props
-}) => {
-	const thereIsTags = !!p.private || !!p.challenge || !!p.notFinished
+const colorSchemeByTag: PartialRecord<ProjectTag, BadgeProps['colorScheme']> = {
+	private: 'orange',
+	challenge: 'twitter',
+	unfinished: 'pink',
+	web: 'teal',
+	package: 'purple'
+}
 
-	if (!thereIsTags) return null
-
+export const ProjectTags: React.FC<ProjectProps> = ({ project: p, ...props }) => {
 	return (
 		<Stack direction='row' flexWrap='wrap' rowGap={2} {...props}>
-			{p.private && <Badge colorScheme='orange'>Private</Badge>}
-
-			{p.challenge && <Badge colorScheme='twitter'>Challenge</Badge>}
-
-			{p.notFinished && <Badge colorScheme='pink'>Not finished</Badge>}
+			{p.tags.map(tag => {
+				return (
+					<Badge key={tag} colorScheme={colorSchemeByTag[tag] ?? 'gray'}>
+						{tag}
+					</Badge>
+				)
+			})}
 		</Stack>
 	)
 }

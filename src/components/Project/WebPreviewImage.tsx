@@ -13,7 +13,7 @@ interface PreviewImageProps extends FlexProps {
 	project: Project
 }
 
-export const PreviewImage: FC<PreviewImageProps> = ({
+export const WebPreviewImage: FC<PreviewImageProps> = ({
 	imageSize,
 	dataAtroposOffset,
 	mode,
@@ -34,13 +34,7 @@ export const PreviewImage: FC<PreviewImageProps> = ({
 	const onLoad = useCallback(() => setImageLoaded(true), [])
 
 	return (
-		<Flex
-			align='center'
-			className={className}
-			height={containerHeight}
-			width={containerWidth}
-			{...rest}
-		>
+		<Flex align='center' className={className} height={containerHeight} width={containerWidth} {...rest}>
 			<Skeleton
 				borderRadius={{ base: 8, md: 16 }}
 				data-atropos-offset={dataAtroposOffset}
@@ -59,7 +53,7 @@ export const PreviewImage: FC<PreviewImageProps> = ({
 					lazyLoadPlugin={true}
 					loading='lazy'
 					placeholderPlugin={true}
-					src={project.images[mode]}
+					src={project.images![mode]}
 					subPath='marsidev'
 					width={imageSize.width}
 					onLoad={onLoad}
@@ -69,4 +63,4 @@ export const PreviewImage: FC<PreviewImageProps> = ({
 	)
 }
 
-export default PreviewImage
+export default WebPreviewImage

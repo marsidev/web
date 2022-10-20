@@ -210,5 +210,17 @@ export const TECHNOLOGIES: Technologies = {
 		name: 'Solid.js',
 		url: 'https://www.solidjs.com/',
 		icon: '/images/logos/solidjs.svg'
+	},
+	actions: {
+		id: 'actions',
+		name: 'GitHub Actions',
+		url: 'https://github.com/features/actions',
+		icon: '/images/logos/actions.svg'
+	},
+	npm: {
+		id: 'npm',
+		name: 'NPM',
+		url: 'https://www.npmjs.com/',
+		icon: '/images/logos/npm.svg'
 	}
 }

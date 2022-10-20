@@ -17,8 +17,7 @@ export const PROJECTS: Project[] = [
 			start: '2022-01-04',
 			end: '2022-02-05'
 		},
-		private: false,
-		challenge: false
+		tags: ['web']
 	},
 	{
 		id: 'wordly',
@@ -36,9 +35,7 @@ export const PROJECTS: Project[] = [
 			start: '2022-03-28',
 			end: '2022-05-19'
 		},
-		private: false,
-		challenge: false,
-		notFinished: true
+		tags: ['web', 'unfinished']
 	},
 	{
 		id: 'axie-hub',
@@ -56,8 +53,7 @@ export const PROJECTS: Project[] = [
 			start: '2022-04-16',
 			end: '2022-05-07'
 		},
-		private: false,
-		challenge: true
+		tags: ['web', 'challenge']
 	},
 	{
 		id: 'climatic',
@@ -87,8 +83,7 @@ export const PROJECTS: Project[] = [
 			start: '2022-05-22',
 			end: '2022-06-22'
 		},
-		private: false,
-		challenge: true
+		tags: ['web', 'challenge']
 	},
 	{
 		id: 'bubble',
@@ -117,24 +112,14 @@ export const PROJECTS: Project[] = [
 			start: '2022-07-12',
 			end: '2022-07-21'
 		},
-		private: false,
-		challenge: true
+		tags: ['web', 'challenge']
 	},
 	{
 		id: 'royaleapp',
 		name: 'Royale App',
 		description:
 			'RoyaleApp is a Clash Royale fan site where you can find tools such as player battle logs, player duels, player decks, duels combo builder, tournaments ranking, top ladder ranking, decks matchups, and more. Focused on competitive battles.',
-		stack: [
-			'react',
-			'nextjs',
-			'chakra-ui',
-			'mongodb',
-			'mongoose',
-			'zustand',
-			'next-auth',
-			'clash-royale-api'
-		],
+		stack: ['react', 'nextjs', 'chakra-ui', 'mongodb', 'mongoose', 'zustand', 'next-auth', 'clash-royale-api'],
 		images: {
 			mobile: '/images/projects/royaleapp-mobile.webp',
 			desktop: '/images/projects/royaleapp-desktop.webp'
@@ -143,17 +128,14 @@ export const PROJECTS: Project[] = [
 			start: '2022-02-05',
 			end: ''
 		},
-		private: true,
-		challenge: false
+		tags: ['web', 'private']
 	},
 	{
 		id: 'password-generator',
 		name: 'Password Generator',
-		description:
-			'Secure password generator made for a hacktoberfest challenge.',
+		description: 'Secure password generator made for a hacktoberfest challenge.',
 		url: 'https://hacktoberfest-2022.vercel.app/entry/marsidev',
-		repository:
-			'https://github.com/midudev/password-generator/blob/main/src/pages/entry/marsidev/index.astro',
+		repository: 'https://github.com/midudev/password-generator/blob/main/src/pages/entry/marsidev/index.astro',
 		stack: ['astro', 'solidjs', 'typescript', 'tailwindcss'],
 		images: {
 			mobile: '/images/projects/password-generator-mobile.webp',
@@ -163,7 +145,48 @@ export const PROJECTS: Project[] = [
 			start: '2022-10-03',
 			end: '2022-10-08'
 		},
-		private: false,
-		challenge: true
+		tags: ['web', 'challenge']
+	},
+	{
+		id: 'react-turnstile',
+		name: 'React Turnstile',
+		description: 'Cloudflare Turnstile integration for React.',
+		url: 'https://www.npmjs.com/package/@marsidev/react-turnstile',
+		repository: 'https://github.com/marsidev/react-turnstile',
+		stack: ['npm', 'react', 'typescript', 'playwright', 'actions'],
+		devTime: {
+			start: '2022-10-14',
+			end: ''
+		},
+		tags: ['package'],
+		packageName: '@marsidev/react-turnstile'
+	},
+	{
+		id: 'create',
+		name: 'Create',
+		description: 'Create multiple files from your command line.',
+		url: 'https://www.npmjs.com/package/@marsidev/create',
+		repository: 'https://github.com/marsidev/create',
+		stack: ['npm', 'nodejs', 'typescript', 'vitest', 'actions'],
+		devTime: {
+			start: '2022-09-02',
+			end: '2022-09-05'
+		},
+		tags: ['package'],
+		packageName: '@marsidev/create'
+	},
+	{
+		id: 'react-hooks',
+		name: 'React Hooks',
+		description: 'A collection of common React Hooks that I use in my React projects.',
+		url: 'https://www.npmjs.com/package/@marsidev/react-hooks',
+		repository: 'https://github.com/marsidev/react-hooks',
+		stack: ['npm', 'react', 'typescript', 'rtl', 'vitest', 'actions'],
+		devTime: {
+			start: '2022-08-12',
+			end: '2022-08-16'
+		},
+		tags: ['package'],
+		packageName: '@marsidev/react-hooks'
 	}
 ]

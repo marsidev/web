@@ -1,17 +1,12 @@
 import { useBreakpointValue } from '@chakra-ui/media-query'
 import { useColorModeValue } from '@chakra-ui/system'
 import { Flex, type FlexProps } from '@chakra-ui/layout'
-import { Atropos } from 'atropos/react'
 import { type FC, useEffect, useRef, useState } from 'react'
 import type { Project } from '~/types'
 import { remToPx } from '~/utils/units'
-import {
-	defaultDesktopSize,
-	defaultMobileSize,
-	getContainerHeight,
-	getDimensions
-} from '~/utils/project-preview'
-import { PreviewImage } from './PreviewImage'
+import { defaultDesktopSize, defaultMobileSize, getContainerHeight, getDimensions } from '~/utils/project-preview'
+import { WebPreview } from './WebPreview'
+import { PackagePreview } from './PackagePreview'
 
 interface ProjectProps extends FlexProps {
 	project: Project
@@ -20,22 +15,18 @@ interface ProjectProps extends FlexProps {
 export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 	const bg = useColorModeValue('gray.100', 'gray.700')
 	const borderColor = useColorModeValue('gray.200', 'gray.600')
+	const onHoverBorderColor = useColorModeValue('gray.300', 'gray.700')
 	const containerRef = useRef<HTMLDivElement>(null)
 	const [mobileSize, setMobileSize] = useState(defaultMobileSize)
 	const [desktopSize, setDesktopSize] = useState(defaultDesktopSize)
 	const [containerWidth, setContainerWidth] = useState<number | null>(null)
-	const previewPadding = useBreakpointValue(
-		{ base: '1rem', sm: '1.6rem', md: '2rem' },
-		{ fallback: 'base' }
-	)
+	const previewPadding = useBreakpointValue({ base: '1rem', sm: '1.6rem', md: '2rem' }, { fallback: 'base' })
 
-	const containerMinHeight = containerWidth
-		? getContainerHeight(containerWidth)
-		: undefined
+	const containerMinHeight = containerWidth ? getContainerHeight(containerWidth) : undefined
+	const placeholderHeight = containerMinHeight ? containerMinHeight * 0.8 : undefined
 
-	const placeholderHeight = containerMinHeight
-		? containerMinHeight * 0.8
-		: undefined
+	const hasScreenshots = p.images?.desktop && p.images?.mobile
+	const isNpmLib = !hasScreenshots && p.tags.includes('package') && p.stack.includes('npm') && p.url && p.packageName
 
 	useEffect(
 		function setSizes() {
@@ -43,10 +34,7 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 				const containerWidth = containerRef.current.clientWidth
 				const desktopPadding = 2 * remToPx(parseInt(previewPadding!))
 
-				const { desktop: desktopSize, mobile: mobileSize } = getDimensions(
-					containerWidth,
-					desktopPadding
-				)
+				const { desktop: desktopSize, mobile: mobileSize } = getDimensions(containerWidth, desktopPadding)
 
 				setContainerWidth(containerWidth)
 				setDesktopSize(desktopSize)
@@ -59,41 +47,31 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 	return (
 		<Flex
 			ref={containerRef}
-			align='center'
+			_hover={{
+				borderColor: onHoverBorderColor,
+				shadow: 'sm'
+			}}
+			align='start'
 			bg={bg}
 			border='1px solid'
 			borderColor={borderColor}
 			borderRadius={{ base: 8, md: 16 }}
 			justify='center'
-			minHeight={containerMinHeight}
+			minHeight={isNpmLib ? 180 : containerMinHeight}
 			pos='relative'
 			width='full'
 			{...props}
 		>
-			<Atropos
-				className='project-preview'
-				rotateTouch='scroll-y'
-				rotateXMax={24}
-				rotateYMax={24}
-				shadow={false}
-			>
-				<PreviewImage
-					containerHeight={placeholderHeight}
-					dataAtroposOffset={-4}
-					imageSize={desktopSize}
-					mode='desktop'
-					padding={previewPadding}
+			{hasScreenshots && (
+				<WebPreview
+					desktopSize={desktopSize}
+					mobileSize={mobileSize}
+					placeholderHeight={placeholderHeight}
 					project={p}
 				/>
+			)}
 
-				<PreviewImage
-					containerHeight={placeholderHeight}
-					dataAtroposOffset={8}
-					imageSize={mobileSize}
-					mode='mobile'
-					project={p}
-				/>
-			</Atropos>
+			{isNpmLib && <PackagePreview project={p} />}
 		</Flex>
 	)
 }
