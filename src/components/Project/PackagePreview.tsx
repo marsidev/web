@@ -35,7 +35,6 @@ export const PackagePreview: React.FC<PackagePreviewProps> = props => {
 							<CloudinaryImage
 								useNextImageInDevelopment
 								alt='npm'
-								deliveryHeight={600}
 								deliveryQuality={75}
 								deliveryWidth={1200}
 								height={imageHeight}

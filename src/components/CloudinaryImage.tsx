@@ -113,7 +113,8 @@ const Image: FC<CloudinaryImageProps> = props => {
 			placeholder={placeholder}
 			plugins={customPlugins || plugins}
 			style={{
-				borderRadius: fullRadius ? 9999 : undefined
+				...style,
+				borderRadius: fullRadius ? 9999 : style?.borderRadius
 			}}
 			onLoad={onLoad}
 			{...rest}
