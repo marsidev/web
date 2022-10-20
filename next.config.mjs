@@ -33,16 +33,7 @@ const nextConfig = {
 		removeConsole: IS_PROD
 	},
 	pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-	rewrites,
-	async redirects() {
-		return [
-			{
-				source: '/:path',
-				destination: '/',
-				permanent: true
-			}
-		]
-	}
+	rewrites
 }
 
 const config = withPWA(withAnalyzer(nextConfig))
