@@ -1,5 +1,5 @@
 import { Skeleton } from '@chakra-ui/skeleton'
-import { Box, Flex, type FlexProps, Heading } from '@chakra-ui/layout'
+import { Flex, type FlexProps, Heading } from '@chakra-ui/layout'
 import { useCallback, useMemo, useState } from 'react'
 import { useBreakpointValue } from '@chakra-ui/media-query'
 import type { Project } from '~/types'
@@ -31,7 +31,7 @@ export const PackagePreview: React.FC<PackagePreviewProps> = props => {
 			>
 				<Link isExternal h='full' href={project.url!}>
 					<Flex flexDir='column' h='full'>
-						<Box h='80%'>
+						<Flex h='80%'>
 							<CloudinaryImage
 								useNextImageInDevelopment
 								alt='npm'
@@ -53,7 +53,7 @@ export const PackagePreview: React.FC<PackagePreviewProps> = props => {
 								width={imageWidth}
 								onLoad={onLoad}
 							/>
-						</Box>
+						</Flex>
 
 						<Flex align='center' h='20%' p={{ base: 2, md: 4 }}>
 							<Heading as='h4' fontSize='md' textAlign='left'>

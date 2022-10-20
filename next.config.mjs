@@ -1,18 +1,8 @@
-import mdx from '@next/mdx'
 import pwa from 'next-pwa'
 import analyzer from '@next/bundle-analyzer'
-import { withSentryConfig } from '@sentry/nextjs'
 import runtimeCaching from 'next-pwa/cache.js'
 
 const IS_PROD = process.env.NODE_ENV === 'production'
-
-const withMDX = mdx({
-	extension: /\.mdx?$/,
-	options: {
-		remarkPlugins: [],
-		rehypePlugins: []
-	}
-})
 
 const withPWA = pwa({
 	disable: !IS_PROD,
@@ -33,14 +23,6 @@ const rewrites = async () => [
 	{
 		destination: 'https://hive.splitbee.io/:slug',
 		source: '/_hive/:slug'
-	},
-	{
-		source: '/bear.js',
-		destination: 'https://cdn.panelbear.com/analytics.js'
-	},
-	{
-		source: '/_bear/:path*',
-		destination: 'https://api.panelbear.com/:path*'
 	}
 ]
 
@@ -52,9 +34,6 @@ const nextConfig = {
 	},
 	pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
 	rewrites,
-	sentry: {
-		hideSourceMaps: true
-	},
 	async redirects() {
 		return [
 			{
@@ -66,9 +45,6 @@ const nextConfig = {
 	}
 }
 
-const config = withMDX(withPWA(withAnalyzer(nextConfig)))
+const config = withPWA(withAnalyzer(nextConfig))
 
-/** @type {Partial<import("@sentry/nextjs").SentryWebpackPluginOptions>} */
-const sentryOptions = { silent: true }
-
-export default withSentryConfig(config, sentryOptions)
+export default config

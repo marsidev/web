@@ -2,7 +2,7 @@ import type { SystemStyleObject } from '@chakra-ui/system'
 import type { TurnstileInstance } from '@marsidev/react-turnstile'
 import { useRef, useState } from 'react'
 import { Button } from '@chakra-ui/button'
-import { Flex, Heading, Text } from '@chakra-ui/layout'
+import { Flex, Heading } from '@chakra-ui/layout'
 import { chakra, forwardRef, useColorModeValue } from '@chakra-ui/system'
 import { toast } from 'react-toastify'
 import type { VerifyTokenApiResponse } from '~/pages/api/verify-token'
@@ -17,7 +17,6 @@ const formSx: SystemStyleObject = {
 	display: 'flex',
 	flexDirection: 'column',
 	gap: 2,
-	marginBottom: 4,
 	alignItems: 'flex-start'
 }
 
@@ -114,9 +113,7 @@ export const Contact = forwardRef((props, ref) => {
 					Contact me
 				</Heading>
 
-				<Text fontWeight={400} size='md'>
-					{'Send me a message and I’ll get back to you soon.'}
-				</Text>
+				<p>{'Send me a message and I’ll get back to you soon.'}</p>
 			</Flex>
 
 			<chakra.form ref={formRef} sx={formSx} onSubmit={handleSubmit(onSubmit)}>

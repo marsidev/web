@@ -1,5 +1,5 @@
-import { Flex, type FlexProps, Text } from '@chakra-ui/layout'
-import { useColorModeValue } from '@chakra-ui/system'
+import { Flex, type FlexProps } from '@chakra-ui/layout'
+import { chakra, useColorModeValue } from '@chakra-ui/system'
 import { Link } from '~/components/Link'
 import { MAX_WIDTH } from '~/constants/ui'
 
@@ -18,13 +18,13 @@ export const Footer: React.FC<FlexProps> = ({ ...props }) => {
 					justify='center'
 					w='100%'
 				>
-					<Text color={textColor} fontSize={16} fontWeight={600}>
-						{'This project is '}
+					<chakra.p color={textColor} fontSize={16} fontWeight={600}>
+						{'This website is '}
 						<Link isExternal color={linkColor} href='https://github.com/marsidev/web'>
 							open source
 						</Link>
 						{'. ✨'}
-					</Text>
+					</chakra.p>
 				</Flex>
 			</Flex>
 		</Flex>

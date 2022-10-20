@@ -1,5 +1,5 @@
 import { useColorModeValue } from '@chakra-ui/system'
-import { Box } from '@chakra-ui/layout'
+import { Flex } from '@chakra-ui/layout'
 import { useBreakpointValue } from '@chakra-ui/media-query'
 import { Skeleton } from '@chakra-ui/skeleton'
 import { useCallback, useMemo, useState } from 'react'
@@ -16,10 +16,7 @@ export const Avatar = () => {
 	)
 
 	const [loaded, setLoaded] = useState<boolean>(false)
-	const containerWidth = useBreakpointValue(
-		{ base: 48, md: 56 },
-		{ fallback: 'md' }
-	)
+	const containerWidth = useBreakpointValue({ base: 48, md: 56 }, { fallback: 'md' })
 
 	const containerPadding = 2
 	const avatarSize = useMemo(() => {
@@ -29,7 +26,7 @@ export const Avatar = () => {
 	const onLoad = useCallback(() => setLoaded(true), [])
 
 	return (
-		<Box
+		<Flex
 			bgGradient={loaded ? gradient : undefined}
 			borderRadius='full'
 			boxShadow='2xl'
@@ -37,13 +34,7 @@ export const Avatar = () => {
 			pos='relative'
 			w={containerWidth}
 		>
-			<Skeleton
-				borderRadius='full'
-				fadeDuration={1}
-				height={avatarSize}
-				isLoaded={loaded}
-				width={avatarSize}
-			>
+			<Skeleton borderRadius='full' fadeDuration={1} height={avatarSize} isLoaded={loaded} width={avatarSize}>
 				<CloudinaryImage
 					priority
 					useNextImageInDevelopment
@@ -60,6 +51,6 @@ export const Avatar = () => {
 					onLoad={onLoad}
 				/>
 			</Skeleton>
-		</Box>
+		</Flex>
 	)
 }

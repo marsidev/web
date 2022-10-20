@@ -80,7 +80,6 @@
 	position: absolute;
 	left: 8%;
 	top: 8%;
-	/* width: 25%; */
 	z-index: 999 !important;
 }
 
@@ -99,7 +98,7 @@
 	-ms-transform: scaleX(0);
 	transform: scaleX(0);
 	height: 2px;
-	bottom: 0px;
+	bottom: -6px;
 	left: 0px;
 	background-color: var(--chakra-colors-pink-400);
 	transform-origin: var(--navlink-transform-origin);

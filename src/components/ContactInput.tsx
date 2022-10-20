@@ -1,17 +1,9 @@
 import type { FC } from 'react'
 import type { FieldError, RegisterOptions } from 'react-hook-form'
 import { type InputProps as ChakraInputProps, Input } from '@chakra-ui/input'
-import {
-	type TextareaProps as ChakraTextAreaProps,
-	Textarea
-} from '@chakra-ui/textarea'
+import { type TextareaProps as ChakraTextAreaProps, Textarea } from '@chakra-ui/textarea'
 import { type SystemStyleObject, forwardRef } from '@chakra-ui/system'
-import { Text } from '@chakra-ui/layout'
-import {
-	FormControl,
-	FormErrorMessage,
-	FormLabel
-} from '@chakra-ui/form-control'
+import { FormControl, FormErrorMessage, FormLabel } from '@chakra-ui/form-control'
 import type { WithRequired } from '~/types/utils'
 
 type Required = 'id' | 'name'
@@ -34,17 +26,15 @@ type TextareaProps = TextareaBaseProps & { mode: 'text-area' }
 type ContactInputProps = InputProps | TextareaProps
 type ComponentType = typeof Input | typeof Textarea
 
-const DynamicInput = forwardRef<ContactInputProps, ComponentType>(
-	(props, ref) => {
-		const isTextArea = props.mode === 'text-area'
+const DynamicInput = forwardRef<ContactInputProps, ComponentType>((props, ref) => {
+	const isTextArea = props.mode === 'text-area'
 
-		if (isTextArea) {
-			return <Textarea ref={ref} {...props} />
-		}
-
-		return <Input ref={ref} {...props} />
+	if (isTextArea) {
+		return <Textarea ref={ref} {...props} />
 	}
-)
+
+	return <Input ref={ref} {...props} />
+})
 
 export const ContactInput: FC<ContactInputProps> = forwardRef((props, ref) => {
 	const { id, label, error, name, options, formSx, ...rest } = props
@@ -69,9 +59,7 @@ export const ContactInput: FC<ContactInputProps> = forwardRef((props, ref) => {
 				{...rest}
 			/>
 
-			<FormErrorMessage>
-				{error && <Text>{error.message}</Text>}
-			</FormErrorMessage>
+			<FormErrorMessage>{error && <p>{error.message}</p>}</FormErrorMessage>
 		</FormControl>
 	)
 })

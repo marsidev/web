@@ -1,4 +1,4 @@
-import { HStack, Spacer } from '@chakra-ui/layout'
+import { Stack } from '@chakra-ui/layout'
 import { MenuToggler } from '../MenuToggler'
 import { ThemeToggler } from '../ThemeToggler'
 
@@ -8,17 +8,10 @@ interface NavItemsProps {
 
 export const NavItems: React.FC<NavItemsProps> = ({ onToggle, ...props }) => {
 	return (
-		<HStack
-			align='center'
-			display={['flex', 'none']}
-			h='auto'
-			w='100%'
-			{...props}
-		>
-			<Spacer />
+		<Stack align='center' direction='row' display={['flex', 'none']} h='auto' justify='flex-end' w='100%' {...props}>
 			<ThemeToggler />
 			<MenuToggler ml={2} onToggle={onToggle} />
-		</HStack>
+		</Stack>
 	)
 }
 

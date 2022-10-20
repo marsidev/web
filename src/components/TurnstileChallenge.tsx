@@ -2,7 +2,6 @@ import type { SystemStyleObject } from '@chakra-ui/system'
 import type { FC, RefObject } from 'react'
 import type { TurnstileInstance, TurnstileProps } from '@marsidev/react-turnstile'
 import { FormControl, FormErrorMessage } from '@chakra-ui/form-control'
-import { Text } from '@chakra-ui/layout'
 import { useColorMode } from '@chakra-ui/system'
 import { Turnstile } from '@marsidev/react-turnstile'
 import { SITE_KEY } from '~/constants/turnstile'
@@ -29,7 +28,7 @@ export const TurnstileChallenge: FC<TurnstileChallengeProps> = ({ turnstileRef, 
 				{...rest}
 			/>
 
-			<FormErrorMessage>{error && <Text>{error}</Text>}</FormErrorMessage>
+			<FormErrorMessage>{error && <p>{error}</p>}</FormErrorMessage>
 		</FormControl>
 	)
 }

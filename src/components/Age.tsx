@@ -1,6 +1,5 @@
 import { type FC, useCallback, useEffect, useMemo, useState } from 'react'
 import { Code, type CodeProps } from '@chakra-ui/layout'
-import { useBoolean } from '@chakra-ui/hooks'
 
 interface AgeProps extends CodeProps {
 	date: Date | string | number
@@ -9,18 +8,18 @@ interface AgeProps extends CodeProps {
 
 export const Age: FC<AgeProps> = ({ date, compact, ...rest }) => {
 	const [age, setAge] = useState<string>('...')
-	const [isCompactMode, setMode] = useBoolean(compact ?? true)
+	const [isCompact, setIsCompact] = useState(compact ?? true)
 
 	const dateFrom = useMemo(() => new Date(date), [date])
 
 	const roundFormat = useMemo(() => {
-		const decimals = isCompactMode ? 2 : 8
+		const decimals = isCompact ? 2 : 8
 
 		return new Intl.NumberFormat('en-US', {
 			minimumFractionDigits: decimals,
 			maximumFractionDigits: decimals
 		})
-	}, [isCompactMode])
+	}, [isCompact])
 
 	const getAge = useCallback(() => {
 		const msAge = Date.now() - dateFrom.getTime()
@@ -30,7 +29,7 @@ export const Age: FC<AgeProps> = ({ date, compact, ...rest }) => {
 	}, [roundFormat])
 
 	useEffect(() => {
-		const step = isCompactMode ? 1000 : 100
+		const step = isCompact ? 1000 : 100
 		setAge(getAge())
 
 		const timer = setInterval(() => {
@@ -40,10 +39,10 @@ export const Age: FC<AgeProps> = ({ date, compact, ...rest }) => {
 		return () => {
 			clearTimeout(timer)
 		}
-	}, [isCompactMode, compact])
+	}, [isCompact, compact])
 
 	return (
-		<Code cursor='pointer' onClick={setMode.toggle} {...rest}>
+		<Code cursor='pointer' onClick={() => setIsCompact(prev => !prev)} {...rest}>
 			{age}
 		</Code>
 	)

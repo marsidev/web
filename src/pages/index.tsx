@@ -16,14 +16,9 @@ const App: NextPage<AppProps> = ({ aboutLong, aboutShort }) => {
 	return (
 		<Layout>
 			<Cover ref={coverRef} id='cover' />
-			<About
-				ref={aboutRef}
-				id='about'
-				longSource={aboutLong}
-				shortSource={aboutShort}
-			/>
+			<About ref={aboutRef} id='about' longSource={aboutLong} shortSource={aboutShort} />
 			<Projects ref={projectsRef} id='projects' />
-			<Contact ref={contactRef} id='contact' pb={32} />
+			<Contact ref={contactRef} id='contact' pb={16} />
 		</Layout>
 	)
 }

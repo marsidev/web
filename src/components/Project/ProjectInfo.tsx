@@ -1,4 +1,4 @@
-import { Flex, type FlexProps, Heading, Text } from '@chakra-ui/layout'
+import { Flex, type FlexProps, Heading } from '@chakra-ui/layout'
 import type { Project } from '~/types'
 import { ProjectTags } from './ProjectTags'
 
@@ -9,11 +9,7 @@ interface ProjectProps extends FlexProps {
 	justify: string
 }
 
-export const ProjectInfo: React.FC<ProjectProps> = ({
-	project: p,
-	justify,
-	...props
-}) => {
+export const ProjectInfo: React.FC<ProjectProps> = ({ project: p, justify, ...props }) => {
 	return (
 		<Flex flexDir='column' gap={2} {...props}>
 			<Heading as='h4' fontSize='lg'>
@@ -22,7 +18,7 @@ export const ProjectInfo: React.FC<ProjectProps> = ({
 
 			<ProjectTags justify={justify} project={p} />
 
-			<Text fontSize='md'>{p.description}</Text>
+			<p>{p.description}</p>
 		</Flex>
 	)
 }
