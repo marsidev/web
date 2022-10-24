@@ -34,9 +34,31 @@ const nextConfig = {
 	},
 	pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
 	rewrites,
-	experimental: {
-		runtime: 'experimental-edge'
-	}
+	// experimental: {
+	// 	runtime: 'experimental-edge'
+	// },
+	swcMinify: true
+	// webpack: (config, ctx) => {
+	// 	// don't resolve the following modules on the client to prevent this error on build --> Error: Can't resolve 'fs'
+	// 	config.resolve = {
+	// 		...config.resolve,
+	// 		fallback: {
+	// 			fs: false,
+	// 			path: false,
+	// 			os: false
+	// 		}
+	// 	}
+
+	// 	if (ctx.nextRuntime === 'edge') {
+	// 		if (!config.resolve.conditionNames) {
+	// 			config.resolve.conditionNames = ['require', 'node']
+	// 		}
+	// 		if (!config.resolve.conditionNames.includes('worker')) {
+	// 			config.resolve.conditionNames.push('worker')
+	// 		}
+	// 	}
+	// 	return config
+	// }
 }
 
 const config = withPWA(withAnalyzer(nextConfig))

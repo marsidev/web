@@ -1,6 +1,4 @@
-// import type { NextApiRequest, NextApiResponse } from 'next'
-import type { NextApiRequest } from 'next'
-// import type { NextRequest } from 'next/server'
+import type { NextRequest } from 'next/server'
 import type { TurnstileValidationResponse } from '~/types/turnstile'
 import { challengeSchema } from '~/schemas'
 import { SECRET_KEY } from '~/constants/turnstile'
@@ -29,7 +27,7 @@ const headers = {
 	'content-type': 'application/json'
 }
 
-export default async function (req: NextApiRequest): Promise<Response> {
+export default async function (req: NextRequest): Promise<Response> {
 	if (req.method !== 'POST') {
 		return new Response(JSON.stringify({ error: 'Bad request', success: false }), {
 			status: 400,
@@ -37,14 +35,15 @@ export default async function (req: NextApiRequest): Promise<Response> {
 		})
 	}
 
-	if (!req?.body) {
+	if (!req.body) {
 		return new Response(JSON.stringify({ error: 'The body is empty', success: false }), {
 			status: 400,
 			headers
 		})
 	}
 
-	const parsed = challengeSchema.safeParse(JSON.parse(req.body))
+	const body = await req.json()
+	const parsed = challengeSchema.safeParse(body)
 
 	if (!parsed.success) {
 		return new Response(JSON.stringify({ error: 'An error occurred while parsing the data', success: false }), {
@@ -53,8 +52,7 @@ export default async function (req: NextApiRequest): Promise<Response> {
 		})
 	}
 
-	const body = parsed.data
-	const { token } = body
+	const { token } = parsed.data
 
 	const verification = await verifyTurnstileToken(token)
 	if (!verification.success) {
@@ -69,27 +67,3 @@ export default async function (req: NextApiRequest): Promise<Response> {
 		headers
 	})
 }
-
-// const handler = async (req: NextApiRequest, res: NextApiResponse<VerifyTokenApiResponse>) => {
-// 	if (req.method !== 'POST') {
-// 		return res.status(400).json({ error: 'Bad request', success: false })
-// 	}
-
-// 	const parsed = challengeSchema.safeParse(JSON.parse(req.body))
-
-// 	if (!parsed.success) {
-// 		return res.status(400).json({ error: 'An error occurred while parsing the data', success: false })
-// 	}
-
-// 	const body = parsed.data
-// 	const { token } = body
-
-// 	const verification = await verifyTurnstileToken(token)
-// 	if (!verification.success) {
-// 		return res.status(400).json(verification)
-// 	}
-
-// 	res.status(200).json(verification)
-// }
-
-// export default handler
