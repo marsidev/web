@@ -33,7 +33,10 @@ const nextConfig = {
 		removeConsole: IS_PROD
 	},
 	pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-	rewrites
+	rewrites,
+	experimental: {
+		runtime: 'experimental-edge'
+	}
 }
 
 const config = withPWA(withAnalyzer(nextConfig))
