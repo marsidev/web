@@ -10,7 +10,7 @@ export const NameAndTitle = () => {
 			</Heading>
 
 			<Heading as='h2' fontSize={{ base: 'xl', sm: '2xl', md: '2xl', lg: '3xl' }} fontWeight={600}>
-				Full Stack Developer.
+				Software Developer.
 			</Heading>
 		</Stack>
 	)

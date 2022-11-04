@@ -1,8 +1,8 @@
 /* @ref: https://github.com/garmeeh/next-seo */
 
 const title = 'Luis Marsiglia'
-const defaultTitle = `${title} - Full Stack Developer`
-const description = 'Luis Marsiglia is a Full Stack Developer and Data Analyst.'
+const defaultTitle = `${title} - Software Developer`
+const description = 'Luis Marsiglia is a Software Developer.'
 const url = 'https://marsidev.xyz'
 const ogImageUrl = '/images/og.png'
 const keywords = 'marsiglia, marsidev, marsi, luis marsiglia, marsigliacr, @marsigliacr, portfolio, javascript, typescipt, developer, software engineer, frontend, front-end, backend, back-end, fullstack, full-stack, full stack, data analyst, clash royale analyst'
