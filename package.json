@@ -102,8 +102,8 @@
 		"website",
 		"react",
 		"typescript",
-		"fullstack",
-		"developer"
+		"developer",
+		"frontend"
 	],
 	"type": "module"
 }
