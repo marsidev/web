@@ -133,9 +133,9 @@ export const PROJECTS: Project[] = [
 	{
 		id: 'password-generator',
 		name: 'Password Generator',
-		description: 'Secure password generator made for a hacktoberfest challenge.',
-		url: 'https://hacktoberfest-2022.vercel.app/entry/marsidev',
-		repository: 'https://github.com/midudev/password-generator/blob/main/src/pages/entry/marsidev/index.astro',
+		description: 'Generate strong passwords to stay safe over the internet.',
+		url: 'https://pwdg.vercel.app',
+		repository: 'https://github.com/pwdg',
 		stack: ['astro', 'solidjs', 'typescript', 'tailwindcss'],
 		images: {
 			mobile: '/images/projects/password-generator-mobile.webp',
@@ -143,7 +143,7 @@ export const PROJECTS: Project[] = [
 		},
 		devTime: {
 			start: '2022-10-03',
-			end: '2022-10-08'
+			end: '2022-11-08'
 		},
 		tags: ['web', 'challenge']
 	},
