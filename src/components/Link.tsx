@@ -7,14 +7,10 @@ import NextLink from 'next/link'
 
 export type LinkProps = ChakraLinkProps & NextLinkProps
 
-export const Link: FC<LinkProps> = forwardRef(
-	({ href, children, ...props }, ref) => (
-		<NextLink passHref href={href}>
-			<ChakraLink ref={ref} {...props}>
-				{children}
-			</ChakraLink>
-		</NextLink>
-	)
-)
+export const Link: FC<LinkProps> = forwardRef(({ children, ...props }, ref) => (
+	<ChakraLink ref={ref} as={NextLink} {...props}>
+		{children}
+	</ChakraLink>
+))
 
 export default Link

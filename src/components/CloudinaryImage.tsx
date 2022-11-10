@@ -2,7 +2,7 @@
 import type { Plugins } from '@cloudinary/html'
 import { type FC, memo, useMemo } from 'react'
 import { AdvancedImage, accessibility, placeholder as cldPlaceholder, lazyload, responsive } from '@cloudinary/react'
-import NextImage, { ImageProps as NextImageProps } from 'next/future/image'
+import NextImage, { ImageProps as NextImageProps } from 'next/image'
 import { UseCloudinaryImageResult, useCloudinaryImage } from '~/hooks/use-cloudinary-image'
 
 type NativeImageProps = React.ComponentPropsWithoutRef<'img'>

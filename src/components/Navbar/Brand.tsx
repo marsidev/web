@@ -4,7 +4,7 @@ import { Link } from '~/components/Link'
 export const Brand = () => {
 	return (
 		<Flex align='center' justify='flex-start' minW='7em'>
-			<Link href='/'>
+			<Link borderRadius='md' href='/'>
 				Luis <strong>Marsiglia</strong>
 			</Link>
 		</Flex>

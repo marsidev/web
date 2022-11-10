@@ -2,9 +2,9 @@ import { Skeleton } from '@chakra-ui/skeleton'
 import { Flex, type FlexProps, Heading } from '@chakra-ui/layout'
 import { useCallback, useMemo, useState } from 'react'
 import { useBreakpointValue } from '@chakra-ui/media-query'
+import { Link } from '~/components/Link'
 import type { Project } from '~/types'
 import { CloudinaryImage } from '~/components/CloudinaryImage'
-import { Link } from '~/components/Link'
 
 interface PackagePreviewProps extends FlexProps {
 	project: Project
@@ -29,37 +29,43 @@ export const PackagePreview: React.FC<PackagePreviewProps> = props => {
 				isLoaded={imageLoaded}
 				width='full'
 			>
-				<Link isExternal h='full' href={project.url!}>
-					<Flex flexDir='column' h='full'>
-						<Flex h='80%'>
-							<CloudinaryImage
-								useNextImageInDevelopment
-								alt='npm'
-								deliveryQuality={75}
-								deliveryWidth={1200}
-								height={imageHeight}
-								placeholderPlugin={true}
-								src='/images/bg/npm.png'
-								style={{
-									borderStartStartRadius: borderRadius,
-									borderStartEndRadius: borderRadius,
-									objectFit: 'cover',
-									width: '100%',
-									height: placeholderHeight ? `${placeholderHeight * 0.8}px` : undefined
-								}}
-								subPath='marsidev'
-								width={imageWidth}
-								onLoad={onLoad}
-							/>
-						</Flex>
-
-						<Flex align='center' h='20%' p={{ base: 2, md: 4 }}>
-							<Heading as='h4' fontSize='md' textAlign='left'>
-								{project.packageName!}
-							</Heading>
-						</Flex>
+				<Flex
+					as={Link}
+					borderRadius={borderRadius}
+					flexDir='column'
+					h='full'
+					href={project.url!}
+					rel='noopener'
+					target='_blank'
+				>
+					<Flex h='80%'>
+						<CloudinaryImage
+							useNextImageInDevelopment
+							alt='npm'
+							deliveryQuality={75}
+							deliveryWidth={1200}
+							height={imageHeight}
+							placeholderPlugin={true}
+							src='/images/bg/npm.png'
+							style={{
+								borderStartStartRadius: borderRadius,
+								borderStartEndRadius: borderRadius,
+								objectFit: 'cover',
+								width: '100%',
+								height: placeholderHeight ? `${placeholderHeight * 0.8}px` : undefined
+							}}
+							subPath='marsidev'
+							width={imageWidth}
+							onLoad={onLoad}
+						/>
 					</Flex>
-				</Link>
+
+					<Flex align='center' h='20%' p={{ base: 2, md: 4 }}>
+						<Heading as='h4' fontSize='md' textAlign='left'>
+							{project.packageName!}
+						</Heading>
+					</Flex>
+				</Flex>
 			</Skeleton>
 		</Flex>
 	)

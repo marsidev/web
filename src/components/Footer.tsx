@@ -20,7 +20,7 @@ export const Footer: React.FC<FlexProps> = ({ ...props }) => {
 				>
 					<chakra.p color={textColor} fontSize={16} fontWeight={600}>
 						{'This website is '}
-						<Link isExternal color={linkColor} href='https://github.com/marsidev/web'>
+						<Link isExternal borderRadius='md' color={linkColor} href='https://github.com/marsidev/web'>
 							open source
 						</Link>
 						{'. ✨'}

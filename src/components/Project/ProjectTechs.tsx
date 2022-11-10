@@ -6,10 +6,10 @@ import { useBreakpointValue } from '@chakra-ui/media-query'
 import { type FC, useCallback, useState } from 'react'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { TECHNOLOGIES } from '~/constants/technologies'
-import { Link } from '~/components/Link'
 import { capitalize } from '~/utils/capitalize'
 import type { Project } from '~/types'
 import { CloudinaryImage } from '~/components/CloudinaryImage'
+import { Link } from '~/components/Link'
 
 interface ProjectProps extends FlexProps {
 	project: Project
@@ -100,35 +100,33 @@ export const ProjectTechs: FC<ProjectProps> = ({ project, ...props }) => {
 					}
 
 					return (
-						<Link key={tech.id} isExternal borderRadius='md' href={tech.url}>
-							<chakra.span _hover={{ transform: 'scale(1.05)' }} {...tagStyles}>
-								{tech.icon && (
-									<Skeleton
-										alignItems='center'
-										as='span'
-										display='flex'
-										fadeDuration={1}
-										height={`${logoSize as number}px`}
-										isLoaded={iconLoaded}
-										width={`${logoSize as number}px`}
-									>
-										<CloudinaryImage
-											useNextImageInDevelopment
-											alt={`${tech.name} logo`}
-											deliveryHeight={128}
-											deliveryQuality={100}
-											deliveryWidth={128}
-											height={`${logoSize as number}`}
-											src={tech.icon}
-											subPath='marsidev'
-											width={`${logoSize as number}`}
-											onLoad={onLoadIcon}
-										/>
-									</Skeleton>
-								)}
-								<chakra.span lineHeight={1} ml={2}>
-									{tech.name}
-								</chakra.span>
+						<Link key={tech.id} isExternal _hover={{ transform: 'scale(1.05)' }} href={tech.url} {...tagStyles}>
+							{tech.icon && (
+								<Skeleton
+									alignItems='center'
+									as='span'
+									display='flex'
+									fadeDuration={1}
+									height={`${logoSize as number}px`}
+									isLoaded={iconLoaded}
+									width={`${logoSize as number}px`}
+								>
+									<CloudinaryImage
+										useNextImageInDevelopment
+										alt={`${tech.name} logo`}
+										deliveryHeight={128}
+										deliveryQuality={100}
+										deliveryWidth={128}
+										height={`${logoSize as number}`}
+										src={tech.icon}
+										subPath='marsidev'
+										width={`${logoSize as number}`}
+										onLoad={onLoadIcon}
+									/>
+								</Skeleton>
+							)}
+							<chakra.span lineHeight={1} ml={2}>
+								{tech.name}
 							</chakra.span>
 						</Link>
 					)
