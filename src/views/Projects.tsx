@@ -19,11 +19,10 @@ export const Projects = forwardRef((props, ref) => {
 				</Flex>
 
 				<Stack direction='column' spacing={{ base: 16, md: 8 }}>
-					{sortProjects(PROJECTS).map((project, i) => (
+					{sortProjects(PROJECTS).map(project => (
 						<Project
 							key={project.id}
 							project={project}
-							type={i % 2 === 0 ? 'even' : 'odd'}
 						/>
 					))}
 				</Stack>
