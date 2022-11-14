@@ -174,19 +174,5 @@ export const PROJECTS: Project[] = [
 		},
 		tags: ['package'],
 		packageName: '@marsidev/create'
-	},
-	{
-		id: 'react-hooks',
-		name: 'React Hooks',
-		description: 'A collection of common React Hooks that I use in my React projects.',
-		url: 'https://www.npmjs.com/package/@marsidev/react-hooks',
-		repository: 'https://github.com/marsidev/react-hooks',
-		stack: ['npm', 'react', 'typescript', 'rtl', 'vitest', 'actions'],
-		devTime: {
-			start: '2022-08-12',
-			end: '2022-08-16'
-		},
-		tags: ['package'],
-		packageName: '@marsidev/react-hooks'
 	}
 ]
