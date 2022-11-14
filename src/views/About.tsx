@@ -32,12 +32,12 @@ const Content: FC<ContentProps> = ({ source, components }) => {
 			variants={{
 				exit: {
 					opacity: 0,
-					transition: { duration: 1 }
+					transition: { duration: 0.5 }
 				},
 				initial: { opacity: 0 },
 				animate: {
 					opacity: 1,
-					transition: { duration: 1 }
+					transition: { duration: 0.5 }
 				}
 			}}
 		>
@@ -50,7 +50,7 @@ export const About = forwardRef<AboutProps, 'section'>(({ shortSource, longSourc
 	const [isCompact, setIsCompact] = useState(true)
 
 	return (
-		<chakra.section ref={ref} minH='100vh' pt={{ base: 24, sm: 32 }} {...rest}>
+		<chakra.section ref={ref} pt={{ base: 24, sm: 32 }} {...rest}>
 			<Stack align='flex-start' direction='column' spacing={4}>
 				<Heading as='h2' pb={4} size='xl'>
 					About me

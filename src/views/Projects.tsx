@@ -6,7 +6,7 @@ import { sortProjects } from '~/utils/sort-projects'
 
 export const Projects = forwardRef((props, ref) => {
 	return (
-		<chakra.section ref={ref} minH='100vh' pt={{ base: 24, sm: 32 }} {...props}>
+		<chakra.section ref={ref} pt={{ base: 24, sm: 32 }} {...props}>
 			<Stack align='flex-start' direction='column'>
 				<Flex flexDir='column' pb={8} textAlign='left'>
 					<Heading as='h2' size='xl'>
