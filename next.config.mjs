@@ -15,25 +15,13 @@ const withAnalyzer = analyzer({
 	enabled: process.env.ANALYZE === 'true'
 })
 
-const rewrites = async () => [
-	{
-		destination: 'https://cdn.splitbee.io/sb.js',
-		source: '/bee.js'
-	},
-	{
-		destination: 'https://hive.splitbee.io/:slug',
-		source: '/_hive/:slug'
-	}
-]
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: true,
 	compiler: {
 		removeConsole: IS_PROD
 	},
-	pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-	rewrites
+	pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx']
 }
 
 const config = withPWA(withAnalyzer(nextConfig))

@@ -39,7 +39,7 @@
 		"@hookform/resolvers": "2.9.7",
 		"@marsidev/react-hooks": "1.2.3",
 		"@marsidev/react-turnstile": "^0.0.4",
-		"@splitbee/web": "0.3.0",
+		"@vercel/analytics": "0.1.5",
 		"atropos": "1.0.2",
 		"framer-motion": "7.2.0",
 		"jotai": "1.9.2",
