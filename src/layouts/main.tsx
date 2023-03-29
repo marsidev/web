@@ -1,7 +1,7 @@
 import { Flex } from '@chakra-ui/layout'
 import { DefaultSeo } from 'next-seo'
 import { useAtom } from 'jotai'
-import { Banners } from '~/components/Banners'
+// import { Banners } from '~/components/Banners'
 import { Navbar } from '~/components/Navbar'
 import { Footer } from '~/components/Footer'
 import { MAX_WIDTH } from '~/constants/ui'
@@ -22,7 +22,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, title }) => {
 
 			<Navbar minH={['8vh', '10vh']} />
 
-			<Banners />
+			{/* <Banners /> */}
 
 			<Flex
 				as='main'

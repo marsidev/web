@@ -6,7 +6,7 @@ import { CloseIcon } from '~/icons'
 
 interface BannerProps extends FlexProps {
 	message: string
-	atom: WritableAtom<boolean, SetStateAction<boolean>, void>
+	atom: WritableAtom<boolean, [SetStateAction<boolean>], void>
 }
 
 export const Banner: React.FC<BannerProps> = ({ message, atom }) => {
