@@ -20,7 +20,6 @@ export const Contact = forwardRef((props, ref) => {
 				<p>You can also reach me out on:</p>
 				<SocialLinks exclude={['github']} size='sm' />
 			</Flex>
-
 		</chakra.section>
 	)
 })

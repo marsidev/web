@@ -17,7 +17,15 @@ export interface Project {
 	packageName?: string
 }
 
-export type ProjectTag = 'web' | 'api' | 'cli' | 'package' | 'bot' | 'challenge' | 'private' | 'unfinished'
+export type ProjectTag =
+	| 'web'
+	| 'api'
+	| 'cli'
+	| 'package'
+	| 'bot'
+	| 'challenge'
+	| 'private'
+	| 'unfinished'
 
 export interface Technology {
 	id: string

@@ -1,10 +1,4 @@
-import NextDocument, {
-	DocumentContext,
-	Head,
-	Html,
-	Main,
-	NextScript
-} from 'next/document'
+import NextDocument, { DocumentContext, Head, Html, Main, NextScript } from 'next/document'
 import { ColorModeScript } from '@chakra-ui/system'
 import { config } from '~/theme'
 

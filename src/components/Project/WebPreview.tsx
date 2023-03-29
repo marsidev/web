@@ -12,10 +12,19 @@ interface WebPreviewProps {
 
 export const WebPreview: React.FC<WebPreviewProps> = props => {
 	const { project, placeholderHeight, desktopSize, mobileSize } = props
-	const previewPadding = useBreakpointValue({ base: '1rem', sm: '1.6rem', md: '2rem' }, { fallback: 'base' })
+	const previewPadding = useBreakpointValue(
+		{ base: '1rem', sm: '1.6rem', md: '2rem' },
+		{ fallback: 'base' }
+	)
 
 	return (
-		<Atropos className='project-preview' rotateTouch='scroll-y' rotateXMax={24} rotateYMax={24} shadow={false}>
+		<Atropos
+			className='project-preview'
+			rotateTouch='scroll-y'
+			rotateXMax={24}
+			rotateYMax={24}
+			shadow={false}
+		>
 			<WebPreviewImage
 				containerHeight={placeholderHeight}
 				dataAtroposOffset={-4}

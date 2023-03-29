@@ -34,7 +34,13 @@ export const Avatar = () => {
 			pos='relative'
 			w={containerWidth}
 		>
-			<Skeleton borderRadius='full' fadeDuration={1} height={avatarSize} isLoaded={loaded} width={avatarSize}>
+			<Skeleton
+				borderRadius='full'
+				fadeDuration={1}
+				height={avatarSize}
+				isLoaded={loaded}
+				width={avatarSize}
+			>
 				<CloudinaryImage
 					priority
 					useNextImageInDevelopment

@@ -10,10 +10,7 @@ export const useNavbarControl = () => {
 	const offset = useBreakpointValue({ base: 68, md: 96 }) // <- 68 and 96 are navbar height - measured manually
 	const { offsetPassed, scrollDirection } = useScrollY(offset)
 	const themedBg = useColorModeValue('white', 'gray.800')
-	const themedBgAfterOffset = useColorModeValue(
-		'whiteAlpha.500',
-		'rgba(26, 32, 44, 0.74)'
-	)
+	const themedBgAfterOffset = useColorModeValue('whiteAlpha.500', 'rgba(26, 32, 44, 0.74)')
 	const rendered = useRendered()
 	const [menuExpanded] = useAtom(mobileMenuAtom)
 	const [_, setNavbarHeight] = useAtom(navbarHeightAtom)

@@ -12,7 +12,13 @@ interface TurnstileChallengeProps extends Partial<TurnstileProps> {
 	formSx?: SystemStyleObject
 }
 
-export const TurnstileChallenge: FC<TurnstileChallengeProps> = ({ turnstileRef, error, formSx, options, ...rest }) => {
+export const TurnstileChallenge: FC<TurnstileChallengeProps> = ({
+	turnstileRef,
+	error,
+	formSx,
+	options,
+	...rest
+}) => {
 	const { colorMode } = useColorMode()
 
 	return (

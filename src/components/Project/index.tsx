@@ -31,7 +31,6 @@ export const Project: React.FC<ProjectProps> = ({ project, ...props }) => {
 						<ProjectTechs justify='flex-start' project={project} />
 						<ProjectUrls justify='flex-start' project={project} />
 					</Stack>
-
 				</Stack>
 			</Show>
 		</>

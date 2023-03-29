@@ -25,7 +25,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<MessageResponse
 	const parsed = contactSchema.safeParse(JSON.parse(req.body))
 
 	if (!parsed.success) {
-		return res.status(400).json({ error: 'An error occurred while parsing the data', success: false })
+		return res
+			.status(400)
+			.json({ error: 'An error occurred while parsing the data', success: false })
 	}
 
 	const success = await fetch(FORM_URL, {

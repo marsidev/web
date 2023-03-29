@@ -13,9 +13,7 @@ export const MenuToggler: FC<MenuTogglerProps> = ({ onToggle, ...props }) => {
 	const [menuExpanded] = useAtom(mobileMenuAtom)
 	const buttonSize = useBreakpointValue(['sm', 'md'])
 
-	const className = `menu-toggle_wrap${
-		menuExpanded ? ' menu-toggle_expanded' : ''
-	}`
+	const className = `menu-toggle_wrap${menuExpanded ? ' menu-toggle_expanded' : ''}`
 
 	// disable scroll when menu is open
 	useEffect(() => {

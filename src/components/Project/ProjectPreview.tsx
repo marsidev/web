@@ -4,7 +4,12 @@ import { Flex, type FlexProps } from '@chakra-ui/layout'
 import { type FC, useEffect, useMemo, useRef, useState } from 'react'
 import type { Project } from '~/types'
 import { remToPx } from '~/utils/units'
-import { defaultDesktopSize, defaultMobileSize, getContainerHeight, getDimensions } from '~/utils/project-preview'
+import {
+	defaultDesktopSize,
+	defaultMobileSize,
+	getContainerHeight,
+	getDimensions
+} from '~/utils/project-preview'
 import { WebPreview } from './WebPreview'
 import { PackagePreview } from './PackagePreview'
 
@@ -20,10 +25,18 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 	const [mobileSize, setMobileSize] = useState(defaultMobileSize)
 	const [desktopSize, setDesktopSize] = useState(defaultDesktopSize)
 	const [containerWidth, setContainerWidth] = useState<number | null>(null)
-	const previewPadding = useBreakpointValue({ base: '1rem', sm: '1.6rem', md: '2rem' }, { fallback: 'base' })
+	const previewPadding = useBreakpointValue(
+		{ base: '1rem', sm: '1.6rem', md: '2rem' },
+		{ fallback: 'base' }
+	)
 
 	const hasScreenshots = p.images?.desktop && p.images?.mobile
-	const isNpmLib = !hasScreenshots && p.tags.includes('package') && p.stack.includes('npm') && p.url && p.packageName
+	const isNpmLib =
+		!hasScreenshots &&
+		p.tags.includes('package') &&
+		p.stack.includes('npm') &&
+		p.url &&
+		p.packageName
 
 	const containerMinHeight = useMemo(() => {
 		return containerWidth
@@ -34,7 +47,11 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 	}, [containerWidth, isNpmLib, containerWidth])
 
 	const placeholderHeight = useMemo(() => {
-		return containerMinHeight ? (isNpmLib ? containerMinHeight : containerMinHeight * 0.8) : undefined
+		return containerMinHeight
+			? isNpmLib
+				? containerMinHeight
+				: containerMinHeight * 0.8
+			: undefined
 	}, [isNpmLib, containerMinHeight])
 
 	useEffect(
@@ -44,7 +61,10 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 				setContainerWidth(containerWidth)
 
 				const desktopPadding = 2 * remToPx(parseInt(previewPadding!))
-				const { desktop: desktopSize, mobile: mobileSize } = getDimensions(containerWidth, desktopPadding)
+				const { desktop: desktopSize, mobile: mobileSize } = getDimensions(
+					containerWidth,
+					desktopPadding
+				)
 
 				setDesktopSize(desktopSize)
 				setMobileSize(mobileSize)
@@ -80,7 +100,13 @@ export const ProjectPreview: FC<ProjectProps> = ({ project: p, ...props }) => {
 				/>
 			)}
 
-			{isNpmLib && <PackagePreview imageWidth={desktopSize.width} placeholderHeight={placeholderHeight} project={p} />}
+			{isNpmLib && (
+				<PackagePreview
+					imageWidth={desktopSize.width}
+					placeholderHeight={placeholderHeight}
+					project={p}
+				/>
+			)}
 		</Flex>
 	)
 }

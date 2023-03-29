@@ -46,26 +46,28 @@ const Content: FC<ContentProps> = ({ source, components }) => {
 	)
 }
 
-export const About = forwardRef<AboutProps, 'section'>(({ shortSource, longSource, ...rest }, ref) => {
-	const [isCompact, setIsCompact] = useState(true)
+export const About = forwardRef<AboutProps, 'section'>(
+	({ shortSource, longSource, ...rest }, ref) => {
+		const [isCompact, setIsCompact] = useState(true)
 
-	return (
-		<chakra.section ref={ref} pt={{ base: 24, sm: 32 }} {...rest}>
-			<Stack align='flex-start' direction='column' spacing={4}>
-				<Heading as='h2' pb={4} size='xl'>
-					About me
-				</Heading>
+		return (
+			<chakra.section ref={ref} pt={{ base: 24, sm: 32 }} {...rest}>
+				<Stack align='flex-start' direction='column' spacing={4}>
+					<Heading as='h2' pb={4} size='xl'>
+						About me
+					</Heading>
 
-				{isCompact && <Content components={{ Age }} source={shortSource} />}
+					{isCompact && <Content components={{ Age }} source={shortSource} />}
 
-				{!isCompact && <Content components={{ Link, Age }} source={longSource} />}
+					{!isCompact && <Content components={{ Link, Age }} source={longSource} />}
 
-				<Button colorScheme='pink' w='fit-content' onClick={() => setIsCompact(prev => !prev)}>
-					Read {isCompact ? 'long' : 'short'} version
-				</Button>
-			</Stack>
-		</chakra.section>
-	)
-})
+					<Button colorScheme='pink' w='fit-content' onClick={() => setIsCompact(prev => !prev)}>
+						Read {isCompact ? 'long' : 'short'} version
+					</Button>
+				</Stack>
+			</chakra.section>
+		)
+	}
+)
 
 export default About

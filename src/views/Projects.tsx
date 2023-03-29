@@ -20,10 +20,7 @@ export const Projects = forwardRef((props, ref) => {
 
 				<Stack direction='column' spacing={{ base: 16, md: 8 }}>
 					{sortProjects(PROJECTS).map(project => (
-						<Project
-							key={project.id}
-							project={project}
-						/>
+						<Project key={project.id} project={project} />
 					))}
 				</Stack>
 			</Stack>

@@ -10,7 +10,14 @@ interface ProjectProps extends FlexProps {
 
 export const ProjectUrls: React.FC<ProjectProps> = ({ project, ...props }) => {
 	return (
-		<Flex align='center' flexDirection={['column', 'row']} flexWrap='wrap' gap={2} justify='center' {...props}>
+		<Flex
+			align='center'
+			flexDirection={['column', 'row']}
+			flexWrap='wrap'
+			gap={2}
+			justify='center'
+			{...props}
+		>
 			{project.repository && (
 				<Button
 					aria-label='GitHub icon'

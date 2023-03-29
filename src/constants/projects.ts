@@ -119,7 +119,16 @@ export const PROJECTS: Project[] = [
 		name: 'Royale App',
 		description:
 			'RoyaleApp is a Clash Royale fan site where you can find tools such as player battle logs, player duels, player decks, duels combo builder, tournaments ranking, top ladder ranking, decks matchups, and more. Focused on competitive battles.',
-		stack: ['react', 'nextjs', 'chakra-ui', 'mongodb', 'mongoose', 'zustand', 'next-auth', 'clash-royale-api'],
+		stack: [
+			'react',
+			'nextjs',
+			'chakra-ui',
+			'mongodb',
+			'mongoose',
+			'zustand',
+			'next-auth',
+			'clash-royale-api'
+		],
 		images: {
 			mobile: '/images/projects/royaleapp-mobile.webp',
 			desktop: '/images/projects/royaleapp-desktop.webp'

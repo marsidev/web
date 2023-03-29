@@ -36,12 +36,7 @@ export const NavMenu: FC<NavMenuProps> = ({ open, onToggle }) => {
 			{open && (
 				<MenuContainer>
 					{navItems.map(item => (
-						<NavItem
-							key={item.href}
-							href={item.href}
-							sectionId={item.id}
-							onClick={onCloseMenu}
-						>
+						<NavItem key={item.href} href={item.href} sectionId={item.id} onClick={onCloseMenu}>
 							{item.name}
 						</NavItem>
 					))}

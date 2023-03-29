@@ -34,7 +34,13 @@ export const WebPreviewImage: FC<PreviewImageProps> = ({
 	const onLoad = useCallback(() => setImageLoaded(true), [])
 
 	return (
-		<Flex align='center' className={className} height={containerHeight} width={containerWidth} {...rest}>
+		<Flex
+			align='center'
+			className={className}
+			height={containerHeight}
+			width={containerWidth}
+			{...rest}
+		>
 			<Skeleton
 				borderRadius={{ base: 8, md: 16 }}
 				data-atropos-offset={dataAtroposOffset}

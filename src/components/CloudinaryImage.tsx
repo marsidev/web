@@ -1,7 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { Plugins } from '@cloudinary/html'
 import { type FC, memo, useMemo } from 'react'
-import { AdvancedImage, accessibility, placeholder as cldPlaceholder, lazyload, responsive } from '@cloudinary/react'
+import {
+	AdvancedImage,
+	accessibility,
+	placeholder as cldPlaceholder,
+	lazyload,
+	responsive
+} from '@cloudinary/react'
 import NextImage, { ImageProps as NextImageProps } from 'next/image'
 import { UseCloudinaryImageResult, useCloudinaryImage } from '~/hooks/use-cloudinary-image'
 
@@ -57,7 +63,8 @@ const Image: FC<CloudinaryImageProps> = props => {
 		...rest
 	} = props
 
-	const shouldRenderNextImage = process.env.NODE_ENV === 'development' && Boolean(useNextImageInDevelopment)
+	const shouldRenderNextImage =
+		process.env.NODE_ENV === 'development' && Boolean(useNextImageInDevelopment)
 
 	const cldImage = useCloudinaryImage({
 		deliveryWidth,

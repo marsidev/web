@@ -8,10 +8,7 @@ interface MenuContainerProps extends MotionStackProps {
 	children: React.ReactNode
 }
 
-export const MenuContainer: React.FC<MenuContainerProps> = ({
-	children,
-	...props
-}) => {
+export const MenuContainer: React.FC<MenuContainerProps> = ({ children, ...props }) => {
 	const dividerColor = useColorModeValue('gray.200', 'gray.700')
 	const themedBg = useColorModeValue('white', 'gray.800')
 	const rendered = useRendered()

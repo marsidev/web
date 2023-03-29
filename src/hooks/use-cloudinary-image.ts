@@ -17,13 +17,7 @@ export interface UseCloudinaryImageResult {
 	 */
 	radius?: number | 'full'
 	deliveryFormat?: 'auto' | 'webp' | 'png' | 'jpg' | 'bmp' | 'avif'
-	deliveryQuality?:
-		| 'auto'
-		| 'auto:good'
-		| 'auto:best'
-		| 'auto:eco'
-		| 'auto:low'
-		| Range<1, 101>
+	deliveryQuality?: 'auto' | 'auto:good' | 'auto:best' | 'auto:eco' | 'auto:low' | Range<1, 101>
 	brightness?: number
 }
 

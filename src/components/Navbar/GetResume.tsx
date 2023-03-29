@@ -1,12 +1,6 @@
 import type { FC } from 'react'
 import { Button, type ButtonProps } from '@chakra-ui/button'
-import {
-	Menu,
-	MenuButton,
-	MenuItem,
-	MenuList,
-	type MenuProps
-} from '@chakra-ui/menu'
+import { Menu, MenuButton, MenuItem, MenuList, type MenuProps } from '@chakra-ui/menu'
 import { chakra } from '@chakra-ui/system'
 import { ChevronDownIcon, DownloadIcon, NotionIcon } from '~/icons'
 import { Link } from '../Link'
@@ -30,12 +24,7 @@ const btnStyles: ButtonProps = {
 
 const ResumeButton: FC<ButtonProps> = ({ ...props }) => {
 	return (
-		<MenuButton
-			as={Button}
-			rightIcon={<ChevronDownIcon />}
-			{...btnStyles}
-			{...props}
-		>
+		<MenuButton as={Button} rightIcon={<ChevronDownIcon />} {...btnStyles} {...props}>
 			Get Resume
 		</MenuButton>
 	)
@@ -53,11 +42,7 @@ export const GetResume: FC<GetResumeProps> = ({ ...props }) => {
 					</MenuItem>
 				</Link>
 
-				<Link
-					isExternal
-					download='Luis Eduardo Marsiglia Resume'
-					href='/resume.pdf'
-				>
+				<Link isExternal href='/resume.pdf'>
 					<MenuItem>
 						<DownloadIcon />
 						<chakra.span ml={2}>Download PDF</chakra.span>

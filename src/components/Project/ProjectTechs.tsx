@@ -83,7 +83,15 @@ export const ProjectTechs: FC<ProjectProps> = ({ project, ...props }) => {
 				Technologies
 			</Heading>
 
-			<Flex ref={parent} direction='row' flexWrap='wrap' gap={2} justify='flex-start' textAlign='left' {...props}>
+			<Flex
+				ref={parent}
+				direction='row'
+				flexWrap='wrap'
+				gap={2}
+				justify='flex-start'
+				textAlign='left'
+				{...props}
+			>
 				{project.stack.map((stackItem, stackIndex) => {
 					const tech = TECHNOLOGIES[stackItem]
 
@@ -100,7 +108,13 @@ export const ProjectTechs: FC<ProjectProps> = ({ project, ...props }) => {
 					}
 
 					return (
-						<Link key={tech.id} isExternal _hover={{ transform: 'scale(1.05)' }} href={tech.url} {...tagStyles}>
+						<Link
+							key={tech.id}
+							isExternal
+							_hover={{ transform: 'scale(1.05)' }}
+							href={tech.url}
+							{...tagStyles}
+						>
 							{tech.icon && (
 								<Skeleton
 									alignItems='center'
