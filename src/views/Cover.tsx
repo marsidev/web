@@ -26,7 +26,6 @@ export const Cover = forwardRef((props, ref) => {
 		<Flex
 			ref={ref}
 			align='center'
-			as='section'
 			direction='column'
 			height={getCoverHeight()}
 			justify='center'
