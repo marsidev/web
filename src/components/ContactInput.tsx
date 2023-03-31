@@ -1,4 +1,3 @@
-import type { FC } from 'react'
 import type { FieldError, RegisterOptions } from 'react-hook-form'
 import { type InputProps as ChakraInputProps, Input } from '@chakra-ui/input'
 import { type TextareaProps as ChakraTextAreaProps, Textarea } from '@chakra-ui/textarea'
@@ -36,7 +35,7 @@ const DynamicInput = forwardRef<ContactInputProps, ComponentType>((props, ref) =
 	return <Input ref={ref} {...props} />
 })
 
-export const ContactInput: FC<ContactInputProps> = forwardRef((props, ref) => {
+export const ContactInput = forwardRef<ContactInputProps, ComponentType>((props, ref) => {
 	const { id, label, error, name, options, formSx, ...rest } = props
 
 	return (

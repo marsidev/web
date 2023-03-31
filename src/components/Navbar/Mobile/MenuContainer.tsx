@@ -4,11 +4,7 @@ import { useRendered } from '@marsidev/react-hooks'
 import { MotionStack, MotionStackProps } from '~/components/motion'
 import { containerVariants, sideVariants } from '../variants'
 
-interface MenuContainerProps extends MotionStackProps {
-	children: React.ReactNode
-}
-
-export const MenuContainer: React.FC<MenuContainerProps> = ({ children, ...props }) => {
+export const MenuContainer: React.FC<MotionStackProps> = ({ children, ...props }) => {
 	const dividerColor = useColorModeValue('gray.200', 'gray.700')
 	const themedBg = useColorModeValue('white', 'gray.800')
 	const rendered = useRendered()

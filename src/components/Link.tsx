@@ -1,5 +1,4 @@
 import type { LinkProps as NextLinkProps } from 'next/link'
-import type { FC } from 'react'
 import type { LinkProps as ChakraLinkProps } from '@chakra-ui/layout'
 import { Link as ChakraLink } from '@chakra-ui/layout'
 import { forwardRef } from '@chakra-ui/system'
@@ -10,7 +9,7 @@ export interface LinkProps extends ChakraLinkProps, Omit<NextLinkProps, 'href' |
 	as?: ChakraLinkProps['as']
 }
 
-export const Link: FC<LinkProps> = forwardRef(({ children, ...props }, ref) => (
+export const Link = forwardRef<LinkProps, typeof ChakraLink>(({ children, ...props }, ref) => (
 	<ChakraLink ref={ref} as={NextLink} {...props}>
 		{children}
 	</ChakraLink>
