@@ -6,7 +6,7 @@ const description = 'Luis Marsiglia is a Software Developer.'
 const url = 'https://marsidev.xyz'
 const ogImageUrl = '/images/og.png'
 const keywords =
-	'marsiglia, marsidev, marsi, luis marsiglia, marsigliacr, @marsigliacr, portfolio, javascript, typescipt, developer, software engineer, frontend, front-end, backend, back-end, fullstack, full-stack, full stack, data analyst, clash royale analyst'
+	'marsiglia, marsidev, marsi, luis marsiglia, portfolio, javascript, typescript, developer, software engineer, frontend, front-end, backend, back-end, fullstack, full-stack, full stack, data analyst, clash royale analyst'
 
 const seo = {
 	titleTemplate: `%s – ${title}`,
@@ -29,8 +29,8 @@ const seo = {
 		]
 	},
 	twitter: {
-		handle: '@marsigliacr',
-		site: '@marsigliacr',
+		handle: '@marsidev',
+		site: '@marsidev',
 		cardType: 'summary_large_image'
 	},
 	additionalMetaTags: [
