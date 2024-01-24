@@ -51,7 +51,7 @@ export const Avatar = () => {
 					loading='eager'
 					placeholderPlugin={true}
 					radius='full'
-					src='/images/avatar.png'
+					src='/images/avatar-2024.png'
 					subPath='marsidev'
 					width={500}
 					onLoad={onLoad}
