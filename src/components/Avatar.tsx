@@ -18,7 +18,7 @@ export const Avatar = () => {
 	const [loaded, setLoaded] = useState<boolean>(false)
 	const containerWidth = useBreakpointValue({ base: 48, md: 56 }, { fallback: 'md' })
 
-	const containerPadding = 2
+	const containerPadding = 0
 	const avatarSize = useMemo(() => {
 		return unitToPx(containerWidth!) - 2 * unitToPx(containerPadding)
 	}, [containerWidth, containerPadding])

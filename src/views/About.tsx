@@ -57,7 +57,7 @@ export const About = forwardRef<AboutProps, 'section'>(
 						About me
 					</Heading>
 
-					{isCompact && <Content components={{ Age }} source={shortSource} />}
+					{isCompact && <Content components={{ Link, Age }} source={shortSource} />}
 
 					{!isCompact && <Content components={{ Link, Age }} source={longSource} />}
 

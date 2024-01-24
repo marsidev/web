@@ -1,5 +1,5 @@
-import '@fontsource/nunito/variable.css'
-import '@fontsource/rubik/variable.css'
+import '@fontsource-variable/nunito'
+import '@fontsource-variable/rubik'
 
 export const fonts = {
 	heading:

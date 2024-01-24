@@ -1,6 +1,6 @@
 import { Stack, type StackProps } from '@chakra-ui/layout'
 import { useColorModeValue } from '@chakra-ui/system'
-import { EmailIcon, GithubIcon, type IconType, LinkedInIcon, TwitterIcon } from '~/icons'
+import { EmailIcon, GithubIcon, type IconType, LinkedInIcon } from '~/icons'
 import { Link } from '~/components/Link'
 import { SOCIAL_LINKS } from '~/constants/social-links'
 
@@ -12,7 +12,7 @@ interface SocialIconProps {
 
 interface SocialLinksProps extends StackProps {
 	size?: 'md' | 'sm'
-	exclude?: Array<'github' | 'twitter' | 'linkedin' | 'email'>
+	exclude?: Array<'github' | 'linkedin' | 'email'>
 }
 
 const SocialIcon: React.FC<SocialIconProps> = ({ href, CustomIcon, size = 'md' }) => {
@@ -35,10 +35,6 @@ export const SocialLinks: React.FC<SocialLinksProps> = ({ size, exclude, ...prop
 
 			{!exclude?.includes('linkedin') && (
 				<SocialIcon CustomIcon={LinkedInIcon} href={SOCIAL_LINKS.linkedin} size={size} />
-			)}
-
-			{!exclude?.includes('twitter') && (
-				<SocialIcon CustomIcon={TwitterIcon} href={SOCIAL_LINKS.twitter} size={size} />
 			)}
 
 			{!exclude?.includes('email') && (

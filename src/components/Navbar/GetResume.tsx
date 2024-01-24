@@ -1,55 +1,32 @@
-import type { FC } from 'react'
-import { Button, type ButtonProps } from '@chakra-ui/button'
-import { Menu, MenuButton, MenuItem, MenuList, type MenuProps } from '@chakra-ui/menu'
 import { chakra } from '@chakra-ui/system'
-import { ChevronDownIcon, DownloadIcon, NotionIcon } from '~/icons'
+import { DocIcon } from '~/icons'
 import { Link } from '../Link'
 
-type GetResumeProps = Omit<MenuProps, 'children'>
-
-const btnStyles: ButtonProps = {
-	_active: {
-		bgPosition: 'right center'
-	},
-	_hover: {
-		bgPosition: 'right center'
-	},
-	bgGradient: 'linear(-45deg, pink.600 0%, pink.400 50%, pink.600 100%)',
-	bgSize: '200% auto',
-	color: 'white',
-	fontWeight: '700',
-	rounded: 'lg',
-	transition: 'all 300ms ease-in-out'
-}
-
-const ResumeButton: FC<ButtonProps> = ({ ...props }) => {
+export const GetResume = () => {
 	return (
-		<MenuButton as={Button} rightIcon={<ChevronDownIcon />} {...btnStyles} {...props}>
-			Get Resume
-		</MenuButton>
-	)
-}
-
-export const GetResume: FC<GetResumeProps> = ({ ...props }) => {
-	return (
-		<Menu {...props}>
-			<ResumeButton />
-			<MenuList>
-				<Link isExternal href='https://bit.ly/marsicv'>
-					<MenuItem>
-						<NotionIcon />
-						<chakra.span ml={2}>Read in Notion</chakra.span>
-					</MenuItem>
-				</Link>
-
-				<Link isExternal href='/resume.pdf'>
-					<MenuItem>
-						<DownloadIcon />
-						<chakra.span ml={2}>Download PDF</chakra.span>
-					</MenuItem>
-				</Link>
-			</MenuList>
-		</Menu>
+		<Link
+			isExternal
+			_active={{
+				bgPosition: 'right center'
+			}}
+			_hover={{
+				bgPosition: 'right center'
+			}}
+			alignItems='center'
+			bgGradient='linear(-45deg, pink.600 0%, pink.400 50%, pink.600 100%)'
+			bgSize='200% auto'
+			color='white'
+			display='inline-flex'
+			fontWeight='600'
+			href='https://bit.ly/marsicv'
+			px={4}
+			py={2}
+			rounded='lg'
+			transition='all 300ms ease-in-out'
+		>
+			<DocIcon />
+			<chakra.span ml={2}>Get my resume</chakra.span>
+		</Link>
 	)
 }
 

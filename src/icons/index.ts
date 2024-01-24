@@ -1,10 +1,6 @@
-export {
-	SiTwitter as TwitterIcon,
-	SiGmail as EmailIcon,
-	SiNotion as NotionIcon
-} from 'react-icons/si'
+export { SiGmail as EmailIcon, SiNotion as NotionIcon } from 'react-icons/si'
 
-export { GoMarkGithub as GithubIcon } from 'react-icons/go'
+export { GrGithub as GithubIcon } from 'react-icons/gr'
 
 export {
 	FiExternalLink as ExternalLinkIcon,
@@ -21,3 +17,5 @@ export { BsMoonFill as MoonIcon, BsSunFill as SunIcon } from 'react-icons/bs'
 export { AiOutlineClose as CloseIcon } from 'react-icons/ai'
 
 export type { IconType } from 'react-icons'
+
+export { HiOutlineDocumentText as DocIcon } from 'react-icons/hi'

@@ -1,6 +1,6 @@
 import type { ChakraProps, SystemStyleObject } from '@chakra-ui/system'
 import type { TurnstileInstance } from '@marsidev/react-turnstile'
-import { useRef, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import { Button } from '@chakra-ui/button'
 import { chakra, useColorModeValue } from '@chakra-ui/system'
 import { toast } from 'react-toastify'
@@ -61,7 +61,9 @@ export const ContactForm: React.FC<ContactFormProps> = props => {
 		toast.error(message, { theme: toastTheme })
 	}
 
-	const onSubmit = async (data: ContactFormData) => {
+	const onSubmit = useCallback(async (data: ContactFormData, e?: React.BaseSyntheticEvent) => {
+		e?.preventDefault()
+
 		if (showChallenge && (!challengeSolved || !token)) {
 			return toast.error('You need to solve the challenge first', { theme: toastTheme })
 		}
@@ -92,7 +94,7 @@ export const ContactForm: React.FC<ContactFormProps> = props => {
 			setIsLoading(false)
 			turnstileRef.current?.reset()
 		}
-	}
+	}, [])
 
 	const onChallengeExpire = () => {
 		setStatus('expired')

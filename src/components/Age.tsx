@@ -1,4 +1,4 @@
-import { type FC, useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Code, type CodeProps } from '@chakra-ui/layout'
 
 interface AgeProps extends CodeProps {
@@ -6,7 +6,7 @@ interface AgeProps extends CodeProps {
 	compact?: boolean
 }
 
-export const Age: FC<AgeProps> = ({ date, compact, ...rest }) => {
+export function Age({ date, compact, ...rest }: AgeProps) {
 	const [age, setAge] = useState<string>('...')
 	const [isCompact, setIsCompact] = useState(compact ?? true)
 

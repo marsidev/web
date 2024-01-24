@@ -12,7 +12,7 @@ export const toastProps: ToastContainerProps = {
 	pauseOnHover: false,
 	limit: 15,
 	closeButton: false,
-	icon: true,
+	// icon: true,
 	style: {
 		borderRadius: '16px'
 	}

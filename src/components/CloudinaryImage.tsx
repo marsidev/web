@@ -102,8 +102,7 @@ const Image: FC<CloudinaryImageProps> = props => {
 				alt={alt}
 				priority={priority}
 				src={src}
-				// @ts-ignore
-				onLoadingComplete={onLoad}
+				onLoad={onLoad}
 				{...rest}
 				style={{
 					...style,
