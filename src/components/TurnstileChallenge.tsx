@@ -28,7 +28,8 @@ export const TurnstileChallenge: FC<TurnstileChallengeProps> = ({
 				options={{
 					...options,
 					action: 'submit-contact-form',
-					theme: colorMode
+					theme: colorMode,
+					appearance: 'interaction-only'
 				}}
 				siteKey={SITE_KEY}
 				{...rest}

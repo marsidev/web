@@ -29,21 +29,14 @@ export const ContactForm: React.FC<ContactFormProps> = props => {
 	const formRef = useRef<HTMLFormElement>(null)
 	const toastTheme = useColorModeValue('dark', 'light')
 	const { errors, handleSubmit, isSubmitting, register } = useContactForm()
-	const [status, setStatus] = useState<WidgetStatus>(null)
-	const [token, setToken] = useState<string>()
-	const [messagesSent, setMessagesSent] = useState(0)
 
 	const withErrors = !!errors.name || !!errors.email || !!errors.message
-
-	const challengeSolved = status === 'solved'
-	const showChallenge = messagesSent > 0
 
 	const onSuccessMessage = () => {
 		toast.success("🚀 Message sent. I'll answer you as soon as possible. Thank you!", {
 			autoClose: 5000,
 			theme: toastTheme
 		})
-		setMessagesSent(prev => prev + 1)
 
 		formRef.current?.reset()
 	}
@@ -64,7 +57,8 @@ export const ContactForm: React.FC<ContactFormProps> = props => {
 	const onSubmit = useCallback(async (data: ContactFormData, e?: React.BaseSyntheticEvent) => {
 		e?.preventDefault()
 
-		if (showChallenge && (!challengeSolved || !token)) {
+		const challengeToken = await turnstileRef.current?.getResponsePromise()
+		if (!challengeToken) {
 			return toast.error('You need to solve the challenge first', { theme: toastTheme })
 		}
 
@@ -74,15 +68,13 @@ export const ContactForm: React.FC<ContactFormProps> = props => {
 
 		try {
 			setIsLoading(true)
-			if (showChallenge) {
-				// verify challenge token
-				const verifyData = await verifyToken(token!)
+			// verify challenge token
+			const verifyData = await verifyToken(challengeToken)
 
-				if (!verifyData.success) {
-					onInvalidToken(verifyData)
-					setIsLoading(false)
-					return
-				}
+			if (!verifyData.success) {
+				onInvalidToken(verifyData)
+				setIsLoading(false)
+				return
 			}
 
 			// send message
@@ -96,18 +88,19 @@ export const ContactForm: React.FC<ContactFormProps> = props => {
 		}
 	}, [])
 
-	const onChallengeExpire = () => {
-		setStatus('expired')
-	}
+	// const onChallengeExpire = () => {
+	// 	setStatus('expired')
+	// }
 
-	const onChallengeSuccess = (_token: string) => {
-		setToken(_token)
-		setStatus('solved')
-	}
+	// const onChallengeSuccess = (_token: string) => {
+	// 	console.log('Token:', _token)
+	// 	setToken(_token)
+	// 	setStatus('solved')
+	// }
 
-	const onChallengeError = () => {
-		setStatus('error')
-	}
+	// const onChallengeError = () => {
+	// 	setStatus('error')
+	// }
 
 	return (
 		<chakra.form ref={formRef} sx={formSx} onSubmit={handleSubmit(onSubmit)} {...props}>
@@ -140,23 +133,13 @@ export const ContactForm: React.FC<ContactFormProps> = props => {
 				{...register('message')}
 			/>
 
-			{showChallenge && (
-				<TurnstileChallenge
-					// error={challengeError}
-					formSx={{ mt: 4, mb: 2 }}
-					turnstileRef={turnstileRef}
-					onError={onChallengeError}
-					onExpire={onChallengeExpire}
-					onSuccess={onChallengeSuccess}
-				/>
-			)}
+			<TurnstileChallenge formSx={{ mt: 4, mb: 2 }} turnstileRef={turnstileRef} />
 
 			<Button
 				colorScheme='teal'
 				isDisabled={withErrors}
 				isLoading={isSubmitting || isLoading}
 				loadingText='Sending...'
-				mt={showChallenge ? 0 : 4}
 				size='lg'
 				textAlign='left'
 				type='submit'
